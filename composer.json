@@ -1,0 +1,5 @@
+{
+    "require": {
+        "wildbit/swiftmailer-postmark": "^3.4"
+    }
+}
