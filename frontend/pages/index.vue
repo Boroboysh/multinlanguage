@@ -63,7 +63,8 @@
                 <default-button class="header_content_info_calculate_button" size="large">
                   Рассчитать стоимость
                 </default-button>
-                <div class="header_content_info_calculate_result w-100 d-flex justify-content-end justify-content-xl-center">
+                <div
+                  class="header_content_info_calculate_result w-100 d-flex justify-content-end justify-content-xl-center">
                   <img class="header_content_info_calculate_result_icons" src="@/assets/images/arrow_crocked.svg" alt="">
                   <span class="header_content_info_calculate_result_text">
                     От 2994 тенге, примерный срок
@@ -72,22 +73,47 @@
                 </div>
               </div>
             </div>
-            <default-button />
             <div class="header_content_advantages_block">
               <div class="row">
-                <div class="col-xl-4 header_content_advantages d-flex">
-                  <div class="header_content_advantages_number_block">
-                    <span class="header_content_advantages_number">20</span>
-                    <div class="header_content_advantages_number_icons">+</div>
-                  </div>
-                  <div class="header_content_advantages_text_block">
-                    <p class="header_content_advantages_text">
-                      Более 20 лет опыта грузовых перевозок
-                    </p>
+                <div class="col-xl-4 header_content_advantages d-flex align-items-center justify-content-start">
+                  <div class="header_content_advantages_info_block">
+                    <div class="header_content_advantages_number_block">
+                      <span class="header_content_advantages_number">20</span>
+                      <div class="header_content_advantages_number_icons">+</div>
+                    </div>
+                    <div class="header_content_advantages_text_block">
+                      <p class="header_content_advantages_text">
+                        Более 20 лет опыта грузовых перевозок
+                      </p>
+                    </div>
                   </div>
                 </div>
-                <div class="col-xl-4">2</div>
-                <div class="col-xl-4">3</div>
+                <div class="col-xl-4 header_content_advantages d-flex align-items-center justify-content-start">
+                  <div class="header_content_advantages_info_block">
+                    <div class="header_content_advantages_number_block">
+                      <span class="header_content_advantages_number">20</span>
+                      <div class="header_content_advantages_number_icons">+</div>
+                    </div>
+                    <div class="header_content_advantages_text_block">
+                      <p class="header_content_advantages_text">
+                        Более 20 лет опыта грузовых перевозок
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-4 header_content_advantages d-flex align-items-center justify-content-start">
+                  <div class="header_content_advantages_info_block">
+                    <div class="header_content_advantages_number_block">
+                      <span class="header_content_advantages_number">20</span>
+                      <div class="header_content_advantages_number_icons">+</div>
+                    </div>
+                    <div class="header_content_advantages_text_block">
+                      <p class="header_content_advantages_text">
+                        Более 20 лет опыта грузовых перевозок
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -140,6 +166,7 @@ header {
   width: 100%;
   height: 100%;
 }
+
 .header_content_info_calculate_result_text {
   margin-left: 10px;
 }
@@ -202,6 +229,7 @@ header {
 }
 
 .header_content_info_calculate_form_icons {}
+
 .header_content_info_calculate_form_input_size {
   width: 230px;
 }
@@ -218,18 +246,24 @@ header {
   margin-top: 16px;
   margin-left: 10px;
 }
+
 .header_content_advantages_block {
   margin-top: 35px;
 }
 
 .header_content_advantages {
-  border-top: 1px solid #E4E6E7;
+  /* border-top: 1px solid #E4E6E7; */
 }
+.header_content_advantages_info_block {
+  display: flex;
+  border-top: 1px solid #E4E6E7;
 
+}
 .header_content_advantages_linear {
   width: 100%;
   height: 1px;
 }
+
 .header_content_advantages_number_block {
   position: relative;
   font-size: 48px;
@@ -237,15 +271,27 @@ header {
   margin-right: 24px;
   color: #E4003C;
 }
+
+.header_content_advantages_number_icons {
+  font-size: 30px;
+}
+
 .header_content_advantages_number {
   font-size: 48px;
 }
+
 .header_content_advantages_number_icons {
   position: absolute;
   top: 0;
   right: 0;
   vertical-align: text-top;
 }
+
+.header_content_advantages_text {
+  font-size: 18px;
+  max-width: 200px;
+}
+
 @media (max-width: 1200px) {
   .header_content_info_preview>img {
     width: 460px;
