@@ -2,5 +2,9 @@
 export default defineNuxtConfig({
   imports: {
     autoImport: false
-  }
+  },
+  css: [
+    '@/assets/styles/bootstrap.min.css',
+    'assets/fonts/Roboto/stylesheet.css'
+  ],
 })
