@@ -88,13 +88,12 @@
       </div>
     </header> -->
     <div class="header_content_info container-xl">
-      <div class="row">
-        <div class="col d-flex justify-content-start header_content_info_preview p-0">
+      <div class="header_content_info_row">
+        <div class="header_content_info_col d-flex justify-content-start header_content_info_preview p-0">
           <img src="@/assets/images/preview_header.png" alt="">
         </div>
-        <div class="col header_content_info_forms">
-          <h2 
-                DefaultHeaderclass="header_content_info_forms_title">Отследить</h2>
+        <div class="header_content_info_col header_content_info_forms">
+          <h2 class="header_content_info_forms_title">Отследить</h2>
           <default-input placeholder="Поиск по коду груза" class="header_content_info_forms" />
           <div class="header_content_info_calculate_block w-100 d-flex align-items-start flex-column">
             <h2 class="header_content_info_forms_title">Рассчитать</h2>
@@ -106,7 +105,7 @@
             <default-button class="header_content_info_calculate_button" size="large">
               Рассчитать стоимость
             </default-button>
-            <div class="header_content_info_calculate_result w-100 d-flex justify-content-xl-end justify-content-xxl-center">
+            <div class="header_content_info_calculate_result w-100 d-flex justify-content-center justify-content- justify-content-xxl-center">
               <img class="header_content_info_calculate_result_icons" src="@/assets/images/arrow_crocked.svg" alt="">
               <span class="header_content_info_calculate_result_text">
                 От 2994 тенге, примерный срок
@@ -170,7 +169,7 @@
             </span>
           </div>
         </div>
-        <div class="about_content_block_info container">
+        <div class="about_content_block_info container-xl">
           <div class="about_content_info">
             <span class="about_content_title">
             ПЭК: GLOBAL предлагает услуги авто- и авиаперевозок из России в Казахстан и в обратном направлении.
@@ -228,7 +227,7 @@ import DefaultHeader from '../components/header/defaultHeader/defaultHeader.vue'
 
 </script>
 <style>
-@import url('../assets/styles/bootstrap.min.css');
+/* @import url('../assets/styles/bootstrap.min.css'); */
 /* @import url('~~/assets/fonts/Roboto/stylesheet.css'); */
 
 
@@ -496,26 +495,20 @@ body {
     width: 100%;
     background-size: cover;
   } */
-  .header_menu_group_block {
-    background: #a1a1a1;
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    height: auto;
-  }
   .header_content_advantages_info_block {
     display: block;
   }
 }
+
 @media(max-width:780px) {
   .header_content_advantages_info_block {
     width: 100%;
   }
   .header_content_advantages_text {
     max-width: 320px;
+  }
+  .about_block_content_title {
+    font-size: 30px;
   }
 }
 
