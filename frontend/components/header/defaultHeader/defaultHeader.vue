@@ -6,9 +6,9 @@
           <img src="@/assets/images/logo-pec-eng.png" alt="">
         </div>
         <div class="header_menu_block d-flex align-items-center justify-content-end bg-red-500">
-          <!-- <div class="header_menu_burger_block">
-            awffawafwafwawfwafwfa
-          </div> -->
+          <div class="header_menu_burger_block">
+            Открыть
+          </div>
           <div class="header_menu_group_block">
             <div class="header_menu_block_link">
               <a class="header_menu_link" href="#">
@@ -88,6 +88,11 @@
 </template>
 
 <script setup>
+// let menuStatus = ref(false);
+
+const updateStatusMenu = (status) => {
+  // menuStatus = status;
+}
 
 </script>
 
@@ -204,6 +209,9 @@ header {
   margin-top: 35px;
   margin-bottom: 120px;
 }
+.header_menu_burger_block {
+  display: none;
+}
 
 .header_content_advantages {
   /* border-top: 1px solid #E4E6E7; */
@@ -261,4 +269,28 @@ header {
     width: 464px;
   }
 }
+@media(max-width:912px) {
+  /* .header_content_info_preview img {
+    width: 100%;
+    background-size: cover;
+  } */
+  /* .header_menu_burger_block {
+    display: block;
+  } */
+  .header_menu_group_block {
+    background: #a1a1a1;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    height: auto;
+  }
+  .header_content_advantages_info_block {
+    display: block;
+  }
+}
+
+
 </style>
