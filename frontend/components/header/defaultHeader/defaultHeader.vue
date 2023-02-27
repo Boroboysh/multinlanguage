@@ -3,13 +3,14 @@
     <div class="header_content_block container-xl">
       <div class="header_menu_block d-flex w-100">
         <div class="header_logo_block">
-          <img src="@/assets/images/logo-pec-eng.png" alt="">
+          <img class="header_logo_white" src="@/assets/images/logo-pec-eng.png" alt="">
+          <img class="header_logo_blue" src="@/assets/images/logo-pec-eng-blue.svg" alt="">
         </div>
-        <div class="header_menu_block d-flex align-items-center justify-content-end bg-red-500">
-          <div class="header_menu_burger_block">
-            Открыть
+        <div class="header_menu_block d-flex align-content-center justify-content-end bg-red-500">
+          <div @click="updateStatusMenu(true)" class="header_menu_burger_block">
+            <img src="@/assets/images/default_menu_icons.svg" alt="">
           </div>
-          <div class="header_menu_group_block">
+          <div class="header_menu_group_block" :class="{'header_menu_group_active': menuStatus}">
             <div class="header_menu_block_link">
               <a class="header_menu_link" href="#">
                 <div class="header_menu_icons_block">
@@ -35,7 +36,7 @@
             <div class="header_menu_block_link">
               <a class="header_menu_link" href="#">
                 <div class="header_menu_icons_block">
-                  <img src="@/assets/images/Vector(3).png" alt="" class="header_menu_icons">
+                  <img src="@/assets/images/support_icons.png" alt="" class="header_menu_icons">
                 </div>
                 Поддержка
               </a>
@@ -46,41 +47,6 @@
               </a>
             </div>
           </div>
-          <!-- <div class="header_menu_block_link">
-              <a class="header_menu_link" href="#">
-                <div class="header_menu_icons_block">
-                  <img src="@/assets/images/default_arrow_icon.png" alt="" class="header_menu_icons">
-                </div>
-                Астана
-                <div class="header_menu_icons_block">
-                  <img src="@/assets/images/arrow_done.svg" alt="" class="header_menu_icons header_menu_icons_arrow_done">
-                </div>
-              </a>
-            </div>
-            <div class="header_menu_block_link">
-              <a class="header_menu_link" href="#">
-                <div class="header_menu_icons_block">
-                  <img src="@/assets/images/flag.png" alt="" class="header_menu_icons header_menu_icons_flug">
-                </div>
-                РУС
-                <div class="header_menu_icons_block">
-                  <img src="@/assets/images/arrow_done.svg" alt="" class="header_menu_icons header_menu_icons_arrow_done">
-                </div>
-              </a>
-            </div>
-            <div class="header_menu_block_link">
-              <a class="header_menu_link" href="#">
-                <div class="header_menu_icons_block">
-                  <img src="@/assets/images/Vector(3).png" alt="" class="header_menu_icons">
-                </div>
-                Поддержка
-              </a>
-            </div>
-            <div class="header_menu_block_link">
-              <a class="header_menu_link header_menu_link_telephone" href="#">
-                + 7 (7172) 644-644
-              </a>
-            </div> -->
         </div>
       </div>
     </div>
@@ -88,18 +54,33 @@
 </template>
 
 <script setup>
-// let menuStatus = ref(false);
+import { ref, onMounted } from 'vue';
+
+let menuStatus = ref(false);
 
 const updateStatusMenu = (status) => {
-  // menuStatus = status;
+  menuStatus.value = status;
+  // getBody()
 }
 
+// const scrollStatus = onMounted((status) => {
+//   const body = document.querySelector('body');
+// })
+
+const getBody = (status) => {
+  onMounted(() => {
+    const body = document.querySelector('body');
+    return body
+  })
+}
+
+updateStatusMenu(false)
 </script>
 
 <style>
 header {
   width: 100%;
-  height: 120px;
+  height: 70px;
   /* background: #929292; */
   /* background: #000; */
 }
@@ -126,7 +107,9 @@ header {
 .header_content_info_calculate_result_text {
   margin-left: 10px;
 }
-
+.header_logo_blue {
+  display: none;
+}
 .header_menu_block_link {
   display: flex;
   align-items: center;
@@ -225,6 +208,7 @@ header {
 
 .header_menu_group_block {
   display: flex;
+  justify-content: center;
 }
 .header_content_advantages_linear {
   width: 50%;
@@ -258,6 +242,9 @@ header {
   font-size: 18px;
   max-width: 200px;
 }
+.header_menu_group_active {
+  left: 0 !important;
+}
 @media (max-width: 1400px) {
   .header_content_info_preview>img {
     width: 100%;
@@ -269,6 +256,7 @@ header {
     width: 464px;
   }
 }
+
 @media(max-width:912px) {
   /* .header_content_info_preview img {
     width: 100%;
@@ -277,15 +265,46 @@ header {
   /* .header_menu_burger_block {
     display: block;
   } */
+  html, body {
+    overflow-x: hidden;
+    position: relative;
+  }
+  .header_logo_block > img {
+    width: 80px;
+  }
+  .header_content_block {
+    height: 50px;
+    background: #252069;
+    color: #E4003C;
+  }
   .header_menu_group_block {
     background: #a1a1a1;
     display: block;
     position: absolute;
     top: 0;
-    left: 0%;
+    left: 100%;
     width: 100%;
     height: 100%;
+    z-index: 1;
+  }
+  .header_menu_block_link {
     height: auto;
+  }
+  .header_logo_white {
+    display: none;
+  }
+  .header_logo_blue {
+    display: block;
+  }
+  .header_menu_burger_block {
+    display: flex;
+    /* align-items: center;
+    justify-content: center; */
+    /* vertical-align: middle; */
+  }
+
+  .header_menu_burger_block img {
+    width: 24px;
   }
   .header_content_advantages_info_block {
     display: block;
