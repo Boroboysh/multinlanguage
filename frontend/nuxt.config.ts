@@ -5,6 +5,6 @@ export default defineNuxtConfig({
   },
   css: [
     '@/assets/styles/bootstrap.min.css',
-    'assets/fonts/Roboto/stylesheet.css'
+    '@/assets/fonts/Roboto/stylesheet.css'
   ],
 })
