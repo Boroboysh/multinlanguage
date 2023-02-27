@@ -360,7 +360,7 @@ body {
   top: 25px;
 }
 /* .map_block_content_title {
-  
+
 } */
 @media (max-width: 1400px) {
   .header_content_info_preview > img {
