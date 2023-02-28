@@ -13,8 +13,22 @@ class Product extends Model
     use HasFactory;
     use HasTranslations;
 
-    protected $primaryKey = 'id';
-    protected $fillable = ['name', 'description', 'price'];
-    protected $translatable = ['name', 'description'];
+    protected $fillable = ['name', 'description', 'price', 'image'];
+    protected $translatable = ['name', 'description', 'image'];
     public $timestamps = false;
+
+    public function setImageAttribute($value)
+    {
+        $attribute_name = "image";
+        $disk = "public";
+        $destination_path = "/images";
+
+        //TODO fix path
+        //not correctly path
+        $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path, $fileName = null);
+
+        // Undefined key. Image DB null
+        return $this->attributes[$attribute_name]; // uncomment if this is a translatable field
+    }
+
 }
