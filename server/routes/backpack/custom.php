@@ -17,4 +17,19 @@ Route::group([
     'namespace'  => 'App\Http\Controllers\Admin',
 ], function () { // custom admin routes
     Route::crud('product', 'ProductCrudController');
+    Route::crud('header', 'HeaderCrudController');
+    Route::crud('subheader', 'SubheaderCrudController');
+    Route::crud('subheader-fields', 'SubheaderFieldsCrudController');
+    Route::crud('subheader-list', 'SubheaderListCrudController');
+    Route::crud('subheader-text-content', 'SubheaderTextContentCrudController');
+    Route::crud('subheader-titles', 'SubheaderTitlesCrudController');
+    Route::crud('text-info-block', 'TextInfoBlockCrudController');
+    Route::crud('text-info-block-content', 'TextInfoBlockContentCrudController');
+    Route::crud('text-info-block-list', 'TextInfoBlockListCrudController');
+    Route::crud('map-info-block', 'MapInfoBlockCrudController');
+    Route::crud('map-info-block-content', 'MapInfoBlockContentCrudController');
+    Route::crud('map-info-block-button-text', 'MapInfoBlockButtonTextCrudController');
+    Route::crud('list-info-block', 'ListInfoBlockCrudController');
+    Route::crud('list-info-block-element', 'ListInfoBlockElementCrudController');
+    Route::crud('list-info-block-element-list', 'ListInfoBlockElementListCrudController');
 }); // this should be the absolute last line of this file

@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\ProductRequest;
+use App\Http\Requests\HeaderRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class ProductCrudController
+ * Class HeaderCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class ProductCrudController extends CrudController
+class HeaderCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -26,9 +26,9 @@ class ProductCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Product::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/product');
-        CRUD::setEntityNameStrings('product', 'products');
+        CRUD::setModel(\App\Models\Header::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/header');
+        CRUD::setEntityNameStrings('header', 'header');
     }
 
     /**
@@ -39,10 +39,18 @@ class ProductCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('name');
-        CRUD::column('description');
-        CRUD::column('price');
-        CRUD::column('image');
+        CRUD::addColumn([
+            'name' => 'logo',
+            'label' => 'Logo',
+        ]);
+        CRUD::addColumn([
+            'name' => 'supportText',
+            'label' => 'Support text ',
+        ]);
+        CRUD::addColumn([
+            'name' => 'tel_number',
+            'label' => 'Telephone number',
+        ]);
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -59,18 +67,26 @@ class ProductCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::field('name');
-        CRUD::field('description');
-        CRUD::field('price');
         CRUD::addField([
-            'name'      => 'image',
-            'label'     => 'Image',
+            'name'      => 'logo',
+            'label'     => 'Logo',
             'type'      => 'upload',
             'upload'    => true,
-            'disk'      => 'public', // if you store files in the /public folder, please omit this; if you store them in /storage or S3, please specify it;
+            //'disk'      => 'public', // if you store files in the /public folder, please omit this; if you store them in /storage or S3, please specify it;
 //            // optional:
 //            'temporary' => 10
         ]);
+        CRUD::addField([
+            'name'      => 'supportText',
+            'label'     => 'Support Text',
+            'type'      => 'text',
+        ]);
+        CRUD::addField([
+            'name'      => 'tel_number',
+            'label'     => 'Telephone Number',
+            'type'      => 'text',
+        ]);
+
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');

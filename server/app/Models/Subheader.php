@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Models;
+namespace app\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Backpack\CRUD\app\Models\Traits\SpatieTranslatable\HasTranslations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Subheader extends Model
 {
     use CrudTrait;
     use HasFactory;
     use HasTranslations;
 
-    protected $fillable = ['name', 'description', 'price', 'image'];
-    protected $translatable = ['name', 'description', 'image'];
+    protected $fillable = ['id','image'];
+    protected $translatable = ['image'];
     public $timestamps = false;
 
     public function setImageAttribute($value)
@@ -30,5 +30,4 @@ class Product extends Model
         // Undefined key. Image DB null
         return $this->attributes[$attribute_name]; // uncomment if this is a translatable field
     }
-
 }

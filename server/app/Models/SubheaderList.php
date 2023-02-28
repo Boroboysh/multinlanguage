@@ -1,25 +1,25 @@
 <?php
 
-namespace App\Models;
+namespace app\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Backpack\CRUD\app\Models\Traits\SpatieTranslatable\HasTranslations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class SubheaderList extends Model
 {
     use CrudTrait;
     use HasFactory;
     use HasTranslations;
 
-    protected $fillable = ['name', 'description', 'price', 'image'];
-    protected $translatable = ['name', 'description', 'image'];
     public $timestamps = false;
+    protected $fillable = ['icon', 'content', 'subheader_id'];
+    protected $translatable = ['icon', 'content'];
 
-    public function setImageAttribute($value)
+    public function setIconAttribute($value)
     {
-        $attribute_name = "image";
+        $attribute_name = "icon";
         $disk = "public";
         $destination_path = "/images";
 

@@ -3,6 +3,8 @@
 use App\Http\Controllers\FeedbackController;
 use App\Models\City;
 use App\Models\Country;
+use App\Models\Product;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,17 +22,29 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//TODO create controllers
-
-//TODO ! Create Database !
-//TODO ! Seeders !
-//TODO ! Factory !
-//TODO ! Email test !
-
-// Getting cities from the current country
 
 Route::get('/country/{id}/cities', function ($id) {
     return City::where('country_id', $id)->get();
+});
+
+Route::get('/countries', function () {
+    return Country::all();
+});
+
+Route::get('/multi-language', function (Request $request) {
+    $acceptedLanguages = ['ru', 'en'];
+    $languageCode = $request->header('locale');
+
+    if ($languageCode && in_array($languageCode, $acceptedLanguages)) {
+        $productsJSON = Product::select('*')->get();
+        $products = json_decode($productsJSON);
+        foreach ($products as $product) {
+            return $product->name->{$languageCode};
+        }
+    } else {
+        return response('Invalid language code', 400);
+    }
+
 });
 
 

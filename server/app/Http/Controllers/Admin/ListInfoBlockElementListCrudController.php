@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\ProductRequest;
+use App\Http\Requests\ListInfoBlockElementListRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class ProductCrudController
+ * Class ListInfoBlockElementListCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class ProductCrudController extends CrudController
+class ListInfoBlockElementListCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -26,9 +26,9 @@ class ProductCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Product::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/product');
-        CRUD::setEntityNameStrings('product', 'products');
+        CRUD::setModel(\App\Models\ListInfoBlockElementList::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/list-info-block-element-list');
+        CRUD::setEntityNameStrings('list info block element list', 'list info block element lists');
     }
 
     /**
@@ -39,11 +39,14 @@ class ProductCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('name');
-        CRUD::column('description');
-        CRUD::column('price');
-        CRUD::column('image');
-
+        CRUD::addColumn([
+            'name' => 'content',
+            'label' => 'Content'
+        ]);
+        CRUD::addColumn([
+            'name' => 'listInfoBlockElement_id',
+            'label' => 'List InfoBlock Element Id'
+        ]);
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
@@ -59,18 +62,18 @@ class ProductCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::field('name');
-        CRUD::field('description');
-        CRUD::field('price');
         CRUD::addField([
-            'name'      => 'image',
-            'label'     => 'Image',
-            'type'      => 'upload',
-            'upload'    => true,
-            'disk'      => 'public', // if you store files in the /public folder, please omit this; if you store them in /storage or S3, please specify it;
-//            // optional:
-//            'temporary' => 10
+            'name' => 'content',
+            'label' => 'Content'
         ]);
+        CRUD::addField([
+            'name' => 'listInfoBlockElement_id',
+            'label' => 'List InfoBlock Element Id',
+            'type' => 'select',
+            'model' => 'App\Models\ListInfoBlockElement',
+            'attribute' => 'id'
+        ]);
+
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');
