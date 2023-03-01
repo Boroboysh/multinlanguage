@@ -41,11 +41,11 @@ class MapInfoBlockButtonTextCrudController extends CrudController
     {
         CRUD::addColumn([
             'name' => 'content',
-            'label' => 'Content',
+            'label' => 'Содержание',
         ]);
         CRUD::addColumn([
             'name' => 'mapInfoBlock_id',
-            'label' => 'Map InfoBlock Id',
+            'label' => 'MapInfoBlock ID',
             ]);
 
         /**
@@ -65,11 +65,11 @@ class MapInfoBlockButtonTextCrudController extends CrudController
     {
         CRUD::addField([
             'name' => 'content',
-            'label' => 'Content',
+            'label' => 'Содержание',
         ]);
         CRUD::addField([
             'name' => 'mapInfoBlock_id',
-            'label' => 'Map InfoBlock Id',
+            'label' => 'MapInfoBlock ID',
             'type' => 'select',
             'model' => 'App\Models\MapInfoBlock',
             'attribute' => 'id'

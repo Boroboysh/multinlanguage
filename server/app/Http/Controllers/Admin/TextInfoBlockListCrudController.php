@@ -41,11 +41,11 @@ class TextInfoBlockListCrudController extends CrudController
     {
         CRUD::addColumn([
             'name' => 'content',
-            'label' => 'Content'
+            'label' => 'Содержание'
         ]);
         CRUD::addColumn([
             'name' => 'textInfoBlock_id',
-            'label' => 'InfoBlock Id'
+            'label' => 'InfoBlock ID'
         ]);
 
         /**
@@ -63,10 +63,13 @@ class TextInfoBlockListCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::field('content');
+        CRUD::addField([
+            'name' => 'content',
+            'label' => 'Содержание'
+        ]);
         CRUD::addField([
             'name' => 'textInfoBlock_id',
-            'label' => 'InfoBlock Id',
+            'label' => 'InfoBlock ID',
             'type' => 'select',
             'model' => 'App\Models\TextInfoBlock',
             'attribute' => 'id'

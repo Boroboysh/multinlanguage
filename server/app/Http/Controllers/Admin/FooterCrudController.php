@@ -40,8 +40,14 @@ class FooterCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::column('id');
-        CRUD::column('title');
-        CRUD::column('subtitle');
+        CRUD::addColumn([
+            'name' => 'title',
+            'label' => 'Заголовок'
+        ]);
+        CRUD::addColumn([
+            'name' => 'subtitle',
+            'label' => 'Подзаголовок'
+        ]);
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
@@ -57,8 +63,14 @@ class FooterCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::field('title');
-        CRUD::field('subtitle');
+        CRUD::addField([
+            'name' => 'title',
+            'label' => 'Заголовок'
+        ]);
+        CRUD::addField([
+            'name' => 'subtitle',
+            'label' => 'Подзаголовок'
+        ]);
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

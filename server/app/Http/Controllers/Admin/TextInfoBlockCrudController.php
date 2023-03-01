@@ -42,11 +42,11 @@ class TextInfoBlockCrudController extends CrudController
         CRUD::column('id');
         CRUD::addColumn([
             'name' => 'title',
-            'label' => 'Title'
+            'label' => 'Заголовок'
         ]);
         CRUD::addColumn([
             'name' => 'subtitle',
-            'label' => 'Subtitle'
+            'label' => 'Подзаголовок'
         ]);
 
         /**
@@ -67,11 +67,11 @@ class TextInfoBlockCrudController extends CrudController
 
         CRUD::addField([
             'name' => 'title',
-            'label' => 'Title'
+            'label' => 'Заголовок'
         ]);
         CRUD::addField([
             'name' => 'subtitle',
-            'label' => 'Subtitle'
+            'label' => 'Подзаголовок'
         ]);
         /**
          * Fields can be defined using the fluent syntax or array syntax:

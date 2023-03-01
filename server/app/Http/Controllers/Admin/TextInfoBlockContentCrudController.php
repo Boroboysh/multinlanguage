@@ -41,11 +41,11 @@ class TextInfoBlockContentCrudController extends CrudController
     {
         CRUD::addColumn([
             'name' => 'content',
-            'label' => 'Content'
+            'label' => 'Содержание'
         ]);
         CRUD::addColumn([
             'name' => 'textInfoBlock_id',
-            'label' => 'InfoBlock Id'
+            'label' => 'InfoBlock ID'
         ]);
 
 

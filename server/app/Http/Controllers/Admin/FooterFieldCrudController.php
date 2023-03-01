@@ -39,10 +39,22 @@ class FooterFieldCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('city');
-        CRUD::column('name');
-        CRUD::column('tel_number');
-        CRUD::column('message_placeholder');
+        CRUD::addColumn([
+            'name' => 'city',
+            'label' => 'Поле город'
+        ]);
+        CRUD::addColumn([
+            'name' => 'name',
+            'label' => 'Поле имя '
+        ]);
+        CRUD::addColumn([
+            'name' => 'tel_number',
+            'label' => 'Поле телефон'
+        ]);
+        CRUD::addColumn([
+            'name' => 'message_placeholder',
+            'label' => 'Заполнитель поля с сообщением'
+        ]);
         CRUD::column('footer_id');
 
         /**
@@ -60,10 +72,22 @@ class FooterFieldCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::field('city');
-        CRUD::field('name');
-        CRUD::field('tel_number');
-        CRUD::field('message_placeholder');
+        CRUD::addField([
+            'name' => 'city',
+            'label' => 'Город'
+        ]);
+        CRUD::addField([
+            'name' => 'name',
+            'label' => 'Имя'
+        ]);
+        CRUD::addField([
+            'name' => 'tel_number',
+            'label' => 'Номер телефона'
+        ]);
+        CRUD::addField([
+            'name' => 'message_placeholder',
+            'label' => 'Заполнитель поля с сообщением'
+        ]);
         CRUD::addField([
             'name' => 'footer_id',
             'label' => 'Footer Id',

@@ -35,4 +35,8 @@ Route::group([
     Route::crud('footer-field', 'FooterFieldCrudController');
     Route::crud('footer-button-text', 'FooterButtonTextCrudController');
     Route::crud('footer-text-content', 'FooterTextContentCrudController');
+//    Route::crud('russian-tables', );
+    Route::crud('russian-tables', 'RussianTablesCrudController');
+    Route::crud('english-tables', 'EnglishTablesCrudController');
+    Route::crud('kazakh-tables', 'KazakhTablesCrudController');
 }); // this should be the absolute last line of this file
