@@ -49,6 +49,7 @@ const updateValue = (value) => {
   display: flex;
   align-items: center;
   position: relative;
+  background: white;
 }
 
 .default_input_block:focus-within {
@@ -87,7 +88,6 @@ const updateValue = (value) => {
 }
 
 .default_input_title {
-  /* width: 100%; */
   height: 100%;
   position: absolute;
   top: 0;
