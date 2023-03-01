@@ -4,54 +4,26 @@
     <div class="header_content_info container-xl">
       <div class="header_content_info row">
         <div class="row"></div>
-        <div
-          class="col header_content_info_col d-flex justify-content-center header_content_info_preview p-0"
-        >
+        <div class="col header_content_info_col d-flex justify-content-center header_content_info_preview p-0">
           <img src="@/assets/images/preview_header.png" alt="" />
         </div>
         <div class="col header_content_info_col header_content_info_forms">
           <h2 class="header_content_info_forms_title">Отследить</h2>
-          <default-input
-            placeholder="Поиск по коду груза"
-            class="header_content_info_forms"
-          />
-          <div
-            class="header_content_info_calculate_block w-100 d-block align-items-start flex-column"
-          >
+          <default-input placeholder="Поиск по коду груза" class="header_content_info_forms" />
+          <div class="header_content_info_calculate_block w-100 d-block align-items-start flex-column">
             <h2 class="header_content_info_forms_title">Рассчитать</h2>
-            <div
-              class="header_content_info_calculate_forms_block w-100 justify-content-between"
-            >
-              <default-input
-                class="header_content_info_calculate_form_input_size"
-                placeholder="Откуда"
-                :title="true"
-              />
-              <img
-                class="header_content_info_calculate_form_icons"
-                src="@/assets/images/arrow_double.svg"
-                alt=""
-              />
-              <default-input
-                class="header_content_info_calculate_form_input_size"
-                placeholder="Куда"
-                :title="true"
-              />
+            <div class="header_content_info_calculate_forms_block w-100 justify-content-between">
+              <default-input class="header_content_info_calculate_form_input_size" placeholder="Откуда" :title="true" />
+              <img class="header_content_info_calculate_form_icons" src="@/assets/images/arrow_double.svg" alt="" />
+              <default-input class="header_content_info_calculate_form_input_size" placeholder="Куда" :title="true" />
             </div>
-            <default-button
-              class="header_content_info_calculate_button"
-              size="large"
-            >
+            <default-button class="header_content_info_calculate_button" size="large">
               Рассчитать стоимость
             </default-button>
             <div
-              class="header_content_info_calculate_result w-100 d-flex justify-content-start justify-content-md-start justify-content-xl-center justify-content-xxl-end"
-            >
-              <img
-                class="header_content_info_calculate_result_icons d-none d-sm-block d-md-block d-xl-block"
-                src="@/assets/images/arrow_crocked.svg"
-                alt=""
-              />
+              class="header_content_info_calculate_result w-100 d-flex justify-content-start justify-content-md-start justify-content-xl-center justify-content-xxl-end">
+              <img class="header_content_info_calculate_result_icons d-none d-sm-block d-md-block d-xl-block"
+                src="@/assets/images/arrow_crocked.svg" alt="" />
               <span class="header_content_info_calculate_result_text">
                 От 2994 тенге, примерный срок 1—3 дня
               </span>
@@ -61,9 +33,7 @@
       </div>
       <div class="header_content_advantages_block">
         <div class="row">
-          <div
-            class="col-12 col-xl-4 col-md-4 header_content_advantages d-flex align-items-center justify-content-start"
-          >
+          <div class="col-12 col-xl-4 col-md-4 header_content_advantages d-flex align-items-center justify-content-start">
             <div class="header_content_advantages_info_block">
               <div class="header_content_advantages_number_block">
                 <span class="header_content_advantages_number">20</span>
@@ -76,9 +46,7 @@
               </div>
             </div>
           </div>
-          <div
-            class="col-xl-4 col-md-4 col-12 header_content_advantages d-flex align-items-center justify-content-start"
-          >
+          <div class="col-xl-4 col-md-4 col-12 header_content_advantages d-flex align-items-center justify-content-start">
             <div class="header_content_advantages_info_block">
               <div class="header_content_advantages_number_block">
                 <span class="header_content_advantages_number">20</span>
@@ -91,9 +59,7 @@
               </div>
             </div>
           </div>
-          <div
-            class="col-xl-4 col-md-4 header_content_advantages d-flex align-items-center justify-content-start"
-          >
+          <div class="col-xl-4 col-md-4 header_content_advantages d-flex align-items-center justify-content-start">
             <div class="header_content_advantages_info_block">
               <div class="header_content_advantages_number_block">
                 <span class="header_content_advantages_number">20</span>
@@ -111,7 +77,7 @@
     </div>
     <div class="about_block">
       <div class="about_content_block">
-        <div class="align-items-center w-100 d-flex">
+        <div class="about_block_content_title align-items-center w-100 d-flex">
           <div class="about_block_content_title_linear" />
           <div class="about_block_content_title_block container">
             <span class="about_block_content_title">
@@ -146,25 +112,19 @@
               <span class="about_content_title">
                 Отделения ПЭК в Казахстане
               </span>
-              <div
-                class="about_content_block_info_adress_list_item d-flex align-items-center"
-              >
+              <div class="about_content_block_info_adress_list_item d-flex align-items-center">
                 <div class="about_content_block_info_adress_linear"></div>
                 <span class="about_content_block_info_adress_text">
                   Астана, ул. Жанажол, д. 19. Тел.: + 7 (7172) 644-644
                 </span>
               </div>
-              <div
-                class="about_content_block_info_adress_list_item d-flex align-items-center"
-              >
+              <div class="about_content_block_info_adress_list_item d-flex align-items-center">
                 <div class="about_content_block_info_adress_linear"></div>
                 <span class="about_content_block_info_adress_text">
                   Астана, ул. Жанажол, д. 19. Тел.: + 7 (7172) 644-644
                 </span>
               </div>
-              <div
-                class="about_content_block_info_adress_list_item d-flex align-items-center"
-              >
+              <div class="about_content_block_info_adress_list_item d-flex align-items-center">
                 <div class="about_content_block_info_adress_linear"></div>
                 <span class="about_content_block_info_adress_text">
                   Астана, ул. Жанажол, д. 19. Тел.: + 7 (7172) 644-644
@@ -183,13 +143,150 @@
     </div>
     <div class="map_block">
       <div class="map_block_content">
-        <div class="about_block_content_title_blockposition-relative d-flex">
-          <div class="map_block_linear about_block_content_title_linear" />
-          <div class="about_block_content_title_block container">
-            <span class="r about_block_content_title">
-              Куда компания ПЭК доставляет грузы?
-            </span>
+        <div class="map_block_title_block w-100 d-flex">
+          <div class="map_block_content_title_block p-0">
+            <div class="map_block_content_title_block_row container-xl align-items-center justify-content-center w-100">
+              <div class="map_block_content_title_block_col map_content_block_title position-relative">
+                <div class="map_block_linear about_block_content_title_linear " />
+                <p class="map_block_content_title">
+                  Куда компания ПЭК доставляет грузы?
+                </p>
+              </div>
+              <div class="map_block_content_title_block_col h-100 map_card_block">
+                <div class="map_block_content_card_block position-relative">
+                  <div class="default_border_block map_block_border_block">
+                    <div class="default_border default_border_top_left"></div>
+                    <div class="default_border default_border_top_right"></div>
+                    <div class="default_border default_border_bottom_left"></div>
+                    <div class="default_border default_border_bottom_right"></div>
+                  </div>
+                  <div class="map_block_content_card">
+                    Помогаем развивать бизнес наших клиентов, решая логистические задачи
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
+      </div>
+      <default-map />
+      <div class="map_block_contact">
+        <div class="map_contact_button_block">
+          <default-button size="large" class="map_contact_button">
+            Оставить заявку
+          </default-button>
+        </div>
+        <div class="map_contact_info">
+          <span class="map_contact_info_title">позвонить по номеру</span>
+          <div class="map_contact_telephone_block">
+            <span>+ 7 (7172) 644-644</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="advatages_block">
+      <div class="advatages_block_title">
+        <div class="advatnages_block_title_linear_block">
+          <div class="advatages_title_linear"></div>
+        </div>
+        <div class="advantages_title_block container-xl">
+          <p class="advantages_title">Премущество работы с компанией ПЭК</p>
+        </div>
+      </div>
+    </div>
+    <div class="advantages_block_card container-xl">
+      <div class="row w-100">
+        <div
+          class="col-12 col-sm-6 col-md-6 col-xl-6 d-flex align-items-center justify-content-center advantages_block_card_item">
+          <div class="advantages_card_block position-relative default_card w-100">
+            <div class="default_border_block advantages_card_border_block">
+              <div class="default_border default_border_top_left"></div>
+              <div class="default_border default_border_top_right"></div>
+              <div class="default_border default_border_bottom_left"></div>
+              <div class="default_border default_border_bottom_right"></div>
+            </div>
+            <div class="advantages_card default-card">
+              <div class="advantages_card_content_title_block d-flex align-items-center">
+                <div class="advantages_card_title_icon_block">
+                  <img src="@/assets/images/support_icons.png" alt="" class="advantages_card_title_icon">
+                </div>
+                <div class="advantages_content_card_title_block fw-bold">
+                  <span class="advantages_content_card_title">
+                    Надежность
+                  </span>
+                </div>
+              </div>
+              <div class="advantages_card_content">
+                <div class="advantages_card_content_list">
+                  <div class="advantages_card_content_list_item d-flex align-items-center h-100">
+                    <div class="advantages_card_content_list_item_linear"></div>
+                    <div class="advantages_card_content_list_item_content">
+                      <div class="advantages_card_content_list_item_content_text">
+                        Более 20 лет на рынке оборудования
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-12 col-sm-6 col-md-6 col-xl-6 align-items-center justify-content-center advantages_block_card_item">
+          <div class="advantages_card_block position-relative default_card w-100">
+            <div class="default_border_block advantages_card_border_block">
+              <div class="default_border default_border_top_left"></div>
+              <div class="default_border default_border_top_right"></div>
+              <div class="default_border default_border_bottom_left"></div>
+              <div class="default_border default_border_bottom_right"></div>
+            </div>
+            <div class="advantages_card default-card">
+              <div class="advantages_card_content_title_block d-flex align-items-center">
+                <div class="advantages_card_title_icon_block">
+                  <img src="@/assets/images/support_icons.png" alt="" class="advantages_card_title_icon">
+                </div>
+                <div class="advantages_content_card_title_block fw-bold">
+                  <span class="advantages_content_card_title">
+                    Надежность
+                  </span>
+                </div>
+              </div>
+              <div class="advantages_card_content">
+                <div class="advantages_card_content_list">
+                  <div class="advantages_card_content_list_item d-flex align-items-center h-100">
+                    <div class="advantages_card_content_list_item_linear"></div>
+                    <div class="advantages_card_content_list_item_content">
+                      <div class="advantages_card_content_list_item_content_text">
+                        Более 20 лет на рынке оборудования
+                      </div>
+                    </div>
+                  </div>
+                  <div class="advantages_card_content_list_item d-flex align-items-center h-100">
+                    <div class="advantages_card_content_list_item_linear"></div>
+                    <div class="advantages_card_content_list_item_content">
+                      <div class="advantages_card_content_list_item_content_text">
+                        Более 20 лет на рынке оборудования
+                      </div>
+                    </div>
+                  </div>
+                  <div class="advantages_card_content_list_item d-flex align-items-center h-100">
+                    <div class="advantages_card_content_list_item_linear"></div>
+                    <div class="advantages_card_content_list_item_content">
+                      <div class="advantages_card_content_list_item_content_text">
+                        Более 20 лет на рынке оборудования
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-12 col-sm-6 col-md-6 col-xl-6 align-items-center justify-content-center advantages_block_card_item">
+        </div>
+        <div
+          class="col-12 col-sm-6 col-md-6 col-xl-6 align-items-center justify-content-center advantages_block_card_item">
         </div>
       </div>
     </div>
@@ -201,6 +298,8 @@ import defaultButton from "@/components/button/defaultButton.vue";
 import defaultInput from "~~/components/input/defaultInput.vue";
 import defaultHeader from "@/components/header/defaultHeader/defaultHeader.vue";
 import DefaultHeader from "../components/header/defaultHeader/defaultHeader.vue";
+import defaultMap from "@/components/map/defaultMap.vue";
+
 </script>
 <style>
 html,
@@ -212,9 +311,11 @@ body {
   font-family: 'Roboto';
   color: #2b2b2b;
 }
+
 .header_content_info_calculate_forms_block {
   display: flex;
 }
+
 .header_content_advantages_block {
   margin-top: 35px;
   margin-bottom: 120px;
@@ -228,6 +329,14 @@ body {
 .header_content_advantages_linear {
   width: 50%;
   height: 1px;
+}
+
+.default_linear_title_block {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 .header_content_advantages_number_block {
@@ -283,7 +392,7 @@ body {
 
 .about_block_content_title_linear {
   width: 50%;
-  height: 2px;
+  height: 1px;
   background: #2b2b2b;
   position: absolute;
 }
@@ -298,8 +407,9 @@ body {
   align-items: center;
   width: 100%;
   height: 100%;
-  background: #fafafa;
+  /* background: #fafafa; */
 }
+
 .default_content_title_block {
   position: relative;
   display: flex;
@@ -324,9 +434,11 @@ body {
 .about_content_text {
   margin-top: 30px;
 }
+
 .about_content_info {
   max-width: 850px;
 }
+
 .about_block_content_advertisement {
   font-weight: bold;
   display: none;
@@ -334,44 +446,283 @@ body {
   border-left: 4px solid black;
   padding: 12px;
 }
+
 .about_content_block_info_adress_list_block {
   margin-top: 35px;
 }
+
 .about_content_block_info_adress_list_item {
   margin-top: 25px;
   font-size: 16px;
   color: #2b2b2b;
 }
+
 .about_content_block_info_adress_linear {
   width: 20px;
   height: 1px;
   background: #aaaaaa;
 }
+
 .about_content_block_info_adress_text {
   margin-left: 8px;
 }
+
 .map_block {
+  margin-top: 105px;
   width: 100%;
 }
+
+.map_content_block_title {
+  margin-top: 50px;
+  background: white;
+}
+
 .map_block_title {
   font-size: 48px;
 }
-.map_block_linear {
-  top: 25px;
-}
-/* .map_block_content_title {
 
-} */
+.map_block_border_block {
+  top: -25px;
+  left: -12px;
+}
+
+.map_block_linear {
+  top: 20% !important;
+  left: -50vw;
+  width: 50vw;
+}
+
+.map_card_block {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.map_block_content_card_block {
+  max-width: 500px;
+  min-height: 135px;
+}
+
+.map_block_content_title_block {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  /* background: #ffffff; */
+}
+
+.map_block_content_title {
+  max-width: 700px;
+  font-size: 50px;
+  font-weight: 600;
+  margin: 0;
+  line-height: 60px;
+}
+
+.map_block_content_title_block_col {
+  width: 50%;
+}
+
+.map_block_content_card {
+  padding: 20px 20px 40px;
+  font-size: 20px;
+  height: 100%;
+  background: #FAFAFA;
+}
+
+.map_block_content_title_block_row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.map_card_block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.default_border_block {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.default_border {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  /* background: #59b1ff; */
+}
+
+.default_border_top_left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border-top: 1px solid #AAAAAA;
+  border-left: 1px solid #AAAAAA;
+}
+
+.default_border_top_right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-top: 1px solid #AAAAAA;
+  border-right: 1px solid #AAAAAA;
+}
+
+.default_border_bottom_left {
+  bottom: 0;
+  left: 0;
+  border-bottom: 1px solid #AAAAAA;
+  border-left: 1px solid #AAAAAA;
+}
+
+.default_border_bottom_right {
+  bottom: 0;
+  right: 0;
+  border-bottom: 1px solid #AAAAAA;
+  border-right: 1px solid #AAAAAA;
+}
+
+.map_block_contact {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.map_contact_button_block {
+  font-weight: 600;
+  margin-right: 24px;
+}
+
+.map_contact_info {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.map_contact_telephone_block {
+  color: #48538B;
+}
+
+.advatages_block {
+  margin-top: 185px;
+}
+
+.advantages_title_block {
+  z-index: 10;
+}
+
+.advantages_title_block {
+  background: white;
+}
+
+.advantages_title {
+  max-width: 580px;
+  font-size: 50px;
+  z-index: 100;
+  color: #2b2b2b;
+  background: white;
+  font-weight: bold;
+}
+
+.advatnages_block_title_linear_block {
+  width: 100%;
+  height: 10px;
+}
+
+.advatnages_block_title_linear_block {
+  width: 50%;
+  height: 2px;
+  position: absolute;
+  top: 20%;
+  background: #000;
+}
+
+.advatages_block_title {
+  position: relative;
+  display: flex !important;
+}
+
+.advantages_block_card {
+  margin-top: 56px;
+}
+
+.advantages_card {
+  padding: 28px 28px 50px 28px;
+  width: 100%;
+  background: #FAFAFA;
+
+}
+
+.advantages_card_block {
+  width: 100%;
+  max-width: 480px;
+}
+
+.advantages_content_card_title_block {
+  margin-left: 24px;
+}
+
+.advantages_content_card_title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.advantages_card_title_icon_block {
+  width: 60px;
+  height: 60px;
+}
+
+.advantages_card_title_icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.advantages_card_border_block {
+  position: absolute;
+  top: -12px;
+  left: -12px;
+}
+
+.advantages_card_content_list_item_linear {
+  width: 20px;
+  height: 1px;
+  background: #2b2b2b;
+}
+
+.advantages_card_content_list_item_content {
+  /* width: 20px; */
+  margin-left: 10px;
+  /* background: #000; */
+}
+
+.advantages_card_content {
+  margin-top: 24px;
+}
+
+.advantages_card_content_list_item {
+  margin-top: 15px;
+}
+.advantages_block_card_item {
+  margin-top: 35px;
+}
+
 @media (max-width: 1400px) {
-  .header_content_info_preview > img {
+  .header_content_info_preview>img {
     width: 100%;
     min-width: 320px;
   }
 }
 
 @media (max-width: 1000px) {
-  .header_content_info_preview > img {
-    width: 720px;
+  .header_content_info_preview>img {
+    /* width: 100%; */
   }
 }
 
@@ -379,9 +730,11 @@ body {
   .header_logo_block {
     width: 30%;
   }
+
   .header_menu_block {
     width: 70%;
   }
+
   .header_content_info_calculate_form_input_size {
     min-width: 210px;
   }
@@ -391,9 +744,40 @@ body {
   .header_content_info_calculate_form_input_size {
     width: 100%;
   }
+
   .header_content_info_calculate_form_icons {
     margin: 15px;
   }
+
+  .map_block_content_title_block_col {
+    margin-top: 0;
+  }
+
+  .map_block_content_title {
+    font-size: 30px;
+    /* margin-top: 60px; */
+    max-width: 400px;
+    line-height: 30px;
+  }
+
+  .map_block_linear {
+    top: 50px;
+  }
+
+  .advantages_title_block {
+    width: 100%;
+    background: none;
+  }
+
+  .advantages_title {
+    font-size: 30px;
+    max-width: 400px;
+  }
+
+  .map_block_content_title_block {
+    margin-left: 20px;
+  }
+
   /* .header_content_info_calculate_block {
     margin-top: 50px;
   } */
@@ -403,46 +787,114 @@ body {
   .header_content_advantages_info_block {
     display: block;
   }
+
   .header_content_info_calculate_block {
     margin-top: 50px;
   }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 844px) {
+  .map_block_linear {
+    top: 60px;
+  }
 }
 
 @media (max-width: 780px) {
   .header_content_advantages_info_block {
     width: 100%;
   }
+
   .header_content_advantages_text {
     max-width: 320px;
   }
+
   .about_block_content_title {
     font-size: 20px;
   }
 }
+
+@media(max-width: 768px) {
+  .map_block_content_title_block_row {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .map_block_content_title_block_col {
+    width: 100%;
+    height: 100%;
+  }
+
+  .map_block_content_title {
+    /* width: 420px; */
+  }
+
+  .map_block_linear {
+    top: 218px;
+  }
+  .header_content_info_calculate_result {
+    justify-content: center;
+  }
+  .map_content_block_title {
+    margin-top: 70px;
+  }
+}
+
 @media (max-width: 510px) {
   .header_content_info_calculate_form_input_size {
-    min-width: auto;
+    /* min-width: auto; */
+  }
+  .header_content_info_calculate_result {
+    justify-content: flex-start;
   }
   .header_content_info_calculate_forms_block {
     display: block;
   }
+
   .header_content_info_calculate_result_text {
     margin: 0;
   }
+
   .header_content_info_calculate_form_icons {
     margin-left: 0;
   }
+
   .header_content_advantages_block {
     margin-bottom: 60px;
   }
-  .about_block_content_title_block {
+
+  .about_content_block_title {
     display: none !important;
   }
+  /* .about_block_content_title_block {
+    display: none !important;
+  } */
+  .map_block_contact {
+    display: block;
+  }
+  .map_block_contact_button {
+    width: 100%;
+  }
+}
+@media(max-width: 480px) {
   .about_block_content_advertisement {
     display: block;
   }
+  .map_contact_info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 20px;
+    width: 100%;
+  }
+  .map_contact_button_block {
+    display: flex;
+    justify-content: center;
+  }
+  .map_contact_button {
+    width: 100%;
+    margin-bottom: 20px;
+  }
 }
+
 </style>
