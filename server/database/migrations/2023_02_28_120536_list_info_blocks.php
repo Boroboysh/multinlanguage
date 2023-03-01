@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('list_info_blocks', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->text('title');
         });
     }
 

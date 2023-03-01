@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('text_info_block_lists', function (Blueprint $table) {
+         Schema::create('footer_text_contents', function (Blueprint $table) {
             $table->id();
             $table->text('content');
-            $table->unsignedBigInteger('textInfoBlock_id');
-            $table->foreign('textInfoBlock_id')->references('id')->on('text_info_blocks')->cascadeOnDelete();
+            $table->unsignedBigInteger('footer_id');
+            $table->foreign('footer_id')->references('id')->on('footers')->cascadeOnDelete();
         });
     }
 
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('text_info_block_lists');
+         Schema::dropIfExists('footer_text_contents');
     }
 };

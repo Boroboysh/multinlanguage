@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('text_info_block_contents', function (Blueprint $table) {
             $table->id();
-            $table->string('content');
+            $table->text('content');
             $table->unsignedBigInteger('textInfoBlock_id');
             $table->foreign('textInfoBlock_id')->references('id')->on('text_info_blocks')->cascadeOnDelete();
         });

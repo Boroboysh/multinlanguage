@@ -237,7 +237,7 @@ return [
         // "kam" => "Kamba",
         // "kn_IN" => "Kannada (India)",
         // "kn" => "Kannada",
-        // "kk_Cyrl" => "Kazakh (Cyrillic)",
+        "kk_Cyrl" => "Kazakh (Cyrillic)",
         //"kk_Cyrl_KZ" => "Kazakh (Cyrillic, Kazakhstan)",
         // "kk" => "Kazakh",
         // "km_KH" => "Khmer (Cambodia)",

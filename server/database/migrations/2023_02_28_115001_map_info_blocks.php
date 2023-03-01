@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('map_info_blocks', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('mapImage');
+            $table->text('title');
+            $table->text('mapImage');
         });
     }
 

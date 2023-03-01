@@ -11,11 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cities', function (Blueprint $table) {
+        Schema::create('footer_fields', function (Blueprint $table) {
             $table->id();
+            $table->text('city');
             $table->text('name');
-            $table->text('tel_number',  50);
-            $table->unsignedBigInteger('country_id');
+            $table->text('tel_number');
+            $table->text('message_placeholder');
+            $table->unsignedBigInteger('footer_id');
+            $table->foreign('footer_id')->references('id')->on('footers')->cascadeOnDelete();
         });
     }
 
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cities');
+        Schema::dropIfExists('footer_fields');
     }
 };

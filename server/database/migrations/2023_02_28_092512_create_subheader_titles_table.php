@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('subheader_titles', function (Blueprint $table) {
             $table->id();
-            $table->string('content');
+            $table->text('content');
             $table->unsignedBigInteger('subheader_id');
             $table->foreign('subheader_id')->references('id')->on('subheaders')->cascadeOnDelete();
         });

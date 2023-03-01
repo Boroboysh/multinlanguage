@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('text_info_blocks', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('subtitle');
+            $table->text('title');
+            $table->text('subtitle');
         });
     }
 

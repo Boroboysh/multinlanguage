@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('list_info_block_element_list', function (Blueprint $table) {
             $table->id();
-            $table->string('content');
+            $table->text('content');
             $table->unsignedBigInteger('listInfoBlockElement_id');
             $table->foreign('listInfoBlockElement_id')->references('id')->on('list_info_block_elements')->cascadeOnDelete();
         });

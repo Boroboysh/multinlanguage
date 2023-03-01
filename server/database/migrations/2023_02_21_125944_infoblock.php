@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('infoblock', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
-            $table->string('subtitles')->nullable();
-            $table->string('description')->nullable();
-            $table->string('images')->nullable();
-            $table->string('buttonText')->nullable();
+            $table->text('title')->nullable();
+            $table->text('subtitles')->nullable();
+            $table->text('description')->nullable();
+            $table->text('images')->nullable();
+            $table->text('buttonText')->nullable();
         });
     }
 
