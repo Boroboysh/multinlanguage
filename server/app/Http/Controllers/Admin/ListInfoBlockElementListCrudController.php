@@ -41,11 +41,11 @@ class ListInfoBlockElementListCrudController extends CrudController
     {
         CRUD::addColumn([
             'name' => 'content',
-            'label' => 'Content'
+            'label' => 'Содержание'
         ]);
         CRUD::addColumn([
             'name' => 'listInfoBlockElement_id',
-            'label' => 'List InfoBlock Element Id'
+            'label' => 'ListInfoBlockElement ID'
         ]);
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -64,11 +64,11 @@ class ListInfoBlockElementListCrudController extends CrudController
     {
         CRUD::addField([
             'name' => 'content',
-            'label' => 'Content'
+            'label' => 'Содержание'
         ]);
         CRUD::addField([
             'name' => 'listInfoBlockElement_id',
-            'label' => 'List InfoBlock Element Id',
+            'label' => 'ListInfoBlockElement ID',
             'type' => 'select',
             'model' => 'App\Models\ListInfoBlockElement',
             'attribute' => 'id'

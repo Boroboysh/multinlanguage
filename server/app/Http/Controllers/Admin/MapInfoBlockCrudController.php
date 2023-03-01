@@ -42,11 +42,11 @@ class MapInfoBlockCrudController extends CrudController
         CRUD::column('id');
         CRUD::addColumn([
             'name' => 'title',
-            'label' => 'Title'
+            'label' => 'Заголовок'
         ]);
         CRUD::addColumn([
             'name' => 'mapImage',
-            'label' => 'Map image'
+            'label' => 'Изображение карты'
         ]);
 
         /**
@@ -66,11 +66,11 @@ class MapInfoBlockCrudController extends CrudController
     {
         CRUD::addField([
             'name' => 'title',
-            'label' => 'Title'
+            'label' => 'Заголовок'
         ]);
         CRUD::addField([
             'name' => 'mapImage',
-            'label'     => 'Map image',
+            'label'     => 'Изображение карты',
             'type'      => 'upload',
             'upload'    => true,
         ]);

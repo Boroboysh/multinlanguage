@@ -41,11 +41,11 @@ class ListInfoBlockCrudController extends CrudController
     {
         CRUD::addColumn([
             'name' => 'id',
-            'label' => 'Id'
+            'label' => 'ID'
         ]);
         CRUD::addColumn([
             'name' => 'title',
-            'label' => 'Title'
+            'label' => 'Заголовок'
         ]);
 
         /**
@@ -65,7 +65,7 @@ class ListInfoBlockCrudController extends CrudController
     {
         CRUD::addField([
             'name' => 'title',
-            'label' => 'Title'
+            'label' => 'Заголовок'
         ]);
 
         /**

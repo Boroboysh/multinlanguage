@@ -41,15 +41,15 @@ class ListInfoBlockElementCrudController extends CrudController
     {
         CRUD::addColumn([
             'name' => 'title',
-            'label' => 'Title'
+            'label' => 'Заголовок'
         ]);
         CRUD::addColumn([
             'name' => 'icon',
-            'label' => 'Id'
+            'label' => 'Иконка'
         ]);
         CRUD::addColumn([
             'name' => 'listInfoBlock_id',
-            'label' => 'List InfoBlock Id'
+            'label' => 'ListInfoBlock ID'
         ]);
 
         /**
@@ -69,17 +69,17 @@ class ListInfoBlockElementCrudController extends CrudController
     {
         CRUD::addField([
             'name' => 'title',
-            'label' => 'Title'
+            'label' => 'Заголовок'
         ]);
         CRUD::addField([
             'name' => 'icon',
-            'label'     => 'Icon',
+            'label'     => 'Иконка',
             'type'      => 'upload',
             'upload'    => true,
         ]);
         CRUD::addField([
             'name' => 'listInfoBlock_id',
-            'label' => 'List InfoBlock Id',
+            'label' => 'ListInfoBlock ID',
             'type' => 'select',
             'model' => 'App\Models\ListInfoBlock',
             'attribute' => 'id'

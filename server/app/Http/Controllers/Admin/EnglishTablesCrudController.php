@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\MapInfoBlockContentRequest;
+use App\Http\Requests\EnglishTablesRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class MapInfoBlockContentCrudController
+ * Class EnglishTablesCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class MapInfoBlockContentCrudController extends CrudController
+class EnglishTablesCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -26,9 +26,12 @@ class MapInfoBlockContentCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\MapInfoBlockContent::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/map-info-block-content');
-        CRUD::setEntityNameStrings('map info block content', 'map info block contents');
+        CRUD::setModel(\App\Models\EnglishTables::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/english-tables');
+        CRUD::setEntityNameStrings('english tables', 'english tables');
+
+        $this->crud->setListView('english_tables');
+        //english_tables.blade.php
     }
 
     /**
@@ -39,15 +42,8 @@ class MapInfoBlockContentCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::addColumn([
-            "name" => 'content',
-            "label" => "Содержание"
-        ]);
-        CRUD::addColumn([
-            "name" => 'mapInfoBlock_id',
-            "label" => "MapInfoBlock ID"
-        ]);
-//mapInfoBlock_id
+
+
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
@@ -63,17 +59,7 @@ class MapInfoBlockContentCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::addField([
-            'name' => 'content',
-            'label' => 'Content',
-        ]);
-        CRUD::addField([
-            'name' => 'mapInfoBlock_id',
-            'label' => 'Map InfoBlock Id',
-            'type' => 'select',
-            'model' => 'App\Models\MapInfoBlock',
-            'attribute' => 'id'
-        ]);
+
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

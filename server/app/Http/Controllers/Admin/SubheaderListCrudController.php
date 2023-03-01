@@ -41,15 +41,15 @@ class SubheaderListCrudController extends CrudController
     {
         CRUD::addColumn([
             'name' => 'icon',
-            'label' => 'Icon',
+            'label' => 'Иконка',
         ]);
         CRUD::addColumn([
             'name' => 'content',
-            'label' => 'Content',
+            'label' => 'Содержание',
         ]);
         CRUD::addColumn([
             'name' => 'subheader_id',
-            'label' => 'Subheader Id',
+            'label' => 'Subheader ID',
         ]); // columns
 
         /**
@@ -69,17 +69,20 @@ class SubheaderListCrudController extends CrudController
     {
         CRUD::addField([
             'name' => 'icon',
-            'label'     => 'Icon',
+            'label'     => 'Иконка',
             'type'      => 'upload',
             'upload'    => true,
             //'disk'      => 'public', // if you store files in the /public folder, please omit this; if you store them in /storage or S3, please specify it;
 //            // optional:
 //            'temporary' => 10
         ]);
-        CRUD::field('content');
+        CRUD::addField([
+            'name' => 'content',
+            'label' => 'Содержание'
+        ]);
         CRUD::addField([
             'name' => 'subheader_id',
-            'label' => 'Subheader Id',
+            'label' => 'Subheader ID',
             'type' => 'select',
             'model' => 'App\Models\Subheader',
             'attribute' => 'id'

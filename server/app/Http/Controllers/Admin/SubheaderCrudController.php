@@ -40,7 +40,10 @@ class SubheaderCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::column('id');
-        CRUD::column('image');
+        CRUD::addColumn([
+            'name' => 'image',
+            'label' => 'Изображение'
+        ]);
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -59,7 +62,7 @@ class SubheaderCrudController extends CrudController
     {
         CRUD::addField([
             'name'      => 'image',
-            'label'     => 'Image',
+            'label'     => 'Изображение',
             'type'      => 'upload',
             'upload'    => true,
             //'disk'      => 'public', // if you store files in the /public folder, please omit this; if you store them in /storage or S3, please specify it;

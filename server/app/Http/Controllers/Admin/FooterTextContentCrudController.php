@@ -39,8 +39,14 @@ class FooterTextContentCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('content');
-        CRUD::column('footer_id');
+        CRUD::addColumn([
+            'name' => 'content',
+            'label' => 'Содержание'
+        ]);
+        CRUD::addColumn([
+            'name' => 'footer_id',
+            'label' => 'Footer ID'
+        ]);
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -57,7 +63,10 @@ class FooterTextContentCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::field('content');
+        CRUD::addField([
+            'name' => 'content',
+            'label' => 'Содержание'
+            ]);
         CRUD::addField([
             'name' => 'footer_id',
             'label' => 'Footer Id',

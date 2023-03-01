@@ -41,15 +41,15 @@ class HeaderCrudController extends CrudController
     {
         CRUD::addColumn([
             'name' => 'logo',
-            'label' => 'Logo',
+            'label' => 'Логотип',
         ]);
         CRUD::addColumn([
             'name' => 'supportText',
-            'label' => 'Support text ',
+            'label' => 'Текст поддержка',
         ]);
         CRUD::addColumn([
             'name' => 'tel_number',
-            'label' => 'Telephone number',
+            'label' => 'Телефон',
         ]);
 
         /**
