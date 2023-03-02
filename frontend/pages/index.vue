@@ -243,7 +243,7 @@
       </div>
     </div>
     <div class="advatages_block">
-      <div class="advatages_block_title">
+      <div class="advatages_block_title container-xl">
         <div class="advatnages_block_title_linear_block">
           <div class="advatages_title_linear"></div>
         </div>
@@ -981,7 +981,8 @@ body {
 }
 
 .advatnages_block_title_linear_block {
-  width: 50%;
+  width: 50vw;
+  left: -50vw;
   height: 2px;
   position: absolute;
   top: 20%;
