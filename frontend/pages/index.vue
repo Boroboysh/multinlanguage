@@ -1,110 +1,113 @@
 <template>
   <div class="home-view">
-    <default-header />
-    <div class="header_content_info container-xl">
-      <div class="header_content_info row">
-        <div class="row"></div>
-        <div
-          class="col header_content_info_col d-flex justify-content-center header_content_info_preview p-0"
-        >
-          <img src="@/assets/images/preview_header.png" alt="" />
-        </div>
-        <div class="col header_content_info_col header_content_info_forms">
-          <h2 class="header_content_info_forms_title">Отследить</h2>
-          <default-input
-            placeholder="Поиск по коду груза"
-            class="header_content_info_forms"
-          />
+    <div class="header_content_block w-100">
+      <default-header class="container-xl" />
+    </div>
+    <div class="header_content_info_content">
+      <div class="header_content_info container-xl">
+        <div class="header_content_info_row row">
           <div
-            class="header_content_info_calculate_block w-100 d-block align-items-start flex-column"
+            class="col header_content_info_col d-flex justify-content-center header_content_info_preview p-0"
           >
-            <h2 class="header_content_info_forms_title">
-              Рассчитать и отправить груз
-            </h2>
+            <img src="@/assets/images/preview_header.png" alt="" />
+          </div>
+          <div class="col header_content_info_col header_content_info_forms">
+            <h2 class="header_content_info_forms_title">Отследить</h2>
+            <default-input
+              placeholder="Поиск по коду груза"
+              class="header_content_info_forms"
+            />
             <div
-              class="header_content_info_calculate_forms_block w-100 justify-content-between"
+              class="header_content_info_calculate_block w-100 d-block align-items-start flex-column"
             >
-              <default-input
-                class="header_content_info_calculate_form_input_size"
-                placeholder="Откуда"
-                :title="true"
-              />
-              <img
-                class="header_content_info_calculate_form_icons"
-                src="@/assets/images/arrow_double.svg"
-                alt=""
-              />
-              <default-input
-                class="header_content_info_calculate_form_input_size"
-                placeholder="Куда"
-                :title="true"
-              />
-            </div>
-            <default-button
-              class="header_content_info_calculate_button"
-              size="large"
-            >
-              Рассчитать стоимость
-            </default-button>
-            <div
-              class="header_content_info_calculate_result w-100 d-flex justify-content-start justify-content-sm-center justify-content-md-center justify-content-xl-end justify-content-xxl-end"
-            >
-              <img
-                class="header_content_info_calculate_result_icons d-none d-sm-block d-md-block d-xl-block"
-                src="@/assets/images/arrow_crocked.svg"
-                alt=""
-              />
-              <span class="header_content_info_calculate_result_text">
-                От 2994 тенге, примерный срок 1—3 дня
-              </span>
+              <h2 class="header_content_info_forms_title">
+                Рассчитать и отправить груз
+              </h2>
+              <div
+                class="header_content_info_calculate_forms_block w-100 justify-content-between"
+              >
+                <default-input
+                  class="header_content_info_calculate_form_input_size"
+                  placeholder="Откуда"
+                  :title="true"
+                />
+                <img
+                  class="header_content_info_calculate_form_icons"
+                  src="@/assets/images/arrow_double.svg"
+                  alt=""
+                />
+                <default-input
+                  class="header_content_info_calculate_form_input_size"
+                  placeholder="Куда"
+                  :title="true"
+                />
+              </div>
+              <default-button
+                class="header_content_info_calculate_button"
+                size="large"
+              >
+                Рассчитать стоимость
+              </default-button>
+              <div
+                class="header_content_info_calculate_result w-100 d-flex justify-content-start justify-content-sm-center justify-content-md-center justify-content-xl-end justify-content-xxl-end"
+              >
+                <img
+                  class="header_content_info_calculate_result_icons d-none d-sm-block d-md-block d-xl-block"
+                  src="@/assets/images/arrow_crocked.svg"
+                  alt=""
+                />
+                <span class="header_content_info_calculate_result_text">
+                  От 2994 тенге, примерный срок 1—3 дня
+                </span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="header_content_advantages_block">
-        <div class="row">
-          <div
-            class="col-12 col-xl-4 col-md-4 header_content_advantages d-flex align-items-center justify-content-start"
-          >
-            <div class="header_content_advantages_info_block">
-              <div class="header_content_advantages_number_block">
-                <span class="header_content_advantages_number">20</span>
-                <div class="header_content_advantages_number_icons">+</div>
-              </div>
-              <div class="header_content_advantages_text_block">
-                <p class="header_content_advantages_text">
-                  Более 20 лет опыта грузовых перевозок
-                </p>
-              </div>
-            </div>
-          </div>
-          <div
-            class="col-xl-4 col-md-4 col-12 header_content_advantages d-flex align-items-center justify-content-start"
-          >
-            <div class="header_content_advantages_info_block">
-              <div class="header_content_advantages_number_block">
-                <span class="header_content_advantages_number">20</span>
-                <div class="header_content_advantages_number_icons">+</div>
-              </div>
-              <div class="header_content_advantages_text_block">
-                <p class="header_content_advantages_text">
-                  Более 20 лет опыта грузовых перевозок
-                </p>
+        <div class="header_content_advantages_block">
+          <div class="row">
+            <div
+              class="col-12 col-xl-4 col-md-4 header_content_advantages d-flex align-items-center justify-content-start"
+            >
+              <div class="header_content_advantages_info_block">
+                <div class="header_content_advantages_number_block">
+                  <span class="header_content_advantages_number">20</span>
+                  <div class="header_content_advantages_number_icons">+</div>
+                </div>
+                <div class="header_content_advantages_text_block">
+                  <p class="header_content_advantages_text">
+                    Более 20 лет опыта грузовых перевозок
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          <div
-            class="col-xl-4 col-md-4 header_content_advantages d-flex align-items-center justify-content-start"
-          >
-            <div class="header_content_advantages_info_block">
-              <div class="header_content_advantages_number_block">
-                <span class="header_content_advantages_number">20</span>
-                <div class="header_content_advantages_number_icons">+</div>
+            <div
+              class="col-xl-4 col-md-4 col-12 header_content_advantages d-flex align-items-center justify-content-start"
+            >
+              <div class="header_content_advantages_info_block">
+                <div class="header_content_advantages_number_block">
+                  <span class="header_content_advantages_number">20</span>
+                  <div class="header_content_advantages_number_icons">+</div>
+                </div>
+                <div class="header_content_advantages_text_block">
+                  <p class="header_content_advantages_text">
+                    Более 20 лет опыта грузовых перевозок
+                  </p>
+                </div>
               </div>
-              <div class="header_content_advantages_text_block">
-                <p class="header_content_advantages_text">
-                  Более 20 лет опыта грузовых перевозок
-                </p>
+            </div>
+            <div
+              class="col-xl-4 col-md-4 header_content_advantages d-flex align-items-center justify-content-start"
+            >
+              <div class="header_content_advantages_info_block">
+                <div class="header_content_advantages_number_block">
+                  <span class="header_content_advantages_number">20</span>
+                  <div class="header_content_advantages_number_icons">+</div>
+                </div>
+                <div class="header_content_advantages_text_block">
+                  <p class="header_content_advantages_text">
+                    Более 20 лет опыта грузовых перевозок
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -174,7 +177,10 @@
               </div>
             </div>
             <div class="about_content_text">
-              Компания работает как с юридическими, так и с физическими лицам. По запросу мы готовы предоставить для юрлиц спецтехнику для погрузочно-разгрузочных работ, перевозку и возврат сопроводительных документов, предложить API-
+              Компания работает как с юридическими, так и с физическими лицам.
+              По запросу мы готовы предоставить для юрлиц спецтехнику для
+              погрузочно-разгрузочных работ, перевозку и возврат
+              сопроводительных документов, предложить API-
             </div>
           </div>
         </div>
@@ -524,6 +530,11 @@
         </div>
       </div>
     </div>
+    <!-- <div class="contact_test_row">
+      <div class="contact_test_col-2">1</div>
+      <div class="contact_test_col-4">2</div>
+      <div class="contact_test_col-4">3</div>
+    </div> -->
     <div class="contact_form_block">
       <div class="contact_form_question_mark_block container-xl">
         <div class="contact_form_question_mark">?</div>
@@ -570,7 +581,7 @@
               class="col-12 d-flex align-items-center justify-content-center"
             >
               <div class="contact_form_item_block w-100">
-                <default-text-area />
+                <default-text-area placeholder="Сообщение" />
               </div>
             </div>
           </div>
@@ -597,69 +608,7 @@
         </div>
       </div>
     </div>
-    <footer>
-      <div class="footer_content_block">
-        <div class="footer_content container-xl">
-          <div class="row w-100 m-0 p-0">
-            <div class="col-12 col-md-6 col-xl-6 m-0 p-0 d-flex align-items-center justify-content-start">
-              <div class="footer_content_logo_block">
-                <img
-                  src="@/assets/images/logo-pec-black.svg"
-                  alt=""
-                  class="footer_content_logo"
-                />
-                <div class="footer_content_logo_info_pesonal">
-                  <div class="footer_content_logo_info_pesonal_text_block">
-                    <span class="footer_content_logo_info_pesonal_text">
-                      2022 © ООО «ПЭК»
-                    </span>
-                  </div>
-                  <div class="footer_content_logo_info_pesonal_link_block">
-                    <a href="#" class="footer_content_logo_info_pesonal_link"
-                      >О защите персональных данных</a
-                    >
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-sm-12 col-md-6 col-xl-6 m-0 p-0 d-flex align-items-center justify-content-start justify-content-md-start justify-content-xl-end">
-              <div class="footer_content_downloads_market">
-                <div class="footer_content_downloads_market_title_block">
-                  <span class="footer_content_downloads_market_title">
-                    Управляй доставкой в приложении
-                  </span>
-                </div>
-                <div
-                  class="footer_content_downloads_market_link_group_block d-flex"
-                >
-                  <div class="footer_content_downloads_market_link_group_item">
-                    <img
-                      src="@/assets/images/app-store-small.svg"
-                      alt=""
-                      class="footer_content_downloads_market_link"
-                    />
-                  </div>
-                  <div class="footer_content_downloads_market_link_group_item">
-                    <img
-                      src="@/assets/images/app-store-small.svg"
-                      alt=""
-                      class="footer_content_downloads_market_link"
-                    />
-                  </div>
-                  <div class="footer_content_downloads_market_link_group_item">
-                    <img
-                      src="@/assets/images/app-store-small.svg"
-                      alt=""
-                      class="footer_content_downloads_market_link"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <default-footer />
   </div>
 </template>
 
@@ -670,9 +619,10 @@ import defaultHeader from "@/components/header/defaultHeader/defaultHeader.vue";
 import DefaultHeader from "../components/header/defaultHeader/defaultHeader.vue";
 import defaultMap from "@/components/map/defaultMap.vue";
 import defaultTextArea from "@/components/textarea/defaultTextArea.vue";
-
-
+// import defaultSelect from "@/components/select/defaultSelect.vue";
+import defaultFooter from "@/components/footer/defaultFooter.vue";
 </script>
+
 <style>
 html,
 body {
@@ -683,26 +633,42 @@ body {
   font-family: "Roboto";
   color: #2b2b2b;
 }
-
+.default_header_block {
+  border-bottom: 1px solid #e4e6e7;
+}
 .header_content_info_calculate_forms_block {
   display: flex;
 }
 
+.header_content_info_content {
+  margin-top: 50px;
+}
 .header_content_advantages_block {
   margin-top: 35px;
   margin-bottom: 120px;
+}
+.contact_test_row {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.contact_test_col-2 {
+  flex-basis: 20%;
+}
+.contact_test_col-4 {
+  flex-basis: 40%;
 }
 
 .header_content_advantages_info_block {
   display: flex;
   border-top: 1px solid #e4e6e7;
 }
-
 .header_content_advantages_linear {
   width: 50%;
   height: 1px;
 }
-
+.header_content_info_forms_title {
+}
 .default_linear_title_block {
   position: relative;
   display: flex;
@@ -748,7 +714,7 @@ body {
 }
 
 .about_content_block {
-  padding: 80px 0;
+  padding: 104px 0;
 }
 
 .about_block_content_title {
@@ -805,7 +771,7 @@ body {
 }
 
 .about_content_text {
-  margin-top: 30px;
+  margin-top: 24px;
 }
 
 .about_content_info {
@@ -825,7 +791,7 @@ body {
 }
 
 .about_content_block_info_adress_list_item {
-  margin-top: 25px;
+  margin-top: 16px;
   font-size: 16px;
   color: #2b2b2b;
 }
@@ -839,14 +805,16 @@ body {
 .about_content_block_info_adress_text {
   margin-left: 8px;
 }
-
+/* .default_map_block {
+  margin-top: 30px;
+} */
 .map_block {
   margin-top: 105px;
   width: 100%;
 }
 
 .map_content_block_title {
-  margin-top: 50px;
+  margin-bottom: 30px;
   background: white;
 }
 
@@ -887,7 +855,7 @@ body {
 
 .map_block_content_title {
   max-width: 700px;
-  font-size: 50px;
+  font-size: 48px;
   font-weight: 600;
   margin: 0;
   line-height: 60px;
@@ -914,6 +882,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.map_block_linear {
 }
 
 .default_border_block {
@@ -977,7 +947,9 @@ body {
   font-size: 24px;
   font-weight: 700;
 }
-
+.map_contact_info_title {
+  font-size: 24px;
+}
 .map_contact_telephone_block {
   color: #48538b;
 }
@@ -1170,16 +1142,11 @@ body {
 .contact_form_send_personal_info_link {
   color: white;
 }
-footer {
-  background: #222222;
-}
-.footer_content {
-  padding: 40px 0px;
-}
-.footer_content_logo_block {
+
+/* .footer_content_logo_block {
   display: flex;
-}
-.footer_content_logo {
+} */
+/* .footer_content_logo {
   width: 200px;
 }
 .footer_content_logo_info_pesonal {
@@ -1203,7 +1170,7 @@ footer {
 }
 .footer_content_downloads_market_link_group_item {
   margin-right: 15px;
-}
+} */
 @media (max-width: 1400px) {
   .header_content_info_preview > img {
     width: 100%;
@@ -1294,7 +1261,12 @@ footer {
   .header_content_advantages_info_block {
     display: block;
   }
-
+  .header_content_block {
+    width: 100%;
+    height: 50px;
+    background: #252069;
+    color: #e4003c;
+  }
   .header_content_info_calculate_block {
     margin-top: 50px;
   }
@@ -1314,7 +1286,6 @@ footer {
   .header_content_advantages_text {
     max-width: 320px;
   }
-
 }
 
 @media (max-width: 768px) {
@@ -1364,7 +1335,7 @@ footer {
     margin-bottom: 60px;
   }
   .map_contact_button_block {
-    margin: 25px 16px 24px 0;
+    margin: 24px;
   }
 
   .about_content_block_title {
