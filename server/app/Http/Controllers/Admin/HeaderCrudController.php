@@ -29,6 +29,7 @@ class HeaderCrudController extends CrudController
         CRUD::setModel(\App\Models\Header::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/header');
         CRUD::setEntityNameStrings('header', 'header');
+
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\JsonController;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\Product;
@@ -23,32 +23,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('/country/{id}/cities', function ($id) {
-    return City::where('country_id', $id)->get();
-});
-
-Route::get('/countries', function () {
-    return Country::all();
-});
-
-Route::get('/multi-language', function (Request $request) {
-    $acceptedLanguages = ['ru', 'en'];
-    $languageCode = $request->header('locale');
-
-    if ($languageCode && in_array($languageCode, $acceptedLanguages)) {
-        $productsJSON = Product::select('*')->get();
-        $products = json_decode($productsJSON);
-        foreach ($products as $product) {
-            return $product->name->{$languageCode};
-        }
-    } else {
-        return response('Invalid language code', 400);
-    }
-
-});
+Route::get('/page-data', [JsonController::class, 'getData']);
 
 
-Route::get('/test', function () {
-    dd(Country::select('id')->get()->toArray());
-});
 

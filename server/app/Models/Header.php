@@ -13,7 +13,7 @@ class Header extends Model
     use HasFactory;
     use HasTranslations;
 
-    protected $fillable = [ 'supportText', 'tel_number', 'logo'];
+    protected $fillable = ['supportText', 'tel_number', 'logo'];
     protected $translatable =  ['supportText', 'tel_number', 'logo'];
     public $timestamps = false;
 

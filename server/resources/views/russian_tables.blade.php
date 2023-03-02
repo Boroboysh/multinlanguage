@@ -27,7 +27,7 @@
 
 
 @section('header')
-    <div class="container-fluid">
+    <div class="container-fluid" style="text-align: center; margin-bottom: 3em;">
         <h2>
             <span class="text-capitalize">Русский</span>
         </h2>
@@ -36,27 +36,242 @@
 
 @section('content')
     {{-- Default box --}}
-    <div class="row">
-        <div class="nav-item"><a class="nav-link" href="{{ backpack_url('header/1/edit') }}">Headers</a></div>
-        <div class="nav-item"><a class="nav-link" href="{{ backpack_url('subheader') }}">Subheaders</a></div>
-        <div class="nav-item"><a class="nav-link" href="{{ backpack_url('subheader-titles') }}">Titles</a></div>
-        <div class="nav-item"><a class="nav-link" href="{{ backpack_url('subheader-fields') }}">Fields</a></div>
-        <div class="nav-item"><a class="nav-link" href="{{ backpack_url('subheader-text-content') }}">Text Contents</a></div>
-        <div class="nav-item"><a class="nav-link" href="{{ backpack_url('subheader-list') }}">Lists</a></div>
-        <div class="nav-item"><a class="nav-link" href="{{ backpack_url('text-info-block') }}">Info blocks</a></div>
-        <div class="nav-item"><a class="nav-link" href="{{ backpack_url('text-info-block-content') }}">Info block contents</a></div>
-        <div class="nav-item"><a class="nav-link" href="{{ backpack_url('text-info-block-list') }}">Info block lists</a></div>
-        <div class="nav-item"><a class="nav-link" href="{{ backpack_url('map-info-block') }}"> Info blocks</a></div>
-        <div class="nav-item"><a class="nav-link" href="{{ backpack_url('map-info-block-content') }}"> Info block contents</a></div>
-        <div class="nav-item"><a class="nav-link" href="{{ backpack_url('map-info-block-button-text') }}"> Info block buttons (text)</a></div>
-        <div class="nav-item"><a class="nav-link" href="{{ backpack_url('list-info-block') }}"> Info blocks</a></div>
-        <div class="nav-item"><a class="nav-link" href="{{ backpack_url('list-info-block-element') }}">Info block elements</a></div>
-        <div class="nav-item"><a class="nav-link" href="{{ backpack_url('list-info-block-element-list') }}"> Info block element lists</a></div>
-        <div class="nav-item"><a class="nav-link" href="{{ backpack_url('footer') }}"> Footers </a></div>
-        <div class="nav-item"><a class="nav-link" href="{{ backpack_url('footer-field') }}"> Fields</a></div>
-        <div class="nav-item"><a class="nav-link" href="{{ backpack_url('footer-button-text') }}"> Buttons (text)</a></div>
-        <div class="nav-item"><a class="nav-link" href="{{ backpack_url('footer-text-content') }}"> Text contents</a></div>
+    <div class="row" style="display:flex; justify-content: space-between; padding: 0em 4em 0em 3em">
+        {{--Header--}}
+        <div>
+            <div class="card bg-light mb-3" style="width: 13rem; height: 10rem">
+                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
+                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('header/1/edit') }}">
+                            <h4 class="card-text">
+                                Шапка
+                            </h4>
+                        </a>
+                    </div>
 
+                </div>
+            </div>
+        </div>
+        {{--Subheader--}}
+        <div>
+            {{--Subheader--}}
+            <div class="card bg-light mb-3" style="width: 13rem; height: 10rem">
+                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
+                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('subheader/1/edit') }}">
+                            <h4 class="card-text">
+                                Сабхедер
+                            </h4>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            {{--Subheader text content--}}
+            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
+                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
+                    <div class="nav-item"><a class="nav-link"
+                                             href="{{ backpack_url('subheader-text-content/1/edit') }}">
+                            <h4 class="card-text">
+                                Содержание
+                            </h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {{--Subheader titles--}}
+            <div class="card bg-light mb-3" style="width: 13rem; height: 10rem">
+                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
+                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('subheader-titles/1/edit') }}">
+                            <h4 class="card-text">
+                                Заголовки
+                            </h4>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            {{--Subheader fields--}}
+            <div class="card bg-light mb-3" style="width: 13rem; height: 10rem">
+                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
+                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('subheader-fields/1/edit') }}">
+                            <h4 class="card-text">
+                                Поля
+                            </h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {{--Subheader lists--}}
+            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
+                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
+                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('subheader-list/1/edit') }}">
+                            <h4 class="card-text">
+                                Список
+                            </h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{--Info block--}}
+        <div>
+            {{--Info block--}}
+            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
+                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
+                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('text-info-block/1/edit') }}">
+                            <h4 class="card-text" style="text-align: center">
+                                Блок с информацией
+                            </h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {{--Content Info Block--}}
+            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
+                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
+                    <div class="nav-item"><a class="nav-link"
+                                             href="{{ backpack_url('text-info-block-content/1/edit') }}">
+                            <h4 class="card-text">
+                                Содержание
+                            </h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {{--Lists Info Block--}}
+            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
+                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
+                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('text-info-block-list/1/edit') }}">
+                            <h4 class="card-text">
+                                Списки
+                            </h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{--Map Info Block--}}
+        <div>
+            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
+                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
+                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('map-info-block/1/edit') }}">
+                            <h4 class="card-text" style="text-align: center">
+                                Блок с картой
+                            </h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
+                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
+                    <div class="nav-item"><a class="nav-link"
+                                             href="{{ backpack_url('map-info-block-content/1/edit') }}">
+                            <h4 class="card-text">
+                                Содержание
+                            </h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
+                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
+                    <div class="nav-item"><a class="nav-link"
+                                             href="{{ backpack_url('map-info-block-button-text/1/edit') }}">
+                            <h4 class="card-text" style="text-align: center">
+                                Кнопки (текст)
+                            </h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{--List Info Block--}}
+        <div>
+            {{--List Info Block--}}
+            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
+                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
+                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('list-info-block/1/edit') }}">
+                            <h4 class="card-text" style="text-align: center">
+                                Список преимуществ
+                            </h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {{--List Info Block Element--}}
+            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
+                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
+                    <div class="nav-item"><a class="nav-link"
+                                             href="{{ backpack_url('list-info-block-element/1/edit') }}">
+                            <h4 class="card-text" style="text-align: center">
+                                Элемент списка
+                            </h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {{--List Info Block Element List--}}
+            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
+                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
+                    <div class="nav-item"><a class="nav-link"
+                                             href="{{ backpack_url('list-info-block-element-list/1/edit') }}">
+                            <h4 class="card-text" style="text-align: center">
+                                Содержание элемента
+                            </h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{--Footer--}}
+        <div>
+            {{--Footer--}}
+            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
+                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
+                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('footer/1/edit') }}">
+                            <h4 class="card-text">
+                                Футер
+                            </h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {{--Footer Text Content--}}
+            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
+                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
+                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('footer-text-content/1/edit') }}">
+                            <h4 class="card-text">
+                                Содержание
+                            </h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {{--Footer Fields--}}
+            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
+                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
+                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('footer-field/1/edit') }}">
+                            <h4 class="card-text">
+                                Поля
+                            </h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {{--Footer Button Text--}}
+            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
+                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
+                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('footer-button-text/1/edit') }}">
+                            <h4 class="card-text" style="text-align: center">
+                                Кнопки (текст)
+                            </h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
 
