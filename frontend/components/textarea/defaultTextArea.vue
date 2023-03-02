@@ -1,6 +1,6 @@
 <template>
   <div class="default_text_area_block">
-    <textarea class="default_text_area"></textarea>
+    <textarea :placeholder="placeholder" class="default_text_area"></textarea>
   </div>
 </template>
 
