@@ -30,4 +30,10 @@ class Subheader extends Model
         // Undefined key. Image DB null
         return $this->attributes[$attribute_name]; // uncomment if this is a translatable field
     }
+
+    public function subheaderTextContent()
+    {
+        return $this->hasOne(SubheaderTextContent::class);
+    }
 }
+

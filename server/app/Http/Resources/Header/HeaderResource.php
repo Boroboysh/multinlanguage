@@ -28,8 +28,6 @@ class HeaderResource extends JsonResource
             "logo" => $this->logo,
             "supportText" => $this->supportText,
             'tel_number' => $this->tel_number,
-            'countries' => CountryResource::collection(Country::all()),
-            'cities' => CityResource::collection(City::all())
         ];
     }
 }

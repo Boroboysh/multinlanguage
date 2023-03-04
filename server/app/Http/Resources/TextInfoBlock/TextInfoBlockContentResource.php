@@ -14,6 +14,8 @@ class TextInfoBlockContentResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+          'text' => $this->content
+        ];
     }
 }

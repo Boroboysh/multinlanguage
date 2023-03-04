@@ -40,6 +40,10 @@ class ListInfoBlockElementCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::addColumn([
+            'name' => 'id',
+            'label' => 'ID'
+        ]);
+        CRUD::addColumn([
             'name' => 'title',
             'label' => 'Заголовок'
         ]);

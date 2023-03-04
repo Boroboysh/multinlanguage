@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Footer\FooterResource;
 use App\Http\Resources\Header\HeaderResource;
 use App\Http\Resources\ListBlock\ListBlockResource;
 use App\Http\Resources\MapInfoBlock\MapInfoBlockResource;
 use App\Http\Resources\Subheader\SubheaderResource;
 use App\Http\Resources\TextInfoBlock\TextInfoBlockResource;
+use App\Models\Footer;
 use App\Models\Header;
 use App\Models\ListInfoBlock;
 use App\Models\MapInfoBlock;
@@ -26,14 +28,14 @@ class JsonController extends Controller
             App::setLocale($languageCode);
 
             return [
-                "header" => HeaderResource::collection(Header::where('id', 1)->get()),
+                "header" => new HeaderResource(Header::where('id', 1)->first()),
                 "body" => [
-                    "subheader" => SubheaderResource::collection(Subheader::where('id', 1)->get()),
-                    "textInfoBlock" => TextInfoBlockResource::collection(TextInfoBlock::where('id', 1)->get()),
-                    "mapInfoBlock" => MapInfoBlockResource::collection(MapInfoBlock::where('id', 1)->get()),
-                    "listInfoBlock" => ListBlockResource::collection(ListInfoBlock::where('id', 1)->get())
+                    "subheader" => new SubheaderResource(Subheader::where('id', 1)->first()),
+                    "textInfoBlock" => new TextInfoBlockResource(TextInfoBlock::where('id', 1)->first()),
+                    "mapInfoBlock" => new MapInfoBlockResource(MapInfoBlock::where('id', 1)->first()),
+                    "listInfoBlock" =>new ListBlockResource(ListInfoBlock::where('id', 1)->first())
                 ],
-//            "footer" => []
+                "footer" => new FooterResource(Footer::where('id', 1)->first())
             ];
         } else {
             return response('Invalid language code', 400);

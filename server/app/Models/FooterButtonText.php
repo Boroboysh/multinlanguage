@@ -22,7 +22,9 @@ class FooterButtonText extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-
+    public function footer () {
+        return $this->belongsTo(Footer::class, 'footer_id');
+    }
     /*
     |--------------------------------------------------------------------------
     | RELATIONS

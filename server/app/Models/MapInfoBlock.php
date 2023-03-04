@@ -51,6 +51,9 @@ class MapInfoBlock extends Model
         return $this->attributes[$attribute_name]; // uncomment if this is a translatable field
     }
 
+    public function mapInfoBlockButtons () {
+        return $this->hasOne(MapInfoBlockButtonText::class);
+    }
 
     /*
     |--------------------------------------------------------------------------

@@ -22,7 +22,7 @@ class SubheaderResource extends JsonResource
             'image' => $this->image,
             'titles' => SubheaderTitlesResource::collection(SubheaderTitles::where('subheader_id', $this->id)->get()),
             'fields' => SubheaderFieldResource::collection(SubheaderFields::where('subheader_id', $this->id)->get()),
-            'content' => SubheaderContentResource::collection(SubheaderTextContent::where('subheader_id', $this->id)->get()),
+            'content' => new SubheaderContentResource(SubheaderTextContent::where('subheader_id', $this->id)->first()),
             'list' => SubheaderListResource::collection(SubheaderList::where('subheader_id', $this->id)->get())
         ];
     }

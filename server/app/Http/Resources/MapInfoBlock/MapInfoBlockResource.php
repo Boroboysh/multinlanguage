@@ -20,7 +20,7 @@ class MapInfoBlockResource extends JsonResource
             'title' => $this->title,
             'mapImage' => $this->mapImage,
             'content' => MapInfoBlockContentResource::collection(MapInfoBlockContent::where('mapInfoBlock_id', $this->id)->get()),
-            'buttons_text' => MapInfoBlockButtonTextResource::collection(MapInfoBlockButtonText::where('mapInfoBlock_id', $this->id)->get())
+            'buttons_text' => new MapInfoBlockButtonTextResource(MapInfoBlockButtonText::where('mapInfoBlock_id', $this->id)->first())
         ];
     }
 }

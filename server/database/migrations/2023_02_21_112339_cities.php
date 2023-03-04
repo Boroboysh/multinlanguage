@@ -14,8 +14,6 @@ return new class extends Migration
         Schema::create('cities', function (Blueprint $table) {
             $table->id();
             $table->text('name');
-            $table->text('tel_number',  50);
-            $table->unsignedBigInteger('country_id');
         });
     }
 

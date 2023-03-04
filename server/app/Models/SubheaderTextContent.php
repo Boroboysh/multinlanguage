@@ -17,4 +17,7 @@ class SubheaderTextContent extends Model
     protected $fillable = ['content', 'subheader_id'];
     protected $translatable = ['content'];
 
+    public function subheader () {
+        return $this->belongsTo(Subheader::class, 'subheader_id');
+    }
 }

@@ -35,6 +35,10 @@ class MapInfoBlockButtonText extends Model
     |--------------------------------------------------------------------------
     */
 
+    public function mapInfoBlock () {
+        return $this->belongsTo(MapInfoBlock::class, 'mapInfoBlock_id');
+    }
+
     /*
     |--------------------------------------------------------------------------
     | RELATIONS

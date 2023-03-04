@@ -39,4 +39,5 @@ Route::group([
     Route::crud('russian-tables', 'RussianTablesCrudController');
     Route::crud('english-tables', 'EnglishTablesCrudController');
     Route::crud('kazakh-tables', 'KazakhTablesCrudController');
+    Route::crud('city', 'CityCrudController');
 }); // this should be the absolute last line of this file

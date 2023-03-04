@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\JsonController;
+use App\Http\Resources\CityResource;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\Product;
@@ -22,8 +23,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Route::get('/page-data', [JsonController::class, 'getData']);
 
+Route::get('/cities', function () {
+    return CityResource::collection(City::select('*')->get());
+});
 
 

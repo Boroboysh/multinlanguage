@@ -13,8 +13,8 @@ class Footer extends Model
     use HasFactory;
     use HasTranslations;
 
-    protected $fillable = ['id','title', 'subtitle'];
-    protected $translatable = ['title','subtitle'];
+    protected $fillable = ['id', 'title', 'subtitle'];
+    protected $translatable = ['title', 'subtitle'];
     public $timestamps = false;
 
     /*
@@ -22,7 +22,20 @@ class Footer extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
+    public function footerButtonText()
+    {
+        return $this->hasOne(FooterButtonText::class);
+    }
 
+    public function footerField()
+    {
+        return $this->hasOne(FooterField::class);
+    }
+
+    public function footerTextContent()
+    {
+        return $this->hasMany(FooterTextContent::class);
+    }
     /*
     |--------------------------------------------------------------------------
     | RELATIONS

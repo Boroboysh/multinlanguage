@@ -52,6 +52,16 @@
 
                 </div>
             </div>
+            <div class="card bg-light mb-3" style="width: 13rem; height: 10rem">
+                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
+                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('city') }}">
+                            <h4 class="card-text">
+                                Cities
+                            </h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
         {{--Subheader--}}
         <div>
