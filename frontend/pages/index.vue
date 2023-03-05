@@ -16,7 +16,11 @@
             <default-input
               placeholder="Поиск по коду груза"
               class="header_content_info_forms"
-            />
+            >
+              <template #container-right>
+                <img src="@/assets/images/search_icon.png" alt="">
+              </template>
+            </default-input>
             <div
               class="header_content_info_calculate_block w-100 d-block align-items-start flex-column"
             >
@@ -599,7 +603,7 @@
           <div class="contact_form_send_personal_info_button_block">
             <default-button
               size="large"
-              color="white"
+              color="grey"
               class="contact_form_send_personal_info_button"
             >
               Отправить заявку
@@ -608,6 +612,7 @@
         </div>
       </div>
     </div>
+    <default-select placeholder="Выберите значение" />
     <default-footer />
   </div>
 </template>
@@ -619,7 +624,7 @@ import defaultHeader from "@/components/header/defaultHeader/defaultHeader.vue";
 import DefaultHeader from "../components/header/defaultHeader/defaultHeader.vue";
 import defaultMap from "@/components/map/defaultMap.vue";
 import defaultTextArea from "@/components/textarea/defaultTextArea.vue";
-// import defaultSelect from "@/components/select/defaultSelect.vue";
+import defaultSelect from "@/components/select/defaultSelect.vue";
 import defaultFooter from "@/components/footer/defaultFooter.vue";
 </script>
 
