@@ -6,32 +6,60 @@
     <div class="header_content_info_content">
       <div class="header_content_info container-xl">
         <div class="header_content_info_row row">
-          <div class="col header_content_info_col d-flex justify-content-center header_content_info_preview p-0">
+          <div
+            class="col header_content_info_col d-flex justify-content-center header_content_info_preview p-0"
+          >
             <img src="@/assets/images/preview_header.png" alt="" />
           </div>
           <div class="col header_content_info_col header_content_info_forms">
             <h2 class="header_content_info_forms_title">Отследить</h2>
-            <default-input placeholder="Поиск по коду груза" class="header_content_info_forms">
+            <default-input
+              placeholder="Поиск по коду груза"
+              class="header_content_info_forms"
+            >
               <template #container-right>
-                <img src="@/assets/images/search_icon.png" alt="">
+                <img src="@/assets/images/search_icon.png" alt="" />
               </template>
             </default-input>
-            <div class="header_content_info_calculate_block w-100 d-block align-items-start flex-column">
+            <div
+              class="header_content_info_calculate_block w-100 d-block align-items-start flex-column"
+            >
               <h2 class="header_content_info_forms_title">
                 Рассчитать и отправить груз
               </h2>
-              <div class="header_content_info_calculate_forms_block w-100 justify-content-between">
-                <default-input class="header_content_info_calculate_form_input_size" placeholder="Откуда" :title="true" />
-                <img class="header_content_info_calculate_form_icons" src="@/assets/images/arrow_double.svg" alt="" />
-                <default-input class="header_content_info_calculate_form_input_size" placeholder="Куда" :title="true" />
+              <div
+                class="header_content_info_calculate_forms_block w-100 justify-content-between"
+              >
+                <default-input
+                  class="header_content_info_calculate_form_input_size"
+                  placeholder="Откуда"
+                  :title="true"
+                />
+                <img
+                  class="header_content_info_calculate_form_icons"
+                  src="@/assets/images/arrow_double.svg"
+                  alt=""
+                />
+                <default-input
+                  class="header_content_info_calculate_form_input_size"
+                  placeholder="Куда"
+                  :title="true"
+                />
               </div>
-              <default-button class="header_content_info_calculate_button" size="large">
+              <default-button
+                class="header_content_info_calculate_button"
+                size="large"
+              >
                 Рассчитать стоимость
               </default-button>
               <div
-                class="header_content_info_calculate_result w-100 d-flex justify-content-start justify-content-sm-center justify-content-md-center justify-content-xl-end justify-content-xxl-end">
-                <img class="header_content_info_calculate_result_icons d-none d-sm-block d-md-block d-xl-block"
-                  src="@/assets/images/arrow_crocked.svg" alt="" />
+                class="header_content_info_calculate_result w-100 d-flex justify-content-start justify-content-sm-center justify-content-md-center justify-content-xl-end justify-content-xxl-end"
+              >
+                <img
+                  class="header_content_info_calculate_result_icons d-none d-sm-block d-md-block d-xl-block"
+                  src="@/assets/images/arrow_crocked.svg"
+                  alt=""
+                />
                 <span class="header_content_info_calculate_result_text">
                   От 2994 тенге, примерный срок 1—3 дня
                 </span>
@@ -42,7 +70,8 @@
         <div class="header_content_advantages_block">
           <div class="row">
             <div
-              class="col-12 col-xl-4 col-md-4 header_content_advantages d-flex align-items-center justify-content-start">
+              class="col-12 col-xl-4 col-md-4 header_content_advantages d-flex align-items-center justify-content-start"
+            >
               <div class="header_content_advantages_info_block">
                 <div class="header_content_advantages_number_block">
                   <span class="header_content_advantages_number">20</span>
@@ -56,7 +85,8 @@
               </div>
             </div>
             <div
-              class="col-xl-4 col-md-4 col-12 header_content_advantages d-flex align-items-center justify-content-start">
+              class="col-xl-4 col-md-4 col-12 header_content_advantages d-flex align-items-center justify-content-start"
+            >
               <div class="header_content_advantages_info_block">
                 <div class="header_content_advantages_number_block">
                   <span class="header_content_advantages_number">20</span>
@@ -69,7 +99,9 @@
                 </div>
               </div>
             </div>
-            <div class="col-xl-4 col-md-4 header_content_advantages d-flex align-items-center justify-content-start">
+            <div
+              class="col-xl-4 col-md-4 header_content_advantages d-flex align-items-center justify-content-start"
+            >
               <div class="header_content_advantages_info_block">
                 <div class="header_content_advantages_number_block">
                   <span class="header_content_advantages_number">20</span>
@@ -123,19 +155,25 @@
               <span class="about_content_title">
                 Отделения ПЭК в Казахстане
               </span>
-              <div class="about_content_block_info_adress_list_item d-flex align-items-center">
+              <div
+                class="about_content_block_info_adress_list_item d-flex align-items-center"
+              >
                 <div class="about_content_block_info_adress_linear"></div>
                 <span class="about_content_block_info_adress_text">
                   Астана, ул. Жанажол, д. 19. Тел.: + 7 (7172) 644-644
                 </span>
               </div>
-              <div class="about_content_block_info_adress_list_item d-flex align-items-center">
+              <div
+                class="about_content_block_info_adress_list_item d-flex align-items-center"
+              >
                 <div class="about_content_block_info_adress_linear"></div>
                 <span class="about_content_block_info_adress_text">
                   Астана, ул. Жанажол, д. 19. Тел.: + 7 (7172) 644-644
                 </span>
               </div>
-              <div class="about_content_block_info_adress_list_item d-flex align-items-center">
+              <div
+                class="about_content_block_info_adress_list_item d-flex align-items-center"
+              >
                 <div class="about_content_block_info_adress_linear"></div>
                 <span class="about_content_block_info_adress_text">
                   Астана, ул. Жанажол, д. 19. Тел.: + 7 (7172) 644-644
@@ -156,20 +194,32 @@
       <div class="map_block_content">
         <div class="map_block_title_block w-100 d-flex">
           <div class="map_block_content_title_block p-0">
-            <div class="map_block_content_title_block_row container-xl align-items-center justify-content-center w-100">
-              <div class="map_block_content_title_block_col map_content_block_title position-relative">
-                <div class="map_block_linear about_block_content_title_linear" />
+            <div
+              class="map_block_content_title_block_row container-xl align-items-center justify-content-center w-100"
+            >
+              <div
+                class="map_block_content_title_block_col map_content_block_title position-relative"
+              >
+                <div
+                  class="map_block_linear about_block_content_title_linear"
+                />
                 <p class="map_block_content_title">
                   Куда компания ПЭК доставляет грузы?
                 </p>
               </div>
-              <div class="map_block_content_title_block_col h-100 map_card_block">
+              <div
+                class="map_block_content_title_block_col h-100 map_card_block"
+              >
                 <div class="map_block_content_card_block position-relative">
                   <div class="default_border_block map_block_border_block">
                     <div class="default_border default_border_top_left"></div>
                     <div class="default_border default_border_top_right"></div>
-                    <div class="default_border default_border_bottom_left"></div>
-                    <div class="default_border default_border_bottom_right"></div>
+                    <div
+                      class="default_border default_border_bottom_left"
+                    ></div>
+                    <div
+                      class="default_border default_border_bottom_right"
+                    ></div>
                   </div>
                   <div class="map_block_content_card">
                     Помогаем развивать бизнес наших клиентов, решая
@@ -209,8 +259,11 @@
     <div class="advantages_block_card container-xl">
       <div class="row w-100">
         <div
-          class="col-12 col-sm-6 col-md-6 col-xl-6 d-flex h-100 align-items-start justify-content-center advantages_block_card_item">
-          <div class="advantages_card_block position-relative default_card w-100">
+          class="col-12 col-sm-6 col-md-6 col-xl-6 d-flex h-100 align-items-start justify-content-center advantages_block_card_item"
+        >
+          <div
+            class="advantages_card_block position-relative default_card w-100"
+          >
             <div class="default_border_block advantages_card_border_block">
               <div class="default_border default_border_top_left"></div>
               <div class="default_border default_border_top_right"></div>
@@ -218,9 +271,15 @@
               <div class="default_border default_border_bottom_right"></div>
             </div>
             <div class="advantages_card default-card">
-              <div class="advantages_card_content_title_block d-flex align-items-center">
+              <div
+                class="advantages_card_content_title_block d-flex align-items-center"
+              >
                 <div class="advantages_card_title_icon_block">
-                  <img src="@/assets/images/Shield.svg" alt="" class="advantages_card_title_icon" />
+                  <img
+                    src="@/assets/images/Shield.svg"
+                    alt=""
+                    class="advantages_card_title_icon"
+                  />
                 </div>
                 <div class="advantages_content_card_title_block fw-bold">
                   <span class="advantages_content_card_title">
@@ -230,42 +289,62 @@
               </div>
               <div class="advantages_card_content">
                 <div class="advantages_card_content_list">
-                  <div class="advantages_card_content_list_item d-flex align-items-center h-100">
+                  <div
+                    class="advantages_card_content_list_item d-flex align-items-center h-100"
+                  >
                     <div class="advantages_card_content_list_item_linear"></div>
                     <div class="advantages_card_content_list_item_content">
-                      <div class="advantages_card_content_list_item_content_text">
+                      <div
+                        class="advantages_card_content_list_item_content_text"
+                      >
                         Более 20 лет на рынке оборудования
                       </div>
                     </div>
                   </div>
-                  <div class="advantages_card_content_list_item d-flex align-items-center h-100">
+                  <div
+                    class="advantages_card_content_list_item d-flex align-items-center h-100"
+                  >
                     <div class="advantages_card_content_list_item_linear"></div>
                     <div class="advantages_card_content_list_item_content">
-                      <div class="advantages_card_content_list_item_content_text">
+                      <div
+                        class="advantages_card_content_list_item_content_text"
+                      >
                         Более 20 лет на рынке оборудования
                       </div>
                     </div>
                   </div>
-                  <div class="advantages_card_content_list_item d-flex align-items-center h-100">
+                  <div
+                    class="advantages_card_content_list_item d-flex align-items-center h-100"
+                  >
                     <div class="advantages_card_content_list_item_linear"></div>
                     <div class="advantages_card_content_list_item_content">
-                      <div class="advantages_card_content_list_item_content_text">
+                      <div
+                        class="advantages_card_content_list_item_content_text"
+                      >
                         Более 20 лет на рынке оборудования
                       </div>
                     </div>
                   </div>
-                  <div class="advantages_card_content_list_item d-flex align-items-center h-100">
+                  <div
+                    class="advantages_card_content_list_item d-flex align-items-center h-100"
+                  >
                     <div class="advantages_card_content_list_item_linear"></div>
                     <div class="advantages_card_content_list_item_content">
-                      <div class="advantages_card_content_list_item_content_text">
+                      <div
+                        class="advantages_card_content_list_item_content_text"
+                      >
                         Более 20 лет на рынке оборудования
                       </div>
                     </div>
                   </div>
-                  <div class="advantages_card_content_list_item d-flex align-items-center h-100">
+                  <div
+                    class="advantages_card_content_list_item d-flex align-items-center h-100"
+                  >
                     <div class="advantages_card_content_list_item_linear"></div>
                     <div class="advantages_card_content_list_item_content">
-                      <div class="advantages_card_content_list_item_content_text">
+                      <div
+                        class="advantages_card_content_list_item_content_text"
+                      >
                         Более 20 лет на рынке оборудования
                       </div>
                     </div>
@@ -276,8 +355,11 @@
           </div>
         </div>
         <div
-          class="col-12 col-sm-6 col-md-6 col-xl-6 d-flex h-100 align-items-start justify-content-center advantages_block_card_item">
-          <div class="advantages_card_block position-relative default_card w-100">
+          class="col-12 col-sm-6 col-md-6 col-xl-6 d-flex h-100 align-items-start justify-content-center advantages_block_card_item"
+        >
+          <div
+            class="advantages_card_block position-relative default_card w-100"
+          >
             <div class="default_border_block advantages_card_border_block">
               <div class="default_border default_border_top_left"></div>
               <div class="default_border default_border_top_right"></div>
@@ -285,9 +367,15 @@
               <div class="default_border default_border_bottom_right"></div>
             </div>
             <div class="advantages_card default-card">
-              <div class="advantages_card_content_title_block d-flex align-items-center">
+              <div
+                class="advantages_card_content_title_block d-flex align-items-center"
+              >
                 <div class="advantages_card_title_icon_block">
-                  <img src="@/assets/images/accouting_icon.svg" alt="" class="advantages_card_title_icon" />
+                  <img
+                    src="@/assets/images/accouting_icon.svg"
+                    alt=""
+                    class="advantages_card_title_icon"
+                  />
                 </div>
                 <div class="advantages_content_card_title_block fw-bold">
                   <span class="advantages_content_card_title"> Выгода </span>
@@ -295,53 +383,26 @@
               </div>
               <div class="advantages_card_content">
                 <div class="advantages_card_content_list">
-                  <div class="advantages_card_content_list_item d-flex align-items-center h-100">
+                  <div
+                    class="advantages_card_content_list_item d-flex align-items-center h-100"
+                  >
                     <div class="advantages_card_content_list_item_linear"></div>
                     <div class="advantages_card_content_list_item_content">
-                      <div class="advantages_card_content_list_item_content_text">
+                      <div
+                        class="advantages_card_content_list_item_content_text"
+                      >
                         Более 20 лет на рынке оборудования
                       </div>
                     </div>
                   </div>
-                  <div class="advantages_card_content_list_item d-flex align-items-center h-100">
+                  <div
+                    class="advantages_card_content_list_item d-flex align-items-center h-100"
+                  >
                     <div class="advantages_card_content_list_item_linear"></div>
                     <div class="advantages_card_content_list_item_content">
-                      <div class="advantages_card_content_list_item_content_text">
-                        Более 20 лет на рынке оборудования
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="col-12 col-sm-6 col-md-6 col-xl-6 h-100 d-flex align-items-start justify-content-center advantages_block_card_item">
-          <div class="advantages_card_block position-relative default_card w-100">
-            <div class="default_border_block advantages_card_border_block">
-              <div class="default_border default_border_top_left"></div>
-              <div class="default_border default_border_top_right"></div>
-              <div class="default_border default_border_bottom_left"></div>
-              <div class="default_border default_border_bottom_right"></div>
-            </div>
-            <div class="advantages_card default-card">
-              <div class="advantages_card_content_title_block d-flex align-items-center">
-                <div class="advantages_card_title_icon_block">
-                  <img src="@/assets/images/accouting_icon.svg" alt="" class="advantages_card_title_icon" />
-                </div>
-                <div class="advantages_content_card_title_block fw-bold">
-                  <span class="advantages_content_card_title">
-                    Надежность
-                  </span>
-                </div>
-              </div>
-              <div class="advantages_card_content">
-                <div class="advantages_card_content_list">
-                  <div class="advantages_card_content_list_item d-flex align-items-center h-100">
-                    <div class="advantages_card_content_list_item_linear"></div>
-                    <div class="advantages_card_content_list_item_content">
-                      <div class="advantages_card_content_list_item_content_text">
+                      <div
+                        class="advantages_card_content_list_item_content_text"
+                      >
                         Более 20 лет на рынке оборудования
                       </div>
                     </div>
@@ -352,8 +413,11 @@
           </div>
         </div>
         <div
-          class="col-12 col-sm-6 col-md-6 col-xl-6 h-100 d-flex h-100 align-items-start justify-content-center advantages_block_card_item">
-          <div class="advantages_card_block position-relative default_card w-100">
+          class="col-12 col-sm-6 col-md-6 col-xl-6 h-100 d-flex align-items-start justify-content-center advantages_block_card_item"
+        >
+          <div
+            class="advantages_card_block position-relative default_card w-100"
+          >
             <div class="default_border_block advantages_card_border_block">
               <div class="default_border default_border_top_left"></div>
               <div class="default_border default_border_top_right"></div>
@@ -361,9 +425,15 @@
               <div class="default_border default_border_bottom_right"></div>
             </div>
             <div class="advantages_card default-card">
-              <div class="advantages_card_content_title_block d-flex align-items-center">
+              <div
+                class="advantages_card_content_title_block d-flex align-items-center"
+              >
                 <div class="advantages_card_title_icon_block">
-                  <img src="@/assets/images/accouting_icon.svg" alt="" class="advantages_card_title_icon" />
+                  <img
+                    src="@/assets/images/accouting_icon.svg"
+                    alt=""
+                    class="advantages_card_title_icon"
+                  />
                 </div>
                 <div class="advantages_content_card_title_block fw-bold">
                   <span class="advantages_content_card_title">
@@ -373,26 +443,86 @@
               </div>
               <div class="advantages_card_content">
                 <div class="advantages_card_content_list">
-                  <div class="advantages_card_content_list_item d-flex align-items-center h-100">
+                  <div
+                    class="advantages_card_content_list_item d-flex align-items-center h-100"
+                  >
                     <div class="advantages_card_content_list_item_linear"></div>
                     <div class="advantages_card_content_list_item_content">
-                      <div class="advantages_card_content_list_item_content_text">
+                      <div
+                        class="advantages_card_content_list_item_content_text"
+                      >
                         Более 20 лет на рынке оборудования
                       </div>
                     </div>
                   </div>
-                  <div class="advantages_card_content_list_item d-flex align-items-center h-100">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-12 col-sm-6 col-md-6 col-xl-6 h-100 d-flex h-100 align-items-start justify-content-center advantages_block_card_item"
+        >
+          <div
+            class="advantages_card_block position-relative default_card w-100"
+          >
+            <div class="default_border_block advantages_card_border_block">
+              <div class="default_border default_border_top_left"></div>
+              <div class="default_border default_border_top_right"></div>
+              <div class="default_border default_border_bottom_left"></div>
+              <div class="default_border default_border_bottom_right"></div>
+            </div>
+            <div class="advantages_card default-card">
+              <div
+                class="advantages_card_content_title_block d-flex align-items-center"
+              >
+                <div class="advantages_card_title_icon_block">
+                  <img
+                    src="@/assets/images/accouting_icon.svg"
+                    alt=""
+                    class="advantages_card_title_icon"
+                  />
+                </div>
+                <div class="advantages_content_card_title_block fw-bold">
+                  <span class="advantages_content_card_title">
+                    Надежность
+                  </span>
+                </div>
+              </div>
+              <div class="advantages_card_content">
+                <div class="advantages_card_content_list">
+                  <div
+                    class="advantages_card_content_list_item d-flex align-items-center h-100"
+                  >
                     <div class="advantages_card_content_list_item_linear"></div>
                     <div class="advantages_card_content_list_item_content">
-                      <div class="advantages_card_content_list_item_content_text">
+                      <div
+                        class="advantages_card_content_list_item_content_text"
+                      >
                         Более 20 лет на рынке оборудования
                       </div>
                     </div>
                   </div>
-                  <div class="advantages_card_content_list_item d-flex align-items-center h-100">
+                  <div
+                    class="advantages_card_content_list_item d-flex align-items-center h-100"
+                  >
                     <div class="advantages_card_content_list_item_linear"></div>
                     <div class="advantages_card_content_list_item_content">
-                      <div class="advantages_card_content_list_item_content_text">
+                      <div
+                        class="advantages_card_content_list_item_content_text"
+                      >
+                        Более 20 лет на рынке оборудования
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="advantages_card_content_list_item d-flex align-items-center h-100"
+                  >
+                    <div class="advantages_card_content_list_item_linear"></div>
+                    <div class="advantages_card_content_list_item_content">
+                      <div
+                        class="advantages_card_content_list_item_content_text"
+                      >
                         Более 20 лет на рынке оборудования
                       </div>
                     </div>
@@ -426,27 +556,43 @@
           <div class="row">
             <div class="col-4 d-flex align-items-center justify-content-center">
               <div class="contact_form_item_block w-100">
-                <default-input class="contact_form_item contact_form_item_city" placeholder="Город" :title="true" />
+                <default-input
+                  class="contact_form_item contact_form_item_city"
+                  placeholder="Город"
+                  :title="true"
+                />
               </div>
             </div>
             <div class="col-4 d-flex align-items-center justify-content-center">
               <div class="contact_form_item_block w-100">
-                <default-input class="contact_form_item contact_form_item_name" placeholder="Ваше имя" :title="true" />
+                <default-input
+                  class="contact_form_item contact_form_item_name"
+                  placeholder="Ваше имя"
+                  :title="true"
+                />
               </div>
             </div>
             <div class="col-4 d-flex align-items-center justify-content-center">
               <div class="contact_form_item_block w-100">
-                <default-input class="contact_form_item contact_form_item_telephone" placeholder="Город" :title="true" />
+                <default-input
+                  class="contact_form_item contact_form_item_telephone"
+                  placeholder="Город"
+                  :title="true"
+                />
               </div>
             </div>
-            <div class="col-12 d-flex align-items-center justify-content-center">
+            <div
+              class="col-12 d-flex align-items-center justify-content-center"
+            >
               <div class="contact_form_item_block w-100">
                 <default-text-area placeholder="Сообщение" />
               </div>
             </div>
           </div>
         </div>
-        <div class="contact_form_send_block container-xl d-flex align-items-center justify-content-center flex-column">
+        <div
+          class="contact_form_send_block container-xl d-flex align-items-center justify-content-center flex-column"
+        >
           <div class="contact_form_send_personal_info_text">
             Отправляя свои данные через форму, вы соглашаетесь с условиями
             обработки
@@ -455,7 +601,11 @@
             </a>
           </div>
           <div class="contact_form_send_personal_info_button_block">
-            <default-button size="large" color="grey" class="contact_form_send_personal_info_button">
+            <default-button
+              size="large"
+              color="grey"
+              class="contact_form_send_personal_info_button"
+            >
               Отправить заявку
             </default-button>
           </div>
@@ -463,12 +613,20 @@
       </div>
     </div>
     <default-select placeholder="Выберите значение">
-      <template #container-right>
-
-      </template>
+      <default-option
+        v-for="(item, indexItem) in [
+          { id: 1, name: 1 },
+          { id: 2, name: 1 },
+          { id: 3, name: 1 },
+        ]"
+        :key="indexItem"
+        :item="item.name"
+      >
+        {{ item.name }}
+      </default-option>
     </default-select>
-    <search-select>
-    </search-select>
+    <search-select> </search-select>
+    <choosing-region />
     <default-footer />
   </div>
 </template>
@@ -477,13 +635,281 @@
 import defaultButton from "@/components/button/defaultButton.vue";
 import defaultInput from "~~/components/input/defaultInput.vue";
 import defaultHeader from "@/components/header/defaultHeader/defaultHeader.vue";
-import DefaultHeader from "../components/header/defaultHeader/defaultHeader.vue";
+import DefaultHeader from "@/components/header/defaultHeader/defaultHeader.vue";
 import defaultMap from "@/components/map/defaultMap.vue";
 import defaultTextArea from "@/components/textarea/defaultTextArea.vue";
 import defaultSelect from "@/components/select/defaultSelect.vue";
+import defaultOption from "~~/components/select/defaultOption.vue";
 import searchSelect from "~~/components/select/searchSelect.vue";
+import choosingRegion from "@/components/modalWindow/choosingRegion.vue";
 import defaultFooter from "@/components/footer/defaultFooter.vue";
+import getContentInfo from "@/api/contentInfo/getContentInfo";
+// import { useAsyncData } from "async"
+// import { useAsyncData } from "vueuse";
+// getContentInfo("ru");
+// useAsyncData("mountains", () => {
+//   console.log("wfawfawfawafwafwfa");
+// });
+// const contentPage = await useAsyncData('fwafawfwa', async () => {
+//   await getContentInfo('ru')
+// })
+// const test = await useAsyncData(
+//   'mountains',
+//   () => $fetch('https://api.nuxtjs.dev/mountains')
+// )
+const data = `{
+    "header": {
+        "logo": "images/f1f3047ee55929ea5096371b0e94d2c3.png",
+        "supportText": "Поддержка",
+        "tel_number": "+7(7172) 644-644",
+        "languages": [
+            {
+                "id": 1,
+                "name": "Русский",
+                "icon": "images/baa540f7e3603f8baec3d4c083f4adba.png",
+                "code": "ru"
+            },
+            {
+                "id": 2,
+                "name": "English",
+                "icon": "images/f8ab12c358137ddab39e5b458aa4a8b7.png",
+                "code": "en"
+            },
+            {
+                "id": 3,
+                "name": "Қазақ",
+                "icon": "images/fedb9aa4a0db8eaf8f8bb5a9c2df8381.png",
+                "code": "kk"
+            }
+        ]
+    },
+    "body": {
+        "subheader": {
+            "image": "images/f6d5321db64337172982b08130d95a99.png",
+            "titles": [
+                {
+                    "content": "Отследить"
+                },
+                {
+                    "content": "Рассчитать и отправить груз"
+                }
+            ],
+            "fields": [
+                {
+                    "content": "Поиск по коду груза"
+                },
+                {
+                    "content": "Откуда"
+                },
+                {
+                    "content": "Куда"
+                }
+            ],
+            "content": {
+                "text": "От 2994 тенге, примерный срок 1—3 дня"
+            },
+            "list": [
+                {
+                    "icon": "images/461772eb14941d92512beb48d3d0c583.png",
+                    "content": "Более 20 лет опыта грузовых перевозок"
+                },
+                {
+                    "icon": "images/d7b01e8c08922b5410dfb8f53cae85fe.png",
+                    "content": "Клиентов ежегодно доверяют нам доставку и хранение"
+                },
+                {
+                    "icon": "images/aec5fd432535f1dddfcec977546c66fa.png",
+                    "content": "Отделений в России и за рубежом"
+                }
+            ]
+        },
+        "textInfoBlock": {
+            "title": "Перевозки в Казахстан",
+            "subtitle": "Отделения ПЭК в Казахстане",
+            "content": [
+                {
+                    "text": "ПЭК: GLOBAL предлагает услуги авто- и авиаперевозок из России в Казахстан и в обратном направлении."
+                },
+                {
+                    "text": "Отправить груз в Казахстан можно из всех городов присутствия ПЭК в России, самостоятельно доставив их в отделение или сделав заказ адресного забора."
+                },
+                {
+                    "text": "В Казахстане адресный забор и доставка грузов действуют по всей стране!"
+                },
+                {
+                    "text": "Отделения ПЭК в Казахстане"
+                },
+                {
+                    "text": "Компания работает как с юридическими, так и с физическими лицам. По запросу мы готовы предоставить для юрлиц спецтехнику для погрузочно-разгрузочных работ, перевозку и возврат сопроводительных документов, предложить API-интеграцию."
+                }
+            ],
+            "list": [
+                {
+                    "content": "Астана, ул. Жанажол, д. 19. Тел.: + 7 (7172) 644-644"
+                },
+                {
+                    "content": "Алматы, ул. Казыбаева, 3/2. Тел.: + 7 (727) 346-77-77"
+                },
+                {
+                    "content": "Костанай, ул. Карбышева, д. 20А. Тел.: +7 (7142) 222-095"
+                }
+            ]
+        },
+        "mapInfoBlock": {
+            "title": "Куда компания ПЭК доставляет грузы?",
+            "content": [
+                {
+                    "text": "или позвонить по номеру"
+                },
+                {
+                    "text": "+ 7 (7172) 644-644"
+                }
+            ],
+            "buttons_text": {
+                "content": "Оставить заявку"
+            },
+            "points": [
+                {
+                    "id": 7,
+                    "name": "Астана",
+                    "coordination": {
+                        "x": 0.34,
+                        "y": 0.52
+                    }
+                },
+                {
+                    "id": 8,
+                    "name": "Алматы",
+                    "coordination": {
+                        "x": 0.42,
+                        "y": 0.52
+                    }
+                },
+                {
+                    "id": 9,
+                    "name": "Костанай",
+                    "coordination": {
+                        "x": 0.35,
+                        "y": 0.42
+                    }
+                }
+            ]
+        },
+        "listInfoBlock": {
+            "title": "Преимущества работы с компанией ПЭК",
+            "element": [
+                {
+                    "icon": "images/37230ec5236f9b335faab4fcb348bde2.png",
+                    "title": "Надежность",
+                    "list": [
+                        {
+                            "content": "Более 20 лет работы на рынке;"
+                        },
+                        {
+                            "content": "Страхование груза;"
+                        },
+                        {
+                            "content": "Дополнительная упаковка;"
+                        },
+                        {
+                            "content": "Личный кабинет с фотоотчетом приема груза;"
+                        },
+                        {
+                            "content": "Услуги ответственного хранения."
+                        }
+                    ]
+                },
+                {
+                    "icon": "images/de1c4aee75152e88ec164e9d75c7615c.png",
+                    "title": "Выгода",
+                    "list": [
+                        {
+                            "content": "Гибкие тарифы;"
+                        },
+                        {
+                            "content": "Возможность отсрочки платежа."
+                        }
+                    ]
+                },
+                {
+                    "icon": "images/549575b0df9dfc438aae7778be49f638.png",
+                    "title": "Сервис",
+                    "list": [
+                        {
+                            "content": "Калькулятор расчета стоимости на сайте;"
+                        },
+                        {
+                            "content": "Предварительное оформление заказа на сайте;"
+                        },
+                        {
+                            "content": "Забор и доставка дверь-дверь;"
+                        },
+                        {
+                            "content": "Онлайн-отслеживание грузов."
+                        }
+                    ]
+                },
+                {
+                    "icon": "images/903d2b12c2b09d5022734ad5a6a154c0.png",
+                    "title": "Комфорт",
+                    "list": [
+                        {
+                            "content": "Управление выдачей;"
+                        },
+                        {
+                            "content": "Возможность замены грузополучателя или грузоотправителя;"
+                        },
+                        {
+                            "content": "Забор и доставка день в день, в выходные и праздники;"
+                        },
+                        {
+                            "content": "Персональный менеджер."
+                        }
+                    ]
+                }
+            ]
+        },
+        "contactForm": {
+            "title": "Ещё остались вопросы?",
+            "subtitle": "Оставьте заявку, мы с радостью с Вами свяжемся и на них ответим!",
+            "fields": {
+                "city": "Город",
+                "name": "Ваше имя",
+                "tel_number": "Номер телефона",
+                "message_placeholder": "Сообщение"
+            },
+            "buttonText": {
+                "content": "Отправить заявку"
+            },
+            "textContent": [
+                {
+                    "key": "text",
+                    "content": "Отправляя свои данные через форму, вы соглашаетесь с условиями обработки"
+                },
+                {
+                    "key": "link",
+                    "content": "персональных данных."
+                }
+            ]
+        }
+    },
+    "footer": {
+        "icon": "images/307ae9112e6f082a3508e7609ad5024c.png",
+        "personal_data": "О защите персональных данных",
+        "copyright": "© ООО «ПЭК»",
+        "store_link_title": "Управляй доставкой в приложении",
+        "store_links": [
+            {
+                "icon": "images/86783d740ffb3ff3c70417383bef1832.png",
+                "link": "https://play.google.com/store/games?hl=ru&gl=US"
+            }
+        ]
+    }
+}`
+const currentData = JSON.parse(data)
+console.log(currentData)
 </script>
+
 
 <style>
 html,
@@ -537,7 +963,8 @@ body {
   height: 1px;
 }
 
-.header_content_info_forms_title {}
+.header_content_info_forms_title {
+}
 
 .default_linear_title_block {
   position: relative;
@@ -755,7 +1182,8 @@ body {
   justify-content: center;
 }
 
-.map_block_linear {}
+.map_block_linear {
+}
 
 .default_border_block {
   position: absolute;
@@ -1065,14 +1493,14 @@ body {
   margin-right: 15px;
 } */
 @media (max-width: 1400px) {
-  .header_content_info_preview>img {
+  .header_content_info_preview > img {
     width: 100%;
     min-width: 320px;
   }
 }
 
 @media (max-width: 1000px) {
-  .header_content_info_preview>img {
+  .header_content_info_preview > img {
     /* width: 100%; */
   }
 }
