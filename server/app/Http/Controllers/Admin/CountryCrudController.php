@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\FooterFieldRequest;
+use App\Http\Requests\CountryRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class FooterFieldCrudController
+ * Class CountryCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class FooterFieldCrudController extends CrudController
+class CountryCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -26,9 +26,9 @@ class FooterFieldCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\FooterField::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/footer-field');
-        CRUD::setEntityNameStrings('footer field', 'footer fields');
+        CRUD::setModel(\App\Models\Country::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/country');
+        CRUD::setEntityNameStrings('country', 'countries');
     }
 
     /**
@@ -39,23 +39,8 @@ class FooterFieldCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::addColumn([
-            'name' => 'city',
-            'label' => 'Поле город'
-        ]);
-        CRUD::addColumn([
-            'name' => 'name',
-            'label' => 'Поле имя '
-        ]);
-        CRUD::addColumn([
-            'name' => 'tel_number',
-            'label' => 'Поле телефон'
-        ]);
-        CRUD::addColumn([
-            'name' => 'message_placeholder',
-            'label' => 'Заполнитель поля с сообщением'
-        ]);
-        CRUD::column('footer_id');
+        CRUD::column('id');
+        CRUD::column('name');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -72,29 +57,8 @@ class FooterFieldCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::addField([
-            'name' => 'city',
-            'label' => 'Город'
-        ]);
-        CRUD::addField([
-            'name' => 'name',
-            'label' => 'Имя'
-        ]);
-        CRUD::addField([
-            'name' => 'tel_number',
-            'label' => 'Номер телефона'
-        ]);
-        CRUD::addField([
-            'name' => 'message_placeholder',
-            'label' => 'Заполнитель поля с сообщением'
-        ]);
-        CRUD::addField([
-            'name' => 'footer_id',
-            'label' => 'Footer Id',
-            'type' => 'select',
-            'model' => 'App\Models\Footer',
-            'attribute' => 'id'
-        ]);
+        CRUD::field('name');
+
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

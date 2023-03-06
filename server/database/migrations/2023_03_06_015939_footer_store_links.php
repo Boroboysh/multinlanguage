@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-          Schema::create('footer_button_texts', function (Blueprint $table) {
+        Schema::create('footer_store_links', function (Blueprint $table) {
             $table->id();
-            $table->text('content');
-            $table->unsignedBigInteger('footer_id');
+            $table->string('icon');
+            $table->text('link');
+            $table->unsignedBigInteger('footer_id')->default(1);
             $table->foreign('footer_id')->references('id')->on('footers')->cascadeOnDelete();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-         Schema::dropIfExists('footer_button_texts');
+        Schema::dropIfExists('footer_store_links');
     }
 };

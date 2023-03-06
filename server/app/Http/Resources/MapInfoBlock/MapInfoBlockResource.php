@@ -2,8 +2,10 @@
 
 namespace App\Http\Resources\MapInfoBlock;
 
+use App\Http\Resources\MapPointsResource;
 use App\Models\MapInfoBlockButtonText;
 use App\Models\MapInfoBlockContent;
+use App\Models\MapPoint;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -18,9 +20,9 @@ class MapInfoBlockResource extends JsonResource
     {
         return [
             'title' => $this->title,
-            'mapImage' => $this->mapImage,
             'content' => MapInfoBlockContentResource::collection(MapInfoBlockContent::where('mapInfoBlock_id', $this->id)->get()),
-            'buttons_text' => new MapInfoBlockButtonTextResource(MapInfoBlockButtonText::where('mapInfoBlock_id', $this->id)->first())
+            'buttons_text' => new MapInfoBlockButtonTextResource(MapInfoBlockButtonText::where('mapInfoBlock_id', $this->id)->first()),
+            'points' => MapPointsResource::collection(MapPoint::all())
         ];
     }
 }

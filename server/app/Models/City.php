@@ -15,8 +15,10 @@ class City extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'rating', 'country_id'];
     protected $translatable = ['name'];
 
-
+    public function country () {
+        return $this->belongsTo(Country::class);
+    }
 }

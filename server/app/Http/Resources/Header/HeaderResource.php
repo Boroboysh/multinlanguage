@@ -4,6 +4,7 @@ namespace App\Http\Resources\Header;
 
 use App\Models\City;
 use App\Models\Country;
+use App\Models\HeaderLanguages;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -25,9 +26,10 @@ class HeaderResource extends JsonResource
 
 
         return [
-            "logo" => $this->logo,
+            'logo' => $this->logo,
             "supportText" => $this->supportText,
             'tel_number' => $this->tel_number,
+            'languages' => HeaderLanguagesResource::collection(HeaderLanguages::all())
         ];
     }
 }

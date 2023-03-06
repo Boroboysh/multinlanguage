@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('map_info_blocks', function (Blueprint $table) {
             $table->id();
             $table->text('title');
-            $table->text('mapImage');
+            $table->text('card_info');
         });
     }
 

@@ -45,9 +45,10 @@ class MapInfoBlockCrudController extends CrudController
             'label' => 'Заголовок'
         ]);
         CRUD::addColumn([
-            'name' => 'mapImage',
-            'label' => 'Изображение карты'
+            'name' => 'card_info',
+            'label' => 'Мини-блок'
         ]);
+
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -69,11 +70,10 @@ class MapInfoBlockCrudController extends CrudController
             'label' => 'Заголовок'
         ]);
         CRUD::addField([
-            'name' => 'mapImage',
-            'label'     => 'Изображение карты',
-            'type'      => 'upload',
-            'upload'    => true,
+            'name' => 'card_info',
+            'label' => 'Мини блок возле карты'
         ]);
+
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

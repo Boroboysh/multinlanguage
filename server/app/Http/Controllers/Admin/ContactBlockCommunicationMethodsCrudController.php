@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\FooterButtonTextRequest;
+use App\Http\Requests\ContactBlockCommunicationMethodsRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class FooterButtonTextCrudController
+ * Class ContactBlockCommunicationMethodsCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class FooterButtonTextCrudController extends CrudController
+class ContactBlockCommunicationMethodsCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -26,9 +26,9 @@ class FooterButtonTextCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\FooterButtonText::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/footer-button-text');
-        CRUD::setEntityNameStrings('footer button text', 'footer button texts');
+        CRUD::setModel(\App\Models\ContactBlockCommunicationMethods::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/contact-block-communication-methods');
+        CRUD::setEntityNameStrings('contact block communication methods', 'contact block communication methods');
     }
 
     /**
@@ -39,14 +39,9 @@ class FooterButtonTextCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::addColumn([
-            "name" => "content",
-            "label" => "Содержание"
-        ]);
-        CRUD::addColumn([
-            "name" => "footer_id",
-            "label" => "Footer ID"
-        ]);
+        CRUD::column('name');
+        CRUD::column('icon');
+        CRUD::column('link');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -63,17 +58,9 @@ class FooterButtonTextCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::addField([
-            'name' => 'content',
-            'label' => "Содержание"
-        ]);
-        CRUD::addField([
-            'name' => 'footer_id',
-            'label' => 'Footer Id',
-            'type' => 'select',
-            'model' => 'App\Models\Footer',
-            'attribute' => 'id'
-        ]);
+        CRUD::field('name');
+        CRUD::field('icon');
+        CRUD::field('link');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

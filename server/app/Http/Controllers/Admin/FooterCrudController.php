@@ -39,15 +39,11 @@ class FooterCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('id');
-        CRUD::addColumn([
-            'name' => 'title',
-            'label' => 'Заголовок'
-        ]);
-        CRUD::addColumn([
-            'name' => 'subtitle',
-            'label' => 'Подзаголовок'
-        ]);
+        CRUD::column('icon');
+        CRUD::column('copyright');
+        CRUD::column('store_link_title');
+        CRUD::column('personal_data');
+
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
@@ -64,13 +60,17 @@ class FooterCrudController extends CrudController
     protected function setupCreateOperation()
     {
         CRUD::addField([
-            'name' => 'title',
-            'label' => 'Заголовок'
+            'name'      => 'icon',
+            'label'     => 'Icon',
+            'type'      => 'upload',
+            'upload'    => true,
+            //'disk'      => 'public', // if you store files in the /public folder, please omit this; if you store them in /storage or S3, please specify it;
+//            // optional:
+//            'temporary' => 10
         ]);
-        CRUD::addField([
-            'name' => 'subtitle',
-            'label' => 'Подзаголовок'
-        ]);
+        CRUD::field('copyright');
+        CRUD::field('store_link_title');
+        CRUD::field('personal_data');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

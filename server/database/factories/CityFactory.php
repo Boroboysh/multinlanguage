@@ -22,12 +22,10 @@ class CityFactory extends Factory
 
     public function definition(): array
     {
-        $country = Country::select('id')->get()->toArray();
+        $country = Country::select('')->get()->toArray();
 
         return [
             'name' => $this->faker->city(),
-            'tel_number' => $this->faker->e164PhoneNumber(),
-            'country_id' => $this->faker->randomElement($country[4])
         ];
     }
 }

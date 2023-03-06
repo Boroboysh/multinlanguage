@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-         Schema::create('footers', function (Blueprint $table) {
+        Schema::create('map_points_coordination', function (Blueprint $table) {
             $table->id();
-            $table->text('title');
-            $table->text('subtitle');
+            $table->float('x');
+            $table->float('y');
+            $table->unsignedBigInteger('mapPoint_id');
+            $table->foreign('mapPoint_id')->references('id')->on('map_points')->cascadeOnDelete();
         });
     }
 
@@ -23,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('footers');
+         Schema::dropIfExists('map_points_coordination');
     }
 };

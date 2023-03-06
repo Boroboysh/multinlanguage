@@ -3,28 +3,34 @@
 namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
-use Backpack\CRUD\app\Models\Traits\SpatieTranslatable\HasTranslations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class FooterTextContent extends Model
+class ContactBlockTitles extends Model
 {
     use CrudTrait;
     use HasFactory;
-    use HasTranslations;
 
-    protected $fillable = ['content', 'footer_id'];
-    protected $translatable = ['content'];
+    /*
+    |--------------------------------------------------------------------------
+    | GLOBAL VARIABLES
+    |--------------------------------------------------------------------------
+    */
+
+    protected $table = 'contact_block_titles';
+    // protected $primaryKey = 'id';
     public $timestamps = false;
+    protected $guarded = ['id'];
+    // protected $fillable = [];
+    // protected $hidden = [];
+    // protected $dates = [];
 
     /*
     |--------------------------------------------------------------------------
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-    public function footer () {
-        return $this->belongsTo(Footer::class, 'footer_id');
-    }
+
     /*
     |--------------------------------------------------------------------------
     | RELATIONS

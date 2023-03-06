@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('map_info_block_contents', function (Blueprint $table) {
+            Schema::create('map_info_block_contents', function (Blueprint $table) {
             $table->id();
             $table->text('content');
             $table->unsignedBigInteger('mapInfoBlock_id');

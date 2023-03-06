@@ -6,13 +6,13 @@ use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Backpack\CRUD\app\Models\Traits\SpatieTranslatable\HasTranslations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class MapInfoBlock extends Model
 {
     use CrudTrait;
     use HasTranslations;
     use HasFactory;
-
 
 
     /*
@@ -26,8 +26,8 @@ class MapInfoBlock extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['title', 'mapImage'];
-    protected $translatable = ['title', 'mapImage'];
+    protected $fillable = ['title', 'card_info'];
+    protected $translatable = ['title', 'card_info'];
 
     //mapImage
 
@@ -37,23 +37,6 @@ class MapInfoBlock extends Model
     |--------------------------------------------------------------------------
     */
 
-    public function setMapImageAttribute($value)
-    {
-        $attribute_name = "mapImage";
-        $disk = "public";
-        $destination_path = "/images";
-
-        //TODO fix path
-        //not correctly path
-        $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path, $fileName = null);
-
-        // Undefined key. Image DB null
-        return $this->attributes[$attribute_name]; // uncomment if this is a translatable field
-    }
-
-    public function mapInfoBlockButtons () {
-        return $this->hasOne(MapInfoBlockButtonText::class);
-    }
 
     /*
     |--------------------------------------------------------------------------
