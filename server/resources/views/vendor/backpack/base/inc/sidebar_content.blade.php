@@ -7,7 +7,6 @@
 --}}
 
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('russian-tables') }}"> Русский</a></li>
-
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('english-tables') }}"> English</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('kazakh-tables') }}"> Қазақша</a></li>
 

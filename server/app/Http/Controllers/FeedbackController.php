@@ -13,15 +13,19 @@ class FeedbackController extends Controller
     public function send(Request $request) {
         $request->validate([
             'name' => 'required|max:100',
-            'email' => 'required|email|max:100',
             'message' => 'required|max:500',
+            'tel_number' => 'required',
+            'city' => 'required'
         ]);
 
         $data = new stdClass();
-        $data->name = $request->name;
-        $data->email = $request->email;
-        $data->message = $request->message;
-        Mail::to($data->email)->send(new FeedbackMailer($data));
+
+        $data->name = $request->input('name');
+        $data->city = $request->input('city');
+        $data->tel_number = $request->input('tel_number');
+        $data->message = $request->input('message');
+
+        Mail::to('fafeh50394@wireps.com')->send(new FeedbackMailer($data));
         return response('Ваше сообщение успешно отправлено');
     }
 }
