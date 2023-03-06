@@ -34,394 +34,191 @@
     </div>
 @endsection
 
+<@php
+
+    $namesHeader = [
+        'Тақырып' => 'header/1/edit?_locale=kk',
+        'Тілді таңдау' => 'header-languages',
+        'Елдер' => 'country',
+         'Қалалар' => 'city',
+        ];
+    $namesSubHeader = [
+        'Субтитр' =>'subheader/1/edit?_locale=kk',
+        'Мазмұны' => 'subheader-text-content/1/edit?_locale=kk',
+        'Атаулар' => 'subheader-titles',
+        'Өрістер' => 'subheader-fields',
+        'Тізім' => 'subheader-list'
+        ];
+    $namesBlockInfo = [
+        'Ақпараттық блок' => 'text-info-block/1/edit?_locale=kk',
+        'Мазмұны' => 'text-info-block-content',
+        'Тізім' => 'text-info-block-list'
+        ];
+    $namesBlockMap = [
+         'Карта блогы' => 'map-info-block/1/edit?_locale=kk',
+         'Мазмұны' => 'map-info-block-content',
+         'Түйме (мәтін)' => 'map-info-block-button-text/1/edit?_locale=kk',
+         'Картадағы нүктелер' => 'map-point',
+         'Картадағы нүктелердің координаттары' => 'map-point-coordination'
+         ];
+    $namesBlockList = [
+        'Артықшылықтар тізімі' => 'list-info-block/1/edit?_locale=kk',
+        'Тізім элементі' => 'list-info-block-element',
+        'Элементтің мазмұны' => 'list-info-block-element-list'
+         ];
+    $namesBlockContactForm = [
+        'Кері байланыс нысаны' => 'contact-form/1/edit?_locale=kk',
+        'Мазмұны' => 'contact-form-text-content',
+        'Өрістер' => 'contact-form-field/1/edit?_locale=kk',
+        'Түйме (мәтін)' => 'contact-form-button-text/1/edit?_locale=kk'
+          ];
+    $namesBlockContact = [
+        'Кері байланыс блогы' => 'contact-block',
+        'Хабарлама түрлері' => 'contact-block-message',
+        'Байланыстың басқа жолдары' => 'contact-block-communication-methods',
+        'Атаулар' => 'contact-block-titles',
+        'Телефон' => 'сontact-block-tel-communication'
+         ];
+    $namesBlockFooter = [
+        'Төменгі деректеме' => 'footer',
+        'Базарға сілтемелер' => 'footer-store-links'
+     ];
+
+@endphp
 
 @section('content')
     {{-- Default box --}}
-    <div style="display:flex; gap: 2em; justify-content: space-between; padding: 0em 4em 0em 3em; max-width: 100%; overflow-x: auto ">
+    <div
+        style="display:flex; gap: 2em; justify-content: space-between; padding: 0em 4em 0em 3em; max-width: 100%; overflow-x: auto ">
         {{--Header--}}
         <div>
-            <div class="card bg-light mb-3" style="width: 13rem; height: 10rem">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('header/1/edit?_locale=en') }}">
-                            <h4 class="card-text">
-                                Шапка
-                            </h4>
-                        </a>
-                    </div>
+            @foreach($namesHeader as $name => $url)
+                <div class="card bg-light mb-3" style="width: 13rem; height: 10rem">
+                    <div class="card-body" style="display: flex; align-items: center; justify-content: center">
+                        <div class="nav-item"><a class="nav-link" href="{{ backpack_url($url) }}">
+                                <h4 class="card-text" style="text-align: center">
+                                    {{ $name }}
+                                </h4>
+                            </a>
+                        </div>
 
-                </div>
-            </div>
-
-            <div class="card bg-light mb-3" style="width: 13rem; height: 10rem">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('header-languages') }}">
-                            <h4 class="card-text" style="text-align: center">
-                                Выбор языка
-                            </h4>
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="card bg-light mb-3" style="width: 13rem; height: 10rem">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('country') }}">
-                            <h4 class="card-text">
-                                Страны
-                            </h4>
-                        </a>
                     </div>
                 </div>
-            </div>
-
-            <div class="card bg-light mb-3" style="width: 13rem; height: 10rem">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('city') }}">
-                            <h4 class="card-text">
-                                Города
-                            </h4>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-
+            @endforeach
         </div>
         {{--Subheader--}}
         <div>
-            {{--Subheader--}}
-            <div class="card bg-light mb-3" style="width: 13rem; height: 10rem">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('subheader/1/edit?_locale=en') }}">
-                            <h4 class="card-text">
-                                Сабхедер
-                            </h4>
-                        </a>
-                    </div>
+            @foreach($namesSubHeader as $name => $url)
+                <div class="card bg-light mb-3" style="width: 13rem; height: 10rem">
+                    <div class="card-body" style="display: flex; align-items: center; justify-content: center">
+                        <div class="nav-item"><a class="nav-link" href="{{ backpack_url($url) }}">
+                                <h4 class="card-text" style="text-align: center">
+                                    {{ $name }}
+                                </h4>
+                            </a>
+                        </div>
 
-                </div>
-            </div>
-            {{--Subheader text content--}}
-            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link"
-                                             href="{{ backpack_url('subheader-text-content/1/edit?_locale=en') }}">
-                            <h4 class="card-text">
-                                Содержание
-                            </h4>
-                        </a>
                     </div>
                 </div>
-            </div>
-            {{--Subheader titles--}}
-            <div class="card bg-light mb-3" style="width: 13rem; height: 10rem">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('subheader-titles') }}">
-                            <h4 class="card-text">
-                                Заголовки
-                            </h4>
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-            {{--Subheader fields--}}
-            <div class="card bg-light mb-3" style="width: 13rem; height: 10rem">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('subheader-fields') }}">
-                            <h4 class="card-text">
-                                Поля
-                            </h4>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            {{--Subheader lists--}}
-            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('subheader-list') }}">
-                            <h4 class="card-text">
-                                Список
-                            </h4>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
         {{--Info block--}}
         <div>
             {{--Info block--}}
-            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('text-info-block/1/edit?_locale=en') }}">
-                            <h4 class="card-text" style="text-align: center">
-                                Блок с информацией
-                            </h4>
-                        </a>
+            @foreach($namesBlockInfo as $name => $url)
+                <div class="card bg-light mb-3" style="width: 13rem; height: 10rem">
+                    <div class="card-body" style="display: flex; align-items: center; justify-content: center">
+                        <div class="nav-item"><a class="nav-link" href="{{ backpack_url($url) }}">
+                                <h4 class="card-text" style="text-align: center">
+                                    {{ $name }}
+                                </h4>
+                            </a>
+                        </div>
+
                     </div>
                 </div>
-            </div>
-            {{--Content Info Block--}}
-            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link"
-                                             href="{{ backpack_url('text-info-block-content') }}">
-                            <h4 class="card-text">
-                                Содержание
-                            </h4>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            {{--Lists Info Block--}}
-            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('text-info-block-list') }}">
-                            <h4 class="card-text">
-                                Списки
-                            </h4>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
         {{--Map Info Block--}}
         <div>
-            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('map-info-block/1/edit?_locale=en') }}">
-                            <h4 class="card-text" style="text-align: center">
-                                Блок с картой
-                            </h4>
-                        </a>
+            @foreach($namesBlockMap as $name => $url)
+                <div class="card bg-light mb-3" style="width: 13rem; height: 10rem">
+                    <div class="card-body" style="display: flex; align-items: center; justify-content: center">
+                        <div class="nav-item"><a class="nav-link" href="{{ backpack_url($url) }}">
+                                <h4 class="card-text" style="text-align: center">
+                                    {{ $name }}
+                                </h4>
+                            </a>
+                        </div>
+
                     </div>
                 </div>
-            </div>
-
-
-            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link"
-                                             href="{{ backpack_url('map-info-block-content') }}">
-                            <h4 class="card-text">
-                                Содержание
-                            </h4>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link"
-                                             href="{{ backpack_url('map-info-block-button-text/1/edit?_locale=en') }}">
-                            <h4 class="card-text" style="text-align: center">
-                                Кнопка (текст)
-                            </h4>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            {{--Map point--}}
-
-            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link"
-                                             href="{{ backpack_url('map-point') }}">
-                            <h4 class="card-text" style="text-align: center">
-                                Точки на карте
-                            </h4>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            {{--Map point coordination--}}
-
-            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link"
-                                             href="{{ backpack_url('map-point-coordination') }}">
-                            <h4 class="card-text" style="text-align: center">
-                                Координаты для точек на карте
-                            </h4>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
+            @endforeach
 
         </div>
         {{--List Info Block--}}
         <div>
-            {{--List Info Block--}}
-            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('list-info-block/1/edit?_locale=en') }}">
-                            <h4 class="card-text" style="text-align: center">
-                                Список преимуществ
-                            </h4>
-                        </a>
+            @foreach($namesBlockList as $name => $url)
+                <div class="card bg-light mb-3" style="width: 13rem; height: 10rem">
+                    <div class="card-body" style="display: flex; align-items: center; justify-content: center">
+                        <div class="nav-item"><a class="nav-link" href="{{ backpack_url($url) }}">
+                                <h4 class="card-text" style="text-align: center">
+                                    {{ $name }}
+                                </h4>
+                            </a>
+                        </div>
+
                     </div>
                 </div>
-            </div>
-            {{--List Info Block Element--}}
-            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link"
-                                             href="{{ backpack_url('list-info-block-element') }}">
-                            <h4 class="card-text" style="text-align: center">
-                                Элемент списка
-                            </h4>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            {{--List Info Block Element List--}}
-            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link"
-                                             href="{{ backpack_url('list-info-block-element-list') }}">
-                            <h4 class="card-text" style="text-align: center">
-                                Содержание элемента
-                            </h4>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
         {{--Сontact Form--}}
         <div>
-            {{--Footer--}}
-            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('contact-form/1/edit?_locale=en') }}">
-                            <h4 class="card-text" style="text-align: center">
-                                Форма обратной связи
-                            </h4>
-                        </a>
+            @foreach($namesBlockContactForm as $name => $url)
+                <div class="card bg-light mb-3" style="width: 13rem; height: 10rem">
+                    <div class="card-body" style="display: flex; align-items: center; justify-content: center">
+                        <div class="nav-item"><a class="nav-link" href="{{ backpack_url($url) }}">
+                                <h4 class="card-text" style="text-align: center">
+                                    {{ $name }}
+                                </h4>
+                            </a>
+                        </div>
+
                     </div>
                 </div>
-            </div>
-            {{--Footer Text Content--}}
-            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('contact-form-text-content') }}">
-                            <h4 class="card-text">
-                                Содержание
-                            </h4>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            {{--Footer Fields--}}
-            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('contact-form-field/1/edit?_locale=en') }}">
-                            <h4 class="card-text">
-                                Поля
-                            </h4>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            {{--Footer Button Text--}}
-            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('contact-form-button-text/1/edit?_locale=en') }}">
-                            <h4 class="card-text" style="text-align: center">
-                                Кнопка (текст)
-                            </h4>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
         {{--Communication methods--}}
         <div>
-            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('contact-block') }}">
-                            <h4 class="card-text" style="text-align: center">
-                                Блок обратной связи
-                            </h4>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            @foreach($namesBlockContact as $name => $url)
+                <div class="card bg-light mb-3" style="width: 13rem; height: 10rem">
+                    <div class="card-body" style="display: flex; align-items: center; justify-content: center">
+                        <div class="nav-item"><a class="nav-link" href="{{ backpack_url($url) }}">
+                                <h4 class="card-text" style="text-align: center">
+                                    {{ $name }}
+                                </h4>
+                            </a>
+                        </div>
 
-            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('contact-block-message') }}">
-                            <h4 class="card-text" style="text-align: center">
-                                Типы сообщения
-                            </h4>
-                        </a>
                     </div>
                 </div>
-            </div>
-
-            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('contact-block-communication-methods') }}">
-                            <h4 class="card-text" style="text-align: center">
-                                Другие способы связи
-                            </h4>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('contact-block-titles') }}">
-                            <h4 class="card-text" style="text-align: center">
-                                Заголовки
-                            </h4>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('сontact-block-tel-communication') }}">
-                            <h4 class="card-text" style="text-align: center">
-                                Телефон
-                            </h4>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
-
+        {{--Footer--}}
         <div>
-            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('footer/1/edit?_locale=en') }}">
-                            <h4 class="card-text" style="text-align: center">
-                                Футер
-                            </h4>
-                        </a>
+            @foreach($namesBlockFooter as $name => $url)
+                <div class="card bg-light mb-3" style="width: 13rem; height: 10rem">
+                    <div class="card-body" style="display: flex; align-items: center; justify-content: center">
+                        <div class="nav-item"><a class="nav-link" href="{{ backpack_url($url) }}">
+                                <h4 class="card-text" style="text-align: center">
+                                    {{ $name }}
+                                </h4>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('footer-store-links/1/edit?_locale=en') }}">
-                            <h4 class="card-text" style="text-align: center">
-                                Ссылки на маркетплайс
-                            </h4>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
+            @endforeach
         </div>
-
     </div>
 @endsection
 

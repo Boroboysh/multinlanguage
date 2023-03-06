@@ -4,7 +4,9 @@ namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Http\Request;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -20,6 +22,7 @@ class FeedbackMailer extends Mailable
     public function __construct(stdClass $data)
     {
         $this->data = $data;
+//        $this->data = $request;
     }
 
     /**
@@ -28,7 +31,8 @@ class FeedbackMailer extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'FeedbackMailer',
+            from: new Address('klim.muzhik@yandex.ru', $this->data->name),
+            subject: 'Feedback Nethammer PEC',
         );
     }
 
@@ -38,7 +42,13 @@ class FeedbackMailer extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'email_send',
+            with: [
+                'name' => $this->data->name,
+                'city'=> $this->data->city,
+                'tel_number'=> $this->data->tel_number,
+                'text' => $this->data->message
+            ]
         );
     }
 
@@ -59,7 +69,7 @@ class FeedbackMailer extends Mailable
      */
     public function build()
     {
-        return $this->from('example@example.com', 'Example')
+            return $this->from('klim.muzhik@yandex.ru', 'Example')
             ->view('emails.feedback');
     }
 }
