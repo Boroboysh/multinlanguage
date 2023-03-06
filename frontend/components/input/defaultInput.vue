@@ -1,13 +1,16 @@
 <template>
-  <div :class="{ 'default_input__active': valueInput != '', 'default_input_disabled': disabled }" class="default_input_block">
+  <div :class="{ 'default_input__active': valueInput != '', 'default_input_disabled': disabled }"
+    class="default_input_block">
     <span v-if="title" class="default_input_title">
       {{ placeholder }}
     </span>
     <div class="default_input_container">
     </div>
-    <input :placeholder="!title ? placeholder : ''" :disabled="disabled" @input="$emit('input', $event.target.data)"
-      v-model="valueInput" class="default_input" type="text">
-    <slot name="container-right" />
+    <input @focus="$emit('focus')" @blur="$emit('blur')" :readonly="readonly" :placeholder="!title ? placeholder : null" :disabled="disabled"
+      @input="$emit('update:modelValue', $event.target.value)" v-model="valueInput" class="default_input" type="text">
+    <div class="container_right_slot">
+      <slot name="container-right" />
+    </div>
     <div v-if="valueInput && clearButton" @click="updateValue('')" class="default_input_clear_button_block">
       <img class="default_input_clear" src="@/assets/images/icons/Arrow_done.svg" alt="">
     </div>
@@ -21,6 +24,10 @@ defineProps({
   disabled: {
     type: Boolean
   },
+  modelValue: {
+    type: String,
+    required: true
+  },
   placeholder: {
     type: String
   },
@@ -30,6 +37,9 @@ defineProps({
   },
   clearButton: {
     type: Boolean
+  },
+  readonly: {
+    type: Boolean
   }
 })
 
@@ -38,6 +48,9 @@ const valueInput = ref('');
 const updateValue = (value) => {
   valueInput = value
 }
+
+
+const emit = defineEmits(['update:modelValue'])
 
 </script>
 
@@ -98,6 +111,10 @@ const updateValue = (value) => {
   padding-left: 8px;
 }
 
+.container_right_slot {
+  padding-right: 10px;
+}
+
 .default_input__active {
   background: #FFFFFF;
   border: 1px solid #E4E6E7;
@@ -128,5 +145,9 @@ const updateValue = (value) => {
   cursor: pointer;
   align-items: center;
   justify-content: center;
+}
+
+.default_input_clear_button_block {
+  padding: 0 10px;
 }
 </style>
