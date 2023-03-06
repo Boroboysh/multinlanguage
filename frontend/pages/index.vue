@@ -657,6 +657,7 @@ import getContentInfo from "@/api/contentInfo/getContentInfo";
 //   'mountains',
 //   () => $fetch('https://api.nuxtjs.dev/mountains')
 // )
+
 const data = `{
     "header": {
         "logo": "images/f1f3047ee55929ea5096371b0e94d2c3.png",
