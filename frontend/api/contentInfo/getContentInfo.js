@@ -1,11 +1,13 @@
-import httpCommon from '@/api/httpCommon/httpCommon'
+import httpCommon from "@/api/httpCommon/httpCommon";
 
-const getContentInfo = (lang) => {
-    httpCommon.get('/page-data', {
+const getContentInfo = async (lang) => {
+    const result = await httpCommon.get("/api/page-data", {
         headers: {
-            locale: lang
-        }
-    })
-}
+            locale: lang,
+        },
+    });
+    console.log(result.data)
+    return result.data;
+};
 
-export default getContentInfo
+export default getContentInfo;

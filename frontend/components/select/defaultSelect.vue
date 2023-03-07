@@ -26,7 +26,7 @@
 
 <script setup>
 import defaultInput from "../input/defaultInput.vue";
-import { ref, provide } from "vue";
+import { ref, provide, onMounted } from "vue";
 
 defineProps({
   placeholder: {
@@ -45,6 +45,9 @@ const updateValue = (value) => {
   console.log(value)
   selectValue.value = value
 }
+
+onMounted(() => {
+})
 
 const closeOptionBlock = () => {
 

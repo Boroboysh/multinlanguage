@@ -96,19 +96,31 @@
                 <div
                   class="choosing_region_content_city_block_popular_keyboard_block"
                 >
-                  <default-keyboard-layout checkAction="default" class="d-flex">
+                <!-- <div v-for="(item, index) in test" :key="index" class="choosing_region_content_city_block_popular_keyboard_button_block d-flex">
+                  <div class="choosing_region_content_city_block_popular_keyboard_button">
+                      {{ index }}
+                  </div>
+                </div> -->
+                  <!-- todo refactor !!! -->
+                  <default-keyboard-layout
+                    checkAction="default" class="d-flex">
+                    <div class="choosing_region_content_city_block_popular_keyboard_button_block">
+
+                    </div>
                     <default-keyboard-option
                       v-for="(item, index) in test"
                       :key="index"
                       :value="item"
                     >
-                      {{ item.name }}
+                      <div
+                        class="choosing_region_content_city_block_popular_keyboard_button"
+                      >
+                        {{ item.name }}
+                      </div>
                     </default-keyboard-option>
                   </default-keyboard-layout>
                 </div>
-                <div class="choosing_region_content_city_all_list_block">
-
-                </div>
+                <div class="choosing_region_content_city_all_list_block"></div>
               </div>
             </div>
           </div>
@@ -130,11 +142,11 @@ const test = ref([
     name: "a",
   },
   {
-    id: 1,
+    id: 2,
     name: "a",
   },
   {
-    id: 1,
+    id: 3,
     name: "a",
   },
 ]);
@@ -224,5 +236,12 @@ const test = ref([
 }
 .choosing_region_content_city_block_popular_keyboard_block {
   margin-top: 30px;
+}
+.choosing_region_content_city_block_popular_keyboard_button {
+  padding: 4px 8px;
+  margin-right: 4px;
+  background: #e4e6e7;
+  border-radius: 3px;
+  cursor: pointer;
 }
 </style>

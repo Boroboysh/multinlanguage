@@ -1,7 +1,7 @@
 <template>
   <div class="home-view">
     <div class="header_content_block w-100">
-      <default-header class="container-xl" />
+      <default-header :menu="contentPage.header" class="container-xl" />
     </div>
     <div class="header_content_info_content">
       <div class="header_content_info container-xl">
@@ -9,12 +9,12 @@
           <div
             class="col header_content_info_col d-flex justify-content-center header_content_info_preview p-0"
           >
-            <img src="@/assets/images/preview_header.png" alt="" />
+            <img :src="env.host + contentPage.body?.subheader.image" alt="" />
           </div>
           <div class="col header_content_info_col header_content_info_forms">
-            <h2 class="header_content_info_forms_title">Отследить</h2>
+            <h2 class="header_content_info_forms_title">{{ contentPage.body?.subheader.titles[0].content }}</h2>
             <default-input
-              placeholder="Поиск по коду груза"
+              :placeholder="contentPage.body?.subheader.fields[0].content"
               class="header_content_info_forms"
             >
               <template #container-right>
@@ -25,14 +25,14 @@
               class="header_content_info_calculate_block w-100 d-block align-items-start flex-column"
             >
               <h2 class="header_content_info_forms_title">
-                Рассчитать и отправить груз
+                {{ contentPage.body?.subheader.titles[1].content }}
               </h2>
               <div
                 class="header_content_info_calculate_forms_block w-100 justify-content-between"
               >
                 <default-input
                   class="header_content_info_calculate_form_input_size"
-                  placeholder="Откуда"
+                  :placeholder="contentPage.body?.subheader.fields[1].content"
                   :title="true"
                 />
                 <img
@@ -42,7 +42,7 @@
                 />
                 <default-input
                   class="header_content_info_calculate_form_input_size"
-                  placeholder="Куда"
+                  :placeholder="contentPage.body?.subheader.fields[2].content"
                   :title="true"
                 />
               </div>
@@ -61,7 +61,7 @@
                   alt=""
                 />
                 <span class="header_content_info_calculate_result_text">
-                  От 2994 тенге, примерный срок 1—3 дня
+                 {{ contentPage.body?.subheader.content.text }}
                 </span>
               </div>
             </div>
@@ -190,6 +190,7 @@
         </div>
       </div>
     </div>
+    {{ data }}
     <div class="map_block">
       <div class="map_block_content">
         <div class="map_block_title_block w-100 d-flex">
@@ -626,8 +627,9 @@
       </default-option>
     </default-select>
     <search-select> </search-select>
-    <choosing-region />
+    <choosing-region v-if="false" />
     <default-footer />
+    {{ contentPage }}
   </div>
 </template>
 
@@ -644,271 +646,22 @@ import searchSelect from "~~/components/select/searchSelect.vue";
 import choosingRegion from "@/components/modalWindow/choosingRegion.vue";
 import defaultFooter from "@/components/footer/defaultFooter.vue";
 import getContentInfo from "@/api/contentInfo/getContentInfo";
-// import { useAsyncData } from "async"
-// import { useAsyncData } from "vueuse";
-// getContentInfo("ru");
-// useAsyncData("mountains", () => {
-//   console.log("wfawfawfawafwafwfa");
-// });
-// const contentPage = await useAsyncData('fwafawfwa', async () => {
-//   await getContentInfo('ru')
-// })
-// const test = await useAsyncData(
-//   'mountains',
-//   () => $fetch('https://api.nuxtjs.dev/mountains')
-// )
+import env from '@/api/env/env'
 
-const data = `{
-    "header": {
-        "logo": "images/f1f3047ee55929ea5096371b0e94d2c3.png",
-        "supportText": "Поддержка",
-        "tel_number": "+7(7172) 644-644",
-        "languages": [
-            {
-                "id": 1,
-                "name": "Русский",
-                "icon": "images/baa540f7e3603f8baec3d4c083f4adba.png",
-                "code": "ru"
-            },
-            {
-                "id": 2,
-                "name": "English",
-                "icon": "images/f8ab12c358137ddab39e5b458aa4a8b7.png",
-                "code": "en"
-            },
-            {
-                "id": 3,
-                "name": "Қазақ",
-                "icon": "images/fedb9aa4a0db8eaf8f8bb5a9c2df8381.png",
-                "code": "kk"
-            }
-        ]
-    },
-    "body": {
-        "subheader": {
-            "image": "images/f6d5321db64337172982b08130d95a99.png",
-            "titles": [
-                {
-                    "content": "Отследить"
-                },
-                {
-                    "content": "Рассчитать и отправить груз"
-                }
-            ],
-            "fields": [
-                {
-                    "content": "Поиск по коду груза"
-                },
-                {
-                    "content": "Откуда"
-                },
-                {
-                    "content": "Куда"
-                }
-            ],
-            "content": {
-                "text": "От 2994 тенге, примерный срок 1—3 дня"
-            },
-            "list": [
-                {
-                    "icon": "images/461772eb14941d92512beb48d3d0c583.png",
-                    "content": "Более 20 лет опыта грузовых перевозок"
-                },
-                {
-                    "icon": "images/d7b01e8c08922b5410dfb8f53cae85fe.png",
-                    "content": "Клиентов ежегодно доверяют нам доставку и хранение"
-                },
-                {
-                    "icon": "images/aec5fd432535f1dddfcec977546c66fa.png",
-                    "content": "Отделений в России и за рубежом"
-                }
-            ]
-        },
-        "textInfoBlock": {
-            "title": "Перевозки в Казахстан",
-            "subtitle": "Отделения ПЭК в Казахстане",
-            "content": [
-                {
-                    "text": "ПЭК: GLOBAL предлагает услуги авто- и авиаперевозок из России в Казахстан и в обратном направлении."
-                },
-                {
-                    "text": "Отправить груз в Казахстан можно из всех городов присутствия ПЭК в России, самостоятельно доставив их в отделение или сделав заказ адресного забора."
-                },
-                {
-                    "text": "В Казахстане адресный забор и доставка грузов действуют по всей стране!"
-                },
-                {
-                    "text": "Отделения ПЭК в Казахстане"
-                },
-                {
-                    "text": "Компания работает как с юридическими, так и с физическими лицам. По запросу мы готовы предоставить для юрлиц спецтехнику для погрузочно-разгрузочных работ, перевозку и возврат сопроводительных документов, предложить API-интеграцию."
-                }
-            ],
-            "list": [
-                {
-                    "content": "Астана, ул. Жанажол, д. 19. Тел.: + 7 (7172) 644-644"
-                },
-                {
-                    "content": "Алматы, ул. Казыбаева, 3/2. Тел.: + 7 (727) 346-77-77"
-                },
-                {
-                    "content": "Костанай, ул. Карбышева, д. 20А. Тел.: +7 (7142) 222-095"
-                }
-            ]
-        },
-        "mapInfoBlock": {
-            "title": "Куда компания ПЭК доставляет грузы?",
-            "content": [
-                {
-                    "text": "или позвонить по номеру"
-                },
-                {
-                    "text": "+ 7 (7172) 644-644"
-                }
-            ],
-            "buttons_text": {
-                "content": "Оставить заявку"
-            },
-            "points": [
-                {
-                    "id": 7,
-                    "name": "Астана",
-                    "coordination": {
-                        "x": 0.34,
-                        "y": 0.52
-                    }
-                },
-                {
-                    "id": 8,
-                    "name": "Алматы",
-                    "coordination": {
-                        "x": 0.42,
-                        "y": 0.52
-                    }
-                },
-                {
-                    "id": 9,
-                    "name": "Костанай",
-                    "coordination": {
-                        "x": 0.35,
-                        "y": 0.42
-                    }
-                }
-            ]
-        },
-        "listInfoBlock": {
-            "title": "Преимущества работы с компанией ПЭК",
-            "element": [
-                {
-                    "icon": "images/37230ec5236f9b335faab4fcb348bde2.png",
-                    "title": "Надежность",
-                    "list": [
-                        {
-                            "content": "Более 20 лет работы на рынке;"
-                        },
-                        {
-                            "content": "Страхование груза;"
-                        },
-                        {
-                            "content": "Дополнительная упаковка;"
-                        },
-                        {
-                            "content": "Личный кабинет с фотоотчетом приема груза;"
-                        },
-                        {
-                            "content": "Услуги ответственного хранения."
-                        }
-                    ]
-                },
-                {
-                    "icon": "images/de1c4aee75152e88ec164e9d75c7615c.png",
-                    "title": "Выгода",
-                    "list": [
-                        {
-                            "content": "Гибкие тарифы;"
-                        },
-                        {
-                            "content": "Возможность отсрочки платежа."
-                        }
-                    ]
-                },
-                {
-                    "icon": "images/549575b0df9dfc438aae7778be49f638.png",
-                    "title": "Сервис",
-                    "list": [
-                        {
-                            "content": "Калькулятор расчета стоимости на сайте;"
-                        },
-                        {
-                            "content": "Предварительное оформление заказа на сайте;"
-                        },
-                        {
-                            "content": "Забор и доставка дверь-дверь;"
-                        },
-                        {
-                            "content": "Онлайн-отслеживание грузов."
-                        }
-                    ]
-                },
-                {
-                    "icon": "images/903d2b12c2b09d5022734ad5a6a154c0.png",
-                    "title": "Комфорт",
-                    "list": [
-                        {
-                            "content": "Управление выдачей;"
-                        },
-                        {
-                            "content": "Возможность замены грузополучателя или грузоотправителя;"
-                        },
-                        {
-                            "content": "Забор и доставка день в день, в выходные и праздники;"
-                        },
-                        {
-                            "content": "Персональный менеджер."
-                        }
-                    ]
-                }
-            ]
-        },
-        "contactForm": {
-            "title": "Ещё остались вопросы?",
-            "subtitle": "Оставьте заявку, мы с радостью с Вами свяжемся и на них ответим!",
-            "fields": {
-                "city": "Город",
-                "name": "Ваше имя",
-                "tel_number": "Номер телефона",
-                "message_placeholder": "Сообщение"
-            },
-            "buttonText": {
-                "content": "Отправить заявку"
-            },
-            "textContent": [
-                {
-                    "key": "text",
-                    "content": "Отправляя свои данные через форму, вы соглашаетесь с условиями обработки"
-                },
-                {
-                    "key": "link",
-                    "content": "персональных данных."
-                }
-            ]
-        }
-    },
-    "footer": {
-        "icon": "images/307ae9112e6f082a3508e7609ad5024c.png",
-        "personal_data": "О защите персональных данных",
-        "copyright": "© ООО «ПЭК»",
-        "store_link_title": "Управляй доставкой в приложении",
-        "store_links": [
-            {
-                "icon": "images/86783d740ffb3ff3c70417383bef1832.png",
-                "link": "https://play.google.com/store/games?hl=ru&gl=US"
-            }
-        ]
-    }
-}`
-const currentData = JSON.parse(data)
-console.log(currentData)
+let contentPage = reactive();
+
+contentPage = await useAsyncData('fwfdawfafaf', async () => {
+  return await getContentInfo('ru')
+  // return response.data._value.data
+})
+
+
+const { data } = await useFetch(env.host + 'api/page-data', {
+  headers: {
+    locale: 'ru'
+  }
+})
+console.log('wfawfawfawafwfa', contentPage.data)
 </script>
 
 

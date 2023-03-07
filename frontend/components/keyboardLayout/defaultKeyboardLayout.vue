@@ -10,19 +10,27 @@
 import { ref, provide } from 'vue'
 
 const props = defineProps({
-  typeAction: {
+  checkAction: {
     type: String,
     requered: true
   }
 })
-const result = ref(null)
-
-const choiceActions = (action, value) => {
-  switch (action) {
+let result = ref(null)
+const resultEmit = defineEmits(['result'])
+const selectionsAction = (value) => {
+  switch (props.checkAction) {
     case 'default':
       result = value
+      console.log(value)
   }
+  // defineEmits('result', result)
+  resultEmit('result', result)
+  // this.$emit('result', result)
 }
+
+provide('defaultKeyboardLayout', {
+  'selectionsAction': selectionsAction
+})
 
 </script>
 
