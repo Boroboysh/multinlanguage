@@ -28,7 +28,7 @@ class FooterStoreLinksCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\FooterStoreLinks::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/footer-store-links');
-        CRUD::setEntityNameStrings('footer store links', 'footer store links');
+        CRUD::setEntityNameStrings('', 'Ссылки на маркетплейс');
     }
 
     /**
@@ -39,8 +39,14 @@ class FooterStoreLinksCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('icon');
-        CRUD::column('link');
+        CRUD::addColumn([
+            'name' => 'icon',
+            'label' => 'Иконка'
+        ]);
+        CRUD::addColumn([
+            'name' => 'link',
+            'label' => 'Ссылка на маркетплейс'
+        ]);
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -59,13 +65,13 @@ class FooterStoreLinksCrudController extends CrudController
     {
         CRUD::addField([
             'name'      => 'icon',
-            'label'     => 'Icon',
+            'label'     => 'Иконка',
             'type'      => 'upload',
             'upload'    => true,
         ]);
         CRUD::addField([
             'name' => 'link',
-            'label' => 'Link',
+            'label' => 'Ссылка на маркетплейс',
             'type' => 'url'
         ]);
 

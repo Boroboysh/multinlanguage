@@ -28,7 +28,7 @@ class MapInfoBlockButtonTextCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\MapInfoBlockButtonText::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/map-info-block-button-text');
-        CRUD::setEntityNameStrings('map info block button text', 'map info block button texts');
+        CRUD::setEntityNameStrings('', 'Кнопка (текст)');
     }
 
     /**

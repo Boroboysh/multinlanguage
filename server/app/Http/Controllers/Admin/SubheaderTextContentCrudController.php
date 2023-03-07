@@ -28,7 +28,7 @@ class SubheaderTextContentCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\SubheaderTextContent::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/subheader-text-content');
-        CRUD::setEntityNameStrings('subheader text content', 'subheader text contents');
+        CRUD::setEntityNameStrings('', 'Содержание');
     }
 
     /**

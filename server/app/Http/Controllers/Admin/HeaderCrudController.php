@@ -28,7 +28,7 @@ class HeaderCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\Header::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/header');
-        CRUD::setEntityNameStrings('header', 'header');
+        CRUD::setEntityNameStrings('', 'Шапка');
 
     }
 
@@ -70,7 +70,7 @@ class HeaderCrudController extends CrudController
     {
         CRUD::addField([
             'name'      => 'logo',
-            'label'     => 'Logo',
+            'label'     => 'Логотип',
             'type'      => 'upload',
             'upload'    => true,
             //'disk'      => 'public', // if you store files in the /public folder, please omit this; if you store them in /storage or S3, please specify it;
@@ -79,12 +79,12 @@ class HeaderCrudController extends CrudController
         ]);
         CRUD::addField([
             'name'      => 'supportText',
-            'label'     => 'Support Text',
+            'label'     => 'Текст поддержка',
             'type'      => 'text',
         ]);
         CRUD::addField([
             'name'      => 'tel_number',
-            'label'     => 'Telephone Number',
+            'label'     => 'Телефон',
             'type'      => 'text',
         ]);
 

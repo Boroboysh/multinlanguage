@@ -28,7 +28,7 @@ class ContactBlockCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\ContactBlock::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/contact-block');
-        CRUD::setEntityNameStrings('contact block', 'contact blocks');
+        CRUD::setEntityNameStrings('', 'блок обратной связи');
     }
 
     /**

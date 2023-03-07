@@ -28,7 +28,7 @@ class MapInfoBlockContentCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\MapInfoBlockContent::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/map-info-block-content');
-        CRUD::setEntityNameStrings('map info block content', 'map info block contents');
+        CRUD::setEntityNameStrings('', 'Содержание');
     }
 
     /**

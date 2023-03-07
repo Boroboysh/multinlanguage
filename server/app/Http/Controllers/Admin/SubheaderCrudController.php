@@ -28,7 +28,7 @@ class SubheaderCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\Subheader::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/subheader');
-        CRUD::setEntityNameStrings('subheader', 'subheaders');
+        CRUD::setEntityNameStrings('', 'Сабхедер');
     }
 
     /**

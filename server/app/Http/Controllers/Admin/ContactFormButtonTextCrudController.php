@@ -28,7 +28,7 @@ class ContactFormButtonTextCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\ContactFormButtonText::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/contact-form-button-text');
-        CRUD::setEntityNameStrings('ContactForm button text', 'ContactForm button texts');
+        CRUD::setEntityNameStrings('', 'Кнопка (текст)');
     }
 
     /**

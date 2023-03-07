@@ -28,7 +28,7 @@ class ContactFormTextContentCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\ContactFormTextContent::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/contact-form-text-content');
-        CRUD::setEntityNameStrings('ContactForm text content', 'ContactForm text contents');
+        CRUD::setEntityNameStrings('', 'Содержание');
     }
 
     /**
@@ -47,7 +47,10 @@ class ContactFormTextContentCrudController extends CrudController
             'name' => 'contactForm_id',
             'label' => 'ContactForm ID'
         ]);
-        CRUD::column('key');
+        CRUD::addColumn([
+            'name' => 'key',
+            'label' => 'Тип'
+        ]);
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -77,7 +80,7 @@ class ContactFormTextContentCrudController extends CrudController
         ]);
         CRUD::addField([
             'name' => 'key',
-            'label' => 'Key',
+            'label' => 'Тип',
             'type'        => 'select_from_array',
             'options'     => ['text' => 'text', 'link' => 'link'],
             'allows_null' => false,

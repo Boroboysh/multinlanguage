@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\RussianTablesRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Support\Facades\App;
 
 /**
  * Class RussianTablesCrudController
@@ -26,6 +27,9 @@ class RussianTablesCrudController extends CrudController
      */
     public function setup()
     {
+        session(['table_locale' => 'ru']);
+
+
         CRUD::setModel(\App\Models\RussianTables::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/russian-tables');
         CRUD::setEntityNameStrings('russian tables', 'russian tables');

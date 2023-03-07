@@ -28,7 +28,7 @@ class ContactBlockTitlesCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\ContactBlockTitles::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/contact-block-titles');
-        CRUD::setEntityNameStrings('contact block titles', 'contact block titles');
+        CRUD::setEntityNameStrings('', 'заголовки');
     }
 
     /**

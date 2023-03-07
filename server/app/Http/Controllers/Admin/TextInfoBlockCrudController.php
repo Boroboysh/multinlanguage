@@ -28,7 +28,7 @@ class TextInfoBlockCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\TextInfoBlock::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/text-info-block');
-        CRUD::setEntityNameStrings('text info block', 'text info blocks');
+        CRUD::setEntityNameStrings('', 'Блок с информацией');
     }
 
     /**

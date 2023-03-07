@@ -79,10 +79,10 @@
         'Message Types' => 'contact-block-message',
         'Other communication methods' => 'contact-block-communication-methods',
         'Headings' => 'contact-block-titles',
-        'Telephone' => 'сontact-block-tel-communication'
+
          ];
     $namesBlockFooter = [
-        'Footer' => 'footer',
+        'Footer' => 'footer/1/edit_locale=en',
         'Links to the marketplace' => 'footer-store-links'
      ];
 
@@ -91,7 +91,7 @@
 @section('content')
     {{-- Default box --}}
     <div
-        style="display:flex; gap: 2em; justify-content: space-between; padding: 0em 4em 0em 3em; max-width: 100%; overflow-x: auto ">
+        style="display:flex; gap: 2em; justify-content: space-between; padding: 2em 4em 0em 3em; max-width: 100%; overflow-x: auto; border: 1px solid #7c69ef; border-radius: 10px ">
         {{--Header--}}
         <div>
             @foreach($namesHeader as $name => $url)

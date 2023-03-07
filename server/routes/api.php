@@ -23,15 +23,24 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::get('/page-data', [JsonController::class, 'getData']);
 
-Route::get('/cities', function () {
-    return CityResource::collection(City::select('*')->get());
+Route::get('/country/{country}/city/{cityName}', function ($country, $cityName, Request $request) {
+    $acceptedLanguages = ['ru', 'en', 'kk'];
+    $languageCode = $request->header('locale');
+
+    if ($languageCode && in_array($languageCode, $acceptedLanguages)) {
+        App::setLocale($languageCode);
+
+        //where('country_id', $country)->
+
+        $test = utf8_encode($cityName);
+
+        return CityResource::collection(City::where('name', 'LIKE', "%$test%")->get());
+
+    }
+    return response('Invalid language code', 404);
+
 });
 
 Route::get('/countries/cities', [CountryController::class, 'getCountriesCities']);

@@ -77,10 +77,10 @@
         'Хабарлама түрлері' => 'contact-block-message',
         'Байланыстың басқа жолдары' => 'contact-block-communication-methods',
         'Атаулар' => 'contact-block-titles',
-        'Телефон' => 'сontact-block-tel-communication'
+
          ];
     $namesBlockFooter = [
-        'Төменгі деректеме' => 'footer',
+        'Төменгі деректеме' => 'footer/1/edit_locale=kk',
         'Базарға сілтемелер' => 'footer-store-links'
      ];
 
@@ -89,7 +89,7 @@
 @section('content')
     {{-- Default box --}}
     <div
-        style="display:flex; gap: 2em; justify-content: space-between; padding: 0em 4em 0em 3em; max-width: 100%; overflow-x: auto ">
+        style="display:flex; gap: 2em; justify-content: space-between; padding: 2em 4em 0em 3em; max-width: 100%; overflow-x: auto; border: 1px solid #7c69ef; border-radius: 10px ">
         {{--Header--}}
         <div>
             @foreach($namesHeader as $name => $url)

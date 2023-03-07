@@ -28,7 +28,7 @@ class SubheaderListCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\SubheaderList::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/subheader-list');
-        CRUD::setEntityNameStrings('subheader list', 'subheader lists');
+        CRUD::setEntityNameStrings('', 'Список');
     }
 
     /**

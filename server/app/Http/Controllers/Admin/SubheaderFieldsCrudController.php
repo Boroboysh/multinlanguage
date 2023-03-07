@@ -28,7 +28,7 @@ class SubheaderFieldsCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\SubheaderFields::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/subheader-fields');
-        CRUD::setEntityNameStrings('subheader fields', 'subheader fields');
+        CRUD::setEntityNameStrings('', 'Поля');
     }
 
     /**

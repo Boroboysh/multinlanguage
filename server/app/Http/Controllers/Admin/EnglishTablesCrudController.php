@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\EnglishTablesRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Support\Facades\App;
 
 /**
  * Class EnglishTablesCrudController
@@ -26,6 +27,8 @@ class EnglishTablesCrudController extends CrudController
      */
     public function setup()
     {
+        session(['table_locale' => 'en']);
+
         CRUD::setModel(\App\Models\EnglishTables::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/english-tables');
         CRUD::setEntityNameStrings('english tables', 'english tables');

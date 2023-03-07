@@ -28,7 +28,7 @@ class TextInfoBlockListCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\TextInfoBlockList::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/text-info-block-list');
-        CRUD::setEntityNameStrings('text info block list', 'text info block lists');
+        CRUD::setEntityNameStrings('text info block list', 'Списки');
     }
 
     /**

@@ -28,7 +28,7 @@ class ListInfoBlockCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\ListInfoBlock::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/list-info-block');
-        CRUD::setEntityNameStrings('list info block', 'list info blocks');
+        CRUD::setEntityNameStrings('', 'Список преимуществ');
     }
 
     /**

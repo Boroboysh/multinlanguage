@@ -28,7 +28,7 @@ class CityCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\City::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/city');
-        CRUD::setEntityNameStrings('city', 'cities');
+        CRUD::setEntityNameStrings('', 'города');
     }
 
     /**
@@ -41,6 +41,7 @@ class CityCrudController extends CrudController
     {
         CRUD::column('name');
         CRUD::column('rating');
+        CRUD::column('tel_number');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -57,7 +58,14 @@ class CityCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::field('name');
+        CRUD::addField([
+            'name' => 'name',
+            'label' => 'Название'
+        ]);
+        CRUD::addField([
+            'name' => 'tel_number',
+            'label' => 'Номер телефона'
+        ]);
         CRUD::field('rating');
         CRUD::addField([
             'name' => 'country_id',

@@ -28,7 +28,7 @@ class CountryCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\Country::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/country');
-        CRUD::setEntityNameStrings('country', 'countries');
+        CRUD::setEntityNameStrings('', 'Страны');
     }
 
     /**
@@ -40,7 +40,10 @@ class CountryCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::column('id');
-        CRUD::column('name');
+        CRUD::addColumn([
+           'name' => 'name',
+           'label' => 'Название'
+        ]);
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -57,7 +60,10 @@ class CountryCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::field('name');
+        CRUD::addField([
+            'name' => 'name',
+            'label' => 'Название'
+        ]);
 
 
         /**

@@ -28,7 +28,7 @@ class HeaderLanguagesCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\HeaderLanguages::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/header-languages');
-        CRUD::setEntityNameStrings('header languages', 'header languages');
+        CRUD::setEntityNameStrings('', 'Языки (шапка)');
     }
 
     /**
@@ -39,9 +39,18 @@ class HeaderLanguagesCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('name');
-        CRUD::column('icon');
-        CRUD::column('language_code');
+        CRUD::addColumn([
+            'name' => 'name',
+            'label' => 'Название'
+        ]);
+        CRUD::addColumn([
+            'name' => 'icon',
+            'label' => 'Иконка'
+        ]);
+        CRUD::addColumn([
+            'name' => 'language_code',
+            'label' => 'Код языка'
+        ]);
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -58,7 +67,10 @@ class HeaderLanguagesCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::field('name');
+        CRUD::addField([
+            'name' => 'name',
+            'label' => 'Название'
+        ]);
         CRUD::addField([
             'name' => 'language_code',
             'label' => 'Код языка'

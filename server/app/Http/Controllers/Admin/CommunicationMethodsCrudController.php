@@ -28,7 +28,7 @@ class CommunicationMethodsCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\CommunicationMethods::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/communication-methods');
-        CRUD::setEntityNameStrings('communication method', 'communication methods');
+        CRUD::setEntityNameStrings('', 'communication methods');
     }
 
     /**
@@ -39,9 +39,18 @@ class CommunicationMethodsCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('name');
-        CRUD::column('icon');
-        CRUD::column('link');
+        CRUD::addColumn([
+            'name' => 'name',
+            'label' => 'Название'
+        ]);
+        CRUD::addColumn([
+            'name' => 'icon',
+            'label' => 'Иконка'
+        ]);
+        CRUD::addColumn([
+            'name' => 'link',
+            'label' => 'Ссылка'
+        ]);
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
@@ -57,7 +66,10 @@ class CommunicationMethodsCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::field('name');
+        CRUD::addField([
+            'name' => 'name',
+            'label' => 'Название',
+        ]);
         CRUD::addField([
             'name' => 'icon',
             'label'     => 'Иконка',

@@ -28,7 +28,7 @@ class MapPointCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\MapPoint::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/map-point');
-        CRUD::setEntityNameStrings('map point', 'map points');
+        CRUD::setEntityNameStrings('', 'Точки на карте');
     }
 
     /**
@@ -39,7 +39,10 @@ class MapPointCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('name');
+        CRUD::addColumn([
+            'name' => 'name',
+            'label' => 'Название'
+        ]);
         CRUD::column('mapInfoBlock_id');
 
         /**
@@ -57,7 +60,10 @@ class MapPointCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::field('name');
+        CRUD::addField([
+            'name' => 'name',
+            'label' => 'Название'
+        ]);
         CRUD::addField([
             'name' => 'mapInfoBlock_id',
             'label' => 'MapInfoBlock ID',

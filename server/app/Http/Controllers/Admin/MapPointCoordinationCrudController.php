@@ -28,7 +28,7 @@ class MapPointCoordinationCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\MapPointCoordination::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/map-point-coordination');
-        CRUD::setEntityNameStrings('map point coordination', 'map point coordinations');
+        CRUD::setEntityNameStrings('', 'Координаты для точек на карте');
     }
 
     /**

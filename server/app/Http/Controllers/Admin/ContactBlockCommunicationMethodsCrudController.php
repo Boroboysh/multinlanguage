@@ -28,7 +28,7 @@ class ContactBlockCommunicationMethodsCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\ContactBlockCommunicationMethods::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/contact-block-communication-methods');
-        CRUD::setEntityNameStrings('contact block communication methods', 'contact block communication methods');
+        CRUD::setEntityNameStrings('', 'Другие способы связи');
     }
 
     /**

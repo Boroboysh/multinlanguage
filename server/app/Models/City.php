@@ -15,7 +15,7 @@ class City extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['name', 'rating', 'country_id'];
+    protected $fillable = ['name', 'rating', 'country_id', 'tel_number'];
     protected $translatable = ['name'];
 
     public function country () {

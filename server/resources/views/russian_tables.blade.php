@@ -36,7 +36,7 @@
 
 @section('content')
     {{-- Default box --}}
-    <div style="display:flex; gap: 2em; justify-content: space-between; padding: 0em 4em 0em 3em; max-width: 100%; overflow-x: auto ">
+    <div style="display:flex; gap: 2em; justify-content: space-between; padding: 2em 4em 0em 3em; max-width: 100%; overflow-x: auto; border: 1px solid #7c69ef; border-radius: 10px">
         {{--Header--}}
         <div>
             <div class="card bg-light mb-3" style="width: 13rem; height: 10rem">
@@ -384,22 +384,12 @@
                 </div>
             </div>
 
-            <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('сontact-block-tel-communication') }}">
-                            <h4 class="card-text" style="text-align: center">
-                                Телефон
-                            </h4>
-                        </a>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <div>
             <div class="card bg-light mb-3" style="width: 13rem; height: 10em;">
                 <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('footer') }}">
+                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url('footer/1/edit') }}">
                             <h4 class="card-text" style="text-align: center">
                                Футер
                             </h4>

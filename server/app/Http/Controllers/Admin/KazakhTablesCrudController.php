@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\KazakhTablesRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Support\Facades\App;
 
 /**
  * Class KazakhTablesCrudController
@@ -26,6 +27,8 @@ class KazakhTablesCrudController extends CrudController
      */
     public function setup()
     {
+        session(['table_locale' => 'kk']);
+
         CRUD::setModel(\App\Models\KazakhTables::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/kazakh-tables');
         CRUD::setEntityNameStrings('kazakh tables', 'kazakh tables');

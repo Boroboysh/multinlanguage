@@ -28,7 +28,7 @@ class ContactBlockMessageCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\ContactBlockMessage::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/contact-block-message');
-        CRUD::setEntityNameStrings('contact block message', 'contact block messages');
+        CRUD::setEntityNameStrings('', 'Типы сообщения');
     }
 
     /**

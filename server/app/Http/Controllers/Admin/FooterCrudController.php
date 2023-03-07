@@ -28,7 +28,7 @@ class FooterCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\Footer::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/footer');
-        CRUD::setEntityNameStrings('footer', 'footers');
+        CRUD::setEntityNameStrings('', 'Футер');
     }
 
     /**
@@ -39,10 +39,22 @@ class FooterCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('icon');
-        CRUD::column('copyright');
-        CRUD::column('store_link_title');
-        CRUD::column('personal_data');
+        CRUD::addColumn([
+            'name' => 'icon',
+            'label' => 'Иконка'
+        ]);
+        CRUD::addColumn([
+            'name' => 'copyright',
+            'label' => 'Авторское право'
+        ]);
+        CRUD::addColumn([
+            'name' => 'store_link_title',
+            'label' => 'Заголовок ссылок на маркетплайсы'
+        ]);
+        CRUD::addColumn([
+            'name' => 'personal_data',
+            'label' => 'Персональные данные'
+        ]);
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -68,9 +80,18 @@ class FooterCrudController extends CrudController
 //            // optional:
 //            'temporary' => 10
         ]);
-        CRUD::field('copyright');
-        CRUD::field('store_link_title');
-        CRUD::field('personal_data');
+        CRUD::addField([
+            'name' => 'copyright',
+            'label' => 'Авторское право'
+        ]);
+        CRUD::addField([
+            'name' => 'store_link_title',
+            'label' => 'Заголовок ссылок на маркетплайсы'
+        ]);
+        CRUD::addField([
+            'name' => 'personal_data',
+            'label' => 'Персональные данные'
+        ]);
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

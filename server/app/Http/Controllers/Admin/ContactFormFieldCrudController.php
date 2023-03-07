@@ -28,7 +28,7 @@ class ContactFormFieldCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\ContactFormField::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/contact-form-field');
-        CRUD::setEntityNameStrings('ContactForm field', 'ContactForm fields');
+        CRUD::setEntityNameStrings('', 'Поля');
     }
 
     /**
