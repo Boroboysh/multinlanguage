@@ -640,13 +640,13 @@ contentPage = await useAsyncData('page-data', async () => {
 })
 
 
-const { data } = await useFetch(env.host + 'api/page-data', {
+const { data } = await useFetch(env.host + 'api/page-data1', {
   headers: {
     locale: 'ru'
   }
 })
 if (!data.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
+  throw createError({ statusCode: 404, statusMessage: 'not found', message: 'Нет ответа от сервера' })
 }
 
 console.log('contentPage', data)
