@@ -1,5 +1,5 @@
 <template>
-  <div class="home-view">
+  <div v-if="contentPage.data._value" class="home-view">
     <div class="header_content_block w-100">
       <default-header :menu="data.header" class="container-xl" />
     </div>
@@ -222,7 +222,7 @@
           </div>
         </div>
       </div>
-      <default-map />
+      <default-map :item-list="contentPage.data._value.body.mapInfoBlock.points" />
       <div class="map_block_contact">
         <div class="map_contact_button_block">
           <default-button size="large" class="map_contact_button">
@@ -232,7 +232,7 @@
         <div class="map_contact_info">
           <span class="map_contact_info_title">{{ contentPage.data._value.body.mapInfoBlock.content[0].text }}</span>
           <div class="map_contact_telephone_block">
-            <!-- <span>{{ contentPage.data._value.header.tel_number }}</span> -->
+            <span>{{ contentPage.data._value.header.tel_number }}</span>
           </div>
         </div>
       </div>
@@ -525,11 +525,6 @@
         </div>
       </div>
     </div>
-    <!-- <div class="contact_test_row">
-      <div class="contact_test_col-2">1</div>
-      <div class="contact_test_col-4">2</div>
-      <div class="contact_test_col-4">3</div>
-    </div> -->
     <div class="contact_form_block">
       <div class="contact_form_question_mark_block container-xl">
         <div class="contact_form_question_mark">?</div>
@@ -616,10 +611,9 @@
         {{ item.name }}
       </default-option>
     </default-select>
-    <search-select> </search-select>
     <choosing-region v-if="false" />
     <default-footer />
-    {{ data }}
+    <!-- {{ data }} -->
   </div>
 </template>
 
@@ -640,19 +634,23 @@ import env from '@/api/env/env'
 
 let contentPage = reactive();
 
-contentPage = await useAsyncData('fwfdawfafaf', async () => {
+contentPage = await useAsyncData('page-data1', async () => {
   const response = await getContentInfo('ru')
   return response
 })
 
 
-const { data } = await useFetch(env.host + 'api/page-data', {
+const { data } = await useFetch(env.host + 'api/page-data1', {
   headers: {
     locale: 'ru'
   }
 })
+if (!data.value) {
+  throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
+}
 
-console.log('fwwfa  ', contentPage)
+console.log('contentPage', data)
+
 </script>
 
 
