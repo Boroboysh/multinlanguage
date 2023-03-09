@@ -19,6 +19,7 @@ class MapPointsResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'type' => $this->type,
             'coordination' => new MapPointCoordinationResource(MapPointCoordination::where('mapPoint_id', $this->id)->first())
         ];
     }

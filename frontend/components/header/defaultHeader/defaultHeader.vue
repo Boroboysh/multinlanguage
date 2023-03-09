@@ -1,49 +1,101 @@
 <template>
   <header class="w-100">
     <div class="header_content_block container-xl">
+      {{ menu }}
       <div class="header_menu_block d-flex w-100">
         <div class="header_logo_block">
-          <img class="header_logo_white" src="@/assets/images/logo-pec-eng.png" alt="">
-          <img class="header_logo_blue" src="@/assets/images/logo-pec-eng-blue.svg" alt="">
+          <img class="header_logo_white" :src="env.host + menu?.logo" alt="" />
+          <img
+            class="header_logo_blue"
+            src="@/assets/images/logo-pec-eng-blue.svg"
+            alt=""
+          />
         </div>
-        <div class="header_menu_block d-flex align-content-center justify-content-end bg-red-500">
+        <div
+          class="header_menu_block d-flex align-content-center justify-content-end bg-red-500"
+        >
           <div @click="updateStatusMenu(true)" class="header_menu_burger_block">
-            <img src="@/assets/images/default_menu_icons.svg" alt="">
+            <img src="@/assets/images/default_menu_icons.svg" alt="" />
           </div>
-          <div class="header_menu_group_block" :class="{'header_menu_group_active': menuStatus}">
+          <div
+            class="header_menu_group_block"
+            :class="{ header_menu_group_active: menuStatus }"
+          >
             <div class="header_menu_block_link">
               <a class="header_menu_link" href="#">
                 <div class="header_menu_icons_block">
-                  <img src="@/assets/images/default_arrow_icon.png" alt="" class="header_menu_icons">
+                  <img
+                    src="@/assets/images/default_arrow_icon.png"
+                    alt=""
+                    class="header_menu_icons"
+                  />
                 </div>
                 Астана
                 <div class="header_menu_icons_block">
-                  <img src="@/assets/images/arrow_done.svg" alt="" class="header_menu_icons header_menu_icons_arrow_done">
+                  <img
+                    src="@/assets/images/arrow_done.svg"
+                    alt=""
+                    class="header_menu_icons header_menu_icons_arrow_done"
+                  />
                 </div>
               </a>
             </div>
             <div class="header_menu_block_link">
-              <a class="header_menu_link" href="#">
-                <div class="header_menu_icons_block">
-                  <img src="@/assets/images/flag.png" alt="" class="header_menu_icons header_menu_icons_flug">
+              <div class="header_menu_link">
+                <div
+                  @click="updateStatusActive(!isActive)"
+                  class="default_drowndown_block position-relative"
+                >
+                  <div class="default_drowndown_title_block">
+                    <div class="default_drowndown_title d-flex">
+                      <div class="header_menu_icons_block">
+                        <img
+                          src="@/assets/images/flag.png"
+                          alt=""
+                          class="header_menu_icons header_menu_icons_flug"
+                        />
+                      </div>
+                      <!-- {{ menu?.languages[0].name }} -->
+                      <div class="header_menu_icons_block">
+                        <img
+                          src="@/assets/images/arrow_done.svg"
+                          alt=""
+                          class="header_menu_icons header_menu_icons_arrow_done"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div v-if="isActive" class="default_drowndown_content">
+                    <div
+                      v-for="(lang, indexLang) in menu?.languages"
+                      :key="indexLang"
+                      class="default_drowndown_content_item d-flex"
+                    >
+                      <div class="default_drowndown_content_item_lang_image_block">
+                        <img :src="env.host + lang.icon" alt="" />
+                      </div>
+                      <span class="default_drowndown_content_item_title"></span>
+                      {{ lang.name }}
+                    </div>
+                  </div>
                 </div>
-                РУС
-                <div class="header_menu_icons_block">
-                  <img src="@/assets/images/arrow_done.svg" alt="" class="header_menu_icons header_menu_icons_arrow_done">
-                </div>
-              </a>
+              </div>
             </div>
             <div class="header_menu_block_link">
               <a class="header_menu_link" href="#">
                 <div class="header_menu_icons_block">
-                  <img src="@/assets/images/support_icons.png" alt="" class="header_menu_icons">
+                  <img
+                    src="@/assets/images/support_icons.png"
+                    alt=""
+                    class="header_menu_icons"
+                  />
                 </div>
-                Поддержка
+                {{ menu?.supportText }}
               </a>
             </div>
             <div class="header_menu_block_link">
               <a class="header_menu_link header_menu_link_telephone" href="#">
-                + 7 (7172) 644-644
+                {{ menu?.tel_number }}
               </a>
             </div>
           </div>
@@ -54,14 +106,25 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted } from "vue";
+import env from "~~/api/env/env";
 
+const props = defineProps({
+  menu: {
+    type: Object,
+  },
+});
+console.log(props.menu)
 let menuStatus = ref(false);
+let isActive = ref(false);
 
+const updateStatusActive = (status) => {
+  isActive.value = status;
+};
 const updateStatusMenu = (status) => {
   menuStatus.value = status;
   // getBody()
-}
+};
 
 // const scrollStatus = onMounted((status) => {
 //   const body = document.querySelector('body');
@@ -69,12 +132,12 @@ const updateStatusMenu = (status) => {
 
 const getBody = (status) => {
   onMounted(() => {
-    const body = document.querySelector('body');
-    return body
-  })
-}
+    const body = document.querySelector("body");
+    return body;
+  });
+};
 
-updateStatusMenu(false)
+updateStatusMenu(false);
 </script>
 
 <style>
@@ -123,7 +186,7 @@ header {
 .header_menu_link {
   display: flex;
   text-decoration: none;
-  color: #2B2B2B;
+  color: #2b2b2b;
   font-size: 14px;
 }
 
@@ -163,7 +226,7 @@ header {
 .header_content_info_forms_title {
   font-weight: 500;
   text-align: left;
-  color: #2B2B2B;
+  color: #2b2b2b;
   font-size: 24px;
 }
 
@@ -202,8 +265,7 @@ header {
 
 .header_content_advantages_info_block {
   display: flex;
-  border-top: 1px solid #E4E6E7;
-
+  border-top: 1px solid #e4e6e7;
 }
 
 .header_menu_group_block {
@@ -220,7 +282,7 @@ header {
   font-size: 48px;
   width: 100px;
   margin-right: 24px;
-  color: #E4003C;
+  color: #e4003c;
 }
 
 .header_content_advantages_number_icons {
@@ -245,19 +307,30 @@ header {
 .header_menu_group_active {
   left: 0 !important;
 }
+.default_drowndown_content {
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  background: #dadada;
+}
+.default_drowndown_content_item {
+  padding: 5px;
+}
 @media (max-width: 1400px) {
-  .header_content_info_preview>img {
+  .header_content_info_preview > img {
     width: 100%;
   }
 }
 
-@media(max-width: 1000px) {
-  .header_content_info_preview>img {
+@media (max-width: 1000px) {
+  .header_content_info_preview > img {
     width: 464px;
   }
 }
 
-@media(max-width:912px) {
+@media (max-width: 912px) {
   /* .header_content_info_preview img {
     width: 100%;
     background-size: cover;
@@ -265,7 +338,8 @@ header {
   /* .header_menu_burger_block {
     display: block;
   } */
-  html, body {
+  html,
+  body {
     overflow-x: hidden;
     position: relative;
   }
@@ -275,7 +349,7 @@ header {
   .header_content_block {
     height: 50px;
     background: #252069;
-    color: #E4003C;
+    color: #e4003c;
   }
   .header_menu_group_block {
     background: #a1a1a1;
@@ -310,6 +384,4 @@ header {
     display: block;
   }
 }
-
-
 </style>

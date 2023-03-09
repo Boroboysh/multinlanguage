@@ -17,7 +17,6 @@ return new class extends Migration
             $table->text('tel_number');
             $table->float('rating');
             $table->unsignedBigInteger('country_id');
-            $table->foreign('country_id')->references('id')->on('countries')->cascadeOnDelete();
         });
     }
 

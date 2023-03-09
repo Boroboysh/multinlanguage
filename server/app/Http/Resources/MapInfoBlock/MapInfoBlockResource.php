@@ -22,7 +22,6 @@ class MapInfoBlockResource extends JsonResource
             'title' => $this->title,
             'content' => MapInfoBlockContentResource::collection(MapInfoBlockContent::where('mapInfoBlock_id', $this->id)->get()),
             'buttons_text' => new MapInfoBlockButtonTextResource(MapInfoBlockButtonText::where('mapInfoBlock_id', $this->id)->first()),
-            /*'country' => */
             'points' => MapPointsResource::collection(MapPoint::all())
         ];
     }

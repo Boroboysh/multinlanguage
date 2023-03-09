@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Route;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -44,5 +45,18 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    public function render($request, Throwable $e)
+    {
+
+        if ($e instanceof \Illuminate\Database\Eloquent\ModelNotFoundException) {
+            $str = strtok(Route::current()->getName(), '.');
+
+            return redirect("/admin/{$str}/create");
+            // return redirect()->guest('home');
+        } else {
+            return parent::render($request, $e);
+        }
     }
 }
