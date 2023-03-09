@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('cities', function (Blueprint $table) {
+        Schema::create('cities', function (Blueprint $table) {
             $table->id();
             $table->text('name');
             $table->float('rating');
             $table->unsignedBigInteger('country_id');
-            $table->foreign('country_id')->references('id')->on('countries')->cascadeOnDelete();
         });
     }
 
