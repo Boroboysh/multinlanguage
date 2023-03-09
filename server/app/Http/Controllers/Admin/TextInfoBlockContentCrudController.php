@@ -47,7 +47,10 @@ class TextInfoBlockContentCrudController extends CrudController
             'name' => 'textInfoBlock_id',
             'label' => 'InfoBlock ID'
         ]);
-
+        CRUD::addColumn([
+            'name' => 'type',
+            'label' => 'Тип',
+        ]);
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -67,6 +70,15 @@ class TextInfoBlockContentCrudController extends CrudController
         CRUD::addField([
             'name' => 'content',
             'label' => 'Содержание'
+        ]);
+
+        CRUD::addField([
+            'name' => 'type',
+            'label' => 'Тип',
+            'type' => 'select_from_array',
+            'options' => ['text' => 'text', 'title' => 'title'],
+            'allows_null' => false,
+            'default' => 'text',
         ]);
         CRUD::addField([
             'name' => 'textInfoBlock_id',

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('map_points', function (Blueprint $table) {
             $table->id();
             $table->text('name');
+            $table->text('type');
             $table->unsignedBigInteger('mapInfoBlock_id');
             $table->foreign('mapInfoBlock_id')->references('id')->on('map_info_blocks')->cascadeOnDelete();
         });

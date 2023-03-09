@@ -26,7 +26,7 @@ class TextInfoBlockContent extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['content', 'textInfoBlock_id'];
+    protected $fillable = ['content', 'textInfoBlock_id', 'type'];
     protected $translatable = ['content'];
 
     /*

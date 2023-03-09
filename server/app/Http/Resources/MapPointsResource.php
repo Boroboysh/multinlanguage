@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Http\Resources\MapInfoBlock\MapPointCoordinationResource;
 use App\Models\MapPointCoordination;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Resources\TextInfoBlock;
+namespace App\Http\Resources\MapInfoBlock;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class TextInfoBlockContentResource extends JsonResource
+class MapPointCoordinationResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,8 +15,8 @@ class TextInfoBlockContentResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'text' => $this->content,
-            'type' => $this->type
+            'x' => $this->x,
+            'y' => $this->y
         ];
     }
 }

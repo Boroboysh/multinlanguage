@@ -49,6 +49,7 @@ class TextInfoBlockCrudController extends CrudController
             'label' => 'Подзаголовок'
         ]);
 
+
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
@@ -73,6 +74,7 @@ class TextInfoBlockCrudController extends CrudController
             'name' => 'subtitle',
             'label' => 'Подзаголовок'
         ]);
+
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');

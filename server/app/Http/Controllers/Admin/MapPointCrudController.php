@@ -43,6 +43,11 @@ class MapPointCrudController extends CrudController
             'name' => 'name',
             'label' => 'Название'
         ]);
+
+        CRUD::addColumn([
+            'name' => 'type',
+            'label' => 'Тип точки'
+        ]);
         CRUD::column('mapInfoBlock_id');
 
         /**
@@ -63,6 +68,10 @@ class MapPointCrudController extends CrudController
         CRUD::addField([
             'name' => 'name',
             'label' => 'Название'
+        ]);
+        CRUD::addField([
+            'name' => 'type',
+            'label' => 'Тип точки'
         ]);
         CRUD::addField([
             'name' => 'mapInfoBlock_id',
