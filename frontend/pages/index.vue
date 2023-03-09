@@ -1,5 +1,5 @@
 <template>
-  <div class="home-view">
+  <div v-if="contentPage.data._value" class="home-view">
     <div class="header_content_block w-100">
       <default-header :menu="data.header" class="container-xl" />
     </div>
@@ -222,7 +222,7 @@
           </div>
         </div>
       </div>
-      <default-map />
+      <default-map :item-list="contentPage.data._value.body.mapInfoBlock.points" />
       <div class="map_block_contact">
         <div class="map_contact_button_block">
           <default-button size="large" class="map_contact_button">
@@ -232,7 +232,7 @@
         <div class="map_contact_info">
           <span class="map_contact_info_title">{{ contentPage.data._value.body.mapInfoBlock.content[0].text }}</span>
           <div class="map_contact_telephone_block">
-            <!-- <span>{{ contentPage.data._value.header.tel_number }}</span> -->
+            <span>{{ contentPage.data._value.header.tel_number }}</span>
           </div>
         </div>
       </div>
@@ -616,10 +616,9 @@
         {{ item.name }}
       </default-option>
     </default-select>
-    <search-select> </search-select>
     <choosing-region v-if="false" />
     <default-footer />
-    {{ data }}
+    <!-- {{ data }} -->
   </div>
 </template>
 
