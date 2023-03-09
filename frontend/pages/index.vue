@@ -525,11 +525,6 @@
         </div>
       </div>
     </div>
-    <!-- <div class="contact_test_row">
-      <div class="contact_test_col-2">1</div>
-      <div class="contact_test_col-4">2</div>
-      <div class="contact_test_col-4">3</div>
-    </div> -->
     <div class="contact_form_block">
       <div class="contact_form_question_mark_block container-xl">
         <div class="contact_form_question_mark">?</div>
@@ -639,19 +634,23 @@ import env from '@/api/env/env'
 
 let contentPage = reactive();
 
-contentPage = await useAsyncData('fwfdawfafaf', async () => {
+contentPage = await useAsyncData('page-data1', async () => {
   const response = await getContentInfo('ru')
   return response
 })
 
 
-const { data } = await useFetch(env.host + 'api/page-data', {
+const { data } = await useFetch(env.host + 'api/page-data1', {
   headers: {
     locale: 'ru'
   }
 })
+if (!data.value) {
+  throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
+}
 
-console.log('fwwfa  ', contentPage)
+console.log('contentPage', data)
+
 </script>
 
 
