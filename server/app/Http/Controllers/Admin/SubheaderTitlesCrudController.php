@@ -43,11 +43,6 @@ class SubheaderTitlesCrudController extends CrudController
             'name' => 'content',
             'label' => 'Содержание',
         ]);
-        CRUD::addColumn([
-            'name' => 'subheader_id',
-            'label' => 'Subheader ID',
-        ]); //
-
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
@@ -66,14 +61,6 @@ class SubheaderTitlesCrudController extends CrudController
         CRUD::addField([
             'name' => 'content',
             'label' => 'Содержание'
-        ]);
-        CRUD::addField([
-            'name' => 'subheader_id',
-            'label' => 'Subheader ID',
-            'type' => 'select',
-            'model' => 'App\Models\Subheader',
-            'attribute' => 'id'
-
         ]);
 
         /**

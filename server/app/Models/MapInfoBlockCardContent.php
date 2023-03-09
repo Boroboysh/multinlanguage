@@ -3,14 +3,12 @@
 namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
-use Backpack\CRUD\app\Models\Traits\SpatieTranslatable\HasTranslations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TextInfoBlock extends Model
+class MapInfoBlockCardContent extends Model
 {
     use CrudTrait;
-    use HasTranslations;
     use HasFactory;
 
     /*
@@ -19,15 +17,13 @@ class TextInfoBlock extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'text_info_blocks';
-    protected $guarded = ['id'];
-
+    protected $table = 'map_info_block_card_contents';
+    // protected $primaryKey = 'id';
     public $timestamps = false;
-
-    //TODO delete table, fields content & type
-
-    protected $fillable = ['title', 'subtitle'];
-    protected $translatable = ['title', 'subtitle'];
+    protected $guarded = ['id'];
+    // protected $fillable = [];
+    // protected $hidden = [];
+    // protected $dates = [];
 
     /*
     |--------------------------------------------------------------------------

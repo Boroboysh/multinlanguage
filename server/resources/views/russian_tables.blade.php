@@ -57,7 +57,8 @@
     'Содержание' => 'map-info-block-content',
     'Кнопка (текст)' => 'map-info-block-button-text/1/edit',
     'Точки на карте' => 'map-point',
-    'Координаты для точек на карте' => 'map-point-coordination'
+    'Координаты для точек на карте' => 'map-point-coordination',
+    'Карточка с контеном' => 'map-info-block-card-content'
     ];
     $namesBlockList = [
     'Список преимуществ' => 'list-info-block/1/edit',

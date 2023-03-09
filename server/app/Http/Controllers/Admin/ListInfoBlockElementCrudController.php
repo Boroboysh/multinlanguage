@@ -51,10 +51,7 @@ class ListInfoBlockElementCrudController extends CrudController
             'name' => 'icon',
             'label' => 'Иконка'
         ]);
-        CRUD::addColumn([
-            'name' => 'listInfoBlock_id',
-            'label' => 'ListInfoBlock ID'
-        ]);
+
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -81,13 +78,7 @@ class ListInfoBlockElementCrudController extends CrudController
             'type'      => 'upload',
             'upload'    => true,
         ]);
-        CRUD::addField([
-            'name' => 'listInfoBlock_id',
-            'label' => 'ListInfoBlock ID',
-            'type' => 'select',
-            'model' => 'App\Models\ListInfoBlock',
-            'attribute' => 'id'
-        ]);
+
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');

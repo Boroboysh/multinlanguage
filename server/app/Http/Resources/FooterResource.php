@@ -16,7 +16,7 @@ class FooterResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'icon' => $this->icon,
+            'logo' => $this->icon,
             'personal_data' => $this->personal_data,
             'copyright' => $this->copyright,
             'store_link_title' => $this->store_link_title,

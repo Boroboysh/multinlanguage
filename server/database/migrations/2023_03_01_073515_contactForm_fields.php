@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('name');
             $table->text('tel_number');
             $table->text('message_placeholder');
-            $table->unsignedBigInteger('contactForm_id');
+            $table->unsignedBigInteger('contactForm_id')->default(1);
             $table->foreign('contactForm_id')->references('id')->on('contact_forms')->cascadeOnDelete();
         });
     }

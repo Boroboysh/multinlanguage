@@ -43,10 +43,7 @@ class TextInfoBlockListCrudController extends CrudController
             'name' => 'content',
             'label' => 'Содержание'
         ]);
-        CRUD::addColumn([
-            'name' => 'textInfoBlock_id',
-            'label' => 'InfoBlock ID'
-        ]);
+
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -67,13 +64,7 @@ class TextInfoBlockListCrudController extends CrudController
             'name' => 'content',
             'label' => 'Содержание'
         ]);
-        CRUD::addField([
-            'name' => 'textInfoBlock_id',
-            'label' => 'InfoBlock ID',
-            'type' => 'select',
-            'model' => 'App\Models\TextInfoBlock',
-            'attribute' => 'id'
-        ]);
+
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

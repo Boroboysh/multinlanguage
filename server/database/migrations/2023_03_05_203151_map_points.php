@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->text('name');
             $table->text('type');
-            $table->unsignedBigInteger('mapInfoBlock_id');
+            $table->unsignedBigInteger('mapInfoBlock_id')->default(1);
             $table->foreign('mapInfoBlock_id')->references('id')->on('map_info_blocks')->cascadeOnDelete();
         });
     }

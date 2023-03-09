@@ -55,7 +55,6 @@ class ContactFormFieldCrudController extends CrudController
             'name' => 'message_placeholder',
             'label' => 'Заполнитель поля с сообщением'
         ]);
-        CRUD::column('contactForm_id');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:

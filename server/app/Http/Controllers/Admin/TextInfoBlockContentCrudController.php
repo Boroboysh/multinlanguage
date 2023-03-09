@@ -80,13 +80,6 @@ class TextInfoBlockContentCrudController extends CrudController
             'allows_null' => false,
             'default' => 'text',
         ]);
-        CRUD::addField([
-            'name' => 'textInfoBlock_id',
-            'label' => 'InfoBlock Id',
-            'type' => 'select',
-            'model' => 'App\Models\TextInfoBlock',
-            'attribute' => 'id'
-        ]);
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

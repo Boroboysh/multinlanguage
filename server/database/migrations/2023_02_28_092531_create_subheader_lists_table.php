@@ -16,7 +16,7 @@ return new class extends Migration
             $table->text('icon');
             $table->text('content');
             $table->integer('number');
-            $table->unsignedBigInteger('subheader_id');
+            $table->unsignedBigInteger('subheader_id')->default(1);
             $table->foreign('subheader_id')->references('id')->on('subheaders')->cascadeOnDelete();
         });
     }

@@ -53,4 +53,5 @@ Route::group([
     Route::crud('contact-block-tel-communication', 'ContactBlockTelCommunicationCrudController');
     Route::crud('footer', 'FooterCrudController');
     Route::crud('footer-store-links', 'FooterStoreLinksCrudController');
+    Route::crud('map-info-block-card-content', 'MapInfoBlockCardContentCrudController');
 }); // this should be the absolute last line of this file

@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-            Schema::create('map_info_block_contents', function (Blueprint $table) {
+        Schema::create('map_info_block_card_contents', function (Blueprint $table) {
             $table->id();
-            $table->text('content');
+            $table->string('content');
             $table->unsignedBigInteger('mapInfoBlock_id')->default(1);
             $table->foreign('mapInfoBlock_id')->references('id')->on('map_info_blocks')->cascadeOnDelete();
         });
@@ -24,6 +24,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('map_info_block_contents');
+        Schema::dropIfExists('map_info_block_card_contents');
+
     }
 };

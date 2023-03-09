@@ -1,19 +1,23 @@
 @extends(backpack_view('blank'))
 
-<div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
+<div
+    class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
     @if (Route::has('login'))
-    <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
-        @auth
-        <a href="{{ url('/home') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Home</a>
-        @else
-        <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
-            in</a>
+        <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
+            @auth
+                <a href="{{ url('/home') }}"
+                   class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Home</a>
+            @else
+                <a href="{{ route('login') }}"
+                   class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
+                    in</a>
 
-        @if (Route::has('register'))
-        <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
-        @endif
-        @endauth
-    </div>
+                @if (Route::has('register'))
+                    <a href="{{ route('register') }}"
+                       class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
+                @endif
+            @endauth
+        </div>
     @endif
 
     <h1>
@@ -23,11 +27,11 @@
 
 
 @section('header')
-<div class="container-fluid" style="text-align: center; margin-bottom: 3em;">
-    <h2>
-        <span class="text-capitalize">Қазақша</span>
-    </h2>
-</div>
+    <div class="container-fluid" style="text-align: center; margin-bottom: 3em;">
+        <h2>
+            <span class="text-capitalize">Қазақша</span>
+        </h2>
+    </div>
 @endsection
 
 @php
@@ -53,7 +57,9 @@
        'Содержание' => 'map-info-block-content',
        'Кнопка (текст)' => 'map-info-block-button-text/1/edit?_locale=kk',
        'Точки на карте' => 'map-point',
-       'Координаты для точек на карте' => 'map-point-coordination'
+       'Координаты для точек на карте' => 'map-point-coordination',
+        'Карточка с контеном' => 'map-info-block-card-content'
+
        ];
        $namesBlockList = [
        'Список преимуществ' => 'list-info-block/1/edit?_locale=kk',
@@ -78,9 +84,9 @@
        'Ссылки на маркетплейс' => 'footer-store-links'
        ];
 
-    @endphp
+@endphp
 
-    @section('content')
+@section('content')
     {{-- Default box --}}
     <div
         style="display:flex; gap: 2em; justify-content: space-between; padding: 2em 4em 0em 3em; max-width: 100%; overflow-x: auto; border: 1px solid #7c69ef; border-radius: 10px ">
@@ -231,17 +237,17 @@
                 @endforeach
             </div>
         </div>
-    @endsection
+@endsection
 
-    @section('after_styles')
+@section('after_styles')
     {{-- DATA TABLES --}}
     {{-- CRUD LIST CONTENT - crud_list_styles stack --}}
     @stack('crud_list_styles')
-    @endsection
+@endsection
 
-    @section('after_scripts')
+@section('after_scripts')
     @include('crud::inc.datatables_logic')
 
     {{-- CRUD LIST CONTENT - crud_list_scripts stack --}}
     @stack('crud_list_scripts')
-    @endsection
+@endsection

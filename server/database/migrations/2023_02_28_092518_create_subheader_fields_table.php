@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('subheader_fields', function (Blueprint $table) {
             $table->id();
             $table->text('content');
-            $table->unsignedBigInteger('subheader_id');
+            $table->unsignedBigInteger('subheader_id')->default(1);
             $table->foreign('subheader_id')->references('id')->on('subheaders')->cascadeOnDelete();
         });
     }

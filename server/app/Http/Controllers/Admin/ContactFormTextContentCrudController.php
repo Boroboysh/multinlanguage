@@ -72,13 +72,6 @@ class ContactFormTextContentCrudController extends CrudController
             'label' => 'Содержание'
             ]);
         CRUD::addField([
-            'name' => 'contactForm_id',
-            'label' => 'ContactForm Id',
-            'type' => 'select',
-            'model' => 'App\Models\ContactForm',
-            'attribute' => 'id'
-        ]);
-        CRUD::addField([
             'name' => 'key',
             'label' => 'Тип',
             'type'        => 'select_from_array',

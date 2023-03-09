@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->text('content');
             $table->text('type');
-            $table->unsignedBigInteger('textInfoBlock_id');
+            $table->unsignedBigInteger('textInfoBlock_id')->default(1);
             $table->foreign('textInfoBlock_id')->references('id')->on('text_info_blocks')->cascadeOnDelete();
         });
     }

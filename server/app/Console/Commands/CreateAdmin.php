@@ -5,7 +5,6 @@ namespace App\Console\Commands;
 use App\Models\Admin;
 use App\Models\User;
 use Illuminate\Console\Command;
-use Symfony\Component\Console\Command\Command as CommandAlias;
 
 class CreateAdmin extends Command
 {
@@ -21,7 +20,7 @@ class CreateAdmin extends Command
      *
      * @var string
      */
-    protected $description = 'Created new default admin';
+    protected $description = 'Create new default admin';
 
     /**
      * Execute the console command.

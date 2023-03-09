@@ -16,6 +16,7 @@ return new class extends Migration
             $table->text('name');
             $table->text('icon');
             $table->string('language_code');
+            $table->boolean('isDefault');
             $table->unsignedBigInteger('header_id')->default(1);
             $table->foreign('header_id')->references('id')->on('headers')->cascadeOnDelete();
         });

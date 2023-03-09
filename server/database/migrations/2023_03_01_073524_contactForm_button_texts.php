@@ -14,7 +14,7 @@ return new class extends Migration
           Schema::create('contact_forms_button_texts', function (Blueprint $table) {
             $table->id();
             $table->text('content');
-            $table->unsignedBigInteger('contactForm_id');
+            $table->unsignedBigInteger('contactForm_id')->default(1);
             $table->foreign('contactForm_id')->references('id')->on('contact_forms')->cascadeOnDelete();
         });
     }

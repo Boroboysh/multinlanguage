@@ -25,18 +25,19 @@ class JsonController extends Controller
     {
         $acceptedLanguages = ['ru', 'en', 'kk'];
         $languageCode = $request->header('locale');
+        $defaultId = 1;
 
         if ($languageCode && in_array($languageCode, $acceptedLanguages)) {
             App::setLocale($languageCode);
 
             return [
-                "header" => new HeaderResource(Header::where('id', 1)->first()),
+                "header" => new HeaderResource(Header::where('id', $defaultId)->first()),
                 "body" => [
-                    "subheader" => new SubheaderResource(Subheader::where('id', 1)->first()),
-                    "textInfoBlock" => new TextInfoBlockResource(TextInfoBlock::where('id', 1)->first()),
+                    "subheader" => new SubheaderResource(Subheader::where('id', $defaultId)->first()),
+                    "textInfoBlock" => new TextInfoBlockResource(TextInfoBlock::where('id', $defaultId)->first()),
                     "mapInfoBlock" => new MapInfoBlockResource(MapInfoBlock::where('id', 3)->first()),
-                    "listInfoBlock" => new ListBlockResource(ListInfoBlock::where('id', 1)->first()),
-                    "contactForm" => new ContactFormResource(ContactForm::where('id', 1)->first())
+                    "listInfoBlock" => new ListBlockResource(ListInfoBlock::where('id', $defaultId)->first()),
+                    "contactForm" => new ContactFormResource(ContactForm::where('id', $defaultId)->first())
                 ],
                 "footer" => new FooterResource(Footer::first())
             ];

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('text_info_block_lists', function (Blueprint $table) {
             $table->id();
             $table->text('content');
-            $table->unsignedBigInteger('textInfoBlock_id');
+            $table->unsignedBigInteger('textInfoBlock_id')->default(1);
             $table->foreign('textInfoBlock_id')->references('id')->on('text_info_blocks')->cascadeOnDelete();
         });
     }

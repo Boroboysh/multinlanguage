@@ -48,7 +48,6 @@ class MapPointCrudController extends CrudController
             'name' => 'type',
             'label' => 'Тип точки'
         ]);
-        CRUD::column('mapInfoBlock_id');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -76,13 +75,6 @@ class MapPointCrudController extends CrudController
             'options'     => ['text' => 'text', 'title' => 'title'],
             'allows_null' => false,
             'default'     => 'Текст',
-        ]);
-        CRUD::addField([
-            'name' => 'mapInfoBlock_id',
-            'label' => 'MapInfoBlock ID',
-            'type' => 'select',
-            'model' => 'App\Models\MapInfoBlock',
-            'attribute' => 'id'
         ]);
         /**
          * Fields can be defined using the fluent syntax or array syntax:

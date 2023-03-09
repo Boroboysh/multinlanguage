@@ -10,6 +10,7 @@ use App\Models\ContactBlock;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,21 @@ use Illuminate\Support\Facades\Route;
 //TODO get images
 
 Route::get('/page-data', [JsonController::class, 'getData']);
+
+Route::get('/countries/cities', [CountryController::class, 'getCountriesCities']);
+
+Route::get('/contact-block', function (Request $request) {
+    $acceptedLanguages = ['ru', 'en', 'kk'];
+    $languageCode = $request->header('locale');
+
+    if ($languageCode && in_array($languageCode, $acceptedLanguages)) {
+        App::setLocale($languageCode);
+
+        return new ContactBlockResource(ContactBlock::first());
+    }
+
+    return response('Invalid language code', 404);
+});
 
 Route::get('/country/{country}/city/{cityName}', function ($country, $cityName, Request $request) {
     $acceptedLanguages = ['ru', 'en', 'kk'];
@@ -41,19 +57,13 @@ Route::get('/country/{country}/city/{cityName}', function ($country, $cityName, 
 
 });
 
-Route::get('/countries/cities', [CountryController::class, 'getCountriesCities']);
-
-Route::get('/contact-block', function (Request $request) {
-    $acceptedLanguages = ['ru', 'en', 'kk'];
-    $languageCode = $request->header('locale');
-
-    if ($languageCode && in_array($languageCode, $acceptedLanguages)) {
-        App::setLocale($languageCode);
-
-        return new ContactBlockResource(ContactBlock::first());
-    }
-
-    return response('Invalid language code', 404);
-});
-
 Route::post('/send_email', [FeedbackController::class, 'send']);
+
+
+Route::post('/test', function (Request $request) {
+//     $path = public_path($images_path);
+    $path = $request->input('path');
+
+    return asset('storage/' .$path);
+//    return response()->file($path);
+});

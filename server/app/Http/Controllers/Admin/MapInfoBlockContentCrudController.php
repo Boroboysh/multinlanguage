@@ -43,10 +43,7 @@ class MapInfoBlockContentCrudController extends CrudController
             "name" => 'content',
             "label" => "Содержание"
         ]);
-        CRUD::addColumn([
-            "name" => 'mapInfoBlock_id',
-            "label" => "MapInfoBlock ID"
-        ]);
+
 //mapInfoBlock_id
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -66,13 +63,6 @@ class MapInfoBlockContentCrudController extends CrudController
         CRUD::addField([
             'name' => 'content',
             'label' => 'Content',
-        ]);
-        CRUD::addField([
-            'name' => 'mapInfoBlock_id',
-            'label' => 'Map InfoBlock Id',
-            'type' => 'select',
-            'model' => 'App\Models\MapInfoBlock',
-            'attribute' => 'id'
         ]);
 
         /**

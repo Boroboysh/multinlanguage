@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->text('icon');
             $table->text('title');
-            $table->unsignedBigInteger('listInfoBlock_id');
+            $table->unsignedBigInteger('listInfoBlock_id')->default(1);
             $table->foreign('listInfoBlock_id')->references('id')->on('list_info_blocks')->cascadeOnDelete();
         });
     }

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('map_info_block_buttons', function (Blueprint $table) {
             $table->id();
             $table->text('content');
-            $table->unsignedBigInteger('mapInfoBlock_id');
+            $table->unsignedBigInteger('mapInfoBlock_id')->default(1);
             $table->foreign('mapInfoBlock_id')->references('id')->on('map_info_blocks')->cascadeOnDelete();
         });
     }

@@ -43,10 +43,7 @@ class ContactFormButtonTextCrudController extends CrudController
             "name" => "content",
             "label" => "Содержание"
         ]);
-        CRUD::addColumn([
-            "name" => "contactForm_id",
-            "label" => "ContactForm ID"
-        ]);
+
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -66,13 +63,6 @@ class ContactFormButtonTextCrudController extends CrudController
         CRUD::addField([
             'name' => 'content',
             'label' => "Содержание"
-        ]);
-        CRUD::addField([
-            'name' => 'contactForm_id',
-            'label' => 'ContactForm Id',
-            'type' => 'select',
-            'model' => 'App\Models\ContactForm',
-            'attribute' => 'id'
         ]);
 
         /**

@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->text('content');
             $table->text('key');
-            $table->unsignedBigInteger('contactForm_id');
+            $table->unsignedBigInteger('contactForm_id')->default(1);
             $table->foreign('contactForm_id')->references('id')->on('contact_forms')->cascadeOnDelete();
         });
     }
