@@ -6,7 +6,6 @@ const getContentInfo = async (lang) => {
             locale: lang,
         },
     });
-    console.log(result.data)
     return result.data;
 };
 

@@ -1,6 +1,7 @@
 <template>
   <header class="w-100">
     <div class="header_content_block container-xl">
+      {{ menu }}
       <div class="header_menu_block d-flex w-100">
         <div class="header_logo_block">
           <img class="header_logo_white" :src="env.host + menu?.logo" alt="" />
@@ -54,7 +55,7 @@
                           class="header_menu_icons header_menu_icons_flug"
                         />
                       </div>
-                      {{ menu?.languages[0].name }}
+                      <!-- {{ menu?.languages[0].name }} -->
                       <div class="header_menu_icons_block">
                         <img
                           src="@/assets/images/arrow_done.svg"
@@ -113,6 +114,7 @@ const props = defineProps({
     type: Object,
   },
 });
+console.log(props.menu)
 let menuStatus = ref(false);
 let isActive = ref(false);
 

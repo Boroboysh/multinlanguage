@@ -1,8 +1,10 @@
 <template>
   <div class="default_map_block">
     <div class="map_container w-100 h-100 d-flex align-items-center justify-content-center">
-      <img class="map_container_images map_container_map_state" src="@/assets/images/map/map_state.svg"
-        alt="">
+      <div class="map_container_marker_block">
+        <img src="@/assets/images/defaut_marker.svg" alt="" class="map_container_marker">
+      </div>
+      <img class="map_container_images map_container_map_state" src="@/assets/images/map/map_state.svg" alt="">
       <img class="position-absolute map_container_images map_container_map_kz" src="@/assets/images/map/map_kz.svg" alt="">
     </div>
   </div>
@@ -16,8 +18,9 @@
 .map_block_content_title_block_col {
   width: 50%;
 }
-
-
+.default_map_block {
+  position: relative;
+}
 .map_container_map_state {
   max-height: 100%;
   object-fit: contain;
@@ -32,5 +35,10 @@
   height: 100%;
   max-height: 630px;
   z-index: -10;
+}
+.map_container_marker {
+  position: absolute;
+  z-index: 1000;
+  top: 50%;
 }
 </style>

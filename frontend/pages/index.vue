@@ -1,7 +1,7 @@
 <template>
   <div class="home-view">
     <div class="header_content_block w-100">
-      <default-header :menu="contentPage.header" class="container-xl" />
+      <default-header :menu="data.header" class="container-xl" />
     </div>
     <div class="header_content_info_content">
       <div class="header_content_info container-xl">
@@ -9,12 +9,12 @@
           <div
             class="col header_content_info_col d-flex justify-content-center header_content_info_preview p-0"
           >
-            <img :src="env.host + contentPage.body?.subheader.image" alt="" />
+            <img :src="env.host + data.body.subheader.image" alt="" />
           </div>
           <div class="col header_content_info_col header_content_info_forms">
-            <h2 class="header_content_info_forms_title">{{ contentPage.body?.subheader.titles[0].content }}</h2>
+            <h2 class="header_content_info_forms_title">{{ data.body?.subheader.titles[0].content }}</h2>
             <default-input
-              :placeholder="contentPage.body?.subheader.fields[0].content"
+              :placeholder="contentPage.data._value.body?.subheader.fields[0].content"
               class="header_content_info_forms"
             >
               <template #container-right>
@@ -25,14 +25,14 @@
               class="header_content_info_calculate_block w-100 d-block align-items-start flex-column"
             >
               <h2 class="header_content_info_forms_title">
-                {{ contentPage.body?.subheader.titles[1].content }}
+                {{ contentPage.data._value.body.subheader.titles[1].content }}
               </h2>
               <div
                 class="header_content_info_calculate_forms_block w-100 justify-content-between"
               >
                 <default-input
                   class="header_content_info_calculate_form_input_size"
-                  :placeholder="contentPage.body?.subheader.fields[1].content"
+                  :placeholder="contentPage.data._value.body.subheader.fields[1].content"
                   :title="true"
                 />
                 <img
@@ -42,7 +42,7 @@
                 />
                 <default-input
                   class="header_content_info_calculate_form_input_size"
-                  :placeholder="contentPage.body?.subheader.fields[2].content"
+                  :placeholder="contentPage.data._value.body.subheader.fields[2].content"
                   :title="true"
                 />
               </div>
@@ -61,7 +61,7 @@
                   alt=""
                 />
                 <span class="header_content_info_calculate_result_text">
-                 {{ contentPage.body?.subheader.content.text }}
+                 {{ contentPage.data._value.body.subheader.content.text }}
                 </span>
               </div>
             </div>
@@ -70,6 +70,7 @@
         <div class="header_content_advantages_block">
           <div class="row">
             <div
+              v-for="(itemList, itemIndex) in contentPage.data._value.body.subheader.list" :key="itemIndex"
               class="col-12 col-xl-4 col-md-4 header_content_advantages d-flex align-items-center justify-content-start"
             >
               <div class="header_content_advantages_info_block">
@@ -79,12 +80,12 @@
                 </div>
                 <div class="header_content_advantages_text_block">
                   <p class="header_content_advantages_text">
-                    Более 20 лет опыта грузовых перевозок
+                    {{ itemList.content }}
                   </p>
                 </div>
               </div>
             </div>
-            <div
+            <!-- <div
               class="col-xl-4 col-md-4 col-12 header_content_advantages d-flex align-items-center justify-content-start"
             >
               <div class="header_content_advantages_info_block">
@@ -113,7 +114,7 @@
                   </p>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -124,7 +125,7 @@
           <div class="about_block_content_title_linear" />
           <div class="about_block_content_title_block container">
             <span class="about_block_content_title">
-              Перевозки в Казахстан
+              {{ contentPage.data._value.body.textInfoBlock.title }}
             </span>
           </div>
         </div>
@@ -139,17 +140,8 @@
               ПЭК: GLOBAL предлагает услуги авто- и авиаперевозок из России в
               Казахстан и в обратном направлении.
             </span>
-            <div class="about_content_text">
-              ПЭК: GLOBAL предлагает услуги авто- и авиаперевозок из России в
-              Казахстан и в обратном направлении. Отправить груз в Казахстан
-              можно из всех городов присутствия ПЭК в России, самостоятельно
-              доставив их в отделение или сделав заказ адресного забора
-            </div>
-            <div class="about_content_text">
-              ПЭК: GLOBAL предлагает услуги авто- и авиаперевозок из России в
-              Казахстан и в обратном направлении. Отправить груз в Казахстан
-              можно из всех городов присутствия ПЭК в России, самостоятельно
-              доставив их в отделение или сделав заказ адресного забора
+            <div v-for="(aboutTextItem, aboutTextIndex) in contentPage.data._value.body.textInfoBlock.content" :key=aboutTextIndex class="about_content_text">
+              {{ aboutTextItem.text }}
             </div>
             <div class="about_content_block_info_adress_list_block">
               <span class="about_content_title">
@@ -190,7 +182,6 @@
         </div>
       </div>
     </div>
-    {{ data }}
     <div class="map_block">
       <div class="map_block_content">
         <div class="map_block_title_block w-100 d-flex">
@@ -205,7 +196,7 @@
                   class="map_block_linear about_block_content_title_linear"
                 />
                 <p class="map_block_content_title">
-                  Куда компания ПЭК доставляет грузы?
+                  {{ contentPage.data._value.body.mapInfoBlock.title }}
                 </p>
               </div>
               <div
@@ -223,8 +214,7 @@
                     ></div>
                   </div>
                   <div class="map_block_content_card">
-                    Помогаем развивать бизнес наших клиентов, решая
-                    логистические задачи
+                    {{ contentPage.data._value.body.mapInfoBlock }}
                   </div>
                 </div>
               </div>
@@ -236,13 +226,13 @@
       <div class="map_block_contact">
         <div class="map_contact_button_block">
           <default-button size="large" class="map_contact_button">
-            Оставить заявку
+            {{ contentPage.data._value.body.mapInfoBlock.buttons_text.content }}
           </default-button>
         </div>
         <div class="map_contact_info">
-          <span class="map_contact_info_title">позвонить по номеру</span>
+          <span class="map_contact_info_title">{{ contentPage.data._value.body.mapInfoBlock.content[0].text }}</span>
           <div class="map_contact_telephone_block">
-            <span>+ 7 (7172) 644-644</span>
+            <!-- <span>{{ contentPage.data._value.header.tel_number }}</span> -->
           </div>
         </div>
       </div>
@@ -629,7 +619,7 @@
     <search-select> </search-select>
     <choosing-region v-if="false" />
     <default-footer />
-    {{ contentPage }}
+    {{ data }}
   </div>
 </template>
 
@@ -651,8 +641,8 @@ import env from '@/api/env/env'
 let contentPage = reactive();
 
 contentPage = await useAsyncData('fwfdawfafaf', async () => {
-  return await getContentInfo('ru')
-  // return response.data._value.data
+  const response = await getContentInfo('ru')
+  return response
 })
 
 
@@ -661,7 +651,8 @@ const { data } = await useFetch(env.host + 'api/page-data', {
     locale: 'ru'
   }
 })
-console.log('wfawfawfawafwfa', contentPage.data)
+
+console.log('fwwfa  ', contentPage)
 </script>
 
 
@@ -753,11 +744,12 @@ body {
 
 .header_content_advantages_text {
   font-size: 18px;
-  max-width: 200px;
+  max-width: 300px;
   height: 100%;
   margin: 0;
   display: flex;
-  align-items: flex-end;
+  text-align: left;
+  align-items: center;
 }
 
 .about_block {
