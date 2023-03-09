@@ -17,7 +17,6 @@ return new class extends Migration
             $table->text('name');
             $table->text('link');
             $table->unsignedBigInteger('contactBlock_id')->default(1);
-            $table->foreign('contactBlock_id')->references('id')->on('contact_block')->cascadeOnDelete();
         });
     }
 
