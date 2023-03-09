@@ -14,13 +14,24 @@ class TextInfoBlockResource extends JsonResource
      *
      * @return array<string, mixed>
      */
+
     public function toArray(Request $request): array
     {
+        $list = TextInfoBlockListResource::collection(TextInfoBlockList::where('textInfoBlock_id', $this->id)->get());
+        $content = TextInfoBlockContentResource::collection(TextInfoBlockContent::where('textInfoBlock_id', $this->id)->get());
+
+        $list->map(function ($listItem) {
+            $listItem["type"] = "list";
+        });
+
+        $content->map(function ($contentItem) {
+            $contentItem["type"] = "item";
+        });
+
         return [
             'title' => $this->title,
             'subtitle' => $this->subtitle,
-            'content' => TextInfoBlockContentResource::collection(TextInfoBlockContent::where('textInfoBlock_id', $this->id)->get()),
-            'list' => TextInfoBlockListResource::collection(TextInfoBlockList::where('textInfoBlock_id', $this->id)->get())
+            'content' => [...$content, ...$list]
         ];
     }
 }

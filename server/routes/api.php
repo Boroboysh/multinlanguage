@@ -32,8 +32,6 @@ Route::get('/country/{country}/city/{cityName}', function ($country, $cityName, 
     if ($languageCode && in_array($languageCode, $acceptedLanguages)) {
         App::setLocale($languageCode);
 
-        //where('country_id', $country)->
-
         $test = utf8_encode($cityName);
 
         return CityResource::collection(City::where('name', 'LIKE', "%$test%")->get());

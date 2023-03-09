@@ -27,7 +27,6 @@ class RussianTablesCrudController extends CrudController
      */
     public function setup()
     {
-        session(['table_locale' => 'ru']);
 
 
         CRUD::setModel(\App\Models\RussianTables::class);

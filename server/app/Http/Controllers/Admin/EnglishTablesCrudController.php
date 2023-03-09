@@ -27,7 +27,6 @@ class EnglishTablesCrudController extends CrudController
      */
     public function setup()
     {
-        session(['table_locale' => 'en']);
 
         CRUD::setModel(\App\Models\EnglishTables::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/english-tables');

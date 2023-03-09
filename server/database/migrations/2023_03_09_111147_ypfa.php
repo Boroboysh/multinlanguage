@@ -11,10 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('text_info_blocks', function (Blueprint $table) {
-            $table->id();
-            $table->text('content');
-            $table->text('type');
+        Schema::table('subheader_lists', function (Blueprint $table) {
+            $table->integer('number');
         });
     }
 
@@ -23,6 +21,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('text_info_blocks');
+        //
     }
 };

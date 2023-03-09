@@ -19,7 +19,7 @@ class MapPoint extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['name', 'mapInfoBlock_id'];
+    protected $fillable = ['name', 'mapInfoBlock_id', 'type'];
     protected $translatable = ['name'];
 
     public function setIconAttribute($value)

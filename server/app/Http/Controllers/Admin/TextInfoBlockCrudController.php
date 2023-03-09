@@ -39,6 +39,8 @@ class TextInfoBlockCrudController extends CrudController
      */
     protected function setupListOperation()
     {
+        //TODO field type
+
         CRUD::column('id');
         CRUD::addColumn([
             'name' => 'title',
@@ -48,7 +50,10 @@ class TextInfoBlockCrudController extends CrudController
             'name' => 'subtitle',
             'label' => 'Подзаголовок'
         ]);
-
+        CRUD::addColumn([
+            'name' => 'type',
+            'label' => 'Тип',
+        ]);
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -74,7 +79,14 @@ class TextInfoBlockCrudController extends CrudController
             'name' => 'subtitle',
             'label' => 'Подзаголовок'
         ]);
-
+        /*CRUD::addField([
+            'name' => 'type',
+            'label' => 'Тип',
+            'type' => 'select_from_array',
+            'options' => ['text' => 'text', 'title' => 'title'],
+            'allows_null' => false,
+            'default'  => 'text',
+        ]);*/
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');

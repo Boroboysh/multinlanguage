@@ -48,6 +48,10 @@ class SubheaderListCrudController extends CrudController
             'label' => 'Содержание',
         ]);
         CRUD::addColumn([
+            'name' => 'number',
+            'label' => 'Числа',
+        ]);
+        CRUD::addColumn([
             'name' => 'subheader_id',
             'label' => 'Subheader ID',
         ]); // columns
@@ -79,6 +83,11 @@ class SubheaderListCrudController extends CrudController
         CRUD::addField([
             'name' => 'content',
             'label' => 'Содержание'
+        ]);
+        CRUD::addField([
+            'name' => 'number',
+            'label' => 'Числа',
+            'type' => 'number'
         ]);
         CRUD::addField([
             'name' => 'subheader_id',

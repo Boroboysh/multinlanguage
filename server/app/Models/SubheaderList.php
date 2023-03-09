@@ -14,7 +14,7 @@ class SubheaderList extends Model
     use HasTranslations;
 
     public $timestamps = false;
-    protected $fillable = ['icon', 'content', 'subheader_id'];
+    protected $fillable = ['icon', 'content', 'subheader_id', 'number'];
     protected $translatable = ['icon', 'content'];
 
     public function setIconAttribute($value)

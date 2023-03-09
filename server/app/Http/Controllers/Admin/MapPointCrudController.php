@@ -70,8 +70,12 @@ class MapPointCrudController extends CrudController
             'label' => 'Название'
         ]);
         CRUD::addField([
-            'name' => 'type',
-            'label' => 'Тип точки'
+            'name'        => 'type',
+            'label'       => "Тип точки",
+            'type'        => 'select_from_array',
+            'options'     => ['text' => 'text', 'title' => 'title'],
+            'allows_null' => false,
+            'default'     => 'Текст',
         ]);
         CRUD::addField([
             'name' => 'mapInfoBlock_id',

@@ -16,6 +16,7 @@ class SubheaderListResource extends JsonResource
     {
         return [
             'icon' => $this->icon,
+            'number' => $this->number,
             'content' => $this->content
         ];
     }

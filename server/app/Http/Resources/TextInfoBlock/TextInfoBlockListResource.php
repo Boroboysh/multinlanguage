@@ -15,7 +15,8 @@ class TextInfoBlockListResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'content' => $this->content
+            'content' => $this->content,
+            'type' => $this->type
         ];
     }
 }

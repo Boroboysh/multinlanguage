@@ -34,48 +34,48 @@
     </div>
 @endsection
 
-<@php
-    $namesHeader=[ 'Шапка'=> 'header/1/edit?_locale=en',
+@php
+    $namesHeader=[ 'Шапка'=> 'header/1/edit',
     'Выбор языка' => 'header-languages',
     'Страны' => 'country',
     'Города' => 'city',
     ];
     $namesSubHeader = [
-    'Сабхедер' =>'subheader/1/edit?_locale=en',
-    'Контент' => 'subheader-text-content/1/edit?_locale=en',
+    'Сабхедер' =>'subheader/1/edit',
+    'Контент' => 'subheader-text-content/1/edit',
     'Заголовки' => 'subheader-titles',
     'Поля' => 'subheader-fields',
     'Список' => 'subheader-list'
     ];
     $namesBlockInfo = [
-    'Блок с информацией' => 'text-info-block/1/edit?_locale=en',
+    'Блок с информацией' => 'text-info-block/1/edit',
     'Содержание' => 'text-info-block-content',
     'Список' => 'text-info-block-list'
     ];
     $namesBlockMap = [
-    'Блок с картой' => 'map-info-block/1/edit?_locale=en',
+    'Блок с картой' => 'map-info-block/1/edit',
     'Содержание' => 'map-info-block-content',
-    'Кнопка (текст)' => 'map-info-block-button-text/1/edit?_locale=en',
+    'Кнопка (текст)' => 'map-info-block-button-text/1/edit',
     'Точки на карте' => 'map-point',
     'Координаты для точек на карте' => 'map-point-coordination'
     ];
     $namesBlockList = [
-    'Список преимуществ' => 'list-info-block/1/edit?_locale=en',
+    'Список преимуществ' => 'list-info-block/1/edit',
     'Элемент списка преимуществ' => 'list-info-block-element',
     'Содержание списка преимуществ' => 'list-info-block-element-list'
     ];
     $namesBlockContactForm = [
-    'Форма обратной связи' => 'contact-form/1/edit?_locale=en',
+    'Форма обратной связи' => 'contact-form/1/edit',
     'Содержание' => 'contact-form-text-content',
-    'Поля' => 'contact-form-field/1/edit?_locale=en',
-    'Кнопка (текст)' => 'contact-form-button-text/1/edit?_locale=en'
+    'Поля' => 'contact-form-field/1/edit',
+    'Кнопка (текст)' => 'contact-form-button-text/1/edit'
     ];
     $namesBlockContact = [
     'Блок обратной связи' => 'contact-block',
     'Тип сообщения' => 'contact-block-message',
     'Другие методы коммуникации' => 'contact-block-communication-methods',
     'Заголовки' => 'contact-block-titles',
-    'Телеоф' => 'сontact-block-tel-communication'
+    'Телефон' => 'сontact-block-tel-communication'
     ];
     $namesBlockFooter = [
     'Футер' => 'footer',

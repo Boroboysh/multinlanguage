@@ -30,7 +30,7 @@
 
 {{--edit?_locale=en?_locale=en--}}
 
-<@php
+@php
     $namesHeader=[ 'Шапка'=> 'header/1/edit?_locale=en',
      'Выбор языка' => 'header-languages',
      'Страны' => 'country',
@@ -71,7 +71,7 @@
      'Тип сообщения' => 'contact-block-message',
      'Другие методы коммуникации' => 'contact-block-communication-methods',
      'Заголовки' => 'contact-block-titles',
-     'Телеоф' => 'сontact-block-tel-communication'
+     'Телефон' => 'сontact-block-tel-communication'
      ];
      $namesBlockFooter = [
      'Футер' => 'footer',
