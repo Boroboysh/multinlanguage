@@ -1,9 +1,9 @@
 <template>
-  <div v-if="contentPage.data._value" class="home-view">
+  <div class="home-view">
     <div class="header_content_block w-100">
-      <default-header :menu="data.header" class="container-xl" />
+      <default-header v-if="data.header" :menu="data.header" class="container-xl" />
     </div>
-    <div class="header_content_info_content">
+    <div v-if="data.body.subheader" class="header_content_info_content">
       <div class="header_content_info container-xl">
         <div class="header_content_info_row row">
           <div
@@ -119,7 +119,7 @@
         </div>
       </div>
     </div>
-    <div class="about_block">
+    <div v-if="contentPage.data._value.body.textInfoBlock" class="about_block">
       <div class="about_content_block">
         <div class="about_block_title align-items-center w-100 d-flex">
           <div class="about_block_content_title_linear" />
@@ -182,7 +182,7 @@
         </div>
       </div>
     </div>
-    <div class="map_block">
+    <div v-if="contentPage.data._value.body.mapInfoBlock" class="map_block">
       <div class="map_block_content">
         <div class="map_block_title_block w-100 d-flex">
           <div class="map_block_content_title_block p-0">
@@ -237,7 +237,7 @@
         </div>
       </div>
     </div>
-    <div class="advatages_block">
+    <div v-if="contentPage.data._value.body.listInfoBlock" class="advatages_block">
       <div class="advatages_block_title container-xl">
         <div class="advatnages_block_title_linear_block">
           <div class="advatages_title_linear"></div>
@@ -525,7 +525,7 @@
         </div>
       </div>
     </div>
-    <div class="contact_form_block">
+    <div  class="contact_form_block">
       <div class="contact_form_question_mark_block container-xl">
         <div class="contact_form_question_mark">?</div>
       </div>
@@ -634,13 +634,13 @@ import env from '@/api/env/env'
 
 let contentPage = reactive();
 
-contentPage = await useAsyncData('page-data1', async () => {
+contentPage = await useAsyncData('page-data', async () => {
   const response = await getContentInfo('ru')
   return response
 })
 
 
-const { data } = await useFetch(env.host + 'api/page-data1', {
+const { data } = await useFetch(env.host + 'api/page-data', {
   headers: {
     locale: 'ru'
   }
