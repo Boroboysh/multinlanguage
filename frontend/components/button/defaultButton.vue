@@ -77,5 +77,6 @@ defineProps({
 
 .color_grey:hover {
   background: #48538B;
+  color: white;
   box-shadow: 0px 2px 12px rgba(33, 29, 86, 0.25);
 }</style>
