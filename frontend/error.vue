@@ -30,8 +30,6 @@ const props = defineProps({
   justify-content: center;
 }
 .error_page_block {
-  width: 100%;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -39,5 +37,6 @@ const props = defineProps({
 }
 .error_page_code {
   font-size: 5em;
+  color: #E4003C;
 }
 </style>
