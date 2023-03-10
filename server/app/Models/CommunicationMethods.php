@@ -37,7 +37,6 @@ class CommunicationMethods extends Model
             $this->attributes[$attribute_name] = null;
         }
 
-        //TODO fix path
         //not correctly path
         $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path, $fileName = null);
 

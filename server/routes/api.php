@@ -22,7 +22,6 @@ use Illuminate\Support\Facades\Storage;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-//TODO get images
 
 Route::get('/page-data', [JsonController::class, 'getData']);
 
@@ -58,12 +57,3 @@ Route::get('/country/{country}/city/{cityName}', function ($country, $cityName, 
 });
 
 Route::post('/send_email', [FeedbackController::class, 'send']);
-
-
-Route::post('/test', function (Request $request) {
-//     $path = public_path($images_path);
-    $path = $request->input('path');
-
-    return asset('storage/' .$path);
-//    return response()->file($path);
-});

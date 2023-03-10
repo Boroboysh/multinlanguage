@@ -35,12 +35,9 @@ class HeaderLanguages extends Model
         $disk = "public";
         $destination_path = "/images";
 
-        //TODO fix path
-        //not correctly path
         $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path, $fileName = null);
 
-        // Undefined key. Image DB null
-        return $this->attributes[$attribute_name]; // uncomment if this is a translatable field
+        return $this->attributes[$attribute_name];
     }
 
     public static function boot()

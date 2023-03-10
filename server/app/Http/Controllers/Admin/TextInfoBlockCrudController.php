@@ -39,7 +39,6 @@ class TextInfoBlockCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        //TODO field type
 
         CRUD::column('id');
         CRUD::addColumn([
@@ -50,6 +49,7 @@ class TextInfoBlockCrudController extends CrudController
             'name' => 'subtitle',
             'label' => 'Подзаголовок'
         ]);
+        //TODO field type
         CRUD::addColumn([
             'name' => 'type',
             'label' => 'Тип',
