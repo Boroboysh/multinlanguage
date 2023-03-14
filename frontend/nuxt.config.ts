@@ -2,15 +2,12 @@
 export default defineNuxtConfig({
   imports: {
     // autoImport: false,
-
   },
-  // routeRules: {
-  //   '/': {
-  //     ssr: true
-  //   }
-  // },
   css: [
     '@/assets/styles/bootstrap.min.css',
     '@/assets/fonts/Roboto/stylesheet.css'
+  ],
+  modules: [
+    '@pinia/nuxt',
   ],
 })
