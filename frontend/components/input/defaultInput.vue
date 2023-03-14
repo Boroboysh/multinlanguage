@@ -1,12 +1,11 @@
 <template>
   <div
     :class="{
-      default_input__active: valueInput != '',
+      default_input__active: modelValue != '',
       default_input_disabled: disabled,
     }"
     class="default_input_block"
   >
-  {{ modelValue }}
     <span v-if="title" class="default_input_title">
       {{ placeholder }}
     </span>
@@ -18,7 +17,7 @@
       :placeholder="!title ? placeholder : null"
       :disabled="disabled"
       @input="$emit('update:modelValue', $event.target.value)"
-      v-model="valueInput"
+      :value="modelValue"
       class="default_input"
       type="text"
     />
@@ -26,7 +25,7 @@
       <slot name="container-right" />
     </div>
     <div
-      v-if="valueInput && clearButton"
+      v-if="modelValue && clearButton"
       @click="updateValueInput('')"
       class="default_input_clear_button_block"
     >
@@ -42,15 +41,13 @@
 <script setup>
 import { ref } from "vue";
 
-
-
 defineProps({
   disabled: {
     type: Boolean,
   },
   modelValue: {
     type: String,
-    required: true,
+    default: ''
   },
   placeholder: {
     type: String,
@@ -120,6 +117,7 @@ const emit = defineEmits(["update:modelValue"]);
   height: 100%;
   background: none;
   padding: 16px 8px;
+  z-index: 10;
   color: #aaaaaa;
 }
 
