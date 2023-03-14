@@ -4,7 +4,11 @@
       <!-- {{ menu }} -->
       <div class="header_menu_block d-flex w-100">
         <div class="header_logo_block">
-          <img class="header_logo_white" :src="env.host + getLogoType('mobile').path" alt="" />
+          <img
+            class="header_logo_white"
+            :src="env.host + getLogoType('mobile').path"
+            alt=""
+          />
           <img
             class="header_logo_blue"
             src="@/assets/images/logo-pec-eng-blue.svg"
@@ -41,45 +45,43 @@
               </a>
             </div>
             <div class="header_menu_block_link">
-              <div class="header_menu_link">
-                <div
-                  @click="updateStatusActive(!isActive)"
-                  class="default_drowndown_block position-relative"
+              <transparent-select @return-option="(lang) => updateLang(lang.code)">
+                <template #title>
+                  <div class="default_drowndown_title d-flex">
+                    <div class="header_menu_icons_block">
+                      <img
+                        src="@/assets/images/flag.png"
+                        alt=""
+                        class="header_menu_icons header_menu_icons_flug"
+                      />
+                    </div>
+                    {{ menu?.languages[0].name }}
+                    <div class="header_menu_icons_block">
+                      <img
+                        src="@/assets/images/arrow_done.svg"
+                        alt=""
+                        class="header_menu_icons header_menu_icons_arrow_done"
+                      />
+                    </div>
+                  </div>
+                </template>
+                <transparent-option
+                  v-for="(lang, indexLang) in menu?.languages"
+                  :item="lang"
+                  :key="indexLang"
                 >
-                  <div class="default_drowndown_title_block">
-                    <div class="default_drowndown_title d-flex">
-                      <div class="header_menu_icons_block">
-                        <img
-                          src="@/assets/images/flag.png"
-                          alt=""
-                          class="header_menu_icons header_menu_icons_flug"
-                        />
-                      </div>
-                      {{ menu?.languages[0].name }}
-                      <div class="header_menu_icons_block">
-                        <img
-                          src="@/assets/images/arrow_done.svg"
-                          alt=""
-                          class="header_menu_icons header_menu_icons_arrow_done"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div v-if="isActive" class="default_drowndown_content">
+                  <div class="default_drowndown_item_block d-flex">
                     <div
-                      v-for="(lang, indexLang) in menu?.languages"
-                      :key="indexLang"
-                      class="default_drowndown_content_item d-flex"
+                      class="default_drowndown_content_item_lang_image_block"
                     >
-                      <div class="default_drowndown_content_item_lang_image_block">
-                        <img :src="env.host + lang.icon" alt="" />
-                      </div>
-                      <span class="default_drowndown_content_item_title"></span>
-                      {{ lang.name }}
+                      <img class="header_menu_icons_block" :src="env.host + lang.icon" alt="" />
                     </div>
+                    <span class="default_drowndown_content_item_title">
+                      {{ lang.name }}
+                    </span>
                   </div>
-                </div>
-              </div>
+                </transparent-option>
+              </transparent-select>
             </div>
             <div class="header_menu_block_link">
               <a class="header_menu_link" href="#">
@@ -108,28 +110,50 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import env from "~~/api/env/env";
+import transparentSelect from "~~/components/select/transparentSelect/transparentSelect.vue";
+import transparentOption from "~~/components/select/transparentSelect/transparentOption.vue";
 
 const props = defineProps({
   menu: {
     type: Object,
   },
 });
-console.log(props.menu)
 let menuStatus = ref(false);
 let isActive = ref(false);
+let activeLang = ref(null);
+
+const emit = defineEmits(["updateSelected"]);
 
 const updateStatusActive = (status) => {
   isActive.value = status;
 };
+
 const updateStatusMenu = (status) => {
   menuStatus.value = status;
-  // getBody()
 };
 
-const getLogoType = (type) => {
-  console.log('props.menu.logo.find((logo) => logo.type === type)', props.menu.logo.find((logo) => logo.type === type))
-  return props.menu.logo.find((logo) => logo.type === type)
+const updateLang = (lang) => {
+  console.log('lang', lang)
+  emit('updateSelected', lang)
 }
+
+const getLogoType = (type) => {
+  return props.menu.logo.find((logo) => logo.type === type);
+};
+
+
+const getCurrentLang = (list, attribute) => {
+  let result = {};
+  list.map((lang, index) => {
+    if (lang[attribute] > result[index + 1][attribute]) {
+      result = lang;
+    }
+  });
+  // list.reduce((item, prevItem) => Math.max(item, prevItem), 0);
+  return result;
+};
+
+// console.log(getCurrentLang(menu.languages, 'code'))
 
 // const scrollStatus = onMounted((status) => {
 //   const body = document.querySelector('body');
@@ -285,7 +309,7 @@ header {
 .header_content_advantages_number_block {
   position: relative;
   font-size: 48px;
-  width: 100px;
+  padding-right: 30px;
   margin-right: 24px;
   color: #e4003c;
 }
@@ -318,10 +342,16 @@ header {
   top: 100%;
   left: 0;
   z-index: 1000;
-  background: #dadada;
+  background: #ffffff;
 }
 .default_drowndown_content_item {
   padding: 5px;
+}
+.default_drowndown_item_block  {
+  padding: 5px 0px;
+}
+.default_transparent_select_content_block {
+  background: white;
 }
 @media (max-width: 1400px) {
   .header_content_info_preview > img {
