@@ -1,10 +1,10 @@
 <template>
   <header class="w-100">
     <div class="header_content_block container-xl">
-      {{ menu }}
+      <!-- {{ menu }} -->
       <div class="header_menu_block d-flex w-100">
         <div class="header_logo_block">
-          <img class="header_logo_white" :src="env.host + menu?.logo" alt="" />
+          <img class="header_logo_white" :src="env.host + getLogoType('mobile').path" alt="" />
           <img
             class="header_logo_blue"
             src="@/assets/images/logo-pec-eng-blue.svg"
@@ -55,7 +55,7 @@
                           class="header_menu_icons header_menu_icons_flug"
                         />
                       </div>
-                      <!-- {{ menu?.languages[0].name }} -->
+                      {{ menu?.languages[0].name }}
                       <div class="header_menu_icons_block">
                         <img
                           src="@/assets/images/arrow_done.svg"
@@ -125,6 +125,11 @@ const updateStatusMenu = (status) => {
   menuStatus.value = status;
   // getBody()
 };
+
+const getLogoType = (type) => {
+  console.log('props.menu.logo.find((logo) => logo.type === type)', props.menu.logo.find((logo) => logo.type === type))
+  return props.menu.logo.find((logo) => logo.type === type)
+}
 
 // const scrollStatus = onMounted((status) => {
 //   const body = document.querySelector('body');
