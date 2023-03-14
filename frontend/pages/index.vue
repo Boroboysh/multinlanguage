@@ -134,7 +134,20 @@
               :key="aboutTextIndex"
               class="about_content_text"
             >
-              {{ aboutTextItem.text }}
+            <div v-if="aboutTextItem.type === 'item'" class="about_content_item_block">
+              <p class="about_content_item_content">
+                {{ aboutTextItem.text }}
+              </p>
+            </div>
+            <div v-if="aboutTextItem.type === 'list'" class="about_content_item_block">
+              <div class="about_content_item_linear_block">
+                <div class="about_content_item_linear"></div>
+              </div>
+              <span class="about_content_item_text">
+                {{ aboutTextItem.content }}
+              </span>
+            </div>
+              <!-- {{ aboutTextItem.text }} -->
             </div>
             <!-- <div class="about_content_block_info_adress_list_block">
               <span class="about_content_title">
@@ -399,19 +412,6 @@
         </div>
       </div>
     </div>
-    <!-- <default-select placeholder="Выберите значение">
-      <default-option
-        v-for="(item, indexItem) in [
-          { id: 1, name: 1 },
-          { id: 2, name: 1 },
-          { id: 3, name: 1 },
-        ]"
-        :key="indexItem"
-        :item="item.name"
-      >
-        {{ item.name }}
-      </default-option>
-    </default-select> -->
     <choosing-region v-if="false" />
     <default-footer>
       <template #block_left>
@@ -493,6 +493,8 @@ let { data } = await useFetch(env.host + "api/page-data", {
   },
 });
 
+// const response = await useFetch('')
+
 const updateContentPageLang = async (lang) => {
   console.log("lang", lang);
   contentPages.data = await getContentInfo(lang);
@@ -511,7 +513,7 @@ useAsyncData("page-data1", async () => {
   store.getContent();
 });
 
-if (!data.value) {
+if (!contentPages.data) {
   throw createError({
     statusCode: 404,
     statusMessage: "not found",
@@ -705,7 +707,18 @@ body {
 .about_content_block_info_adress_text {
   margin-left: 8px;
 }
-
+.about_content_item_block {
+  display: flex;
+  align-items: center;
+}
+/* .about_content_item_linear_block {
+  margin-right: 10px;
+} */
+.about_content_item_linear {
+  width: 20px;
+  height: 1px;
+  background:#AAAAAA;
+}
 /* .default_map_block {
   margin-top: 30px;
 } */
