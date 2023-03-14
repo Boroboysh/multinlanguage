@@ -8,59 +8,14 @@
               class="col-12 col-md-6 col-xl-6 m-0 p-0 d-flex align-items-center justify-content-start"
             >
               <div class="footer_content_logo_block">
-                <img
-                  src="@/assets/images/logo-pec-black.svg"
-                  alt=""
-                  class="footer_content_logo"
-                />
-                <div class="footer_content_logo_info_pesonal">
-                  <div class="footer_content_logo_info_pesonal_text_block">
-                    <span class="footer_content_logo_info_pesonal_text">
-                      2022 © ООО «ПЭК»
-                    </span>
-                  </div>
-                  <div class="footer_content_logo_info_pesonal_link_block">
-                    <a href="#" class="footer_content_logo_info_pesonal_link"
-                      >О защите персональных данных</a
-                    >
-                  </div>
-                </div>
+                <slot name="block_left" />
               </div>
             </div>
             <div
               class="col-12 col-sm-12 col-md-6 col-xl-6 m-0 p-0 d-flex align-items-center justify-content-start justify-content-md-start justify-content-xl-end"
             >
               <div class="footer_content_downloads_market">
-                <div class="footer_content_downloads_market_title_block">
-                  <span class="footer_content_downloads_market_title">
-                    Управляй доставкой в приложении
-                  </span>
-                </div>
-                <div
-                  class="footer_content_downloads_market_link_group_block d-flex"
-                >
-                  <div class="footer_content_downloads_market_link_group_item">
-                    <img
-                      src="@/assets/images/app-store-small.svg"
-                      alt=""
-                      class="footer_content_downloads_market_link"
-                    />
-                  </div>
-                  <div class="footer_content_downloads_market_link_group_item">
-                    <img
-                      src="@/assets/images/app-store-small.svg"
-                      alt=""
-                      class="footer_content_downloads_market_link"
-                    />
-                  </div>
-                  <div class="footer_content_downloads_market_link_group_item">
-                    <img
-                      src="@/assets/images/app-store-small.svg"
-                      alt=""
-                      class="footer_content_downloads_market_link"
-                    />
-                  </div>
-                </div>
+                <slot name="block_right" />
               </div>
             </div>
           </div>
@@ -70,7 +25,7 @@
   </div>
 </template>
 
-<script>
+<script setup>
 </script>
 
 <style>
