@@ -1,7 +1,6 @@
 <template>
   <header class="w-100">
     <div class="header_content_block container-xl">
-      <!-- {{ menu }} -->
       <div class="header_menu_block d-flex w-100">
         <div class="header_logo_block">
           <img
@@ -25,6 +24,11 @@
             class="header_menu_group_block"
             :class="{ header_menu_group_active: menuStatus }"
           >
+            <div class="header_menu_close_button_block">
+              <a @click="updateStatusMenu(false)" href="#" class="header_menu_close_button">
+                <img class="header_menu_close_button_image" src="@/assets/images/icons/arrow_done.svg" alt="" />
+              </a>
+            </div>
             <div class="header_menu_block_link">
               <a class="header_menu_link" href="#">
                 <div class="header_menu_icons_block">
@@ -45,7 +49,9 @@
               </a>
             </div>
             <div class="header_menu_block_link">
-              <transparent-select @return-option="(lang) => updateLang(lang.code)">
+              <transparent-select
+                @return-option="(lang) => updateLang(lang.code)"
+              >
                 <template #title>
                   <div class="default_drowndown_title d-flex">
                     <div class="header_menu_icons_block">
@@ -74,7 +80,11 @@
                     <div
                       class="default_drowndown_content_item_lang_image_block"
                     >
-                      <img class="header_menu_icons_block" :src="env.host + lang.icon" alt="" />
+                      <img
+                        class="header_menu_icons_block"
+                        :src="env.host + lang.icon"
+                        alt=""
+                      />
                     </div>
                     <span class="default_drowndown_content_item_title">
                       {{ lang.name }}
@@ -133,31 +143,13 @@ const updateStatusMenu = (status) => {
 };
 
 const updateLang = (lang) => {
-  console.log('lang', lang)
-  emit('updateSelected', lang)
-}
+  console.log("lang", lang);
+  emit("updateSelected", lang);
+};
 
 const getLogoType = (type) => {
   return props.menu.logo.find((logo) => logo.type === type);
 };
-
-
-const getCurrentLang = (list, attribute) => {
-  let result = {};
-  list.map((lang, index) => {
-    if (lang[attribute] > result[index + 1][attribute]) {
-      result = lang;
-    }
-  });
-  // list.reduce((item, prevItem) => Math.max(item, prevItem), 0);
-  return result;
-};
-
-// console.log(getCurrentLang(menu.languages, 'code'))
-
-// const scrollStatus = onMounted((status) => {
-//   const body = document.querySelector('body');
-// })
 
 const getBody = (status) => {
   onMounted(() => {
@@ -165,8 +157,6 @@ const getBody = (status) => {
     return body;
   });
 };
-
-updateStatusMenu(false);
 </script>
 
 <style>
@@ -347,11 +337,22 @@ header {
 .default_drowndown_content_item {
   padding: 5px;
 }
-.default_drowndown_item_block  {
+.default_drowndown_item_block {
   padding: 5px 0px;
 }
 .default_transparent_select_content_block {
   background: white;
+}
+.header_menu_close_button_block {
+  display: none;
+  width: 100%;
+}
+.header_menu_close_button_image {
+  width: 100%;
+}
+.header_menu_close_button {
+  width: 20px;
+  margin: 10px 10px 0px 0px;
 }
 @media (max-width: 1400px) {
   .header_content_info_preview > img {
@@ -387,17 +388,22 @@ header {
     color: #e4003c;
   }
   .header_menu_group_block {
-    background: #a1a1a1;
+    background: #ffffff;
     display: block;
     position: absolute;
     top: 0;
     left: 100%;
     width: 100%;
     height: 100%;
-    z-index: 1;
+    z-index: 1000;
   }
   .header_menu_block_link {
     height: auto;
+  }
+  .header_menu_close_button_block {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
   }
   .header_logo_white {
     display: none;
