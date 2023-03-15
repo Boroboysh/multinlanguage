@@ -89,7 +89,26 @@
                 </div>
               </a>
             </div>
-            <div class="header_menu_block_link">
+            <div class="header_menu_block_link_mobile header_menu_block_link container-xl">
+              <div class="header_menu_block_lang_title">Выберите язык</div>
+              <div class="header_menu_mobile_block_lang">
+                <div
+                  v-for="(lang, indexLang) in menu?.languages"
+                  :item="lang"
+                  @click="updateLang(lang)"
+                  :key="indexLang"
+                  class="header_menu_block_lang_item"
+                >
+                  <img
+                    :src="env.host + lang.icon"
+                    alt=""
+                    class="header_menu_block_lang_item_image"
+                  />
+                  {{ lang.name }}
+                </div>
+              </div>
+            </div>
+            <div class="header_menu_block_link header_menu_block_lang">
               <transparent-select @return-option="(lang) => updateLang(lang)">
                 <template #title>
                   <div class="default_drowndown_title d-flex">
@@ -427,6 +446,9 @@ header {
 .default_drowndown_item_block {
   cursor: pointer;
 }
+.header_menu_block_link_mobile {
+  display: none;
+}
 @media (max-width: 1400px) {
   .header_content_info_preview > img {
     width: 100%;
@@ -517,6 +539,22 @@ header {
   }
   .header_menu_mobile_block {
     display: flex;
+  }
+  .header_menu_block_link_mobile {
+    display: block;
+  }
+  .header_menu_block_lang_title {
+    font-size: 16px;
+    border-bottom: 2px solid #e4e6e7;
+  }
+  .header_menu_block_lang_item {
+    margin-top: 10px;
+  }
+  .header_menu_block_lang {
+    display: none;
+  }
+  .header_menu_block_link {
+    margin: 20px 0px 10px 10px;
   }
 }
 </style>
