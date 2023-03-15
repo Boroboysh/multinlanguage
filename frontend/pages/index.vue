@@ -1,20 +1,30 @@
 <template>
   <div class="home-view">
     <div class="header_content_block w-100">
-      <default-header v-if="data.header" :menu="data.header" class="container-xl" />
+      <default-header
+        v-if="contentPages.data.header"
+        @updateSelected="(lang) => updateContentPageLang(lang)"
+        :menu="contentPages.data.header"
+        class="container-xl"
+      />
     </div>
-    <div v-if="data.body.subheader" class="header_content_info_content">
+    <div class="header_content_info_content">
       <div class="header_content_info container-xl">
         <div class="header_content_info_row row">
           <div
             class="col header_content_info_col d-flex justify-content-center header_content_info_preview p-0"
           >
-            <img :src="env.host + data.body.subheader.image" alt="" />
+            <img
+              :src="env.host + contentPages.data.body.subheader.image"
+              alt=""
+            />
           </div>
           <div class="col header_content_info_col header_content_info_forms">
-            <h2 class="header_content_info_forms_title">{{ data.body?.subheader.titles[0].content }}</h2>
+            <h2 class="header_content_info_forms_title">
+              {{ data.body?.subheader.titles[0].content }}
+            </h2>
             <default-input
-              :placeholder="contentPage.data._value.body?.subheader.fields[0].content"
+              :placeholder="contentPages.data.body?.subheader.fields[0].content"
               class="header_content_info_forms"
             >
               <template #container-right>
@@ -25,14 +35,16 @@
               class="header_content_info_calculate_block w-100 d-block align-items-start flex-column"
             >
               <h2 class="header_content_info_forms_title">
-                {{ contentPage.data._value.body.subheader.titles[1].content }}
+                {{ contentPages.data.body.subheader.titles[1].content }}
               </h2>
               <div
                 class="header_content_info_calculate_forms_block w-100 justify-content-between"
               >
                 <default-input
                   class="header_content_info_calculate_form_input_size"
-                  :placeholder="contentPage.data._value.body.subheader.fields[1].content"
+                  :placeholder="
+                    contentPages.data.body.subheader.fields[1].content
+                  "
                   :title="true"
                 />
                 <img
@@ -42,7 +54,9 @@
                 />
                 <default-input
                   class="header_content_info_calculate_form_input_size"
-                  :placeholder="contentPage.data._value.body.subheader.fields[2].content"
+                  :placeholder="
+                    contentPages.data.body.subheader.fields[2].content
+                  "
                   :title="true"
                 />
               </div>
@@ -61,7 +75,7 @@
                   alt=""
                 />
                 <span class="header_content_info_calculate_result_text">
-                 {{ contentPage.data._value.body.subheader.content.text }}
+                  {{ contentPages.data.body.subheader.content.text }}
                 </span>
               </div>
             </div>
@@ -70,12 +84,16 @@
         <div class="header_content_advantages_block">
           <div class="row">
             <div
-              v-for="(itemList, itemIndex) in contentPage.data._value.body.subheader.list" :key="itemIndex"
-              class="col-12 col-xl-4 col-md-4 header_content_advantages d-flex align-items-center justify-content-start"
+              v-for="(itemList, itemIndex) in contentPages.data.body.subheader
+                .list"
+              :key="itemIndex"
+              class="col-12 col-xl-4 col-md-4 header_content_advantages d-flex align-items-start justify-content-start"
             >
               <div class="header_content_advantages_info_block">
                 <div class="header_content_advantages_number_block">
-                  <span class="header_content_advantages_number">20</span>
+                  <span class="header_content_advantages_number">{{
+                    itemList.number
+                  }}</span>
                   <div class="header_content_advantages_number_icons">+</div>
                 </div>
                 <div class="header_content_advantages_text_block">
@@ -85,65 +103,58 @@
                 </div>
               </div>
             </div>
-            <!-- <div
-              class="col-xl-4 col-md-4 col-12 header_content_advantages d-flex align-items-center justify-content-start"
-            >
-              <div class="header_content_advantages_info_block">
-                <div class="header_content_advantages_number_block">
-                  <span class="header_content_advantages_number">20</span>
-                  <div class="header_content_advantages_number_icons">+</div>
-                </div>
-                <div class="header_content_advantages_text_block">
-                  <p class="header_content_advantages_text">
-                    Более 20 лет опыта грузовых перевозок
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div
-              class="col-xl-4 col-md-4 header_content_advantages d-flex align-items-center justify-content-start"
-            >
-              <div class="header_content_advantages_info_block">
-                <div class="header_content_advantages_number_block">
-                  <span class="header_content_advantages_number">20</span>
-                  <div class="header_content_advantages_number_icons">+</div>
-                </div>
-                <div class="header_content_advantages_text_block">
-                  <p class="header_content_advantages_text">
-                    Более 20 лет опыта грузовых перевозок
-                  </p>
-                </div>
-              </div>
-            </div> -->
           </div>
         </div>
       </div>
     </div>
-    <div v-if="contentPage.data._value.body.textInfoBlock" class="about_block">
+    <div class="about_block">
       <div class="about_content_block">
         <div class="about_block_title align-items-center w-100 d-flex">
           <div class="about_block_content_title_linear" />
           <div class="about_block_content_title_block container">
             <span class="about_block_content_title">
-              {{ contentPage.data._value.body.textInfoBlock.title }}
+              {{ contentPages.data.body.textInfoBlock.title }}
             </span>
           </div>
         </div>
-        <div class="about_block_content_advertisement">
+        <!-- <div class="about_block_content_advertisement">
           <span class="about_block_content_title d-block">
             Привлекайте новых клиентов в ПЭК, получайте проценты от продаж!
           </span>
-        </div>
+        </div> -->
         <div class="about_content_block_info container-xl">
           <div class="about_content_info">
             <span class="about_content_title">
               ПЭК: GLOBAL предлагает услуги авто- и авиаперевозок из России в
               Казахстан и в обратном направлении.
             </span>
-            <div v-for="(aboutTextItem, aboutTextIndex) in contentPage.data._value.body.textInfoBlock.content" :key=aboutTextIndex class="about_content_text">
-              {{ aboutTextItem.text }}
+            <div
+              v-for="(aboutTextItem, aboutTextIndex) in contentPages.data.body
+                .textInfoBlock.content"
+              :key="aboutTextIndex"
+              class="about_content_text"
+            >
+            <div v-if="aboutTextItem.type === 'title'" class="about_content_item_block">
+              <p class="about_content_item_content about_content_title">
+                {{ aboutTextItem.text }}
+              </p>
             </div>
-            <div class="about_content_block_info_adress_list_block">
+            <div v-if="aboutTextItem.type === 'item'" class="about_content_item_block">
+              <p class="about_content_item_content">
+                {{ aboutTextItem.text }}
+              </p>
+            </div>
+            <div v-if="aboutTextItem.type === 'list'" class="about_content_item_block">
+              <div class="about_content_item_linear_block">
+                <div class="about_content_item_linear"></div>
+              </div>
+              <span class="about_content_item_text">
+                {{ aboutTextItem.content }}
+              </span>
+            </div>
+              <!-- {{ aboutTextItem.text }} -->
+            </div>
+            <!-- <div class="about_content_block_info_adress_list_block">
               <span class="about_content_title">
                 Отделения ПЭК в Казахстане
               </span>
@@ -177,12 +188,12 @@
               По запросу мы готовы предоставить для юрлиц спецтехнику для
               погрузочно-разгрузочных работ, перевозку и возврат
               сопроводительных документов, предложить API-
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
     </div>
-    <div v-if="contentPage.data._value.body.mapInfoBlock" class="map_block">
+    <div class="map_block">
       <div class="map_block_content">
         <div class="map_block_title_block w-100 d-flex">
           <div class="map_block_content_title_block p-0">
@@ -196,7 +207,7 @@
                   class="map_block_linear about_block_content_title_linear"
                 />
                 <p class="map_block_content_title">
-                  {{ contentPage.data._value.body.mapInfoBlock.title }}
+                  {{ contentPages.data.body.mapInfoBlock.title }}
                 </p>
               </div>
               <div
@@ -214,7 +225,7 @@
                     ></div>
                   </div>
                   <div class="map_block_content_card">
-                    {{ contentPage.data._value.body.mapInfoBlock }}
+                    {{ contentPages.data.body.mapInfoBlock.card.content }}
                   </div>
                 </div>
               </div>
@@ -222,34 +233,41 @@
           </div>
         </div>
       </div>
-      <default-map :item-list="contentPage.data._value.body.mapInfoBlock.points" />
+      <default-map :item-list="contentPages.data.body.mapInfoBlock.points" />
       <div class="map_block_contact">
         <div class="map_contact_button_block">
           <default-button size="large" class="map_contact_button">
-            {{ contentPage.data._value.body.mapInfoBlock.buttons_text.content }}
+            {{ contentPages.data.body.mapInfoBlock.buttons_text.content }}
           </default-button>
         </div>
         <div class="map_contact_info">
-          <span class="map_contact_info_title">{{ contentPage.data._value.body.mapInfoBlock.content[0].text }}</span>
+          <span class="map_contact_info_title">{{
+            contentPages.data.body.mapInfoBlock.content[0].text
+          }}</span>
           <div class="map_contact_telephone_block">
-            <span>{{ contentPage.data._value.header.tel_number }}</span>
+            <span>{{ contentPages.data.header.tel_number }}</span>
           </div>
         </div>
       </div>
     </div>
-    <div v-if="contentPage.data._value.body.listInfoBlock" class="advatages_block">
+    <div class="advatages_block">
       <div class="advatages_block_title container-xl">
         <div class="advatnages_block_title_linear_block">
           <div class="advatages_title_linear"></div>
         </div>
         <div class="advantages_title_block container-xl">
-          <p class="advantages_title">Премущество работы с компанией ПЭК</p>
+          <p class="advantages_title">
+            {{ contentPages.data.body.listInfoBlock.title }}
+          </p>
         </div>
       </div>
     </div>
     <div class="advantages_block_card container-xl">
       <div class="row w-100">
         <div
+          v-for="(advantagesItem, advantagesIndex) in contentPages.data.body
+            .listInfoBlock.element"
+          :key="advantagesIndex"
           class="col-12 col-sm-6 col-md-6 col-xl-6 d-flex h-100 align-items-start justify-content-center advantages_block_card_item"
         >
           <div
@@ -267,20 +285,24 @@
               >
                 <div class="advantages_card_title_icon_block">
                   <img
-                    src="@/assets/images/Shield.svg"
+                    :src="env.host + advantagesItem.icon"
                     alt=""
                     class="advantages_card_title_icon"
                   />
                 </div>
                 <div class="advantages_content_card_title_block fw-bold">
                   <span class="advantages_content_card_title">
-                    Надежность
+                    {{ advantagesItem.title }}
                   </span>
                 </div>
               </div>
               <div class="advantages_card_content">
                 <div class="advantages_card_content_list">
                   <div
+                    v-for="(
+                      advantagesItemList, advantagesItemIndex
+                    ) in advantagesItem.list"
+                    :key="advantagesItemIndex"
                     class="advantages_card_content_list_item d-flex align-items-center h-100"
                   >
                     <div class="advantages_card_content_list_item_linear"></div>
@@ -288,233 +310,7 @@
                       <div
                         class="advantages_card_content_list_item_content_text"
                       >
-                        Более 20 лет на рынке оборудования
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="advantages_card_content_list_item d-flex align-items-center h-100"
-                  >
-                    <div class="advantages_card_content_list_item_linear"></div>
-                    <div class="advantages_card_content_list_item_content">
-                      <div
-                        class="advantages_card_content_list_item_content_text"
-                      >
-                        Более 20 лет на рынке оборудования
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="advantages_card_content_list_item d-flex align-items-center h-100"
-                  >
-                    <div class="advantages_card_content_list_item_linear"></div>
-                    <div class="advantages_card_content_list_item_content">
-                      <div
-                        class="advantages_card_content_list_item_content_text"
-                      >
-                        Более 20 лет на рынке оборудования
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="advantages_card_content_list_item d-flex align-items-center h-100"
-                  >
-                    <div class="advantages_card_content_list_item_linear"></div>
-                    <div class="advantages_card_content_list_item_content">
-                      <div
-                        class="advantages_card_content_list_item_content_text"
-                      >
-                        Более 20 лет на рынке оборудования
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="advantages_card_content_list_item d-flex align-items-center h-100"
-                  >
-                    <div class="advantages_card_content_list_item_linear"></div>
-                    <div class="advantages_card_content_list_item_content">
-                      <div
-                        class="advantages_card_content_list_item_content_text"
-                      >
-                        Более 20 лет на рынке оборудования
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="col-12 col-sm-6 col-md-6 col-xl-6 d-flex h-100 align-items-start justify-content-center advantages_block_card_item"
-        >
-          <div
-            class="advantages_card_block position-relative default_card w-100"
-          >
-            <div class="default_border_block advantages_card_border_block">
-              <div class="default_border default_border_top_left"></div>
-              <div class="default_border default_border_top_right"></div>
-              <div class="default_border default_border_bottom_left"></div>
-              <div class="default_border default_border_bottom_right"></div>
-            </div>
-            <div class="advantages_card default-card">
-              <div
-                class="advantages_card_content_title_block d-flex align-items-center"
-              >
-                <div class="advantages_card_title_icon_block">
-                  <img
-                    src="@/assets/images/accouting_icon.svg"
-                    alt=""
-                    class="advantages_card_title_icon"
-                  />
-                </div>
-                <div class="advantages_content_card_title_block fw-bold">
-                  <span class="advantages_content_card_title"> Выгода </span>
-                </div>
-              </div>
-              <div class="advantages_card_content">
-                <div class="advantages_card_content_list">
-                  <div
-                    class="advantages_card_content_list_item d-flex align-items-center h-100"
-                  >
-                    <div class="advantages_card_content_list_item_linear"></div>
-                    <div class="advantages_card_content_list_item_content">
-                      <div
-                        class="advantages_card_content_list_item_content_text"
-                      >
-                        Более 20 лет на рынке оборудования
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="advantages_card_content_list_item d-flex align-items-center h-100"
-                  >
-                    <div class="advantages_card_content_list_item_linear"></div>
-                    <div class="advantages_card_content_list_item_content">
-                      <div
-                        class="advantages_card_content_list_item_content_text"
-                      >
-                        Более 20 лет на рынке оборудования
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="col-12 col-sm-6 col-md-6 col-xl-6 h-100 d-flex align-items-start justify-content-center advantages_block_card_item"
-        >
-          <div
-            class="advantages_card_block position-relative default_card w-100"
-          >
-            <div class="default_border_block advantages_card_border_block">
-              <div class="default_border default_border_top_left"></div>
-              <div class="default_border default_border_top_right"></div>
-              <div class="default_border default_border_bottom_left"></div>
-              <div class="default_border default_border_bottom_right"></div>
-            </div>
-            <div class="advantages_card default-card">
-              <div
-                class="advantages_card_content_title_block d-flex align-items-center"
-              >
-                <div class="advantages_card_title_icon_block">
-                  <img
-                    src="@/assets/images/accouting_icon.svg"
-                    alt=""
-                    class="advantages_card_title_icon"
-                  />
-                </div>
-                <div class="advantages_content_card_title_block fw-bold">
-                  <span class="advantages_content_card_title">
-                    Надежность
-                  </span>
-                </div>
-              </div>
-              <div class="advantages_card_content">
-                <div class="advantages_card_content_list">
-                  <div
-                    class="advantages_card_content_list_item d-flex align-items-center h-100"
-                  >
-                    <div class="advantages_card_content_list_item_linear"></div>
-                    <div class="advantages_card_content_list_item_content">
-                      <div
-                        class="advantages_card_content_list_item_content_text"
-                      >
-                        Более 20 лет на рынке оборудования
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="col-12 col-sm-6 col-md-6 col-xl-6 h-100 d-flex h-100 align-items-start justify-content-center advantages_block_card_item"
-        >
-          <div
-            class="advantages_card_block position-relative default_card w-100"
-          >
-            <div class="default_border_block advantages_card_border_block">
-              <div class="default_border default_border_top_left"></div>
-              <div class="default_border default_border_top_right"></div>
-              <div class="default_border default_border_bottom_left"></div>
-              <div class="default_border default_border_bottom_right"></div>
-            </div>
-            <div class="advantages_card default-card">
-              <div
-                class="advantages_card_content_title_block d-flex align-items-center"
-              >
-                <div class="advantages_card_title_icon_block">
-                  <img
-                    src="@/assets/images/accouting_icon.svg"
-                    alt=""
-                    class="advantages_card_title_icon"
-                  />
-                </div>
-                <div class="advantages_content_card_title_block fw-bold">
-                  <span class="advantages_content_card_title">
-                    Надежность
-                  </span>
-                </div>
-              </div>
-              <div class="advantages_card_content">
-                <div class="advantages_card_content_list">
-                  <div
-                    class="advantages_card_content_list_item d-flex align-items-center h-100"
-                  >
-                    <div class="advantages_card_content_list_item_linear"></div>
-                    <div class="advantages_card_content_list_item_content">
-                      <div
-                        class="advantages_card_content_list_item_content_text"
-                      >
-                        Более 20 лет на рынке оборудования
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="advantages_card_content_list_item d-flex align-items-center h-100"
-                  >
-                    <div class="advantages_card_content_list_item_linear"></div>
-                    <div class="advantages_card_content_list_item_content">
-                      <div
-                        class="advantages_card_content_list_item_content_text"
-                      >
-                        Более 20 лет на рынке оборудования
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="advantages_card_content_list_item d-flex align-items-center h-100"
-                  >
-                    <div class="advantages_card_content_list_item_linear"></div>
-                    <div class="advantages_card_content_list_item_content">
-                      <div
-                        class="advantages_card_content_list_item_content_text"
-                      >
-                        Более 20 лет на рынке оборудования
+                        {{ advantagesItemList.content }}
                       </div>
                     </div>
                   </div>
@@ -525,44 +321,54 @@
         </div>
       </div>
     </div>
-    <div  class="contact_form_block">
+    <div class="contact_form_block">
       <div class="contact_form_question_mark_block container-xl">
         <div class="contact_form_question_mark">?</div>
       </div>
       <div class="contact_form w-100 container-xl">
         <div class="contact_form_title_block">
-          <span class="contact_form_title"> Ещё остались вопросы? </span>
+          <span class="contact_form_title">
+            {{ contentPages.data.body.contactForm.title }}
+          </span>
         </div>
         <div class="contact_form_title_info_block">
           <span class="contact_form_info_item contact_form_info_item_text">
-            Оставьте заявку, мы с радостью с Вами свяжемся и на них ответим!
+            {{ contentPages.data.body.contactForm.subtitle }}
           </span>
         </div>
         <div class="contact_form_container">
           <div class="row">
-            <div class="col-4 d-flex align-items-center justify-content-center">
+            <div
+              class="col-12 col-md-4 d-flex align-items-center justify-content-center"
+            >
               <div class="contact_form_item_block w-100">
                 <default-input
                   class="contact_form_item contact_form_item_city"
-                  placeholder="Город"
+                  :placeholder="contentPages.data.body.contactForm.fields.city"
                   :title="true"
                 />
               </div>
             </div>
-            <div class="col-4 d-flex align-items-center justify-content-center">
+            <div
+              class="col-12 col-md-4 d-flex align-items-center justify-content-center"
+            >
               <div class="contact_form_item_block w-100">
                 <default-input
                   class="contact_form_item contact_form_item_name"
-                  placeholder="Ваше имя"
+                  :placeholder="contentPages.data.body.contactForm.fields.name"
                   :title="true"
                 />
               </div>
             </div>
-            <div class="col-4 d-flex align-items-center justify-content-center">
+            <div
+              class="col-12 col-md-4 d-flex align-items-center justify-content-center"
+            >
               <div class="contact_form_item_block w-100">
                 <default-input
                   class="contact_form_item contact_form_item_telephone"
-                  placeholder="Город"
+                  :placeholder="
+                    contentPages.data.body.contactForm.fields.tel_number
+                  "
                   :title="true"
                 />
               </div>
@@ -571,7 +377,12 @@
               class="col-12 d-flex align-items-center justify-content-center"
             >
               <div class="contact_form_item_block w-100">
-                <default-text-area placeholder="Сообщение" />
+                <default-text-area
+                  :placeholder="
+                    contentPages.data.body.contactForm.fields
+                      .message_placeholder
+                  "
+                />
               </div>
             </div>
           </div>
@@ -579,12 +390,20 @@
         <div
           class="contact_form_send_block container-xl d-flex align-items-center justify-content-center flex-column"
         >
-          <div class="contact_form_send_personal_info_text">
-            Отправляя свои данные через форму, вы соглашаетесь с условиями
-            обработки
-            <a href="#" class="contact_form_send_personal_info_link">
-              персональных данных.
-            </a>
+          <div class="contact_form_send_personal_info_block d-flex">
+            <div class="contact_form_send_personal_info_item_block">
+              <div
+                class="contact_form_send_personal_info_item contact_form_send_personal_info_text"
+              >
+                Отправляя свои данные через форму, вы соглашаетесь с условиями
+                обработки
+              </div>
+            </div>
+            <div class="contact_form_send_personal_info_item_block">
+              <a href="#" class="contact_form_send_personal_info_link">
+                персональных данных.
+              </a>
+            </div>
           </div>
           <div class="contact_form_send_personal_info_button_block">
             <default-button
@@ -598,22 +417,55 @@
         </div>
       </div>
     </div>
-    <default-select placeholder="Выберите значение">
-      <default-option
-        v-for="(item, indexItem) in [
-          { id: 1, name: 1 },
-          { id: 2, name: 1 },
-          { id: 3, name: 1 },
-        ]"
-        :key="indexItem"
-        :item="item.name"
-      >
-        {{ item.name }}
-      </default-option>
-    </default-select>
     <choosing-region v-if="false" />
-    <default-footer />
-    <!-- {{ data }} -->
+    <default-footer>
+      <template #block_left>
+        <img
+          :src="env.host + contentPages.data.footer.logo"
+          alt=""
+          class="footer_content_logo"
+        />
+        <div class="footer_content_logo_info_pesonal">
+          <div class="footer_content_logo_info_pesonal_text_block">
+            <span class="footer_content_logo_info_pesonal_text">
+              {{ new Date().getFullYear() }}
+              {{ contentPages.data.footer.copyright }}
+            </span>
+          </div>
+          <div class="footer_content_logo_info_pesonal_link_block">
+            <a href="#" class="footer_content_logo_info_pesonal_link"
+              >{{ contentPages.data.footer.personal_data }}
+            </a>
+          </div>
+        </div>
+      </template>
+      <template #block_right>
+        <div class="footer_content_downloads_market_title_block">
+          <span class="footer_content_downloads_market_title">
+            {{ contentPages.data.footer.store_link_title }}
+          </span>
+        </div>
+        <div class="footer_content_downloads_market_link_group_block d-flex">
+          <div
+            v-for="(marketLinkItem, marketLinkIndex) in contentPages.data.footer
+              .store_links"
+            :key="marketLinkIndex"
+            class="footer_content_downloads_market_link_group_item"
+          >
+            <a
+              :href="marketLinkItem.link"
+              class="footer_content_downloads_market_link"
+            >
+              <img
+                :src="env.host + marketLinkItem.icon"
+                alt=""
+                class="footer_content_downloads_market_link_image"
+              />
+            </a>
+          </div>
+        </div>
+      </template>
+    </default-footer>
   </div>
 </template>
 
@@ -626,31 +478,52 @@ import defaultMap from "@/components/map/defaultMap.vue";
 import defaultTextArea from "@/components/textarea/defaultTextArea.vue";
 import defaultSelect from "@/components/select/defaultSelect.vue";
 import defaultOption from "~~/components/select/defaultOption.vue";
-import searchSelect from "~~/components/select/searchSelect.vue";
 import choosingRegion from "@/components/modalWindow/choosingRegion.vue";
 import defaultFooter from "@/components/footer/defaultFooter.vue";
 import getContentInfo from "@/api/contentInfo/getContentInfo";
-import env from '@/api/env/env'
+import { useContentPages } from "@/stores/homeStores";
+import env from "@/api/env/env";
 
-let contentPage = reactive();
+let contentPage = reactive({
+  data: {},
+});
 
-contentPage = await useAsyncData('page-data', async () => {
-  const response = await getContentInfo('ru')
-  return response
-})
+const store = useContentPages();
 
-
-const { data } = await useFetch(env.host + 'api/page-data1', {
+let contentPages = reactive({ data: {} });
+let contactForm = reactive({});
+let { data } = await useFetch(env.host + "api/page-data", {
   headers: {
-    locale: 'ru'
-  }
-})
-if (!data.value) {
-  throw createError({ statusCode: 404, statusMessage: 'not found', message: 'Нет ответа от сервера' })
+    locale: "ru",
+  },
+});
+
+// const response = await useFetch('')
+
+const updateContentPageLang = async (lang) => {
+  contentPages.data = await getContentInfo(lang);
+};
+
+contentPage = await useAsyncData("page-data", async () => {
+  const response = await getContentInfo("ru");
+  return response;
+});
+
+console.log("contentPage", contentPages);
+
+useAsyncData("page-data1", async () => {
+  contentPages.data = await getContentInfo("ru");
+  console.log("test", contentPages);
+  store.getContent();
+});
+
+if (!contentPages.data) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: "not found",
+    message: "Нет ответа от сервера",
+  });
 }
-
-console.log('contentPage', data)
-
 </script>
 
 
@@ -706,23 +579,12 @@ body {
   height: 1px;
 }
 
-.header_content_info_forms_title {
-}
-
 .default_linear_title_block {
   position: relative;
   display: flex;
   align-items: center;
   width: 100%;
   height: 100%;
-}
-
-.header_content_advantages_number_block {
-  position: relative;
-  font-size: 48px;
-  width: 80px;
-  margin-right: 24px;
-  color: #e4003c;
 }
 
 .header_content_advantages_number_icons {
@@ -846,7 +708,19 @@ body {
 .about_content_block_info_adress_text {
   margin-left: 8px;
 }
-
+.about_content_item_block {
+  display: flex;
+  align-items: start;
+}
+.about_content_item_linear_block {
+  margin-right: 10px;
+}
+.about_content_item_linear {
+  width: 20px;
+  height: 1px;
+  margin-top: 11px;
+  background:#AAAAAA;
+}
 /* .default_map_block {
   margin-top: 30px;
 } */
@@ -1203,11 +1077,21 @@ body {
 .contact_form_send_personal_info_text {
   color: white;
 }
-
+.contact_form_send_personal_info_text {
+  color: white;
+}
 .contact_form_send_personal_info_link {
   color: white;
 }
-
+.contact_form_send_personal_info_item {
+  margin-right: 10px;
+}
+.contact_form_send_personal_info_block {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 /* .footer_content_logo_block {
   display: flex;
 } */
@@ -1339,7 +1223,6 @@ body {
     width: 100%;
     height: 50px;
     background: #252069;
-    color: #e4003c;
   }
 
   .header_content_info_calculate_block {
@@ -1427,9 +1310,12 @@ body {
     display: none !important;
   } */
   .map_block_contact {
-    display: block;
+    display: flex;
+    flex-direction: column;
   }
-
+  .map_contact_button_block {
+    margin: 0;
+  }
   .map_block_contact_button {
     width: 100%;
   }

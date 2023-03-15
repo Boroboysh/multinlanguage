@@ -1,9 +1,10 @@
 <template>
   <div class="default_select_block position-relative">
+    {{ selectValue }}
     <default-input
       @focus="udpateStatus(true)"
       v-model="selectValue"
-      :readonly="false"
+      :readonly="true"
       :placeholder="placeholder"
     >
       <template #container-right>
@@ -35,22 +36,22 @@ defineProps({
 });
 
 let selectValue = ref("");
+let defaultInputValue = ref(null);
 let isActive = ref(false);
 
 const udpateStatus = (status) => {
   isActive.value = status;
 };
 
+onMounted(() => {
+  console.log('defaultInputValue', defaultInputValue)
+})
+
 const updateValue = (value) => {
-  console.log(value)
   selectValue.value = value
 }
 
-onMounted(() => {
-})
-
 const closeOptionBlock = () => {
-
 }
 
 provide('defaultSelect', {

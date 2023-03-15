@@ -1,63 +1,83 @@
 <template>
-  <div :class="{ 'default_input__active': valueInput != '', 'default_input_disabled': disabled }"
-    class="default_input_block">
+  <div
+    :class="{
+      default_input__active: modelValue != '',
+      default_input_disabled: disabled,
+    }"
+    class="default_input_block"
+  >
     <span v-if="title" class="default_input_title">
       {{ placeholder }}
     </span>
-    <div class="default_input_container">
-    </div>
-    <input @focus="$emit('focus')" @blur="$emit('blur')" :readonly="readonly" :placeholder="!title ? placeholder : null" :disabled="disabled"
-      @input="$emit('update:modelValue', $event.target.value)" v-model="valueInput" class="default_input" type="text">
+    <div class="default_input_container"></div>
+    <input
+      @focus="$emit('focus')"
+      @blur="$emit('blur')"
+      :readonly="readonly"
+      :placeholder="!title ? placeholder : null"
+      :disabled="disabled"
+      @input="$emit('update:modelValue', $event.target.value)"
+      :value="modelValue"
+      class="default_input"
+      type="text"
+    />
     <div class="container_right_slot">
       <slot name="container-right" />
     </div>
-    <div v-if="valueInput && clearButton" @click="updateValue('')" class="default_input_clear_button_block">
-      <img class="default_input_clear" src="@/assets/images/icons/Arrow_done.svg" alt="">
+    <div
+      v-if="modelValue && clearButton"
+      @click="updateValueInput('')"
+      class="default_input_clear_button_block"
+    >
+      <img
+        class="default_input_clear"
+        src="@/assets/images/icons/Arrow_done.svg"
+        alt=""
+      />
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref } from "vue";
 
 defineProps({
   disabled: {
-    type: Boolean
+    type: Boolean,
   },
   modelValue: {
     type: String,
-    required: true
+    default: ''
   },
   placeholder: {
-    type: String
+    type: String,
   },
   title: {
     type: Boolean,
-    default: false
+    default: false,
   },
   clearButton: {
-    type: Boolean
+    type: Boolean,
   },
   readonly: {
-    type: Boolean
-  }
-})
+    type: Boolean,
+  },
+});
 
-const valueInput = ref('');
+const valueInput = ref("");
 
-const updateValue = (value) => {
-  valueInput = value
-}
+const updateValueInput = (value) => {
+  valueInput = value;
+};
 
-
-const emit = defineEmits(['update:modelValue'])
-
+const emit = defineEmits(["update:modelValue"]);
+// const updateValueInputEmit = defineEmits(["updateValue"]);
 </script>
 
 <style scoped>
 .default_input_block {
   /* height: 100%; */
-  border: 1px solid #E4E6E7;
+  border: 1px solid #e4e6e7;
   border-radius: 3px;
   display: flex;
   align-items: center;
@@ -66,7 +86,7 @@ const emit = defineEmits(['update:modelValue'])
 }
 
 .default_input_block:focus-within {
-  border: 1px solid #48538B;
+  border: 1px solid #48538b;
 }
 
 .default_input_block:focus-within .default_input_title {
@@ -75,7 +95,7 @@ const emit = defineEmits(['update:modelValue'])
 }
 
 .default_input_block:hover {
-  border: 1px solid #AAAAAA;
+  border: 1px solid #aaaaaa;
 }
 
 .default_input_block:disabled:has(.default_input) {
@@ -83,11 +103,11 @@ const emit = defineEmits(['update:modelValue'])
 }
 
 .default_input_disabled {
-  background: #FAFAFA;
+  background: #fafafa;
 }
 
 .default_input_disabled:hover {
-  border: 1px solid #E4E6E7;
+  border: 1px solid #e4e6e7;
 }
 
 .default_input {
@@ -97,7 +117,8 @@ const emit = defineEmits(['update:modelValue'])
   height: 100%;
   background: none;
   padding: 16px 8px;
-  color: #AAAAAA;
+  z-index: 10;
+  color: #aaaaaa;
 }
 
 .default_input_title {
@@ -105,7 +126,7 @@ const emit = defineEmits(['update:modelValue'])
   position: absolute;
   top: 0;
   left: 0;
-  transition: .2s;
+  transition: 0.2s;
   display: flex;
   align-items: center;
   padding-left: 8px;
@@ -116,17 +137,17 @@ const emit = defineEmits(['update:modelValue'])
 }
 
 .default_input__active {
-  background: #FFFFFF;
-  border: 1px solid #E4E6E7;
+  background: #ffffff;
+  border: 1px solid #e4e6e7;
 }
 
 .default_input__active .default_input {
-  color: #2B2B2B;
+  color: #2b2b2b;
 }
 
 .default_input__active:focus-within {
-  background: #FFFFFF;
-  border: 1px solid #E4E6E7 !important;
+  background: #ffffff;
+  border: 1px solid #e4e6e7 !important;
   box-shadow: 0px 0px 12px rgba(95, 124, 151, 0.25);
 }
 
@@ -136,7 +157,7 @@ const emit = defineEmits(['update:modelValue'])
 }
 
 .default_input__active:focus-within .default_input {
-  color: #2B2B2B;
+  color: #2b2b2b;
 }
 
 .default_input_clear_button {

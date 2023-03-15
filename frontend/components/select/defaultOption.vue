@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-import { ref, inject } from "vue";
+import { inject } from "vue";
 
 const props = defineProps({
   item: {
@@ -20,9 +20,6 @@ const updateOptionValue = (item) => {
   updateValue(item)
   udpateStatus(false)
 }
-
-updateValue(props.item.name)
-let value = ref("");
 
 </script>
 

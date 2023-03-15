@@ -37,22 +37,19 @@
                 <div
                   class="choosing_region_content_city_list_item choosing_region_content_city_list_item_active"
                 >
-                  waffwawfawfa
+                Казахстан
                 </div>
                 <div class="choosing_region_content_city_list_item">
-                  waffwawfawfa
+                  Россия
                 </div>
                 <div class="choosing_region_content_city_list_item">
-                  waffwawfawfa
+                  Беларусь
                 </div>
                 <div class="choosing_region_content_city_list_item">
-                  waffwawfawfa
+                  Армения
                 </div>
                 <div class="choosing_region_content_city_list_item">
-                  waffwawfawfa
-                </div>
-                <div class="choosing_region_content_city_list_item">
-                  waffwawfawfa
+                  Узбекистан
                 </div>
               </div>
             </div>
@@ -79,7 +76,7 @@
                       <a
                         href="#"
                         class="choosing_region_content_city_block_popular_list_item"
-                        >уафщшуапф</a
+                        >Астана</a
                       >
                     </div>
                     <div
@@ -88,7 +85,7 @@
                       <a
                         href="#"
                         class="choosing_region_content_city_block_popular_list_item"
-                        >уафщшуапф</a
+                        >Костанай</a
                       >
                     </div>
                   </div>
@@ -136,6 +133,7 @@ import defaultKeyboardLayout from "@/components/keyboardLayout/defaultKeyboardLa
 import defaultKeyboardOption from "@/components/keyboardLayout/defaultKeyboardOption.vue";
 
 import { ref } from "vue";
+
 const test = ref([
   {
     id: 1,

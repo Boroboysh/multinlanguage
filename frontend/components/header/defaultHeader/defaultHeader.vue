@@ -1,10 +1,13 @@
 <template>
   <header class="w-100">
     <div class="header_content_block container-xl">
-      {{ menu }}
       <div class="header_menu_block d-flex w-100">
         <div class="header_logo_block">
-          <img class="header_logo_white" :src="env.host + menu?.logo" alt="" />
+          <img
+            class="header_logo_white"
+            :src="env.host + getLogoType('mobile').path"
+            alt=""
+          />
           <img
             class="header_logo_blue"
             src="@/assets/images/logo-pec-eng-blue.svg"
@@ -14,13 +17,26 @@
         <div
           class="header_menu_block d-flex align-content-center justify-content-end bg-red-500"
         >
-          <div @click="updateStatusMenu(true)" class="header_menu_burger_block">
+          <div @click="openMenu()" class="header_menu_burger_block">
             <img src="@/assets/images/default_menu_icons.svg" alt="" />
           </div>
           <div
             class="header_menu_group_block"
             :class="{ header_menu_group_active: menuStatus }"
           >
+            <div class="header_menu_close_button_block">
+              <a
+                @click="closeMenu()"
+                href="#"
+                class="header_menu_close_button"
+              >
+                <img
+                  class="header_menu_close_button_image"
+                  src="@/assets/images/icons/arrow_done.svg"
+                  alt=""
+                />
+              </a>
+            </div>
             <div class="header_menu_block_link">
               <a class="header_menu_link" href="#">
                 <div class="header_menu_icons_block">
@@ -41,45 +57,49 @@
               </a>
             </div>
             <div class="header_menu_block_link">
-              <div class="header_menu_link">
-                <div
-                  @click="updateStatusActive(!isActive)"
-                  class="default_drowndown_block position-relative"
+              <transparent-select
+                @return-option="(lang) => updateLang(lang.code)"
+              >
+                <template #title>
+                  <div class="default_drowndown_title d-flex">
+                    <div class="header_menu_icons_block">
+                      <img
+                        src="@/assets/images/flag.png"
+                        alt=""
+                        class="header_menu_icons header_menu_icons_flug"
+                      />
+                    </div>
+                    {{ menu?.languages[0].name }}
+                    <div class="header_menu_icons_block">
+                      <img
+                        src="@/assets/images/arrow_done.svg"
+                        alt=""
+                        class="header_menu_icons header_menu_icons_arrow_done"
+                      />
+                    </div>
+                  </div>
+                </template>
+                <transparent-option
+                  v-for="(lang, indexLang) in menu?.languages"
+                  :item="lang"
+                  :key="indexLang"
                 >
-                  <div class="default_drowndown_title_block">
-                    <div class="default_drowndown_title d-flex">
-                      <div class="header_menu_icons_block">
-                        <img
-                          src="@/assets/images/flag.png"
-                          alt=""
-                          class="header_menu_icons header_menu_icons_flug"
-                        />
-                      </div>
-                      <!-- {{ menu?.languages[0].name }} -->
-                      <div class="header_menu_icons_block">
-                        <img
-                          src="@/assets/images/arrow_done.svg"
-                          alt=""
-                          class="header_menu_icons header_menu_icons_arrow_done"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div v-if="isActive" class="default_drowndown_content">
+                  <div class="default_drowndown_item_block d-flex">
                     <div
-                      v-for="(lang, indexLang) in menu?.languages"
-                      :key="indexLang"
-                      class="default_drowndown_content_item d-flex"
+                      class="default_drowndown_content_item_lang_image_block"
                     >
-                      <div class="default_drowndown_content_item_lang_image_block">
-                        <img :src="env.host + lang.icon" alt="" />
-                      </div>
-                      <span class="default_drowndown_content_item_title"></span>
-                      {{ lang.name }}
+                      <img
+                        class="header_menu_icons_block"
+                        :src="env.host + lang.icon"
+                        alt=""
+                      />
                     </div>
+                    <span class="default_drowndown_content_item_title">
+                      {{ lang.name }}
+                    </span>
                   </div>
-                </div>
-              </div>
+                </transparent-option>
+              </transparent-select>
             </div>
             <div class="header_menu_block_link">
               <a class="header_menu_link" href="#">
@@ -93,7 +113,7 @@
                 {{ menu?.supportText }}
               </a>
             </div>
-            <div class="header_menu_block_link">
+            <div class="overflow header_menu_block_link">
               <a class="header_menu_link header_menu_link_telephone" href="#">
                 {{ menu?.tel_number }}
               </a>
@@ -108,36 +128,48 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import env from "~~/api/env/env";
+import transparentSelect from "~~/components/select/transparentSelect/transparentSelect.vue";
+import transparentOption from "~~/components/select/transparentSelect/transparentOption.vue";
 
 const props = defineProps({
   menu: {
     type: Object,
   },
 });
-console.log(props.menu)
 let menuStatus = ref(false);
 let isActive = ref(false);
+let activeLang = ref(null);
 
-const updateStatusActive = (status) => {
-  isActive.value = status;
-};
+const emit = defineEmits(["updateSelected"]);
+
 const updateStatusMenu = (status) => {
   menuStatus.value = status;
-  // getBody()
 };
 
-// const scrollStatus = onMounted((status) => {
-//   const body = document.querySelector('body');
-// })
-
-const getBody = (status) => {
-  onMounted(() => {
-    const body = document.querySelector("body");
-    return body;
-  });
+const openMenu = () => {
+  updateStatusMenu(true);
+  getBody().style.overflowY = 'hidden'
 };
 
-updateStatusMenu(false);
+const closeMenu = () => {
+  updateStatusMenu(false);
+  getBody().style.overflowY = null
+};
+
+const updateLang = (lang) => {
+  emit("updateSelected", lang);
+};
+
+const getLogoType = (type) => {
+  return props.menu.logo.find((logo) => logo.type === type);
+};
+
+const getBody = () => {
+  const body = document.querySelector("body");
+  // body.style.overflowY = 'hidden';
+  return body;
+};
+
 </script>
 
 <style>
@@ -280,7 +312,7 @@ header {
 .header_content_advantages_number_block {
   position: relative;
   font-size: 48px;
-  width: 100px;
+  padding-right: 30px;
   margin-right: 24px;
   color: #e4003c;
 }
@@ -313,10 +345,27 @@ header {
   top: 100%;
   left: 0;
   z-index: 1000;
-  background: #dadada;
+  background: #ffffff;
 }
 .default_drowndown_content_item {
   padding: 5px;
+}
+.default_drowndown_item_block {
+  padding: 5px 0px;
+}
+.default_transparent_select_content_block {
+  background: white;
+}
+.header_menu_close_button_block {
+  display: none;
+  width: 100%;
+}
+.header_menu_close_button_image {
+  width: 100%;
+}
+.header_menu_close_button {
+  width: 20px;
+  /* margin: 10px 10px 0px 0px; */
 }
 @media (max-width: 1400px) {
   .header_content_info_preview > img {
@@ -331,13 +380,6 @@ header {
 }
 
 @media (max-width: 912px) {
-  /* .header_content_info_preview img {
-    width: 100%;
-    background-size: cover;
-  } */
-  /* .header_menu_burger_block {
-    display: block;
-  } */
   html,
   body {
     overflow-x: hidden;
@@ -349,20 +391,29 @@ header {
   .header_content_block {
     height: 50px;
     background: #252069;
-    color: #e4003c;
+  }
+  .header_menu_block_link {
+    margin: 20px;
   }
   .header_menu_group_block {
-    background: #a1a1a1;
+    background: #ffffff;
     display: block;
     position: absolute;
     top: 0;
     left: 100%;
     width: 100%;
     height: 100%;
-    z-index: 1;
+    z-index: 1000;
   }
   .header_menu_block_link {
     height: auto;
+  }
+  .header_menu_close_button_block {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 50px;
+    padding: 0 12px;
   }
   .header_logo_white {
     display: none;
