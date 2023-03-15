@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\MapInfoBlock;
 
-use App\Http\Resources\MapInfoBlock\MapPointCoordinationResource;
 use App\Models\MapPointCoordination;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;

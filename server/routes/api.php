@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CityController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\JsonController;
@@ -10,7 +11,6 @@ use App\Models\ContactBlock;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +27,8 @@ Route::get('/page-data', [JsonController::class, 'getData']);
 
 Route::get('/countries/cities', [CountryController::class, 'getCountriesCities']);
 
+Route::get('/modal-selected-region', [CountryController::class, 'getModalBlock']);
+
 Route::get('/contact-block', function (Request $request) {
     $acceptedLanguages = ['ru', 'en', 'kk'];
     $languageCode = $request->header('locale');
@@ -39,6 +41,12 @@ Route::get('/contact-block', function (Request $request) {
 
     return response('Invalid language code', 404);
 });
+
+Route::get('/search', [CityController::class, 'searchCity']);
+
+
+
+//TODO DELETE
 
 Route::get('/country/{country}/city/{cityName}', function ($country, $cityName, Request $request) {
     $acceptedLanguages = ['ru', 'en', 'kk'];
@@ -57,3 +65,5 @@ Route::get('/country/{country}/city/{cityName}', function ($country, $cityName, 
 });
 
 Route::post('/send_email', [FeedbackController::class, 'send']);
+
+//TODO DELETE

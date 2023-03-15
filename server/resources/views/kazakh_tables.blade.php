@@ -77,7 +77,7 @@
        'Тип сообщения' => 'contact-block-message',
        'Другие методы коммуникации' => 'contact-block-communication-methods',
        'Заголовки' => 'contact-block-titles',
-       'Телефон' => 'сontact-block-tel-communication'
+       'Телефон (DELETE)' => 'сontact-block-tel-communication'
        ];
        $namesBlockFooter = [
        'Футер' => 'footer',

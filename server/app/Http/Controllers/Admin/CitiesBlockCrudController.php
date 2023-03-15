@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\ContactBlockCommunicationMethodsRequest;
+use App\Http\Requests\CitiesBlockRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class ContactBlockCommunicationMethodsCrudController
+ * Class CitiesBlockCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class ContactBlockCommunicationMethodsCrudController extends CrudController
+class CitiesBlockCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -26,9 +26,9 @@ class ContactBlockCommunicationMethodsCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\ContactBlockCommunicationMethods::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/contact-block-communication-methods');
-        CRUD::setEntityNameStrings('', 'Другие способы связи');
+        CRUD::setModel(\App\Models\CitiesBlock::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/cities-block');
+        CRUD::setEntityNameStrings('cities block', 'cities blocks');
     }
 
     /**
@@ -39,9 +39,8 @@ class ContactBlockCommunicationMethodsCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('name');
-        CRUD::column('icon');
-        CRUD::column('link');
+        CRUD::column('content');
+        CRUD::column('type');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -58,21 +57,8 @@ class ContactBlockCommunicationMethodsCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::addField([
-            'name' => 'name',
-            'label' => 'Название'
-        ]);
-        CRUD::addField([
-            'name' => 'icon',
-            'label'     => 'Иконка',
-            'type'      => 'upload',
-            'upload'    => true,
-        ]);
-        CRUD::addField([
-            'name' => 'link',
-            'label' => 'Ссылка',
-            'type' => 'url'
-        ]);
+        CRUD::field('content');
+        CRUD::field('type');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

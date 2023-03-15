@@ -6,9 +6,8 @@ use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Backpack\CRUD\app\Models\Traits\SpatieTranslatable\HasTranslations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Storage;
 
-class ContactBlockCommunicationMethods extends Model
+class CitiesBlock extends Model
 {
     use CrudTrait;
     use HasFactory;
@@ -20,37 +19,21 @@ class ContactBlockCommunicationMethods extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'communication_methods';
+    protected $table = 'cities_block';
     // protected $primaryKey = 'id';
     public $timestamps = false;
     protected $guarded = ['id'];
-
-    protected $fillable = ['id', 'icon', 'name', 'link'];
-    protected $translatable = ['name'];
+    protected $translatable = ['content'];
+    // protected $fillable = [];
+    // protected $hidden = [];
+    // protected $dates = [];
 
     /*
     |--------------------------------------------------------------------------
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-    public function setIconAttribute($value)
-    {
-        $attribute_name = "icon";
-        $disk = "public";
-        $destination_path = "/images";
 
-        $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path, $fileName = null);
-
-        return $this->attributes[$attribute_name];
-    }
-
-    public static function boot()
-    {
-        parent::boot();
-        static::deleting(function($obj) {
-            Storage::disk('public')->delete($obj->icon);
-        });
-    }
     /*
     |--------------------------------------------------------------------------
     | RELATIONS

@@ -54,4 +54,6 @@ Route::group([
     Route::crud('footer', 'FooterCrudController');
     Route::crud('footer-store-links', 'FooterStoreLinksCrudController');
     Route::crud('map-info-block-card-content', 'MapInfoBlockCardContentCrudController');
+    Route::crud('header-logo-list', 'HeaderLogoListCrudController');
+    Route::crud('cities-block', 'CitiesBlockCrudController');
 }); // this should be the absolute last line of this file

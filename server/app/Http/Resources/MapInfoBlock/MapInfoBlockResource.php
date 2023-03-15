@@ -2,7 +2,6 @@
 
 namespace App\Http\Resources\MapInfoBlock;
 
-use App\Http\Resources\MapPointsResource;
 use App\Models\MapInfoBlockButtonText;
 use App\Models\MapInfoBlockCardContent;
 use App\Models\MapInfoBlockContent;

@@ -1,19 +1,23 @@
 @extends(backpack_view('blank'))
 
-<div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
+<div
+    class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
     @if (Route::has('login'))
-    <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
-        @auth
-        <a href="{{ url('/home') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Home</a>
-        @else
-        <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
-            in</a>
+        <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
+            @auth
+                <a href="{{ url('/home') }}"
+                   class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Home</a>
+            @else
+                <a href="{{ route('login') }}"
+                   class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
+                    in</a>
 
-        @if (Route::has('register'))
-        <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
-        @endif
-        @endauth
-    </div>
+                @if (Route::has('register'))
+                    <a href="{{ route('register') }}"
+                       class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
+                @endif
+            @endauth
+        </div>
     @endif
 
     <h1>
@@ -21,11 +25,11 @@
 </div>
 
 @section('header')
-<div class="container-fluid" style="text-align: center; margin-bottom: 3em;">
-    <h2>
-        <span class="text-capitalize">English</span>
-    </h2>
-</div>
+    <div class="container-fluid" style="text-align: center; margin-bottom: 3em;">
+        <h2>
+            <span class="text-capitalize">English</span>
+        </h2>
+    </div>
 @endsection
 
 {{--edit?_locale=en?_locale=en--}}
@@ -73,177 +77,177 @@
      'Тип сообщения' => 'contact-block-message',
      'Другие методы коммуникации' => 'contact-block-communication-methods',
      'Заголовки' => 'contact-block-titles',
-     'Телефон' => 'сontact-block-tel-communication'
+     'Телефон (DELETE)' => 'сontact-block-tel-communication'
      ];
      $namesBlockFooter = [
      'Футер' => 'footer',
      'Ссылки на маркетплейс' => 'footer-store-links'
      ];
-    @endphp
+@endphp
 
-    @section('content')
+@section('content')
     {{-- Default box --}}
 
     <div
         style="display:flex; gap: 2em; justify-content: space-between; padding: 2em 4em 0em 3em; max-width: 100%; overflow-x: auto; border: 1px solid #7c69ef; border-radius: 10px ">
 
-    <div>
-        {{--Header--}}
-        <h3>Header</h3>
-        <div class="row">
-            @foreach($namesHeader as $name => $url)
-            <div class="card m-1">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center;">
-                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url($url) }}">
-                            <h4 class="card-text" style="text-align: center">
-                                {{ $name }}
-                            </h4>
-                        </a>
-                    </div>
+        <div>
+            {{--Header--}}
+            <h3>Header</h3>
+            <div class="row">
+                @foreach($namesHeader as $name => $url)
+                    <div class="card m-1">
+                        <div class="card-body" style="display: flex; align-items: center; justify-content: center;">
+                            <div class="nav-item"><a class="nav-link" href="{{ backpack_url($url) }}">
+                                    <h4 class="card-text" style="text-align: center">
+                                        {{ $name }}
+                                    </h4>
+                                </a>
+                            </div>
 
-                </div>
-            </div>
-            @endforeach
-        </div>
-        <hr class="mb-4">
-        {{--Subheader--}}
-        <h3>Subheader</h3>
-        <div class="row">
-            @foreach($namesSubHeader as $name => $url)
-            <div class="card m-1">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center;">
-                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url($url) }}">
-                            <h4 class="card-text" style="text-align: center">
-                                {{ $name }}
-                            </h4>
-                        </a>
+                        </div>
                     </div>
-
-                </div>
+                @endforeach
             </div>
-            @endforeach
-        </div>
-        <hr class="mb-4">
-        {{--Info block--}}
-        <h3>Info block</h3>
-        <div class="row">
+            <hr class="mb-4">
+            {{--Subheader--}}
+            <h3>Subheader</h3>
+            <div class="row">
+                @foreach($namesSubHeader as $name => $url)
+                    <div class="card m-1">
+                        <div class="card-body" style="display: flex; align-items: center; justify-content: center;">
+                            <div class="nav-item"><a class="nav-link" href="{{ backpack_url($url) }}">
+                                    <h4 class="card-text" style="text-align: center">
+                                        {{ $name }}
+                                    </h4>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+            <hr class="mb-4">
             {{--Info block--}}
-            @foreach($namesBlockInfo as $name => $url)
-            <div class="card m-1">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url($url) }}">
-                            <h4 class="card-text" style="text-align: center">
-                                {{ $name }}
-                            </h4>
-                        </a>
+            <h3>Info block</h3>
+            <div class="row">
+                {{--Info block--}}
+                @foreach($namesBlockInfo as $name => $url)
+                    <div class="card m-1">
+                        <div class="card-body" style="display: flex; align-items: center; justify-content: center">
+                            <div class="nav-item"><a class="nav-link" href="{{ backpack_url($url) }}">
+                                    <h4 class="card-text" style="text-align: center">
+                                        {{ $name }}
+                                    </h4>
+                                </a>
+                            </div>
+
+                        </div>
                     </div>
-
-                </div>
+                @endforeach
             </div>
-            @endforeach
-        </div>
-        <hr class="mb-4">
-        {{--Map Info Block--}}
-        <h3>Map Info Block</h3>
-        <div class="row">
-            @foreach($namesBlockMap as $name => $url)
-            <div class="card m-1">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url($url) }}">
-                            <h4 class="card-text" style="text-align: center">
-                                {{ $name }}
-                            </h4>
-                        </a>
+            <hr class="mb-4">
+            {{--Map Info Block--}}
+            <h3>Map Info Block</h3>
+            <div class="row">
+                @foreach($namesBlockMap as $name => $url)
+                    <div class="card m-1">
+                        <div class="card-body" style="display: flex; align-items: center; justify-content: center">
+                            <div class="nav-item"><a class="nav-link" href="{{ backpack_url($url) }}">
+                                    <h4 class="card-text" style="text-align: center">
+                                        {{ $name }}
+                                    </h4>
+                                </a>
+                            </div>
+
+                        </div>
                     </div>
+                @endforeach
 
-                </div>
             </div>
-            @endforeach
+            <hr class="mb-4">
+            {{--List Info Block--}}
+            <h3>List Info Block</h3>
+            <div class="row">
+                @foreach($namesBlockList as $name => $url)
+                    <div class="card m-1">
+                        <div class="card-body" style="display: flex; align-items: center; justify-content: center">
+                            <div class="nav-item"><a class="nav-link" href="{{ backpack_url($url) }}">
+                                    <h4 class="card-text" style="text-align: center">
+                                        {{ $name }}
+                                    </h4>
+                                </a>
+                            </div>
 
-        </div>
-        <hr class="mb-4">
-        {{--List Info Block--}}
-        <h3>List Info Block</h3>
-        <div class="row">
-            @foreach($namesBlockList as $name => $url)
-            <div class="card m-1">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url($url) }}">
-                            <h4 class="card-text" style="text-align: center">
-                                {{ $name }}
-                            </h4>
-                        </a>
+                        </div>
                     </div>
-
-                </div>
+                @endforeach
             </div>
-            @endforeach
-        </div>
-        <hr class="mb-4">
-        {{--Сontact Form--}}
-        <h3>Сontact Form</h3>
-        <div class="row">
-            @foreach($namesBlockContactForm as $name => $url)
-            <div class="card m-1">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url($url) }}">
-                            <h4 class="card-text" style="text-align: center">
-                                {{ $name }}
-                            </h4>
-                        </a>
+            <hr class="mb-4">
+            {{--Сontact Form--}}
+            <h3>Сontact Form</h3>
+            <div class="row">
+                @foreach($namesBlockContactForm as $name => $url)
+                    <div class="card m-1">
+                        <div class="card-body" style="display: flex; align-items: center; justify-content: center">
+                            <div class="nav-item"><a class="nav-link" href="{{ backpack_url($url) }}">
+                                    <h4 class="card-text" style="text-align: center">
+                                        {{ $name }}
+                                    </h4>
+                                </a>
+                            </div>
+
+                        </div>
                     </div>
-
-                </div>
+                @endforeach
             </div>
-            @endforeach
-        </div>
-        <hr class="mb-4">
-        {{--Communication methods--}}
-        <h3>Communication methods</h3>
-        <div class="row">
-            @foreach($namesBlockContact as $name => $url)
-            <div class="card m-1">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url($url) }}">
-                            <h4 class="card-text" style="text-align: center">
-                                {{ $name }}
-                            </h4>
-                        </a>
+            <hr class="mb-4">
+            {{--Communication methods--}}
+            <h3>Communication methods</h3>
+            <div class="row">
+                @foreach($namesBlockContact as $name => $url)
+                    <div class="card m-1">
+                        <div class="card-body" style="display: flex; align-items: center; justify-content: center">
+                            <div class="nav-item"><a class="nav-link" href="{{ backpack_url($url) }}">
+                                    <h4 class="card-text" style="text-align: center">
+                                        {{ $name }}
+                                    </h4>
+                                </a>
+                            </div>
+
+                        </div>
                     </div>
-
-                </div>
+                @endforeach
             </div>
-            @endforeach
-        </div>
-        <hr class="mb-4">
-        {{--Footer--}}
-        <h3>Footer</h3>
-        <div class="row">
-            @foreach($namesBlockFooter as $name => $url)
-            <div class="card m-1">
-                <div class="card-body" style="display: flex; align-items: center; justify-content: center">
-                    <div class="nav-item"><a class="nav-link" href="{{ backpack_url($url) }}">
-                            <h4 class="card-text" style="text-align: center">
-                                {{ $name }}
-                            </h4>
-                        </a>
+            <hr class="mb-4">
+            {{--Footer--}}
+            <h3>Footer</h3>
+            <div class="row">
+                @foreach($namesBlockFooter as $name => $url)
+                    <div class="card m-1">
+                        <div class="card-body" style="display: flex; align-items: center; justify-content: center">
+                            <div class="nav-item"><a class="nav-link" href="{{ backpack_url($url) }}">
+                                    <h4 class="card-text" style="text-align: center">
+                                        {{ $name }}
+                                    </h4>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                @endforeach
             </div>
-            @endforeach
         </div>
-    </div>
-    @endsection
+@endsection
 
-    @section('after_styles')
+@section('after_styles')
     {{-- DATA TABLES --}}
     {{-- CRUD LIST CONTENT - crud_list_styles stack --}}
     @stack('crud_list_styles')
-    @endsection
+@endsection
 
-    @section('after_scripts')
+@section('after_scripts')
     @include('crud::inc.datatables_logic')
 
     {{-- CRUD LIST CONTENT - crud_list_scripts stack --}}
     @stack('crud_list_scripts')
-    @endsection
+@endsection

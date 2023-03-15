@@ -2,9 +2,8 @@
 
 namespace App\Http\Resources\Header;
 
-use App\Models\City;
-use App\Models\Country;
 use App\Models\HeaderLanguages;
+use App\Models\HeaderLogoList;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -17,16 +16,8 @@ class HeaderResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-//            $language_code = 'ru';
-//        $country = new CountryResource(Country::class);
-//        $city = new CityResource(City::class);
-//
-//        "countries" => $country,
-//            "cities" => $city,
-
-
         return [
-            'logo' => $this->logo,
+            'logo' => HeaderLogoListResource::collection(HeaderLogoList::all()),
             "supportText" => $this->supportText,
             'tel_number' => $this->tel_number,
             'languages' => HeaderLanguagesResource::collection(HeaderLanguages::all())

@@ -11,3 +11,6 @@
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('kazakh-tables') }}"> Қазақша</a></li>
 
 
+
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('header-logo-list') }}"><i class="nav-icon la la-question"></i> Header logo lists</a></li>
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('cities-block') }}"><i class="nav-icon la la-question"></i> Cities blocks</a></li>
