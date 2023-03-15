@@ -1,6 +1,6 @@
 <template>
   <div class="default_text_area_block">
-    <textarea :placeholder="placeholder" class="default_text_area"></textarea>
+    <textarea @input="($emit('update:modelValue', $event.target.value))" :placeholder="placeholder" class="default_text_area"></textarea>
   </div>
 </template>
 
@@ -31,5 +31,4 @@ defineProps({
 .default_text_area:hover {
   border: 1px solid #aaaaaa;
 }
-
 </style>
