@@ -7,14 +7,14 @@
         <div
           class="choosing_region_header_title_block d-flex align-items-start choosing_region_header_block_col"
         >
-          <span class="choosing_region_header_title"> Выбор региона </span>
+          <span class="choosing_region_header_title">Выбор региона </span>
         </div>
         <div
           @click="emitActions({ actionName: 'closeModal', value: true })"
           class="choosing_region_header_close_button_block d-flex align-items-center justify-content-end choosing_region_header_block_col"
         >
           <img
-            src="@/assets/images/icons/Arrow_done.svg"
+            src="@/assets/images/icons/arrow_done.svg"
             alt=""
             class="choosing_region_header_close_button"
           />
@@ -37,6 +37,7 @@
               <div class="choosing_region_content_city_list">
                 <div
                   v-for="(country, countryIndex) in list"
+                  @click="updateCurrentCountry(country)"
                   :key="countryIndex"
                   class="choosing_region_content_city_list_item choosing_region_content_city_list_item_active"
                 >
@@ -110,7 +111,7 @@
         </div>
       </div>
     </div>
-    {{ list }}
+    {{ currentCountry }}
   </div>
 </template>
 
@@ -118,7 +119,7 @@
 import defaultInput from "@/components/input/defaultInput.vue";
 import defaultKeyboardLayout from "@/components/keyboardLayout/defaultKeyboardLayout.vue";
 import defaultKeyboardOption from "@/components/keyboardLayout/defaultKeyboardOption.vue";
-import { getCountry } from '@/api/getCountry/getCountry'
+import { getCountry } from "@/api/getCountry/getCountry";
 
 import { ref, onMounted } from "vue";
 
@@ -145,16 +146,15 @@ const props = defineProps({
 });
 const emits = defineEmits(["closeButton"]);
 
-let currentCountry = ref(null)
+let currentCountry = ref({});
 
-const sortArray = (list, attribute) => {
-  return list.sort((item, nextItem) => item[attribute] - nextItem[attribute]);
+const updateCurrentCountry = (value) => {
+  currentCountry.value = value;
 };
 
 const emitActions = (action) => {
   emits("closeButton", action);
 };
-
 
 </script>
 
@@ -195,14 +195,12 @@ const emitActions = (action) => {
 .choosing_region_content_territory_block {
   width: 100%;
   margin-top: 20px;
-  /* background: #000; */
 }
 .choosing_region_content_city_list_block {
   min-width: 160px;
   width: 200px;
   height: 100%;
   border-right: 1px solid #e4e6e7;
-  /* background: #000; */
 }
 .choosing_region_content_city_block_popular_list_block {
   margin-top: 20px;

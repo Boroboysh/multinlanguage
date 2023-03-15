@@ -22,7 +22,7 @@
           </div>
           <div class="col header_content_info_col header_content_info_forms">
             <h2 class="header_content_info_forms_title">
-              {{ data.body?.subheader.titles[0].content }}
+              {{ contentPages.data.body?.subheader.titles[0].content }}
             </h2>
             <default-input
               :placeholder="contentPages.data.body?.subheader.fields[0].content"
