@@ -563,9 +563,6 @@ useAsyncData("page-data1", async () => {
   contentPages.data = store.pageContent;
 });
 
-onMounted(() => {
-  alert(1)
-})
 
 if (!contentPages.data) {
   throw createError({
