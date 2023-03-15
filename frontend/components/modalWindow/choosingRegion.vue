@@ -10,6 +10,7 @@
           <span class="choosing_region_header_title"> Выбор региона </span>
         </div>
         <div
+          @click="emitActions({ actionName: 'closeModal', value: true })"
           class="choosing_region_header_close_button_block d-flex align-items-center justify-content-end choosing_region_header_block_col"
         >
           <img
@@ -35,22 +36,13 @@
             <div class="choosing_region_content_city_list_block">
               <div class="choosing_region_content_city_list">
                 <div
+                  v-for="(country, countryIndex) in list"
+                  :key="countryIndex"
                   class="choosing_region_content_city_list_item choosing_region_content_city_list_item_active"
                 >
-                Казахстан
+                  {{ country.country }}
                 </div>
-                <div class="choosing_region_content_city_list_item">
-                  Россия
-                </div>
-                <div class="choosing_region_content_city_list_item">
-                  Беларусь
-                </div>
-                <div class="choosing_region_content_city_list_item">
-                  Армения
-                </div>
-                <div class="choosing_region_content_city_list_item">
-                  Узбекистан
-                </div>
+                <div class="choosing_region_content_city_list_item"></div>
               </div>
             </div>
             <div class="choosing_region_content_city_block_info">
@@ -93,17 +85,11 @@
                 <div
                   class="choosing_region_content_city_block_popular_keyboard_block"
                 >
-                <!-- <div v-for="(item, index) in test" :key="index" class="choosing_region_content_city_block_popular_keyboard_button_block d-flex">
-                  <div class="choosing_region_content_city_block_popular_keyboard_button">
-                      {{ index }}
-                  </div>
-                </div> -->
                   <!-- todo refactor !!! -->
-                  <default-keyboard-layout
-                    checkAction="default" class="d-flex">
-                    <div class="choosing_region_content_city_block_popular_keyboard_button_block">
-
-                    </div>
+                  <default-keyboard-layout checkAction="default" class="d-flex">
+                    <div
+                      class="choosing_region_content_city_block_popular_keyboard_button_block"
+                    ></div>
                     <default-keyboard-option
                       v-for="(item, index) in test"
                       :key="index"
@@ -124,6 +110,7 @@
         </div>
       </div>
     </div>
+    {{ list }}
   </div>
 </template>
 
@@ -131,8 +118,9 @@
 import defaultInput from "@/components/input/defaultInput.vue";
 import defaultKeyboardLayout from "@/components/keyboardLayout/defaultKeyboardLayout.vue";
 import defaultKeyboardOption from "@/components/keyboardLayout/defaultKeyboardOption.vue";
+import { getCountry } from '@/api/getCountry/getCountry'
 
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 
 const test = ref([
   {
@@ -148,6 +136,26 @@ const test = ref([
     name: "a",
   },
 ]);
+
+const props = defineProps({
+  list: {
+    type: Array,
+    default: null,
+  },
+});
+const emits = defineEmits(["closeButton"]);
+
+let currentCountry = ref(null)
+
+const sortArray = (list, attribute) => {
+  return list.sort((item, nextItem) => item[attribute] - nextItem[attribute]);
+};
+
+const emitActions = (action) => {
+  emits("closeButton", action);
+};
+
+
 </script>
 
 <style>
