@@ -4,6 +4,7 @@
       <default-header
         v-if="contentPages.data.header"
         @updateSelected="(lang) => updateContentPageLang(lang)"
+        @actionName="(action) => selectAction(action)"
         :menu="contentPages.data.header"
         class="container-xl"
       />
@@ -109,7 +110,9 @@
     </div>
     <div class="about_block">
       <div class="about_content_block">
-        <div class="about_block_title align-items-center w-100 d-flex">
+        <div
+          class="about_block_title align-items-center w-100 d-flex position-relative container-xl"
+        >
           <div class="about_block_content_title_linear" />
           <div class="about_block_content_title_block container">
             <span class="about_block_content_title">
@@ -134,25 +137,33 @@
               :key="aboutTextIndex"
               class="about_content_text"
             >
-            <div v-if="aboutTextItem.type === 'title'" class="about_content_item_block">
-              <p class="about_content_item_content about_content_title">
-                {{ aboutTextItem.text }}
-              </p>
-            </div>
-            <div v-if="aboutTextItem.type === 'item'" class="about_content_item_block">
-              <p class="about_content_item_content">
-                {{ aboutTextItem.text }}
-              </p>
-            </div>
-            <div v-if="aboutTextItem.type === 'list'" class="about_content_item_block">
-              <div class="about_content_item_linear_block">
-                <div class="about_content_item_linear"></div>
+              <div
+                v-if="aboutTextItem.type === 'title'"
+                class="about_content_item_block"
+              >
+                <p class="about_content_item_content about_content_title">
+                  {{ aboutTextItem.text }}
+                </p>
               </div>
-              <span class="about_content_item_text">
-                {{ aboutTextItem.content }}
-              </span>
-            </div>
-              <!-- {{ aboutTextItem.text }} -->
+              <div
+                v-if="aboutTextItem.type === 'item'"
+                class="about_content_item_block"
+              >
+                <p class="about_content_item_content">
+                  {{ aboutTextItem.text }}
+                </p>
+              </div>
+              <div
+                v-if="aboutTextItem.type === 'list'"
+                class="about_content_item_block"
+              >
+                <div class="about_content_item_linear_block">
+                  <div class="about_content_item_linear"></div>
+                </div>
+                <span class="about_content_item_text">
+                  {{ aboutTextItem.content }}
+                </span>
+              </div>
             </div>
             <!-- <div class="about_content_block_info_adress_list_block">
               <span class="about_content_title">
@@ -196,17 +207,17 @@
     <div class="map_block">
       <div class="map_block_content">
         <div class="map_block_title_block w-100 d-flex">
-          <div class="map_block_content_title_block p-0">
+          <div class="map_block_content_title_block container-xl p-0">
             <div
               class="map_block_content_title_block_row container-xl align-items-center justify-content-center w-100"
             >
               <div
-                class="map_block_content_title_block_col map_content_block_title position-relative"
+                class="map_block_content_title_block_col map_content_block_title container-xl position-relative"
               >
                 <div
                   class="map_block_linear about_block_content_title_linear"
                 />
-                <p class="map_block_content_title">
+                <p class="map_block_content_title container-xl">
                   {{ contentPages.data.body.mapInfoBlock.title }}
                 </p>
               </div>
@@ -344,6 +355,7 @@
               <div class="contact_form_item_block w-100">
                 <default-input
                   class="contact_form_item contact_form_item_city"
+                  v-model="contactForm.city"
                   :placeholder="contentPages.data.body.contactForm.fields.city"
                   :title="true"
                 />
@@ -355,6 +367,7 @@
               <div class="contact_form_item_block w-100">
                 <default-input
                   class="contact_form_item contact_form_item_name"
+                  v-model="contactForm.name"
                   :placeholder="contentPages.data.body.contactForm.fields.name"
                   :title="true"
                 />
@@ -366,6 +379,7 @@
               <div class="contact_form_item_block w-100">
                 <default-input
                   class="contact_form_item contact_form_item_telephone"
+                  v-model="contactForm.phone"
                   :placeholder="
                     contentPages.data.body.contactForm.fields.tel_number
                   "
@@ -378,6 +392,7 @@
             >
               <div class="contact_form_item_block w-100">
                 <default-text-area
+                  v-model="contactForm.message"
                   :placeholder="
                     contentPages.data.body.contactForm.fields
                       .message_placeholder
@@ -417,7 +432,11 @@
         </div>
       </div>
     </div>
-    <choosing-region v-if="false" />
+    <choosing-region
+      @closeButton="(action) => selectAction(action)"
+      :list="countryList.data"
+      v-if="statusRegionSelect"
+    />
     <default-footer>
       <template #block_left>
         <img
@@ -476,21 +495,22 @@ import defaultHeader from "@/components/header/defaultHeader/defaultHeader.vue";
 import DefaultHeader from "@/components/header/defaultHeader/defaultHeader.vue";
 import defaultMap from "@/components/map/defaultMap.vue";
 import defaultTextArea from "@/components/textarea/defaultTextArea.vue";
-import defaultSelect from "@/components/select/defaultSelect.vue";
-import defaultOption from "~~/components/select/defaultOption.vue";
 import choosingRegion from "@/components/modalWindow/choosingRegion.vue";
 import defaultFooter from "@/components/footer/defaultFooter.vue";
 import getContentInfo from "@/api/contentInfo/getContentInfo";
 import { useContentPages } from "@/stores/homeStores";
+import { getCountry } from "@/api/getCountry/getCountry";
 import env from "@/api/env/env";
 
 let contentPage = reactive({
   data: {},
 });
-
 const store = useContentPages();
 
 let contentPages = reactive({ data: {} });
+let statusRegionSelect = ref(false);
+let countryList = ref([]);
+let searchFormCode = ref({ code: null });
 let contactForm = reactive({});
 let { data } = await useFetch(env.host + "api/page-data", {
   headers: {
@@ -498,10 +518,42 @@ let { data } = await useFetch(env.host + "api/page-data", {
   },
 });
 
-// const response = await useFetch('')
+const updateStatusRegionSelect = (value) => {
+  statusRegionSelect.value = value;
+};
+
+const openModalRegionSelect = () => {
+  const body = document.querySelector("body");
+  body.style.overflowY = "hidden";
+  updateStatusRegionSelect(true);
+};
+
+const closeModalRegion = () => {
+  const body = document.querySelector("body");
+  body.style.overflowY = null;
+  updateStatusRegionSelect(false);
+};
 
 const updateContentPageLang = async (lang) => {
   contentPages.data = await getContentInfo(lang);
+};
+
+const getCountryData = async (lang) => {
+  const response = await getCountry(lang);
+  return response.data;
+};
+
+const selectAction = async (action) => {
+  console.log("selectAction", action);
+  switch (action.actionName) {
+    case "openModal":
+      // countryList.value = await getCountryData(store.currentLang);
+      openModalRegionSelect();
+      break;
+    case "closeModal":
+      closeModalRegion();
+      break;
+  }
 };
 
 contentPage = await useAsyncData("page-data", async () => {
@@ -512,9 +564,10 @@ contentPage = await useAsyncData("page-data", async () => {
 console.log("contentPage", contentPages);
 
 useAsyncData("page-data1", async () => {
-  contentPages.data = await getContentInfo("ru");
-  console.log("test", contentPages);
-  store.getContent();
+  // contentPages.data = await getContentInfo("ru");
+  await store.getContent("kk");
+  countryList.value = await getCountry('ru');
+  contentPages.data = store.pageContent;
 });
 
 if (!contentPages.data) {
@@ -633,7 +686,8 @@ body {
 }
 
 .about_block_content_title_linear {
-  width: 50%;
+  width: 50vw;
+  left: -50vw;
   height: 1px;
   background: #2b2b2b;
   position: absolute;
@@ -719,7 +773,7 @@ body {
   width: 20px;
   height: 1px;
   margin-top: 11px;
-  background:#AAAAAA;
+  background: #aaaaaa;
 }
 /* .default_map_block {
   margin-top: 30px;
@@ -902,10 +956,10 @@ body {
 .advatnages_block_title_linear_block {
   width: 50vw;
   left: -50vw;
-  height: 2px;
+  height: 1px;
   position: absolute;
-  top: 20%;
-  background: #000;
+  top: 35px;
+  background: #2b2b2b;
 }
 
 .advatages_block_title {
