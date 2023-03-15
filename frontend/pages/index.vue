@@ -25,6 +25,7 @@
               {{ contentPages.data.body?.subheader.titles[0].content }}
             </h2>
             <default-input
+              v-model="searchFormCode.code"
               :placeholder="contentPages.data.body?.subheader.fields[0].content"
               class="header_content_info_forms"
             >
@@ -65,7 +66,7 @@
                 class="header_content_info_calculate_button"
                 size="large"
               >
-                Рассчитать стоимость
+               {{ contentPages.data.body.subheader.fields[3].content }}
               </default-button>
               <div
                 class="header_content_info_calculate_result w-100 d-flex justify-content-start justify-content-sm-center justify-content-md-center justify-content-xl-end justify-content-xxl-end"
@@ -502,9 +503,6 @@ import { useContentPages } from "@/stores/homeStores";
 import { getCountry } from "@/api/getCountry/getCountry";
 import env from "@/api/env/env";
 
-let contentPage = reactive({
-  data: {},
-});
 const store = useContentPages();
 
 let contentPages = reactive({ data: {} });
@@ -556,11 +554,6 @@ const selectAction = async (action) => {
   }
 };
 
-contentPage = await useAsyncData("page-data", async () => {
-  const response = await getContentInfo("ru");
-  return response;
-});
-
 console.log("contentPage", contentPages);
 
 useAsyncData("page-data1", async () => {
@@ -570,6 +563,10 @@ useAsyncData("page-data1", async () => {
   contentPages.data = store.pageContent;
 });
 
+onMounted(() => {
+  alert(1)
+})
+
 if (!contentPages.data) {
   throw createError({
     statusCode: 404,
@@ -577,6 +574,7 @@ if (!contentPages.data) {
     message: "Нет ответа от сервера",
   });
 }
+
 </script>
 
 
