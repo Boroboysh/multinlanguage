@@ -134,6 +134,11 @@
               :key="aboutTextIndex"
               class="about_content_text"
             >
+            <div v-if="aboutTextItem.type === 'title'" class="about_content_item_block">
+              <p class="about_content_item_content about_content_title">
+                {{ aboutTextItem.text }}
+              </p>
+            </div>
             <div v-if="aboutTextItem.type === 'item'" class="about_content_item_block">
               <p class="about_content_item_content">
                 {{ aboutTextItem.text }}
@@ -496,7 +501,6 @@ let { data } = await useFetch(env.host + "api/page-data", {
 // const response = await useFetch('')
 
 const updateContentPageLang = async (lang) => {
-  console.log("lang", lang);
   contentPages.data = await getContentInfo(lang);
 };
 
@@ -573,9 +577,6 @@ body {
 .header_content_advantages_linear {
   width: 50%;
   height: 1px;
-}
-
-.header_content_info_forms_title {
 }
 
 .default_linear_title_block {
@@ -709,14 +710,15 @@ body {
 }
 .about_content_item_block {
   display: flex;
-  align-items: center;
+  align-items: start;
 }
-/* .about_content_item_linear_block {
+.about_content_item_linear_block {
   margin-right: 10px;
-} */
+}
 .about_content_item_linear {
   width: 20px;
   height: 1px;
+  margin-top: 11px;
   background:#AAAAAA;
 }
 /* .default_map_block {
@@ -1221,7 +1223,6 @@ body {
     width: 100%;
     height: 50px;
     background: #252069;
-    color: #e4003c;
   }
 
   .header_content_info_calculate_block {
