@@ -31,7 +31,7 @@
     >
       <img
         class="default_input_clear"
-        src="@/assets/images/icons/Arrow_done.svg"
+        src="@/assets/images/icons/arrow_done.svg"
         alt=""
       />
     </div>

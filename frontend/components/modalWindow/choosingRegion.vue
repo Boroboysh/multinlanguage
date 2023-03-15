@@ -14,7 +14,7 @@
           class="choosing_region_header_close_button_block d-flex align-items-center justify-content-end choosing_region_header_block_col"
         >
           <img
-            src="@/assets/images/icons/Arrow_done.svg"
+            src="@/assets/images/icons/arrow_done.svg"
             alt=""
             class="choosing_region_header_close_button"
           />
@@ -110,7 +110,7 @@
         </div>
       </div>
     </div>
-    {{ list }}
+    {{ list.sort((item, nextItem) => item.rating - nextItem.rating) }}
   </div>
 </template>
 
@@ -146,6 +146,10 @@ const props = defineProps({
 const emits = defineEmits(["closeButton"]);
 
 let currentCountry = ref(null)
+
+const updateCurrentCountry = (value) => {
+  currentCountry.value = value;
+}
 
 const sortArray = (list, attribute) => {
   return list.sort((item, nextItem) => item[attribute] - nextItem[attribute]);
