@@ -12,14 +12,14 @@
         }"
         class="map_container_marker_block"
       >
-        <img
-          src="@/assets/images/defaut_marker.svg"
-          alt=""
-          class="map_container_marker"
-        />
-        <p class="map_container_marker_name">
+        <default-city-market v-if="item.type === 'text'" :item="item">
           {{ item.name }}
-        </p>
+        </default-city-market>
+        <div v-if="item.type === 'title'" class="map_container_city_bold_block">
+          <span class="map_container_city_bold_block">
+            {{ item.name }}
+          </span>
+        </div>
       </div>
       <img
         class="map_container_images map_container_map_state"
@@ -36,6 +36,8 @@
 </template>
 
 <script setup>
+import defaultCityMarket from "@/components/map/markers/defaultCityMarket.vue";
+
 const props = defineProps({
   itemList: Array,
 });
@@ -50,6 +52,7 @@ const props = defineProps({
 }
 .map_container {
   position: relative;
+  /* max-width: 2000px; */
 }
 .map_container_map_state {
   max-height: 100%;
@@ -74,8 +77,8 @@ const props = defineProps({
   justify-content: center;
   align-items: center;
 }
-.map_container_marker_name {
-  font-size: 12px;
-  margin: 0px 0px 0px 8px;
+.map_container_city_bold_block {
+  font-size: 24px;
+  font-weight: 600;
 }
 </style>
