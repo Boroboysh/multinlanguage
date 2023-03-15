@@ -24,25 +24,41 @@
             class="header_menu_group_block"
             :class="{ header_menu_group_active: menuStatus }"
           >
-            <div class="header_menu_mobile_block container-xl">
-              <div class="header_menu_mobile_logo_block w-50">
-                <img :src="env.host + getLogoType('mobile').path" alt="" class="header_menu_mobile_logo">
-              </div>
-              <div class="header_menu_close_button_block">
-                <div class="header_menu_close_button">
-                  <div
-                    @click="closeMenu()"
-                    href="#"
-                    class="header_menu_close_button"
-                  >
-                    <img
-                      class="header_menu_close_button_image"
-                      src="@/assets/images/icons/arrow_done.svg"
-                      alt=""
-                    />
+            <div class="header_menu_mobile_block-row container-xl">
+              <div
+                class="header_menu_mobile_row header_menu_mobile_row container-xl"
+              >
+                <div class="header_menu_mobile_logo_block w-50">
+                  <img
+                    :src="env.host + getLogoType('mobile').path"
+                    alt=""
+                    class="header_menu_mobile_logo"
+                  />
+                </div>
+                <div class="header_menu_close_button_block">
+                  <div class="header_menu_close_button">
+                    <div
+                      @click="closeMenu()"
+                      href="#"
+                      class="header_menu_close_button"
+                    >
+                      <img
+                        class="header_menu_close_button_image"
+                        src="@/assets/images/icons/arrow_done.svg"
+                        alt=""
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
+              <default-input
+                placeholder="Поиск кода по грузу"
+                class="header_content_info_forms"
+              >
+                <template #container-right>
+                  <img src="@/assets/images/search_icon.png" alt="" />
+                </template>
+              </default-input>
             </div>
             <!-- <default-input
               placeholder="wgagawgaw"
@@ -129,7 +145,10 @@
               </a>
             </div>
             <div class="overflow header_menu_block_link">
-              <a class="header_menu_link header_menu_link_telephone" :href="'tel:' +  menu?.tel_number">
+              <a
+                class="header_menu_link header_menu_link_telephone"
+                :href="'tel:' + menu?.tel_number"
+              >
                 {{ menu?.tel_number }}
               </a>
             </div>
@@ -229,7 +248,7 @@ header {
 .header_logo_blue {
   display: none;
 }
-.header_menu_mobile_block {
+.header_menu_mobile_row {
   display: none;
 }
 .header_menu_block_link {
@@ -251,6 +270,10 @@ header {
 
 .header_menu_icons_block {
   margin: 0px 10px;
+}
+
+.header_menu_mobile_block-row {
+  display: none;
 }
 
 .header_menu_icons {
@@ -391,7 +414,7 @@ header {
   width: 100%;
 }
 
-.header_menu_close_button {
+.header_menu_mobile_block .header_menu_close_button {
   width: 20px;
   /* margin: 10px 10px 0px 0px; */
 }
@@ -450,7 +473,6 @@ header {
     justify-content: flex-end;
     align-items: center;
     height: 50px;
-    padding: 0 12px;
   }
   .header_logo_white {
     display: none;
@@ -476,10 +498,9 @@ header {
     display: flex;
     align-items: center;
   }
-  .header_menu_mobile_block {
+  .header_menu_mobile_row {
     width: 100%;
     display: flex;
-    padding: 0px 20px;
     justify-content: flex-start;
   }
   .header_menu_close_button_block {
@@ -487,6 +508,15 @@ header {
   }
   .header_menu_mobile_logo {
     width: 80px;
+  }
+  .header_menu_mobile_block {
+    display: block;
+  }
+  .header_menu_mobile_block-row {
+    display: block;
+  }
+  .header_menu_mobile_block {
+    display: flex;
   }
 }
 </style>
