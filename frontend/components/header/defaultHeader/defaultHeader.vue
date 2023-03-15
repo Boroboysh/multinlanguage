@@ -17,7 +17,7 @@
         <div
           class="header_menu_block d-flex align-content-center justify-content-end bg-red-500"
         >
-          <div @click="updateStatusMenu(true)" class="header_menu_burger_block">
+          <div @click="openMenu()" class="header_menu_burger_block">
             <img src="@/assets/images/default_menu_icons.svg" alt="" />
           </div>
           <div
@@ -25,8 +25,16 @@
             :class="{ header_menu_group_active: menuStatus }"
           >
             <div class="header_menu_close_button_block">
-              <a @click="updateStatusMenu(false)" href="#" class="header_menu_close_button">
-                <img class="header_menu_close_button_image" src="@/assets/images/icons/arrow_done.svg" alt="" />
+              <a
+                @click="closeMenu()"
+                href="#"
+                class="header_menu_close_button"
+              >
+                <img
+                  class="header_menu_close_button_image"
+                  src="@/assets/images/icons/arrow_done.svg"
+                  alt=""
+                />
               </a>
             </div>
             <div class="header_menu_block_link">
@@ -105,7 +113,7 @@
                 {{ menu?.supportText }}
               </a>
             </div>
-            <div class="header_menu_block_link">
+            <div class="overflow header_menu_block_link">
               <a class="header_menu_link header_menu_link_telephone" href="#">
                 {{ menu?.tel_number }}
               </a>
@@ -134,16 +142,21 @@ let activeLang = ref(null);
 
 const emit = defineEmits(["updateSelected"]);
 
-const updateStatusActive = (status) => {
-  isActive.value = status;
-};
-
 const updateStatusMenu = (status) => {
   menuStatus.value = status;
 };
 
+const openMenu = () => {
+  updateStatusMenu(true);
+  getBody().style.overflowY = 'hidden'
+};
+
+const closeMenu = () => {
+  updateStatusMenu(false);
+  getBody().style.overflowY = null
+};
+
 const updateLang = (lang) => {
-  console.log("lang", lang);
   emit("updateSelected", lang);
 };
 
@@ -151,12 +164,12 @@ const getLogoType = (type) => {
   return props.menu.logo.find((logo) => logo.type === type);
 };
 
-const getBody = (status) => {
-  onMounted(() => {
-    const body = document.querySelector("body");
-    return body;
-  });
+const getBody = () => {
+  const body = document.querySelector("body");
+  // body.style.overflowY = 'hidden';
+  return body;
 };
+
 </script>
 
 <style>
@@ -352,7 +365,7 @@ header {
 }
 .header_menu_close_button {
   width: 20px;
-  margin: 10px 10px 0px 0px;
+  /* margin: 10px 10px 0px 0px; */
 }
 @media (max-width: 1400px) {
   .header_content_info_preview > img {
@@ -367,13 +380,6 @@ header {
 }
 
 @media (max-width: 912px) {
-  /* .header_content_info_preview img {
-    width: 100%;
-    background-size: cover;
-  } */
-  /* .header_menu_burger_block {
-    display: block;
-  } */
   html,
   body {
     overflow-x: hidden;
@@ -385,7 +391,9 @@ header {
   .header_content_block {
     height: 50px;
     background: #252069;
-    color: #e4003c;
+  }
+  .header_menu_block_link {
+    margin: 20px;
   }
   .header_menu_group_block {
     background: #ffffff;
@@ -404,6 +412,8 @@ header {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    height: 50px;
+    padding: 0 12px;
   }
   .header_logo_white {
     display: none;
