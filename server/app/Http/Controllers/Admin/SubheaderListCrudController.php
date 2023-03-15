@@ -39,6 +39,7 @@ class SubheaderListCrudController extends CrudController
      */
     protected function setupListOperation()
     {
+        CRUD::orderBy('id');
         CRUD::addColumn([
             'name' => 'icon',
             'label' => 'Иконка',
@@ -49,7 +50,7 @@ class SubheaderListCrudController extends CrudController
         ]);
         CRUD::addColumn([
             'name' => 'number',
-            'label' => 'Числа',
+            'label' => 'Данные',
         ]);
 
 
@@ -83,8 +84,7 @@ class SubheaderListCrudController extends CrudController
         ]);
         CRUD::addField([
             'name' => 'number',
-            'label' => 'Числа',
-            'type' => 'number'
+            'label' => 'Данные',
         ]);
 
 

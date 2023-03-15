@@ -44,6 +44,7 @@ Route::get('/contact-block', function (Request $request) {
 
 Route::get('/search', [CityController::class, 'searchCity']);
 
+Route::post('/send_email', [FeedbackController::class, 'send']);
 
 
 //TODO DELETE
@@ -63,7 +64,5 @@ Route::get('/country/{country}/city/{cityName}', function ($country, $cityName, 
     return response('Invalid language code', 404);
 
 });
-
-Route::post('/send_email', [FeedbackController::class, 'send']);
 
 //TODO DELETE
