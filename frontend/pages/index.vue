@@ -30,7 +30,11 @@
               class="header_content_info_forms"
             >
               <template #container-right>
-                <img @click="searchCodes(searchFormCode.code)" src="@/assets/images/search_icon.png" alt="" />
+                <img
+                  @click="searchCodes(searchFormCode.code)"
+                  src="@/assets/images/search_icon.png"
+                  alt=""
+                />
               </template>
             </default-input>
             <div
@@ -44,6 +48,7 @@
               >
                 <default-input
                   class="header_content_info_calculate_form_input_size"
+                  v-model="calculateSumForms.to"
                   :placeholder="
                     contentPages.data.body.subheader.fields[1].content
                   "
@@ -55,6 +60,7 @@
                   alt=""
                 />
                 <default-input
+                  v-model="calculateSumForms.from"
                   class="header_content_info_calculate_form_input_size"
                   :placeholder="
                     contentPages.data.body.subheader.fields[2].content
@@ -62,12 +68,15 @@
                   :title="true"
                 />
               </div>
-              <default-button
-                class="header_content_info_calculate_button"
-                size="large"
-              >
-               {{ contentPages.data.body.subheader?.fields[3]?.content }}
-              </default-button>
+              <div class="header_content_info_calculate_button_block">
+                <default-button
+                  class="header_content_info_calculate_button"
+                  size="large"
+                >
+                  Рассчитать стоимость
+                  {{ contentPages.data.body.subheader?.fields[3]?.content }}
+                </default-button>
+              </div>
               <div
                 class="header_content_info_calculate_result w-100 d-flex justify-content-start justify-content-sm-center justify-content-md-center justify-content-xl-end justify-content-xxl-end"
               >
@@ -93,10 +102,10 @@
             >
               <div class="header_content_advantages_info_block">
                 <div class="header_content_advantages_number_block">
-                  <span class="header_content_advantages_number">{{
-                    itemList.number
-                  }}</span>
-                  <div class="header_content_advantages_number_icons">+</div>
+                  <span class="header_content_advantages_number"
+                    >{{ itemList.number }}
+                    <div class="header_content_advantages_number_icons">+</div>
+                  </span>
                 </div>
                 <div class="header_content_advantages_text_block">
                   <p class="header_content_advantages_text">
@@ -424,6 +433,7 @@
           <div class="contact_form_send_personal_info_button_block">
             <default-button
               size="large"
+              @click="sendContactForm(contactForm)"
               color="grey"
               class="contact_form_send_personal_info_button"
             >
@@ -501,6 +511,7 @@ import defaultFooter from "@/components/footer/defaultFooter.vue";
 import getContentInfo from "@/api/contentInfo/getContentInfo";
 import { useContentPages } from "@/stores/homeStores";
 import { getCountry } from "@/api/getCountry/getCountry";
+import { sendContact } from "~~/api/sendContactForm/sendContact";
 import axios from "axios";
 import env from "@/api/env/env";
 
@@ -510,6 +521,7 @@ let contentPages = reactive({ data: {} });
 let statusRegionSelect = ref(false);
 let countryList = ref([]);
 let searchFormCode = ref({ code: null });
+let calculateSumForms = ref({});
 let contactForm = reactive({});
 let { data } = await useFetch(env.host + "api/page-data", {
   headers: {
@@ -542,9 +554,17 @@ const getCountryData = async (lang) => {
   return response.data;
 };
 
+const sendContactForm = async (form) => {
+  console.log(form);
+  // if (!form.name && !form.phone && !form.message && !form.city) {
+  //   await sendContact(form);
+  // }
+};
+
 const searchCodes = (code) => {
-  window.location.href = `https://pecom.ru/services-are/order-status/code?=${code}`
-}
+  console.log(code);
+  window.location.href = `https://pecom.ru/services-are/order-status/?code=${code}`;
+};
 
 const selectAction = async (action) => {
   console.log("selectAction", action);
@@ -562,7 +582,7 @@ const selectAction = async (action) => {
 useAsyncData("page-data", async () => {
   // contentPages.data = await getContentInfo("ru");
   await store.getContent("kk");
-  countryList.value = await getCountry('ru');
+  countryList.value = await getCountry("ru");
   contentPages.data = store.pageContent;
 });
 
@@ -573,8 +593,6 @@ if (!contentPages.data) {
     message: "Нет ответа от сервера",
   });
 }
-
-
 </script>
 
 
@@ -638,6 +656,10 @@ body {
   height: 100%;
 }
 
+.header_content_info_calculate_button {
+  font-weight: 700;
+  color: #ffffff;
+}
 .header_content_advantages_number_icons {
   font-size: 30px;
 }
@@ -1324,7 +1346,24 @@ body {
     margin-top: 70px;
   }
 }
-
+@media (max-width: 575px) {
+  .header_content_info_calculate_button_block {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .header_content_info_calculate_button {
+    width: 100%;
+  }
+  .header_content_info_calculate_result {
+    display: flex;
+    justify-content: center !important;
+  }
+  .header_content_info_calculate_result {
+    margin-top: 24px;
+  }
+}
 @media (max-width: 510px) {
   .header_content_info_calculate_form_input_size {
     /* min-width: auto; */
