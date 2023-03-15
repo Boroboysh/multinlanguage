@@ -49,7 +49,7 @@ class SubheaderListCrudController extends CrudController
         ]);
         CRUD::addColumn([
             'name' => 'number',
-            'label' => 'Числа',
+            'label' => 'Данные',
         ]);
 
 
@@ -83,8 +83,7 @@ class SubheaderListCrudController extends CrudController
         ]);
         CRUD::addField([
             'name' => 'number',
-            'label' => 'Числа',
-            'type' => 'number'
+            'label' => 'Данные',
         ]);
 
 

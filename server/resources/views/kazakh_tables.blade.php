@@ -53,7 +53,7 @@
        'Список' => 'text-info-block-list'
        ];
        $namesBlockMap = [
-       'Блок с картой' => 'map-info-block/1/edit?_locale=kk',
+       'Блок с картой' => 'map-info-block/3/edit?_locale=kk',
        'Содержание' => 'map-info-block-content',
        'Кнопка (текст)' => 'map-info-block-button-text/1/edit?_locale=kk',
        'Точки на карте' => 'map-point',
