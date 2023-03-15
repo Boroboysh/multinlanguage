@@ -10,7 +10,7 @@
           />
           <img
             class="header_logo_blue"
-            src="@/assets/images/logo-pec-eng-blue.svg"
+            :src="env.host + getLogoType('desktop').path"
             alt=""
           />
         </div>
@@ -25,11 +25,7 @@
             :class="{ header_menu_group_active: menuStatus }"
           >
             <div class="header_menu_close_button_block">
-              <a
-                @click="closeMenu()"
-                href="#"
-                class="header_menu_close_button"
-              >
+              <a @click="closeMenu()" href="#" class="header_menu_close_button">
                 <img
                   class="header_menu_close_button_image"
                   src="@/assets/images/icons/arrow_done.svg"
@@ -38,7 +34,13 @@
               </a>
             </div>
             <div class="header_menu_block_link">
-              <a class="header_menu_link" href="#">
+              <a
+                @click="
+                  $emit('actionName', { actionName: 'openModal', value: true })
+                "
+                class="header_menu_link"
+                href="#"
+              >
                 <div class="header_menu_icons_block">
                   <img
                     src="@/assets/images/default_arrow_icon.png"
@@ -57,19 +59,17 @@
               </a>
             </div>
             <div class="header_menu_block_link">
-              <transparent-select
-                @return-option="(lang) => updateLang(lang.code)"
-              >
+              <transparent-select @return-option="(lang) => updateLang(lang)">
                 <template #title>
                   <div class="default_drowndown_title d-flex">
                     <div class="header_menu_icons_block">
                       <img
-                        src="@/assets/images/flag.png"
+                        :src="env.host + activeLang.icon"
                         alt=""
                         class="header_menu_icons header_menu_icons_flug"
                       />
                     </div>
-                    {{ menu?.languages[0].name }}
+                    {{ activeLang.name }}
                     <div class="header_menu_icons_block">
                       <img
                         src="@/assets/images/arrow_done.svg"
@@ -120,6 +120,7 @@
             </div>
           </div>
         </div>
+        <!-- {{ activeLang }} -->
       </div>
     </div>
   </header>
@@ -130,17 +131,18 @@ import { ref, onMounted } from "vue";
 import env from "~~/api/env/env";
 import transparentSelect from "~~/components/select/transparentSelect/transparentSelect.vue";
 import transparentOption from "~~/components/select/transparentSelect/transparentOption.vue";
-
+import { useContentPages } from "~~/stores/homeStores";
 const props = defineProps({
   menu: {
     type: Object,
   },
 });
+const homePageContentStores = useContentPages();
+// homePageContentStores.getCurrentLang
 let menuStatus = ref(false);
 let isActive = ref(false);
-let activeLang = ref(null);
-
-const emit = defineEmits(["updateSelected"]);
+let activeLang = ref(homePageContentStores.getActiveLang[0]);
+const emit = defineEmits(["updateSelected", "actionName"]);
 
 const updateStatusMenu = (status) => {
   menuStatus.value = status;
@@ -148,16 +150,23 @@ const updateStatusMenu = (status) => {
 
 const openMenu = () => {
   updateStatusMenu(true);
-  getBody().style.overflowY = 'hidden'
+  getBody().style.overflowY = "hidden";
 };
 
 const closeMenu = () => {
   updateStatusMenu(false);
-  getBody().style.overflowY = null
+  getBody().style.overflowY = null;
 };
 
 const updateLang = (lang) => {
-  emit("updateSelected", lang);
+  console.log(lang);
+  activeLang.value = lang;
+  homePageContentStores.updateCurrentLang(lang.code)
+  emit("updateSelected", lang.code);
+};
+
+const emitActions = (actionName) => {
+  emit("actionName", actionName);
 };
 
 const getLogoType = (type) => {
@@ -169,7 +178,6 @@ const getBody = () => {
   // body.style.overflowY = 'hidden';
   return body;
 };
-
 </script>
 
 <style>
@@ -366,6 +374,12 @@ header {
 .header_menu_close_button {
   width: 20px;
   /* margin: 10px 10px 0px 0px; */
+}
+.default_drowndown_title {
+  cursor: pointer;
+}
+.default_drowndown_item_block {
+  cursor: pointer;
 }
 @media (max-width: 1400px) {
   .header_content_info_preview > img {
