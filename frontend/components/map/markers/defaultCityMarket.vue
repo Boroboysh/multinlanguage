@@ -6,7 +6,6 @@
       class="map_container_marker"
     />
     <div class="map_container_marker_name">
-      {{ name }}
       <slot />
     </div>
   </div>
