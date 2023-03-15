@@ -39,6 +39,7 @@ class TextInfoBlockContentCrudController extends CrudController
      */
     protected function setupListOperation()
     {
+        CRUD::orderBy('id');
         CRUD::addColumn([
             'name' => 'content',
             'label' => 'Содержание'

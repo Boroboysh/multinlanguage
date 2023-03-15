@@ -7,10 +7,15 @@ use App\Http\Resources\CountryResource;
 use App\Models\CitiesBlock;
 use App\Models\Country;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class CountryController extends Controller
 {
-    public function getCountriesCities () {
+    public function getCountriesCities (Request $request) {
+        $languageCode = $request->header('locale');
+
+        App::setLocale($languageCode);
+
         return CountryResource::collection(Country::all());
     }
 
