@@ -24,15 +24,30 @@
             class="header_menu_group_block"
             :class="{ header_menu_group_active: menuStatus }"
           >
-            <div class="header_menu_close_button_block">
-              <a @click="closeMenu()" href="#" class="header_menu_close_button">
-                <img
-                  class="header_menu_close_button_image"
-                  src="@/assets/images/icons/arrow_done.svg"
-                  alt=""
-                />
-              </a>
+            <div class="header_menu_mobile_block container-xl">
+              <div class="header_menu_mobile_logo_block w-50">
+                <img :src="env.host + getLogoType('mobile').path" alt="" class="header_menu_mobile_logo">
+              </div>
+              <div class="header_menu_close_button_block">
+                <div class="header_menu_close_button">
+                  <div
+                    @click="closeMenu()"
+                    href="#"
+                    class="header_menu_close_button"
+                  >
+                    <img
+                      class="header_menu_close_button_image"
+                      src="@/assets/images/icons/arrow_done.svg"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
+            <!-- <default-input
+              placeholder="wgagawgaw"
+              class="header_content_info_forms"
+            /> -->
             <div class="header_menu_block_link">
               <a
                 @click="
@@ -114,7 +129,7 @@
               </a>
             </div>
             <div class="overflow header_menu_block_link">
-              <a class="header_menu_link header_menu_link_telephone" href="#">
+              <a class="header_menu_link header_menu_link_telephone" :href="'tel:' +  menu?.tel_number">
                 {{ menu?.tel_number }}
               </a>
             </div>
@@ -131,6 +146,7 @@ import { ref, onMounted } from "vue";
 import env from "~~/api/env/env";
 import transparentSelect from "~~/components/select/transparentSelect/transparentSelect.vue";
 import transparentOption from "~~/components/select/transparentSelect/transparentOption.vue";
+import defaultInput from "~~/components/input/defaultInput.vue";
 import { useContentPages } from "~~/stores/homeStores";
 const props = defineProps({
   menu: {
@@ -161,7 +177,7 @@ const closeMenu = () => {
 const updateLang = (lang) => {
   console.log(lang);
   activeLang.value = lang;
-  homePageContentStores.updateCurrentLang(lang.code)
+  homePageContentStores.updateCurrentLang(lang.code);
   emit("updateSelected", lang.code);
 };
 
@@ -211,6 +227,9 @@ header {
   margin-left: 10px;
 }
 .header_logo_blue {
+  display: none;
+}
+.header_menu_mobile_block {
   display: none;
 }
 .header_menu_block_link {
@@ -371,9 +390,13 @@ header {
 .header_menu_close_button_image {
   width: 100%;
 }
+
 .header_menu_close_button {
   width: 20px;
   /* margin: 10px 10px 0px 0px; */
+}
+.header_menu_close_button {
+  width: 20px;
 }
 .default_drowndown_title {
   cursor: pointer;
@@ -447,6 +470,23 @@ header {
   }
   .header_content_advantages_info_block {
     display: block;
+  }
+  .header_menu_mobile_logo_block {
+    width: 50%;
+    display: flex;
+    align-items: center;
+  }
+  .header_menu_mobile_block {
+    width: 100%;
+    display: flex;
+    padding: 0px 20px;
+    justify-content: flex-start;
+  }
+  .header_menu_close_button_block {
+    width: 50%;
+  }
+  .header_menu_mobile_logo {
+    width: 80px;
   }
 }
 </style>

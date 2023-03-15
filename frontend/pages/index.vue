@@ -16,7 +16,7 @@
             class="col header_content_info_col d-flex justify-content-center header_content_info_preview p-0"
           >
             <img
-              :src="env.host + contentPages.data.body.subheader.image"
+              :src="env.host + contentPages.data.body?.subheader.image"
               alt=""
             />
           </div>
@@ -30,7 +30,7 @@
               class="header_content_info_forms"
             >
               <template #container-right>
-                <img src="@/assets/images/search_icon.png" alt="" />
+                <img @click="searchCodes(searchFormCode.code)" src="@/assets/images/search_icon.png" alt="" />
               </template>
             </default-input>
             <div
@@ -66,7 +66,7 @@
                 class="header_content_info_calculate_button"
                 size="large"
               >
-               {{ contentPages.data.body.subheader.fields[3].content }}
+               {{ contentPages.data.body.subheader?.fields[3]?.content }}
               </default-button>
               <div
                 class="header_content_info_calculate_result w-100 d-flex justify-content-start justify-content-sm-center justify-content-md-center justify-content-xl-end justify-content-xxl-end"
@@ -501,6 +501,7 @@ import defaultFooter from "@/components/footer/defaultFooter.vue";
 import getContentInfo from "@/api/contentInfo/getContentInfo";
 import { useContentPages } from "@/stores/homeStores";
 import { getCountry } from "@/api/getCountry/getCountry";
+import axios from "axios";
 import env from "@/api/env/env";
 
 const store = useContentPages();
@@ -541,6 +542,10 @@ const getCountryData = async (lang) => {
   return response.data;
 };
 
+const searchCodes = (code) => {
+  window.location.href = `https://pecom.ru/services-are/order-status/code?=${code}`
+}
+
 const selectAction = async (action) => {
   console.log("selectAction", action);
   switch (action.actionName) {
@@ -554,15 +559,12 @@ const selectAction = async (action) => {
   }
 };
 
-console.log("contentPage", contentPages);
-
-useAsyncData("page-data1", async () => {
+useAsyncData("page-data", async () => {
   // contentPages.data = await getContentInfo("ru");
   await store.getContent("kk");
   countryList.value = await getCountry('ru');
   contentPages.data = store.pageContent;
 });
-
 
 if (!contentPages.data) {
   throw createError({
@@ -571,6 +573,7 @@ if (!contentPages.data) {
     message: "Нет ответа от сервера",
   });
 }
+
 
 </script>
 
@@ -759,7 +762,7 @@ body {
 }
 .about_content_item_block {
   display: flex;
-  align-items: start;
+  align-items: flex-start;
 }
 .about_content_item_linear_block {
   margin-right: 10px;
