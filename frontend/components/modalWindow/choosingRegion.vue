@@ -111,7 +111,7 @@
         </div>
       </div>
     </div>
-    {{ currentCountry }}
+    {{ list[0] }}
   </div>
 </template>
 
@@ -155,6 +155,10 @@ const updateCurrentCountry = (value) => {
 const emitActions = (action) => {
   emits("closeButton", action);
 };
+
+onMounted(() => {
+  alert(1)
+})
 
 </script>
 
