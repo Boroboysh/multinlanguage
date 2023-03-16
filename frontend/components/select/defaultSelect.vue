@@ -1,5 +1,5 @@
 <template>
-  <div class="default_select_block position-relative">
+  <div class="default_select_block position-relative" ref="selectRef">
     <default-input
       @focus="udpateStatus(true)"
       v-model="selectValue"
@@ -37,10 +37,20 @@ const emit = defineEmits(["returnSelect"]);
 let selectValue = ref("");
 let defaultInputValue = ref(null);
 let isActive = ref(false);
+let selectRef = ref(null);
 
 const udpateStatus = (status) => {
   isActive.value = status;
 };
+
+window.addEventListener('click',(ev) => {
+  console.log(ev)
+  document.querySelectorAll('.default_select_block').forEach((item) => {
+    if (!(item.contains(ev.target) || item === ev.target)) {
+      isActive.value = false;
+    }
+  })
+})
 
 onMounted(() => {
   console.log('defaultInputValue', defaultInputValue)
