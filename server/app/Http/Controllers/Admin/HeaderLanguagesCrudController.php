@@ -52,6 +52,10 @@ class HeaderLanguagesCrudController extends CrudController
             'label' => 'Код языка'
         ]);
         CRUD::addColumn([
+            'name' => 'abbreviation',
+            'label' => 'Аббревиатура'
+        ]);
+        CRUD::addColumn([
             'name' => 'isDefault',
             'label' => 'По умлочанию'
         ]);
@@ -78,6 +82,10 @@ class HeaderLanguagesCrudController extends CrudController
         CRUD::addField([
             'name' => 'language_code',
             'label' => 'Код языка'
+        ]);
+        CRUD::addField([
+            'name' => 'abbreviation',
+            'label' => 'Аббревиатура'
         ]);
         CRUD::addField([
             'name' => 'isDefault',
