@@ -353,8 +353,10 @@ header {
 }
 
 .header_content_advantages_block {
-  margin-top: 35px;
-  margin-bottom: 120px;
+  margin: 35px 20px 120px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  column-gap: 60px;
 }
 .header_menu_burger_block {
   display: none;
@@ -367,6 +369,7 @@ header {
 .header_content_advantages_info_block {
   display: flex;
   border-top: 1px solid #e4e6e7;
+  padding-top: 24px;
 }
 
 .header_menu_group_block {
@@ -384,7 +387,7 @@ header {
 
 .header_content_advantages_text {
   font-size: 18px;
-  max-width: 200px;
+  /*max-width: 200px;*/
 }
 .header_menu_group_active {
   left: 0 !important;
@@ -447,6 +450,12 @@ header {
   body {
     overflow-x: hidden;
     position: relative;
+  }
+
+  .header_content_advantages_text {
+    font-size: 18px;
+    max-width: 100%;
+    width: 100%;
   }
   .header_logo_block > img {
     width: 80px;

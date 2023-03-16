@@ -92,17 +92,21 @@
           </div>
         </div>
         <div class="header_content_advantages_block">
-          <div class="row">
-            <div
+          <div
               v-for="(itemList, itemIndex) in contentPages.data.body.subheader
                 .list"
               :key="itemIndex"
-              class="col-12 col-xl-4 col-md-4 header_content_advantages d-flex align-items-start justify-content-start"
+              class="header_content_advantages d-flex align-items-start justify-content-start"
             >
               <div class="header_content_advantages_info_block">
                 <div class="header_content_advantages_number_block">
                   <div class="header_content_advantages_number">
-                    {{ itemList.number }}
+                    <span class="d-flex gap-1 h-100">
+                      {{ itemList.number.split(' ')[0] }}
+                      <span class="header_content_advantages_number_postfix">
+                        {{ itemList.number.split(' ')[1] }}
+                      </span>
+                    </span>
                     <div class="header_content_advantages_number_icons">+</div>
                   </div>
                 </div>
@@ -113,7 +117,6 @@
                 </div>
               </div>
             </div>
-          </div>
         </div>
       </div>
     </div>
@@ -228,9 +231,9 @@
             contentPages.data.body.mapInfoBlock.content[0].text
           }}</span>
           <div class="map_contact_telephone_block">
-            <a href="tel:{{ contentPages.data.header.tel_number }}">{{
-              contentPages.data.header.tel_number
-            }}</a>
+            <a v-bind:href="`tel:${contentPages.data.header.tel_number}`">
+              {{ contentPages.data.header.tel_number }}
+            </a>
           </div>
         </div>
       </div>
@@ -248,14 +251,135 @@
       </div>
     </div>
     <div class="advantages_block_card container-xl">
-      <!--      <div class="row w-100 d-flex align-items-center justify-content-center advantages_block_card">-->
+<!--      <div class="row w-100 d-flex align-items-center justify-content-center advantages_block_card">-->
+      <div class="advantages-col-1">
+        <div
+            v-for="(advantagesItem, advantagesIndex) in contentPages.data.body
+            .listInfoBlock.element"
+            :key="advantagesIndex"
+            class="d-flex align-items-start justify-content-center advantages_block_card_item"
+        >
+          <div
+              v-if="!(advantagesIndex % 2)"
+              class="advantages_card_block position-relative default_card w-100"
+          >
+            <div class="default_border_block advantages_card_border_block">
+              <div class="default_border default_border_top_left"></div>
+              <div class="default_border default_border_top_right"></div>
+              <div class="default_border default_border_bottom_left"></div>
+              <div class="default_border default_border_bottom_right"></div>
+            </div>
+            <div class="advantages_card default-card">
+              <div
+                  class="advantages_card_content_title_block d-flex align-items-center"
+              >
+                <div class="advantages_card_title_icon_block">
+                  <img
+                      :src="env.host + advantagesItem.icon"
+                      alt=""
+                      class="advantages_card_title_icon"
+                  />
+                </div>
+                <div class="advantages_content_card_title_block fw-bold">
+                  <span class="advantages_content_card_title">
+                    {{ advantagesItem.title }}
+                  </span>
+                </div>
+              </div>
+              <div class="advantages_card_content">
+                <div class="advantages_card_content_list">
+                  <div
+                      v-for="(
+                      advantagesItemList, advantagesItemIndex
+                    ) in advantagesItem.list"
+                      :key="advantagesItemIndex"
+                      class="advantages_card_content_list_item d-flex align-items-center h-100"
+                  >
+                    <div class="advantages_card_content_list_item_linear"></div>
+                    <div class="advantages_card_content_list_item_content">
+                      <div
+                          class="advantages_card_content_list_item_content_text"
+                      >
+                        {{ advantagesItemList.content }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="advantages-col-2">
+
+        <div
+            v-for="(advantagesItem, advantagesIndex) in contentPages.data.body
+            .listInfoBlock.element"
+            :key="advantagesIndex"
+            class="d-flex align-items-start justify-content-center advantages_block_card_item"
+        >
+          <div
+
+              v-if="advantagesIndex % 2"
+              class="advantages_card_block position-relative default_card w-100"
+          >
+            <div class="default_border_block advantages_card_border_block">
+              <div class="default_border default_border_top_left"></div>
+              <div class="default_border default_border_top_right"></div>
+              <div class="default_border default_border_bottom_left"></div>
+              <div class="default_border default_border_bottom_right"></div>
+            </div>
+            <div class="advantages_card default-card">
+              <div
+                  class="advantages_card_content_title_block d-flex align-items-center"
+              >
+                <div class="advantages_card_title_icon_block">
+                  <img
+                      :src="env.host + advantagesItem.icon"
+                      alt=""
+                      class="advantages_card_title_icon"
+                  />
+                </div>
+                <div class="advantages_content_card_title_block fw-bold">
+                  <span class="advantages_content_card_title">
+                    {{ advantagesItem.title }}
+                  </span>
+                </div>
+              </div>
+              <div class="advantages_card_content">
+                <div class="advantages_card_content_list">
+                  <div
+                      v-for="(
+                      advantagesItemList, advantagesItemIndex
+                    ) in advantagesItem.list"
+                      :key="advantagesItemIndex"
+                      class="advantages_card_content_list_item d-flex align-items-center h-100"
+                  >
+                    <div class="advantages_card_content_list_item_linear"></div>
+                    <div class="advantages_card_content_list_item_content">
+                      <div
+                          class="advantages_card_content_list_item_content_text"
+                      >
+                        {{ advantagesItemList.content }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div
-        v-for="(advantagesItem, advantagesIndex) in contentPages.data.body
-          .listInfoBlock.element"
-        :key="advantagesIndex"
-        class="d-flex align-items-start justify-content-center advantages_block_card_item"
+          v-for="(advantagesItem, advantagesIndex) in contentPages.data.body
+            .listInfoBlock.element"
+          :key="advantagesIndex"
+          class="d-flex align-items-start justify-content-center advantages_block_card_item advantages_block_card_item-mobile"
       >
-        <div class="advantages_card_block position-relative default_card w-100">
+        <div
+            class="advantages_card_block position-relative default_card w-100"
+        >
           <div class="default_border_block advantages_card_border_block">
             <div class="default_border default_border_top_left"></div>
             <div class="default_border default_border_top_right"></div>
@@ -264,33 +388,35 @@
           </div>
           <div class="advantages_card default-card">
             <div
-              class="advantages_card_content_title_block d-flex align-items-center"
+                class="advantages_card_content_title_block d-flex align-items-center"
             >
               <div class="advantages_card_title_icon_block">
                 <img
-                  :src="env.host + advantagesItem.icon"
-                  alt=""
-                  class="advantages_card_title_icon"
+                    :src="env.host + advantagesItem.icon"
+                    alt=""
+                    class="advantages_card_title_icon"
                 />
               </div>
               <div class="advantages_content_card_title_block fw-bold">
-                <span class="advantages_content_card_title">
-                  {{ advantagesItem.title }}
-                </span>
+                  <span class="advantages_content_card_title">
+                    {{ advantagesItem.title }}
+                  </span>
               </div>
             </div>
             <div class="advantages_card_content">
               <div class="advantages_card_content_list">
                 <div
-                  v-for="(
-                    advantagesItemList, advantagesItemIndex
-                  ) in advantagesItem.list"
-                  :key="advantagesItemIndex"
-                  class="advantages_card_content_list_item d-flex align-items-center h-100"
+                    v-for="(
+                      advantagesItemList, advantagesItemIndex
+                    ) in advantagesItem.list"
+                    :key="advantagesItemIndex"
+                    class="advantages_card_content_list_item d-flex align-items-center h-100"
                 >
                   <div class="advantages_card_content_list_item_linear"></div>
                   <div class="advantages_card_content_list_item_content">
-                    <div class="advantages_card_content_list_item_content_text">
+                    <div
+                        class="advantages_card_content_list_item_content_text"
+                    >
                       {{ advantagesItemList.content }}
                     </div>
                   </div>
@@ -301,6 +427,7 @@
         </div>
       </div>
     </div>
+
     <div class="contact_form_block">
       <div
         class="contact_form_question_mark_block container-xl"
@@ -407,6 +534,33 @@
       </div>
     </div>
     <default-footer>
+      <template #block_right>
+        <div class="footer_content_downloads_market_title_block">
+          <span class="footer_content_downloads_market_title">
+            {{ contentPages.data.footer.store_link_title }}
+          </span>
+        </div>
+        <div class="footer_content_downloads_market_link_group_block d-flex">
+          <div
+              v-for="(marketLinkItem, marketLinkIndex) in contentPages.data.footer
+              .store_links"
+              :key="marketLinkIndex"
+              class="footer_content_downloads_market_link_group_item"
+          >
+            <a
+                :href="marketLinkItem.link"
+                target="_blank"
+                class="footer_content_downloads_market_link"
+            >
+              <img
+                  :src="env.host + marketLinkItem.icon"
+                  alt=""
+                  class="footer_content_downloads_market_link_image"
+              />
+            </a>
+          </div>
+        </div>
+      </template>
       <template #block_left>
         <img
           :src="env.host + contentPages.data.footer.logo"
@@ -427,32 +581,7 @@
           </div>
         </div>
       </template>
-      <template #block_right>
-        <div class="footer_content_downloads_market_title_block">
-          <span class="footer_content_downloads_market_title">
-            {{ contentPages.data.footer.store_link_title }}
-          </span>
-        </div>
-        <div class="footer_content_downloads_market_link_group_block d-flex">
-          <div
-            v-for="(marketLinkItem, marketLinkIndex) in contentPages.data.footer
-              .store_links"
-            :key="marketLinkIndex"
-            class="footer_content_downloads_market_link_group_item"
-          >
-            <a
-              :href="marketLinkItem.link"
-              class="footer_content_downloads_market_link"
-            >
-              <img
-                :src="env.host + marketLinkItem.icon"
-                alt=""
-                class="footer_content_downloads_market_link_image"
-              />
-            </a>
-          </div>
-        </div>
-      </template>
+
     </default-footer>
     <choosing-region
       @closeButton="(action) => selectAction(action)"
@@ -599,7 +728,7 @@ const scrollToContactForm = () => {
 
 useAsyncData("page-data", async () => {
   await store.getContent("kk");
-  countryList.value = await countryStores.getCountryList("kk");
+  countryList.value = await getCountry("kk");
   contentPages.data = store.pageContent;
 });
 
@@ -698,8 +827,14 @@ body {
 }
 
 .header_content_advantages_number {
-  font-size: 32px;
+  font-size: 48px;
   display: flex;
+  line-height: 52px;
+}
+.header_content_advantages_number_postfix {
+  font-size: 32px;
+  height: auto;
+  line-height: 42px;
 }
 
 .header_content_advantages_number_icons {
@@ -1022,6 +1157,7 @@ body {
 .advantages_title {
   max-width: 580px;
   font-size: 50px;
+  line-height: 60px;
   z-index: 100;
   color: #2b2b2b;
   background: white;
@@ -1048,11 +1184,12 @@ body {
 }
 
 .advantages_block_card {
-  margin-top: 56px;
+  margin-top: 40px;
   max-width: 1000px;
   display: grid;
   grid-template-columns: auto auto;
   column-gap: 50px;
+  row-gap: 50px;
 }
 
 .advantages_card {
@@ -1064,6 +1201,10 @@ body {
 .advantages_card_block {
   width: 100%;
   max-width: 480px;
+}
+
+.advantages_block_card_item-mobile {
+  display: none !important;
 }
 
 .advantages_content_card_title_block {
@@ -1095,7 +1236,7 @@ body {
 .advantages_card_content_list_item_linear {
   width: 20px;
   height: 1px;
-  background: #2b2b2b;
+  background: #AAAAAA;
 }
 
 .advantages_card_content_list_item_content {
@@ -1111,11 +1252,19 @@ body {
 .advantages_card_content_list_item {
   margin-top: 15px;
 }
-
-.advantages_block_card_item {
-  margin-top: 35px;
+.advantages-col-1 {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
-
+.advantages-col-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+.advantages_block_card_item {
+  /*margin-top: 35px;*/
+}
 .contact_form_block {
   width: 100%;
   margin-top: 190px;
@@ -1268,6 +1417,16 @@ body {
   }
 }
 
+@media (max-width: 1159px) {
+
+  .header_content_advantages_info_block {
+    display: block;
+
+  }
+  .header_content_advantages_number_block {
+    margin: 0 0 24px;
+  }
+}
 @media (max-width: 1000px) {
   .header_content_info_preview > img {
     /* width: 100%; */
@@ -1332,6 +1491,7 @@ body {
   .advantages_title {
     font-size: 30px;
     max-width: 400px;
+    line-height: 38px;
   }
 
   .map_block_content_title_block {
@@ -1445,6 +1605,13 @@ body {
   }
 }
 @media (max-width: 510px) {
+  .advantages-col-1,
+  .advantages-col-2 {
+    display: none !important;
+  }
+  .advantages_block_card_item-mobile{
+    display: block !important;
+  }
   .advantages_block_card {
     padding: 0 30px;
     grid-template-columns: auto;
@@ -1485,8 +1652,8 @@ body {
   .map_contact_button_block {
     margin: 0;
   }
-  .contact_form_item_block {
-    margin-top: 24px;
+  .contact_form_block {
+    margin-top: 85px;
   }
   .map_block_contact_button {
     width: 100%;
@@ -1497,6 +1664,29 @@ body {
   .about_block_content_advertisement {
     display: block;
   }
+
+  .header_content_advantages_block {
+    margin: 50px 0;
+    grid-template-columns: auto;
+  }
+
+  .header_content_advantages_number {
+    font-size: 36px;
+
+  }
+  .header_content_advantages:nth-child(1) > div {
+    border-top: none;
+  }
+
+  .header_content_advantages_info_block {
+    margin-bottom: 40px;
+  }
+
+  .header_content_advantages_number_postfix {
+    font-size: 24px;
+    line-height: 45px;
+  }
+
   .map_card_block {
     display: none;
   }
@@ -1584,6 +1774,7 @@ body {
     margin-top: 56px;
   }
   .advantages_title {
+    line-height: 28px;
     margin: 0;
   }
 
