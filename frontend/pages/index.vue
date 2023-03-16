@@ -123,7 +123,7 @@
           class="about_block_title align-items-center w-100 d-flex position-relative container-xl"
         >
           <div class="about_block_content_title_linear" />
-          <div class="about_block_content_title_block container">
+          <div class="about_block_content_title_block">
             <span class="about_block_content_title">
               {{ contentPages.data.body.textInfoBlock.title }}
             </span>
@@ -136,10 +136,13 @@
         </div> -->
         <div class="about_content_block_info container-xl">
           <div class="about_content_info">
-            <span class="about_content_title">
+            <div class="about_content_title_linear_block">
+              <div class="about_content_title_linear"></div>
+            </div>
+            <p class="about_content_title">
               ПЭК: GLOBAL предлагает услуги авто- и авиаперевозок из России в
               Казахстан и в обратном направлении.
-            </span>
+            </p>
             <div
               v-for="(aboutTextItem, aboutTextIndex) in contentPages.data.body
                 .textInfoBlock.content"
@@ -174,41 +177,6 @@
                 </span>
               </div>
             </div>
-            <!-- <div class="about_content_block_info_adress_list_block">
-              <span class="about_content_title">
-                Отделения ПЭК в Казахстане
-              </span>
-              <div
-                class="about_content_block_info_adress_list_item d-flex align-items-center"
-              >
-                <div class="about_content_block_info_adress_linear"></div>
-                <span class="about_content_block_info_adress_text">
-                  Астана, ул. Жанажол, д. 19. Тел.: + 7 (7172) 644-644
-                </span>
-              </div>
-              <div
-                class="about_content_block_info_adress_list_item d-flex align-items-center"
-              >
-                <div class="about_content_block_info_adress_linear"></div>
-                <span class="about_content_block_info_adress_text">
-                  Астана, ул. Жанажол, д. 19. Тел.: + 7 (7172) 644-644
-                </span>
-              </div>
-              <div
-                class="about_content_block_info_adress_list_item d-flex align-items-center"
-              >
-                <div class="about_content_block_info_adress_linear"></div>
-                <span class="about_content_block_info_adress_text">
-                  Астана, ул. Жанажол, д. 19. Тел.: + 7 (7172) 644-644
-                </span>
-              </div>
-            </div>
-            <div class="about_content_text">
-              Компания работает как с юридическими, так и с физическими лицам.
-              По запросу мы готовы предоставить для юрлиц спецтехнику для
-              погрузочно-разгрузочных работ, перевозку и возврат
-              сопроводительных документов, предложить API-
-            </div> -->
           </div>
         </div>
       </div>
@@ -622,7 +590,9 @@ body {
   margin-top: 35px;
   margin-bottom: 120px;
 }
-
+.header_content_block  {
+  border-bottom: 1px solid #E4E6E7;
+}
 .contact_test_row {
   width: 100%;
   display: flex;
@@ -665,6 +635,8 @@ body {
 
 .header_content_advantages_number {
   font-size: 48px;
+  min-width: 50px;
+  position: relative;
 }
 
 .header_content_advantages_number_icons {
@@ -957,7 +929,14 @@ body {
 .advantages_title_block {
   background: white;
 }
-
+.about_content_title_linear_block {
+  display: none;
+}
+.about_content_title_linear {
+  width: 4px;
+  height: 100%;
+  background: #ff0000;
+}
 .advantages_title {
   max-width: 580px;
   font-size: 50px;
@@ -1378,6 +1357,7 @@ body {
 
   .header_content_info_calculate_result_text {
     margin: 0;
+    font-weight: 300;
   }
 
   .header_content_info_calculate_form_icons {
@@ -1392,9 +1372,9 @@ body {
     margin: 24px;
   }
 
-  .about_content_block_title {
+  /* .about_content_block_title {
     display: none !important;
-  }
+  } */
 
   /* .about_block_content_title_block {
     display: none !important;
@@ -1415,9 +1395,19 @@ body {
   .about_block_content_advertisement {
     display: block;
   }
-
+  .about_content_title {
+    border-left: 4px solid #2B2B2B;
+    padding: 0px 0px 0px 4px;
+    width: 100%;
+  }
   .contact_form_question_mark {
     display: none;
+  }
+  .about_content_title_linear_block {
+    display: block;
+  }
+  .about_block_content_title {
+    border-left: 4px solid black;
   }
 
   .about_block_title {
