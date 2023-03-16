@@ -180,12 +180,14 @@ onMounted(() => {
 
 <style>
 .choosing_region_block {
-  width: 100%;
-  height: 100%;
-  top: 0;
-  background: #ffffff;
-  position: absolute;
-  z-index: 10000;
+    background: #fff;
+    height: 602px;
+    position: absolute;
+    top: 2rem;
+    width: 867px;
+    z-index: 10000;
+    left: 50%;
+    transform: translate(-50%, 0);
 }
 .choosing_region {
   padding: 30px;
@@ -267,6 +269,7 @@ onMounted(() => {
   background: #e4e6e7;
   border-radius: 3px;
   cursor: pointer;
+  maragin-bottom: 12px;
 }
 .choosing_region_content_city_block_info {
   overflow-y: scroll;
