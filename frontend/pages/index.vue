@@ -1437,7 +1437,31 @@ body {
     margin-bottom: 20px;
     z-index: 10;
   }
-
+  .about_block_content_title_linear {
+    display: none;
+  }
+  .map_block_content_title_block  {
+    margin: 0;
+  }
+  .map_block_content_title_block_row {
+    padding: 0;
+  }
+  .map_block_content_title_block_col {
+    padding: 0 16px;
+  }
+  .map_block_content_title {
+    position: relative;
+    padding: 0;
+  }
+  .map_block_content_title:after {
+    content: '';
+    position: absolute;
+    left: -16px;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: #2b2b2b;
+  }
   .footer_content_downloads_market_link_group_item {
     margin: 0;
   }
