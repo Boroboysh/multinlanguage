@@ -156,10 +156,6 @@ const emitActions = (action) => {
   emits("closeButton", action);
 };
 
-onMounted(() => {
-  alert(1)
-})
-
 </script>
 
 <style>
