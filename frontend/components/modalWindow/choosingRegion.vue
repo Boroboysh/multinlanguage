@@ -112,6 +112,7 @@
       </div>
     </div>
     <!-- {{ list[0] }} -->
+    {{ list }}
   </div>
 </template>
 
@@ -165,7 +166,7 @@ const emitActions = (action) => {
   top: 0;
   background: #ffffff;
   position: absolute;
-  z-index: 100;
+  z-index: 10000;
 }
 .choosing_region {
   padding: 30px;
