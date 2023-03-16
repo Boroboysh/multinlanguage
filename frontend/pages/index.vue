@@ -1502,6 +1502,9 @@ body {
 }
 
 @media (max-width: 575px) {
+  .header_content_block, .header_menu_group_block {
+    position: fixed;
+  }
   .header_content_info_calculate_button_block {
     width: 100%;
     display: flex;
