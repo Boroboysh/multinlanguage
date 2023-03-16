@@ -557,11 +557,17 @@
         </div>
       </div>
     </div>
+
+    <div>
+      {{ statusRegionSelect ? 'WWWW' : 'AAAAA' }}
+    </div>
+
     <choosing-region
       @closeButton="(action) => selectAction(action)"
-      :list="countryList.data"
       v-if="statusRegionSelect"
+      v-bind:list="countryList"
     />
+
     <default-footer>
       <template #block_right>
         <div class="footer_content_downloads_market_title_block">
@@ -630,7 +636,7 @@ import { useContentPages } from "@/stores/homeStores";
 import { getCountry } from "@/api/getCountry/getCountry";
 import defaultAccordion from "~~/components/accordion/defaultAccordion.vue";
 import { sendContact } from "~~/api/sendContactForm/sendContact";
-import { watchDebounced, onClickOutside } from '@vueuse/core';
+import { watchDebounced } from '@vueuse/core';
 import { vOnClickOutside } from '@vueuse/components';
 import { useCountry } from "~~/stores/country";
 import axios from "axios";
@@ -681,10 +687,6 @@ const getSugggestAsync = (request) => {
   });
 };
 
-const handleSuggestRedirect = () => {
-
-};
-
 const handleClickOutsideSuggestDropdownFrom = (e) => {
   const isWrapper = e.target.matches('.front-direction-field-new_control-wrapper, .front-direction-field-new_control-wrapper *');
 
@@ -726,6 +728,7 @@ const openModalRegionSelect = () => {
 };
 
 const closeModalRegion = () => {
+  console.log('closeModalRegion')
   const body = document.querySelector("body");
   body.style.overflowY = null;
   updateStatusRegionSelect(false);
@@ -755,7 +758,7 @@ const selectAction = async (action) => {
   console.log("selectAction", action);
   switch (action.actionName) {
     case "openModal":
-      countryList.value = await getCountry(store.currentLang);
+      countryList.value = (await getCountry(store.currentLang)).data;
       openModalRegionSelect();
       break;
     case "closeModal":

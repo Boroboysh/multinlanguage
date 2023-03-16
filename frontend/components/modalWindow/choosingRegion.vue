@@ -1,5 +1,8 @@
 <template>
-  <div class="choosing_region_block">
+  <div
+    class="choosing_region_block"
+    v-on-click-outside="handleClickOutside"
+  >
     <div class="choosing_region">
       <div
         class="choosing_region_header_block choosing_region_header_block_row"
@@ -136,6 +139,7 @@ import defaultKeyboardOption from "@/components/keyboardLayout/defaultKeyboardOp
 import { ref, onMounted } from "vue";
 import { useCountry } from "~~/stores/country";
 import { getCountrySearch } from '@/api/getCountry/getCountry'
+import { vOnClickOutside } from '@vueuse/components';
 
 const alphabet = ['А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Э', 'Ю', 'Я'];
 
@@ -148,6 +152,13 @@ const letters = ref(alphabet.reduce((acc, item, currentIndex)=>{
   return acc;
 },[]));
 const selectedLetter = ref();
+
+const handleClickOutside = (e) => {
+  const isCurrent = e.target.matches('.choosing_region_block, .choosing_region_block *');
+  if (isCurrent === false) {
+    emitActions({ actionName: 'closeModal', value: true });
+  }
+};
 
 const changeLetter = (value) => {
   selectedLetter.value = value;
@@ -171,7 +182,6 @@ const props = defineProps({
 const emits = defineEmits(["closeButton"]);
 
 let coutryStores = useCountry();
-
 let currentCountry = ref(coutryStores.countryList[0]);
 
 const updateCurrentCountry = (country) => {
@@ -181,20 +191,19 @@ const updateCurrentCity = (city) => {
   coutryStores.changeCity(city);
 };
 
-
 const getSortPopularCites = (list) => {
   return list.sort(
     (currentItem, nextItem) => currentItem.rating + nextItem.rating
   );
 };
 
-getCountrySearch("аст")
 const emitActions = (action) => {
   emits("closeButton", action);
 };
 
+getCountrySearch("аст");
 onMounted(() => {
-  currentCountry = list[0];
+  currentCountry = props.list[0];
 });
 </script>
 

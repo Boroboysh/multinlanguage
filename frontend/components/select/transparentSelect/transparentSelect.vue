@@ -1,5 +1,8 @@
 <template>
-  <div class="default_transparent_select_block">
+  <div
+    class="default_transparent_select_block"
+    v-on-click-outside="handleClickOutside"
+  >
     <div
       @click="updateAciveContentStatus(!isActiveContent)"
       class="default_transparent_select_title"
@@ -17,11 +20,16 @@
 
 <script setup>
 import { provide } from "vue";
+import { vOnClickOutside } from '@vueuse/components';
 
 const props = defineProps({});
 const emits = defineEmits(["returnOption"]);
 const activeElement = ref();
 let isActiveContent = ref(false);
+
+const handleClickOutside = () => {
+  isActiveContent.value = false;
+};
 
 const updateAciveContentStatus = (status) => {
   isActiveContent.value = status;
