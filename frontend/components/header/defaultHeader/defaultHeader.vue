@@ -213,10 +213,10 @@ const closeMenu = () => {
 };
 
 const updateLang = (lang) => {
-  console.log(lang);
   activeLang.value = lang;
   homePageContentStores.updateCurrentLang(lang.code);
   emit("updateSelected", lang.code);
+  updateStatusMenu(false)
 };
 
 const emitActions = (actionName) => {
@@ -548,13 +548,13 @@ header {
     border-bottom: 2px solid #e4e6e7;
   }
   .header_menu_block_lang_item {
-    margin-top: 10px;
+    margin-top: 20px;
   }
   .header_menu_block_lang {
     display: none;
   }
   .header_menu_block_link {
-    margin: 20px 0px 10px 10px;
+    margin: 20px 0px 20px 10px;
   }
   .header_menu_icons_block {
     margin: 0px 10px 0px 0px;
