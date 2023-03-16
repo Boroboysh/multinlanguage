@@ -7,8 +7,8 @@
         v-for="(item, index) in itemList"
         :key="index"
         :style="{
-          top: item.coordination.x + '%',
-          left: item.coordination.y + '%',
+          top: item.coordination.y + '%',
+          left: item.coordination.x + '%',
         }"
         class="map_container_marker_block"
       >
