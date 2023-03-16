@@ -20,6 +20,9 @@ class TextInfoBlockResource extends JsonResource
         $list = TextInfoBlockListResource::collection(TextInfoBlockList::where('textInfoBlock_id', $this->id)->get());
         $content = TextInfoBlockContentResource::collection(TextInfoBlockContent::where('textInfoBlock_id', $this->id)->get());
 
+        $array = [...$content];
+        $lastArrayElement = array_pop($array);
+
         $list->map(function ($listItem) {
             $listItem["type"] = "list";
         });
@@ -27,7 +30,7 @@ class TextInfoBlockResource extends JsonResource
         return [
             'title' => $this->title,
             'subtitle' => $this->subtitle,
-            'content' => [...$content, ...$list]
+            'content' => [...$array, ...$list, $lastArrayElement]
         ];
     }
 }
