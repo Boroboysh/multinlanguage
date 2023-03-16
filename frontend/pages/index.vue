@@ -248,12 +248,12 @@
       </div>
     </div>
     <div class="advantages_block_card container-xl">
-      <div class="row w-100 d-flex align-items-center justify-content-center">
+<!--      <div class="row w-100 d-flex align-items-center justify-content-center advantages_block_card">-->
         <div
           v-for="(advantagesItem, advantagesIndex) in contentPages.data.body
             .listInfoBlock.element"
           :key="advantagesIndex"
-          class="col-12 col-sm-6 col-md-6 col-xl-6 d-flex h-100 align-items-start justify-content-center advantages_block_card_item"
+          class="d-flex align-items-start justify-content-center advantages_block_card_item"
         >
           <div
             class="advantages_card_block position-relative default_card w-100"
@@ -304,7 +304,7 @@
             </div>
           </div>
         </div>
-      </div>
+<!--      </div>-->
     </div>
     <div class="contact_form_block">
       <div
@@ -895,7 +895,7 @@ body {
 }
 
 .map_block_border_block {
-  top: -25px;
+  top: -12px;
   left: -12px;
 }
 
@@ -912,8 +912,8 @@ body {
 }
 
 .map_block_content_card_block {
-  max-width: 500px;
-  min-height: 135px;
+  max-width: 504px;
+  min-height: 132px;
 }
 
 .map_block_content_title_block {
@@ -938,10 +938,12 @@ body {
 }
 
 .map_block_content_card {
-  padding: 20px 20px 40px;
-  font-size: 20px;
+  padding: 20px 20px 44px;
+  font-size: 22px;
+  line-height: 34px;
   height: 100%;
   background: #fafafa;
+  color: #2B2B2B;
 }
 
 .map_block_content_title_block_row {
@@ -1022,6 +1024,9 @@ body {
 }
 .map_contact_button {
   font-weight: 700;
+  font-size: 20px !important;
+  line-height: 24px;
+  padding: 20px 36px !important;
 }
 .map_contact_info {
   font-size: 24px;
@@ -1029,7 +1034,7 @@ body {
 }
 
 .map_contact_info_title {
-  font-size: 24px;
+  font-size: 16px;
 }
 
 .map_contact_telephone_block a {
@@ -1086,6 +1091,10 @@ body {
 
 .advantages_block_card {
   margin-top: 56px;
+  max-width: 1000px;
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 50px;
 }
 
 .advantages_card {
@@ -1465,6 +1474,11 @@ body {
   }
 }
 @media (max-width: 510px) {
+
+  .advantages_block_card {
+    padding: 0 30px;
+    grid-template-columns: auto;
+  }
   .header_content_info_calculate_form_input_size {
     /* min-width: auto; */
   }
@@ -1547,8 +1561,34 @@ body {
     width: 100%;
     margin-bottom: 20px;
     z-index: 10;
+    font-size: 16px !important;
+    padding: 16px 24px !important;
   }
-
+  .about_block_content_title_linear {
+    display: none;
+  }
+  .map_block_content_title_block  {
+    margin: 0;
+  }
+  .map_block_content_title_block_row {
+    padding: 0;
+  }
+  .map_block_content_title_block_col {
+    padding: 0 16px;
+  }
+  .map_block_content_title {
+    position: relative;
+    padding: 0;
+  }
+  .map_block_content_title:after {
+    content: '';
+    position: absolute;
+    left: -16px;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: #2b2b2b;
+  }
   .footer_content_downloads_market_link_group_item {
     margin: 0;
   }
