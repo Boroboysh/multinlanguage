@@ -1,10 +1,7 @@
 <template>
-  <div class="default_select_block position-relative">
+  <div class="default_select_block position-relative" ref="selectRef">
     <default-input
       @focus="udpateStatus(true)"
-      @input="$emit('update', $event.target.value)"
-      @change="$emit('update', $event.target.value)"
-      @update="$emit('update', $event.target.value)"
       v-model="selectValue"
       :readonly="true"
       :placeholder="placeholder"
@@ -36,14 +33,24 @@ defineProps({
     type: String,
   },
 });
-
+const emit = defineEmits(["returnSelect"]);
 let selectValue = ref("");
 let defaultInputValue = ref(null);
 let isActive = ref(false);
+let selectRef = ref(null);
 
 const udpateStatus = (status) => {
   isActive.value = status;
 };
+
+// window.addEventListener('click',(ev) => {
+//   console.log(ev)
+//   document.querySelectorAll('.default_select_block').forEach((item) => {
+//     if (!(item.contains(ev.target) || item === ev.target)) {
+//       isActive.value = false;
+//     }
+//   })
+// })
 
 onMounted(() => {
   console.log('defaultInputValue', defaultInputValue)
@@ -51,6 +58,7 @@ onMounted(() => {
 
 const updateValue = (value) => {
   selectValue.value = value
+  emit('returnSelect', value)
 }
 
 const closeOptionBlock = () => {

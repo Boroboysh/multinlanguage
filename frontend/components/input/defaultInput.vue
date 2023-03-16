@@ -11,6 +11,7 @@
     </span>
     <div class="default_input_container"></div>
     <input
+        v-if='!mask'
       @focus="$emit('focus')"
       @blur="$emit('blur')"
       :readonly="readonly"
@@ -19,6 +20,20 @@
       @input="$emit('update:modelValue', $event.target.value)"
       :value="modelValue"
       v-bind:class="`default_input ${title ? 'default_input_with_title' : ''}`"
+      type="text"
+    />
+    <input
+      v-if='mask'
+      @focus="$emit('focus')"
+      @blur="$emit('blur')"
+      @input="$emit('update:modelValue', $event.target.value)"
+      v-bind:readonly="readonly"
+      v-bind:placeholder="!title ? placeholder : null"
+      v-bind:disabled="disabled"
+      v-bind:value="modelValue"
+      v-bind:class="`default_input ${title ? 'default_input_with_title' : ''}`"
+      v-bind:data-maska="mask"
+      v-maska
       type="text"
     />
     <div class="container_right_slot">
@@ -38,39 +53,49 @@
   </div>
 </template>
 
-<script setup>
+<script>
 import { ref } from "vue";
+import { vMaska } from "maska"
 
-defineProps({
-  disabled: {
-    type: Boolean,
+export default {
+  directives: { maska: vMaska },
+  props: {
+    disabled: {
+      type: Boolean,
+    },
+    modelValue: {
+      type: String,
+      default: ''
+    },
+    placeholder: {
+      type: String,
+    },
+    title: {
+      type: Boolean,
+      default: false,
+    },
+    clearButton: {
+      type: Boolean,
+    },
+    readonly: {
+      type: Boolean,
+    },
+    mask: {
+      type: String,
+    },
   },
-  modelValue: {
-    type: String,
-    default: ''
+  data() {
+    return {
+      valueInput: ''
+    }
   },
-  placeholder: {
-    type: String,
-  },
-  title: {
-    type: Boolean,
-    default: false,
-  },
-  clearButton: {
-    type: Boolean,
-  },
-  readonly: {
-    type: Boolean,
-  },
-});
+  methods: {
+    updateValueInput(value) {
+      this.valueInput = value;
+    },
+  }
+}
 
-const valueInput = ref("");
-
-const updateValueInput = (value) => {
-  valueInput = value;
-};
-
-const emit = defineEmits(["update:modelValue"]);
 // const updateValueInputEmit = defineEmits(["updateValue"]);
 </script>
 

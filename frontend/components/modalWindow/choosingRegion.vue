@@ -136,21 +136,15 @@ import { ref, onMounted } from "vue";
 import { useCountry } from "~~/stores/country";
 import { getCountrySearch } from '@/api/getCountry/getCountry'
 
-
-const test = ref([
-  {
-    id: 1,
-    name: "a",
-  },
-  {
-    id: 2,
-    name: "a",
-  },
-  {
-    id: 3,
-    name: "a",
-  },
-]);
+const alphabet = ['А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Э', 'Ю', 'Я'];
+const test = ref(alphabet.reduce((acc, item, currentIndex)=>{
+  acc = [...acc, {
+    id: currentIndex,
+    name: item,
+    selected: false,
+  }]
+  return acc;
+},[]));
 
 const props = defineProps({
   list: {
@@ -166,6 +160,12 @@ let currentCountry = ref(coutryStores.countryList[0]);
 
 const updateCurrentCountry = (value) => {
   currentCountry.value = value;
+  test.value = test.map((acc, item) => {
+    item.value.selected = false;
+    if (item.value.name === value) {
+      item.value.selected = true;
+    };
+  });
 };
 
 
@@ -187,12 +187,14 @@ onMounted(() => {
 
 <style>
 .choosing_region_block {
-  width: 100%;
-  height: 100%;
-  top: 0;
-  background: #ffffff;
-  position: absolute;
-  z-index: 10000;
+    background: #fff;
+    height: 602px;
+    position: absolute;
+    top: 2rem;
+    width: 867px;
+    z-index: 10000;
+    left: 50%;
+    transform: translate(-50%, 0);
 }
 .choosing_region {
   padding: 30px;
@@ -241,7 +243,7 @@ onMounted(() => {
 }
 .choosing_region_content_city_list_item {
   /* min-width: 160px; */
-  padding: 16px 8px;
+  padding: 8px 16px ;
   margin-bottom: 20px;
 }
 .choosing_region_content_city_list_item_active {
@@ -274,6 +276,7 @@ onMounted(() => {
   background: #e4e6e7;
   border-radius: 3px;
   cursor: pointer;
+  margin-bottom: 12px;
 }
 .choosing_region_content_city_block_info {
   overflow-y: scroll;

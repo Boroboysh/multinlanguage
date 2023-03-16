@@ -26,6 +26,7 @@
             </h2>
             <default-input
               v-model="searchFormCode.code"
+              mask="### ### ###"
               :placeholder="
                 contentPages.data.body?.subheader?.fields[0].content
               "
@@ -444,9 +445,9 @@
         </div>
       </div>
       <div
-        v-for="(advantagesItem, advantagesIndex) in contentPages.data?.body?.listInfoBlock?.element"
-        :key="advantagesIndex"
-        class="d-flex align-items-start justify-content-center advantages_block_card_item"
+          v-for="(advantagesItem, advantagesIndex) in contentPages.data?.body?.listInfoBlock?.element"
+          :key="advantagesIndex"
+          class="d-flex align-items-start justify-content-center advantages_block_card_item advantages_block_card_item-mobile"
       >
         <adventageBlock :advantagesItem="advantagesItem" />
       </div>
@@ -462,12 +463,12 @@
       <div class="contact_form w-100 container-xl">
         <div class="contact_form_title_block">
           <span class="contact_form_title">
-            {{ contentPages.data.body?.contactForm?.title }}
+            {{ contentPages.data.body.contactForm.title }}
           </span>
         </div>
         <div class="contact_form_title_info_block">
           <span class="contact_form_info_item contact_form_info_item_text">
-            {{ contentPages.data.body?.contactForm?.subtitle }}
+            {{ contentPages.data.body.contactForm.subtitle }}
           </span>
         </div>
         <div class="contact_form_container">
@@ -477,6 +478,7 @@
             >
               <div class="contact_form_item_block w-100">
                 <default-select
+                  @returnSelect="getContentInfo('ru')"
                   :placeholder="contentPages.data.body?.contactForm?.fields?.city"
                   v-model="contactForm.city"
                 >
@@ -1588,6 +1590,11 @@ body {
 }
 
 @media (max-width: 1000px) {
+  .choosing_region_block {
+    width: 100%;
+    height: 100%;
+    top: 0;
+  }
   .header_content_info_calculate_form_input_size {
     width: 100%;
   }
@@ -1725,6 +1732,10 @@ body {
 }
 
 @media (max-width: 575px) {
+
+  .header_content_block, .header_menu_group_block {
+    position: fixed;
+  }
   .header_content_info_calculate_button_block {
     width: 100%;
     display: flex;
@@ -1799,6 +1810,12 @@ body {
 }
 
 @media (max-width: 480px) {
+  .choosing_region_content_city_list_block {
+    display: none;
+  }
+  .choosing_region_content_city_block_popular {
+    margin: 0;
+  }
   .about_block_content_advertisement {
     display: block;
   }
@@ -1937,3 +1954,4 @@ body {
   }
 }
 </style>
+
