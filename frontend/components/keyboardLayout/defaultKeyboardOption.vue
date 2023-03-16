@@ -1,11 +1,11 @@
 <template>
-  <div @click="selection.selectionsAction(value)" class="default_keyboard_option_block">
+  <div @click="test" class="default_keyboard_option_block">
     <slot />
   </div>
 </template>
 
 <script setup>
-import { ref, inject } from 'vue'
+import { inject } from 'vue'
 
 const props = defineProps({
   value: {
@@ -15,15 +15,14 @@ const props = defineProps({
 });
 
 const test = () => {
-  console.log('value', props.value)
+  selection.selectionsAction(props.value);
 }
-
 const selection = inject('defaultKeyboardLayout')
 
 </script>
 
 <style scoped>
 .default_keyboard_option_block {
-
+    margin-bottom: 12px;
 }
 </style>
