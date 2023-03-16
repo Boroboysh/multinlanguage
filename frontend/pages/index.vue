@@ -910,6 +910,9 @@ body {
 }
 .map_contact_button {
   font-weight: 700;
+  font-size: 20px !important;
+  line-height: 24px;
+  padding: 20px 36px !important;
 }
 .map_contact_info {
   font-size: 24px;
@@ -917,7 +920,7 @@ body {
 }
 
 .map_contact_info_title {
-  font-size: 24px;
+  font-size: 16px;
 }
 
 .map_contact_telephone_block  a{
@@ -1398,9 +1401,6 @@ body {
   .about_block_content_advertisement {
     display: block;
   }
-  .map_contact_info_title {
-    font-size: 16px;
-  }
   .map_card_block {
     display: none;
   }
@@ -1438,6 +1438,8 @@ body {
     width: 100%;
     margin-bottom: 20px;
     z-index: 10;
+    font-size: 16px !important;
+    padding: 16px 24px !important;
   }
   .about_block_content_title_linear {
     display: none;
