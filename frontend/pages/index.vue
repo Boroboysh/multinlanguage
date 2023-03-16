@@ -493,7 +493,7 @@
             <div
               class="col-12 d-flex align-items-center justify-content-center"
             >
-              <div class="contact_form_item_block w-100">
+              <div class="contact_form_item_block w-100 contact_form_text_area">
                 <default-text-area
                   v-model="contactForm.message"
                   :placeholder="
@@ -1171,7 +1171,9 @@ body {
   top: 35px;
   background: #2b2b2b;
 }
-
+.contact_form_text_area {
+  height: 160px;
+}
 .advatages_block_title {
   position: relative;
   display: flex !important;
@@ -1376,6 +1378,12 @@ body {
 .about_block_title {
   position: relative;
 }
+.contact_form_send_personal_info_button {
+  width: 244px;
+  font-weight: 700;
+  font-size: 20px;
+  color: #2B2B2B;
+}
 /* .footer_content_logo_block {
   display: flex;
 } */
@@ -1545,6 +1553,9 @@ body {
     display: flex;
     flex-direction: column-reverse;
   }
+  .contact_form_item_block  {
+    margin-top: 28px;
+  }
 
   /* .contact_form_item_city {
     display: none !important;
@@ -1566,6 +1577,13 @@ body {
     margin-top: 70px;
   }
 }
+
+@media(max-width:657px) {
+  .contact_form_send_personal_info_item  {
+    text-align: center;
+  }
+}
+
 @media (max-width: 575px) {
   .header_content_info_calculate_button_block {
     width: 100%;
@@ -1644,14 +1662,21 @@ body {
   .about_block_content_advertisement {
     display: block;
   }
-
   .header_content_advantages_block {
     margin: 50px 0;
     grid-template-columns: auto;
   }
-
+  .contact_form_item_block  {
+    margin-top: 24px;
+  }
   .header_content_advantages_number {
     font-size: 36px;
+  }
+  .contact_form_send_personal_info_button_block {
+    width: 100%;
+  }
+  .contact_form_send_personal_info_button_block button {
+    width: 100%;
   }
   .header_content_advantages:nth-child(1) > div {
     border-top: none;
@@ -1680,7 +1705,12 @@ body {
   .about_content_title_linear_block {
     display: block;
   }
-
+  .contact_form_send_personal_info_button_block {
+    width: 100%;
+  }
+  .contact_form_send_personal_info_button_block > button {
+    width: 100%;
+  }
   .map_contact_info {
     display: flex;
     align-items: center;
