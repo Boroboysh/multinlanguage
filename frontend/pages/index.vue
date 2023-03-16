@@ -139,10 +139,6 @@
         </div> -->
         <div class="about_content_block_info container-xl">
           <div class="about_content_info">
-            <p class="about_content_title">
-              ПЭК: GLOBAL предлагает услуги авто- и авиаперевозок из России в
-              Казахстан и в обратном направлении.
-            </p>
             <div
               v-for="(aboutTextItem, aboutTextIndex) in contentPages.data.body
                 .textInfoBlock.content"
@@ -1387,7 +1383,7 @@ body {
   .about_block_content_advertisement {
     display: block;
   }
-  .about_content_title {
+  .about_block_title  {
     border-left: 4px solid #2b2b2b;
     padding: 0px 0px 0px 4px;
     width: 100%;
@@ -1397,9 +1393,6 @@ body {
   }
   .about_content_title_linear_block {
     display: block;
-  }
-  .about_block_content_title {
-    border-left: 4px solid black;
   }
 
   .map_contact_info {
