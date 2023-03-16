@@ -1,6 +1,6 @@
 <template>
   <header class="w-100">
-    <div class="header_content_block container-xl">
+    <div class="header_content_block w-100 h-100 container-xl">
       <div class="header_menu_block d-flex w-100">
         <div class="header_logo_block">
           <img
@@ -391,7 +391,7 @@ header {
 }
 
 .header_content_advantages_number {
-  font-size: 48px;
+  font-size: 32px;
 }
 
 .header_content_advantages_number_icons {
