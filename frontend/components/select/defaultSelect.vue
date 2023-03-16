@@ -1,6 +1,5 @@
 <template>
   <div class="default_select_block position-relative">
-    {{ selectValue }}
     <default-input
       @focus="udpateStatus(true)"
       v-model="selectValue"
