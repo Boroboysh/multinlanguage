@@ -101,10 +101,10 @@
             >
               <div class="header_content_advantages_info_block">
                 <div class="header_content_advantages_number_block">
-                  <span class="header_content_advantages_number"
-                    >{{ itemList.number }}
+                  <div class="header_content_advantages_number">
+                      {{ itemList.number }}
                     <div class="header_content_advantages_number_icons">+</div>
-                  </span>
+                  </div>
                 </div>
                 <div class="header_content_advantages_text_block">
                   <p class="header_content_advantages_text">
@@ -139,10 +139,6 @@
         </div> -->
         <div class="about_content_block_info container-xl">
           <div class="about_content_info">
-            <p class="about_content_title">
-              ПЭК: GLOBAL предлагает услуги авто- и авиаперевозок из России в
-              Казахстан и в обратном направлении.
-            </p>
             <div
               v-for="(aboutTextItem, aboutTextIndex) in contentPages.data.body
                 .textInfoBlock.content"
@@ -158,7 +154,7 @@
                 </p>
               </div>
               <div
-                v-if="aboutTextItem.type === 'item'"
+                v-if="aboutTextItem.type === 'text'"
                 class="about_content_item_block"
               >
                 <p class="about_content_item_content">
@@ -522,7 +518,7 @@ const getCountryData = async (lang) => {
 };
 
 const sendContactForm = async (form) => {
-   await sendContact(form);
+  await sendContact(form);
 };
 
 const searchCodes = (code) => {
@@ -631,8 +627,7 @@ body {
 }
 
 .header_content_advantages_number {
-  font-size: 48px;
-  min-width: 50px;
+  font-size: 32px;
   position: relative;
 }
 
@@ -645,7 +640,6 @@ body {
 
 .header_content_advantages_text {
   font-size: 18px;
-  max-width: 300px;
   height: 100%;
   margin: 0;
   display: flex;
@@ -1387,7 +1381,7 @@ body {
   .about_block_content_advertisement {
     display: block;
   }
-  .about_content_title {
+  .about_block_title {
     border-left: 4px solid #2b2b2b;
     padding: 0px 0px 0px 4px;
     width: 100%;
@@ -1397,9 +1391,6 @@ body {
   }
   .about_content_title_linear_block {
     display: block;
-  }
-  .about_block_content_title {
-    border-left: 4px solid black;
   }
 
   .map_contact_info {
