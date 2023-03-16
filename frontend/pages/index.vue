@@ -215,7 +215,7 @@
       <default-map :item-list="contentPages.data.body.mapInfoBlock.points" />
       <div class="map_block_contact">
         <div class="map_contact_button_block">
-          <default-button size="large" class="map_contact_button">
+          <default-button size="large" class="map_contact_button" v-on:click="scrollToContactForm">
             {{ contentPages.data.body.mapInfoBlock.buttons_text.content }}
           </default-button>
         </div>
@@ -224,7 +224,7 @@
             contentPages.data.body.mapInfoBlock.content[0].text
           }}</span>
           <div class="map_contact_telephone_block">
-            <span>{{ contentPages.data.header.tel_number }}</span>
+            <a href="tel:{{ contentPages.data.header.tel_number }}">{{ contentPages.data.header.tel_number }}</a>
           </div>
         </div>
       </div>
@@ -301,7 +301,7 @@
       </div>
     </div>
     <div class="contact_form_block">
-      <div class="contact_form_question_mark_block container-xl">
+      <div class="contact_form_question_mark_block container-xl" id="contact-form">
         <div class="contact_form_question_mark">?</div>
       </div>
       <div class="contact_form w-100 container-xl">
@@ -535,6 +535,9 @@ const selectAction = async (action) => {
       break;
   }
 };
+const scrollToContactForm = () => {
+  document.getElementById('contact-form').scrollIntoView();
+}
 
 useAsyncData("page-data", async () => {
   await store.getContent("kk");
@@ -901,10 +904,11 @@ body {
 }
 
 .map_contact_button_block {
-  font-weight: 600;
   margin-right: 24px;
 }
-
+.map_contact_button {
+  font-weight: 700;
+}
 .map_contact_info {
   font-size: 24px;
   font-weight: 700;
@@ -914,8 +918,9 @@ body {
   font-size: 24px;
 }
 
-.map_contact_telephone_block {
+.map_contact_telephone_block  a{
   color: #48538b;
+  text-decoration: none;
 }
 
 .advatages_block {
@@ -1427,6 +1432,7 @@ body {
   .map_contact_button {
     width: 100%;
     margin-bottom: 20px;
+    z-index: 10;
   }
 
   .footer_content_downloads_market_link_group_item {
