@@ -55,9 +55,14 @@
                   :title="true"
                 />
                 <img
-                  class="header_content_info_calculate_form_icons"
+                  class="header_content_info_calculate_form_icons "
                   src="@/assets/images/arrow_double.svg"
                   alt=""
+                  v-on:click="() => {
+                    const posr = calculateSumForms.from;
+                    calculateSumForms.from = calculateSumForms.to;
+                    calculateSumForms.to = posr;
+                  }"
                 />
                 <default-input
                   v-model="calculateSumForms.from"
@@ -798,6 +803,10 @@ body {
   align-items: center;
 }
 
+.header_content_info_calculate_form_icons {
+  cursor: pointer;
+}
+
 .about_block {
   background: #fafafa;
 }
@@ -1410,6 +1419,7 @@ body {
 
   .header_content_info_calculate_form_icons {
     margin: 15px;
+    cursor: pointer;
   }
 
   .map_block_content_title_block_col {
