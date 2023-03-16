@@ -102,7 +102,9 @@
               <div class="header_content_advantages_info_block">
                 <div class="header_content_advantages_number_block">
                   <div class="header_content_advantages_number">
+                    <div>
                       {{ itemList.number }}
+                    </div>
                     <div class="header_content_advantages_number_icons">+</div>
                   </div>
                 </div>
@@ -640,6 +642,7 @@ body {
 
 .header_content_advantages_text {
   font-size: 18px;
+  max-width: 300px;
   height: 100%;
   margin: 0;
   display: flex;
@@ -1342,7 +1345,8 @@ body {
   }
 
   .header_content_info_calculate_result {
-    justify-content: flex-start;
+    justify-content: center;
+    margin: 20px 0px;
   }
 
   .header_content_info_calculate_forms_block {
