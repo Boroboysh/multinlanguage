@@ -39,7 +39,11 @@
                   v-for="(country, countryIndex) in list"
                   @click="updateCurrentCountry(country)"
                   :key="countryIndex"
-                  class="choosing_region_content_city_list_item choosing_region_content_city_list_item_active"
+                  :class="{
+                    choosing_region_content_city_list_item_active:
+                      country.id === currentCountry.id,
+                  }"
+                  class="choosing_region_content_city_list_item"
                 >
                   {{ country.country }}
                 </div>
@@ -64,21 +68,16 @@
                     class="choosing_region_content_city_block_popular_list d-flex"
                   >
                     <div
+                      v-for="(country, countryIndex) in getSortPopularCites(
+                        currentCountry.territoryList
+                      )"
+                      :key="countryIndex"
                       class="choosing_region_content_city_block_popular_list_item_block"
                     >
                       <a
                         href="#"
                         class="choosing_region_content_city_block_popular_list_item"
-                        >Астана</a
-                      >
-                    </div>
-                    <div
-                      class="choosing_region_content_city_block_popular_list_item_block"
-                    >
-                      <a
-                        href="#"
-                        class="choosing_region_content_city_block_popular_list_item"
-                        >Костанай</a
+                        >{{ country.name }}</a
                       >
                     </div>
                   </div>
@@ -104,15 +103,28 @@
                     </default-keyboard-option>
                   </default-keyboard-layout>
                 </div>
-                <div class="choosing_region_content_city_all_list_block"></div>
+                <div class="choosing_region_content_city_all_list_block">
+                  <div class="row">
+                    <div class="col-6">
+                      <div
+                        class="choosing_region_content_city_all_list_item"
+                      ></div>
+                    </div>
+                    <div class="col-6"></div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- {{ list[0] }} -->
-    {{ list }}
+    <div class="result_city_block">
+      <div class="row">
+        <div class="col-6"></div>
+        <div class="col-6"></div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -120,9 +132,10 @@
 import defaultInput from "@/components/input/defaultInput.vue";
 import defaultKeyboardLayout from "@/components/keyboardLayout/defaultKeyboardLayout.vue";
 import defaultKeyboardOption from "@/components/keyboardLayout/defaultKeyboardOption.vue";
-import { getCountry } from "@/api/getCountry/getCountry";
-
 import { ref, onMounted } from "vue";
+import { useCountry } from "~~/stores/country";
+import { getCountrySearch } from '@/api/getCountry/getCountry'
+
 
 const test = ref([
   {
@@ -147,16 +160,29 @@ const props = defineProps({
 });
 const emits = defineEmits(["closeButton"]);
 
-let currentCountry = ref({});
+let coutryStores = useCountry();
+
+let currentCountry = ref(coutryStores.countryList[0]);
 
 const updateCurrentCountry = (value) => {
   currentCountry.value = value;
 };
 
+
+const getSortPopularCites = (list) => {
+  return list.sort(
+    (currentItem, nextItem) => currentItem.rating + nextItem.rating
+  );
+};
+
+getCountrySearch("аст")
 const emitActions = (action) => {
   emits("closeButton", action);
 };
 
+onMounted(() => {
+  currentCountry = list[0];
+});
 </script>
 
 <style>
@@ -258,14 +284,18 @@ const emitActions = (action) => {
   border: var(--scrollbarBorder);
 }
 .choosing_region_content_city_block_info::-webkit-scrollbar {
-  width: 12px;               /* ширина scrollbar */
+  width: 12px; /* ширина scrollbar */
 }
 .choosing_region_content_city_block_info::-webkit-scrollbar-track {
-  background: #E4E6E7;        /* цвет дорожки */
+  background: #e4e6e7; /* цвет дорожки */
 }
 
-@media(max-width:768px) {
-  .default_keyboard_layout_block  {
+.choosing_region_content_city_block_info {
+  overflow-y: hidden;
+}
+
+@media (max-width: 768px) {
+  .default_keyboard_layout_block {
     display: none !important;
   }
   .choosing_region_content_city_block_popular_list_item_block {
@@ -274,7 +304,7 @@ const emitActions = (action) => {
   .choosing_region_content_city_block_popular_title_block {
     font-size: 20px;
   }
-  .choosing_region_content_city_block_popular_list  {
+  .choosing_region_content_city_block_popular_list {
     display: block !important;
   }
 }
