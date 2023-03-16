@@ -24,10 +24,6 @@ class TextInfoBlockResource extends JsonResource
             $listItem["type"] = "list";
         });
 
-        $content->map(function ($contentItem) {
-            $contentItem["type"] = "item";
-        });
-
         return [
             'title' => $this->title,
             'subtitle' => $this->subtitle,
