@@ -44,19 +44,50 @@
               class="header_content_info_calculate_block w-100 d-block align-items-start flex-column"
             >
               <h2 class="header_content_info_forms_title">
-                {{ contentPages.data.body.subheader?.titles[1].content }}
+                {{ contentPages.data.body?.subheader?.titles[1].content }}
               </h2>
+
               <div
                 class="header_content_info_calculate_forms_block w-100 justify-content-between"
               >
-                <default-input
-                  class="header_content_info_calculate_form_input_size"
-                  v-model="calculateSumForms.to"
-                  :placeholder="
-                    contentPages.data.body.subheader?.fields[1].content
-                  "
-                  :title="true"
-                />
+                <div
+                  class="front-direction-field-new_control-wrapper"
+                  v-on-click-outside="handleClickOutsideSuggestDropdownFrom"
+                >
+                  <default-input
+                    class="header_content_info_calculate_form_input_size"
+                    v-model="calculateSumForms.from"
+                    :placeholder="contentPages.data.body?.subheader?.fields[1].content"
+                    :title="true"
+                    @focus="calculateSumForms.fromHidden = false"
+                  />
+
+                  <div
+                    class="front-direction-field-new_dropdown"
+                    v-bind:style="{ display: calculateSumForms.fromHidden || shipFromHints.length === 0 ? 'none' : undefined }"
+                  >
+                    <div class="front-direction-field-new_dropdown-inner">
+                      <div class="scroll-container-root">
+                        <ul class="front-suggest-new_suggest-list">
+                          <template v-for="(hint, hintIndex) in shipFromHints" :key="hintIndex" >
+                            <li class="front-suggest-new_suggest-list__item" @click="() => {
+                              calculateSumForms.from = hint.value;
+                              calculateSumForms.fromHidden = true;
+                            }">
+                              <div class="front-suggest-new_suggest-list__item-title">
+                                {{ hint.text }}
+                              </div>
+                              <div class="front-suggest-new_suggest-list__item-text">
+                                {{ hint.value }}
+                              </div>
+                            </li>
+                          </template>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 <img
                   class="header_content_info_calculate_form_icons"
                   src="@/assets/images/arrow_double.svg"
@@ -69,42 +100,80 @@
                     }
                   "
                 />
-                <default-input
-                  v-model="calculateSumForms.from"
-                  class="header_content_info_calculate_form_input_size"
-                  :placeholder="
-                    contentPages.data.body.subheader?.fields[2].content
-                  "
-                  :title="true"
-                />
-              </div>
-              <div class="header_content_info_calculate_button_block">
-                <default-button
-                  class="header_content_info_calculate_button"
-                  size="large"
+
+                <div
+                  class="front-direction-field-new_control-wrapper"
+                  v-on-click-outside="handleClickOutsideSuggestDropdownTo"
                 >
-                  {{ contentPages.data.body.subheader?.fields[3]?.content }}
-                </default-button>
+                  <default-input
+                    v-model="calculateSumForms.to"
+                    class="header_content_info_calculate_form_input_size"
+                    :placeholder="contentPages.data.body?.subheader?.fields[2].content"
+                    :title="true"
+                    @focus="calculateSumForms.toHidden = false"
+                  />
+
+                  <div
+                    class="front-direction-field-new_dropdown"
+                    v-bind:style="{ display: calculateSumForms.toHidden || shipToHints.length === 0 ? 'none' : undefined }"
+                  >
+                    <div class="front-direction-field-new_dropdown-inner">
+                      <div class="scroll-container-root">
+                        <ul class="front-suggest-new_suggest-list">
+                          <template v-for="(hint, hintIndex) in shipToHints" :key="hintIndex" >
+                            <li class="front-suggest-new_suggest-list__item" @click="() => {
+                              calculateSumForms.to = hint.value;
+                              calculateSumForms.toHidden = true;
+                            }">
+                              <div class="front-suggest-new_suggest-list__item-title">
+                                {{ hint.text }}
+                              </div>
+                              <div class="front-suggest-new_suggest-list__item-text">
+                                {{ hint.value }}
+                              </div>
+                            </li>
+                          </template>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div
-                class="header_content_info_calculate_result w-100 d-flex justify-content-start justify-content-sm-center justify-content-md-center justify-content-xl-end justify-content-xxl-end"
-              >
-                <img
-                  class="header_content_info_calculate_result_icons d-none d-sm-block d-md-block d-xl-block"
-                  src="@/assets/images/arrow_crocked.svg"
-                  alt=""
-                />
-                <span class="header_content_info_calculate_result_text">
-                  {{ contentPages.data.body.subheader?.content.text }}
-                </span>
-              </div>
+
+              <form method="post" action="https://pecom.ru/services-are/shipping-request/">
+                <input type="hidden" name="addressFrom" v-bind:value="calculateSumForms.from" />
+                <input type="hidden" name="addressTo" v-bind:value="calculateSumForms.to" />
+
+                <div class="header_content_info_calculate_button_block">
+
+                    <default-button
+                      class="header_content_info_calculate_button"
+                      size="large"
+                      type="submit"
+                    >
+                      {{ contentPages.data.body?.subheader?.fields[3]?.content }}
+                    </default-button>
+                </div>
+
+                <div
+                  class="header_content_info_calculate_result w-100 d-flex justify-content-start justify-content-sm-center justify-content-md-center justify-content-xl-end justify-content-xxl-end"
+                >
+                  <img
+                    class="header_content_info_calculate_result_icons d-none d-sm-block d-md-block d-xl-block"
+                    src="@/assets/images/arrow_crocked.svg"
+                    alt=""
+                  />
+                  <span class="header_content_info_calculate_result_text">
+                    {{ contentPages.data.body?.subheader?.content.text }}
+                  </span>
+                </div>
+              </form>
             </div>
           </div>
         </div>
         <div class="header_content_advantages_block">
           <div
-            v-for="(itemList, itemIndex) in contentPages.data.body.subheader
-              .list"
+            v-for="(itemList, itemIndex) in contentPages.data.body?.subheader?.list"
             :key="itemIndex"
             class="header_content_advantages d-flex align-items-start justify-content-start"
           >
@@ -141,15 +210,14 @@
               <div class="about_content_title_linear"></div>
             </div>
             <span class="about_block_content_title">
-              {{ contentPages.data.body.textInfoBlock.title }}
+              {{ contentPages.data.body?.textInfoBlock?.title }}
             </span>
           </div>
         </div>
         <div class="about_content_block_info container-xl">
           <div class="about_content_info">
             <div
-              v-for="(aboutTextItem, aboutTextIndex) in contentPages.data.body
-                .textInfoBlock.content"
+              v-for="(aboutTextItem, aboutTextIndex) in contentPages.data.body?.textInfoBlock?.content"
               :key="aboutTextIndex"
               class="about_content_text"
             >
@@ -199,7 +267,7 @@
                   class="map_block_linear about_block_content_title_linear"
                 />
                 <p class="map_block_content_title container-xl">
-                  {{ contentPages.data.body.mapInfoBlock.title }}
+                  {{ contentPages.data.body?.mapInfoBlock?.title }}
                 </p>
               </div>
               <div
@@ -217,7 +285,7 @@
                     ></div>
                   </div>
                   <div class="map_block_content_card">
-                    {{ contentPages.data.body.mapInfoBlock.card.content }}
+                    {{ contentPages.data.body?.mapInfoBlock?.card?.content }}
                   </div>
                 </div>
               </div>
@@ -225,7 +293,7 @@
           </div>
         </div>
       </div>
-      <default-map :item-list="contentPages.data.body.mapInfoBlock.points" />
+      <default-map :item-list="contentPages.data.body?.mapInfoBlock?.points" />
       <div class="map_block_contact">
         <div class="map_contact_button_block">
           <default-button
@@ -233,16 +301,16 @@
             class="map_contact_button"
             v-on:click="scrollToContactForm"
           >
-            {{ contentPages.data.body.mapInfoBlock.buttons_text.content }}
+            {{ contentPages.data.body?.mapInfoBlock?.buttons_text?.content }}
           </default-button>
         </div>
         <div class="map_contact_info">
           <span class="map_contact_info_title">{{
-            contentPages.data.body.mapInfoBlock.content[0].text
+            contentPages.data.body?.mapInfoBlock?.content[0].text
           }}</span>
           <div class="map_contact_telephone_block">
-            <a v-bind:href="`tel:${contentPages.data.header.tel_number}`">
-              {{ contentPages.data.header.tel_number }}
+            <a v-bind:href="`tel:${contentPages.data?.header?.tel_number}`">
+              {{ contentPages.data?.header?.tel_number }}
             </a>
           </div>
         </div>
@@ -255,7 +323,7 @@
         </div>
         <div class="advantages_title_block container-xl">
           <p class="advantages_title">
-            {{ contentPages.data.body.listInfoBlock.title }}
+            {{ contentPages.data.body?.listInfoBlock?.title }}
           </p>
         </div>
       </div>
@@ -264,8 +332,7 @@
       <!--      <div class="row w-100 d-flex align-items-center justify-content-center advantages_block_card">-->
       <div class="advantages-col-1">
         <div
-          v-for="(advantagesItem, advantagesIndex) in contentPages.data.body
-            .listInfoBlock.element"
+          v-for="(advantagesItem, advantagesIndex) in contentPages.data?.body?.listInfoBlock?.element"
           :key="advantagesIndex"
           class="d-flex align-items-start justify-content-center advantages_block_card_item"
         >
@@ -322,8 +389,7 @@
       </div>
       <div class="advantages-col-2">
         <div
-          v-for="(advantagesItem, advantagesIndex) in contentPages.data.body
-            .listInfoBlock.element"
+          v-for="(advantagesItem, advantagesIndex) in contentPages.data?.body?.listInfoBlock?.element"
           :key="advantagesIndex"
           class="d-flex align-items-start justify-content-center advantages_block_card_item"
         >
@@ -379,8 +445,7 @@
         </div>
       </div>
       <div
-          v-for="(advantagesItem, advantagesIndex) in contentPages.data.body
-            .listInfoBlock.element"
+          v-for="(advantagesItem, advantagesIndex) in contentPages.data?.body?.listInfoBlock?.element"
           :key="advantagesIndex"
           class="d-flex align-items-start justify-content-center advantages_block_card_item advantages_block_card_item-mobile"
       >
@@ -398,12 +463,12 @@
       <div class="contact_form w-100 container-xl">
         <div class="contact_form_title_block">
           <span class="contact_form_title">
-            {{ contentPages.data.body.contactForm.title }}
+            {{ contentPages.data?.body?.contactForm?.title }}
           </span>
         </div>
         <div class="contact_form_title_info_block">
           <span class="contact_form_info_item contact_form_info_item_text">
-            {{ contentPages.data.body.contactForm.subtitle }}
+            {{ contentPages.data?.body?.contactForm?.subtitle }}
           </span>
         </div>
         <div class="contact_form_container">
@@ -413,8 +478,8 @@
             >
               <div class="contact_form_item_block w-100">
                 <default-select
-                    @returnSelect="getContentInfo('ru')"
-                  :placeholder="contentPages.data.body.contactForm.fields.city"
+                  @returnSelect="getContentInfo('ru')"
+                  :placeholder="contentPages.data.body?.contactForm?.fields?.city"
                   v-model="contactForm.city"
                 >
                   <default-option v-for='(item, index) in countryStores.getCountryKZ.territoryList' v-bind:key="index" :item="item.name"> {{ item.name }}</default-option>
@@ -428,7 +493,7 @@
                 <default-input
                   class="contact_form_item contact_form_item_name"
                   v-model="contactForm.name"
-                  :placeholder="contentPages.data.body.contactForm.fields.name"
+                  :placeholder="contentPages.data.body?.contactForm?.fields?.name"
                   :title="true"
                 />
               </div>
@@ -441,7 +506,7 @@
                   class="contact_form_item contact_form_item_telephone"
                   v-model="contactForm.phone"
                   :placeholder="
-                    contentPages.data.body.contactForm.fields.tel_number
+                    contentPages.data.body?.contactForm?.fields?.tel_number
                   "
                   :title="true"
                 />
@@ -454,8 +519,7 @@
                 <default-text-area
                   v-model="contactForm.message"
                   :placeholder="
-                    contentPages.data.body.contactForm.fields
-                      .message_placeholder
+                    contentPages.data.body?.contactForm?.fields?.message_placeholder
                   "
                 />
               </div>
@@ -502,13 +566,12 @@
       <template #block_right>
         <div class="footer_content_downloads_market_title_block">
           <span class="footer_content_downloads_market_title">
-            {{ contentPages.data.footer.store_link_title }}
+            {{ contentPages.data?.footer?.store_link_title }}
           </span>
         </div>
         <div class="footer_content_downloads_market_link_group_block d-flex">
           <div
-            v-for="(marketLinkItem, marketLinkIndex) in contentPages.data.footer
-              .store_links"
+            v-for="(marketLinkItem, marketLinkIndex) in contentPages.data?.footer?.store_links"
             :key="marketLinkIndex"
             class="footer_content_downloads_market_link_group_item"
           >
@@ -528,7 +591,7 @@
       </template>
       <template #block_left>
         <img
-          :src="env.host + contentPages.data.footer.logo"
+          :src="env.host + contentPages.data?.footer?.logo"
           alt=""
           class="footer_content_logo"
         />
@@ -536,12 +599,12 @@
           <div class="footer_content_logo_info_pesonal_text_block">
             <span class="footer_content_logo_info_pesonal_text">
               {{ new Date().getFullYear() }}
-              {{ contentPages.data.footer.copyright }}
+              {{ contentPages.data?.footer?.copyright }}
             </span>
           </div>
           <div class="footer_content_logo_info_pesonal_link_block">
             <a href="#" class="footer_content_logo_info_pesonal_link"
-              >{{ contentPages.data.footer.personal_data }}
+              >{{ contentPages.data?.footer?.personal_data }}
             </a>
           </div>
         </div>
@@ -567,24 +630,89 @@ import { useContentPages } from "@/stores/homeStores";
 import { getCountry } from "@/api/getCountry/getCountry";
 import defaultAccordion from "~~/components/accordion/defaultAccordion.vue";
 import { sendContact } from "~~/api/sendContactForm/sendContact";
+import { watchDebounced, onClickOutside } from '@vueuse/core';
+import { vOnClickOutside } from '@vueuse/components';
 import { useCountry } from "~~/stores/country";
 import axios from "axios";
 import env from "@/api/env/env";
 
+useHead({
+  script: [
+    {
+      src: 'https://api-maps.yandex.ru/2.1/?apikey=62bbf004-0f1f-4305-a219-4820afa5728d&lang=ru_RU',
+    },
+  ],
+});
+
 const store = useContentPages();
 
-let contentPages = reactive({ data: {} });
+let contentPages = reactive({
+  data: {
+    body: {},
+  },
+});
 let countryStores = useCountry();
 let statusRegionSelect = ref(false);
 let countryList = ref([]);
 let searchFormCode = ref({ code: null });
-let calculateSumForms = ref({});
+let calculateSumForms = reactive({
+  from: '',
+  fromHidden: true,
+  to: '',
+  toHidden: true,
+});
 let contactForm = reactive({});
 
 let { data } = await useFetch(env.host + "api/page-data", {
   headers: {
     locale: "ru",
   },
+});
+
+const shipFromHints = ref([]);
+const shipToHints = ref([]);
+
+const getSugggestAsync = (request) => {
+  return ymaps.suggest(request).then(function (items) {
+    return items.map((item) => ({
+      text: item.displayName,
+      value: item.displayName,
+    }));
+  });
+};
+
+const handleSuggestRedirect = () => {
+
+};
+
+const handleClickOutsideSuggestDropdownFrom = (e) => {
+  const isWrapper = e.target.matches('.front-direction-field-new_control-wrapper, .front-direction-field-new_control-wrapper *');
+
+  if (isWrapper === false) {
+    calculateSumForms.fromHidden = true;
+  }
+};
+
+const handleClickOutsideSuggestDropdownTo = (e) => {
+  const isWrapper = e.target.matches('.front-direction-field-new_control-wrapper, .front-direction-field-new_control-wrapper *');
+
+  if (isWrapper === false) {
+    calculateSumForms.toHidden = true;
+  }
+};
+
+watchDebounced(() => calculateSumForms.from, async (value) => {
+  shipFromHints.value = await getSugggestAsync(value);
+}, {
+  debounce: 200,
+  maxWait: 1000,
+});
+
+watchDebounced(() => calculateSumForms.to, async (value) => {
+  shipToHints.value = await getSugggestAsync(value);
+}, {
+  debounce: 200,
+  maxWait: 1000,
 });
 
 const updateStatusRegionSelect = (value) => {
@@ -664,6 +792,103 @@ body {
   padding: 0;
   font-family: "Roboto";
   color: #2b2b2b;
+}
+
+.scroll-container-root {
+  overflow: auto;
+  max-height: inherit;
+  height: inherit;
+  position: relative;
+  padding-right: 8px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.scroll-container-root::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+}
+.scroll-container-root::-webkit-scrollbar-thumb {
+    background-color: #e4e6e7;
+    border: 1px solid #e4e6e7;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.scroll-container-root::-webkit-scrollbar-track {
+    border-radius: 8px;
+    width: 24px;
+    left: 10px;
+    background-color: #f7f9fb;
+}
+
+.front-direction-field-new_control-wrapper {
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: #fff;
+  z-index: 5;
+}
+
+.front-direction-field-new_control-wrapper:first-child {
+  z-index: 4;
+}
+
+.front-direction-field-new_control-wrapper .front-direction-field-new_dropdown {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  left: 0;
+  top: 100%;
+  padding: 0.5rem 0 1rem;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #e4e6e7;
+  -webkit-box-shadow: 0 4px 16px hsla(0,0%,82%,.25);
+  box-shadow: 0 4px 16px hsla(0,0%,82%,.25);
+  border-radius: 3px;
+}
+
+.front-direction-field-new_control-wrapper .front-direction-field-new_dropdown-inner {
+  margin-right: 8px;
+  max-height: 396px;
+}
+
+.front-suggest-new_suggest-list {
+  padding: 0;
+  margin: 0;
+}
+
+.front-suggest-new_suggest-list__item {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  font-size: 14px;
+  text-align: left;
+  border: none;
+  outline: 0;
+  background: #fff;
+  cursor: pointer;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.front-suggest-new_suggest-list__item-title {
+  color: #000;
+}
+
+.front-suggest-new_suggest-list__item-title span {
+  color: #e4003c;
+}
+
+.front-suggest-new_suggest-list__item-text {
+  color: #9a9a9a;
+}
+
+.front-suggest-new_suggest-list__item:hover .front-suggest-new_suggest-list__item-text,
+.front-suggest-new_suggest-list__item:hover .front-suggest-new_suggest-list__item-title,
+.front-suggest-new_suggest-list__item:hover .front-suggest-new_suggest-list__item-title span {
+    color: #968eff;
 }
 
 .default_header_block {
@@ -1729,3 +1954,4 @@ body {
   }
 }
 </style>
+
