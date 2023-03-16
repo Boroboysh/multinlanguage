@@ -80,5 +80,17 @@ const props = defineProps({
 .map_container_city_bold_block {
   font-size: 24px;
   font-weight: 600;
+  transform: translate(-50%,-50%)
+}
+
+@media (max-width: 480px) {
+
+  .default_map_block {
+    transform: scale(140%);
+  }
+  .map_container_map_state, .map_container_map_kz {
+    height: 280px;
+    /*width: 100%;*/
+  }
 }
 </style>
