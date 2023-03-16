@@ -1385,6 +1385,9 @@ body {
   .about_block_content_advertisement {
     display: block;
   }
+  .map_card_block {
+    display: none;
+  }
   .about_block_title {
     border-left: 4px solid #2b2b2b;
     padding: 0px 0px 0px 4px;
