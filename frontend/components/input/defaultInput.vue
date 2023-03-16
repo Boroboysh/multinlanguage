@@ -75,6 +75,14 @@ const emit = defineEmits(["update:modelValue"]);
 </script>
 
 <style scoped>
+
+input::placeholder,
+input::-webkit-input-placeholder,
+input::-moz-placeholder
+{
+  color: #e4e6e7 !important;
+}
+
 .default_input_block {
   /* height: 100%; */
   border: 1px solid #e4e6e7;
@@ -109,7 +117,6 @@ const emit = defineEmits(["update:modelValue"]);
 .default_input_disabled:hover {
   border: 1px solid #e4e6e7;
 }
-
 .default_input {
   width: 100%;
   border: none;
@@ -118,7 +125,10 @@ const emit = defineEmits(["update:modelValue"]);
   background: none;
   padding: 16px 16px;
   z-index: 10;
-  color: #aaaaaa;
+  color: #AAAAAA;
+}
+.default_input[placeholder] {
+  color: #AAAAAA;
 }
 .default_input_with_title {
   padding: 20px 16px 8px;
