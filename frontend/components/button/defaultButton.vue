@@ -1,5 +1,5 @@
 <template>
-  <button :class="`size_${size} color_${color}`" class="default_button">
+  <button :type="type" :class="`size_${size} color_${color}`" class="default_button">
     <slot />
   </button>
 </template>
@@ -9,6 +9,10 @@ defineProps({
   size: {
     type: String,
     default: 'medium'
+  },
+  type: {
+    type: String,
+    default: undefined,
   },
   color: {
     type: String,
