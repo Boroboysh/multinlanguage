@@ -101,7 +101,7 @@
             <div class="header_content_advantages_info_block">
               <div class="header_content_advantages_number_block">
                 <div class="header_content_advantages_number">
-                  <span class="d-flex gap-1 h-100">
+                  <span class="d-flex gap-1 h-100 align-items-end">
                     {{ itemList.number.split(" ")[0] }}
                     <span class="header_content_advantages_number_postfix">
                       {{ itemList.number.split(" ")[1] }}
