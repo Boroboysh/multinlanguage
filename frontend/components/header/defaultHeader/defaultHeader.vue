@@ -1,6 +1,6 @@
 <template>
   <header class="w-100">
-    <div class="header_content_block w-100 h-100 container-xl">
+    <div class="header_content_block container-xl">
       <div class="header_menu_block d-flex w-100">
         <div class="header_logo_block">
           <img
@@ -119,7 +119,7 @@
                         class="header_menu_icons header_menu_icons_flug"
                       />
                     </div>
-                    {{ activeLang.name }}
+                    {{ activeLang.abbreviation }}
                     <div class="header_menu_icons_block">
                       <img
                         src="@/assets/images/arrow_done.svg"
@@ -145,7 +145,7 @@
                       />
                     </div>
                     <span class="default_drowndown_content_item_title">
-                      {{ lang.name }}
+                      {{ lang.abbreviation }}
                     </span>
                   </div>
                 </transparent-option>
@@ -380,8 +380,7 @@ header {
 
 .header_content_advantages_number_block {
   position: relative;
-  font-size: 48px;
-  padding-right: 30px;
+  font-size: 32px;
   margin-right: 24px;
   color: #e4003c;
 }
