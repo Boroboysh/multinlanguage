@@ -43,14 +43,14 @@ const udpateStatus = (status) => {
   isActive.value = status;
 };
 
-window.addEventListener('click',(ev) => {
-  console.log(ev)
-  document.querySelectorAll('.default_select_block').forEach((item) => {
-    if (!(item.contains(ev.target) || item === ev.target)) {
-      isActive.value = false;
-    }
-  })
-})
+// window.addEventListener('click',(ev) => {
+//   console.log(ev)
+//   document.querySelectorAll('.default_select_block').forEach((item) => {
+//     if (!(item.contains(ev.target) || item === ev.target)) {
+//       isActive.value = false;
+//     }
+//   })
+// })
 
 onMounted(() => {
   console.log('defaultInputValue', defaultInputValue)

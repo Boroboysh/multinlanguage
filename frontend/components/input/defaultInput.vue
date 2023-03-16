@@ -22,16 +22,18 @@
       v-bind:class="`default_input ${title ? 'default_input_with_title' : ''}`"
       type="text"
     />
-    <input v-if='mask'
+    <input
+      v-if='mask'
       @focus="$emit('focus')"
       @blur="$emit('blur')"
-      :readonly="readonly"
-      :placeholder="!title ? placeholder : null"
-      :disabled="disabled"
       @input="$emit('update:modelValue', $event.target.value)"
-      :value="modelValue"
-      v-maska="mask"
+      v-bind:readonly="readonly"
+      v-bind:placeholder="!title ? placeholder : null"
+      v-bind:disabled="disabled"
+      v-bind:value="modelValue"
       v-bind:class="`default_input ${title ? 'default_input_with_title' : ''}`"
+      v-bind:data-maska="mask"
+      v-maska
       type="text"
     />
     <div class="container_right_slot">
