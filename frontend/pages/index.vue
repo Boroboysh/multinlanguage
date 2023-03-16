@@ -416,6 +416,33 @@
       v-if="statusRegionSelect"
     />
     <default-footer>
+      <template #block_right>
+        <div class="footer_content_downloads_market_title_block">
+          <span class="footer_content_downloads_market_title">
+            {{ contentPages.data.footer.store_link_title }}
+          </span>
+        </div>
+        <div class="footer_content_downloads_market_link_group_block d-flex">
+          <div
+              v-for="(marketLinkItem, marketLinkIndex) in contentPages.data.footer
+              .store_links"
+              :key="marketLinkIndex"
+              class="footer_content_downloads_market_link_group_item"
+          >
+            <a
+                :href="marketLinkItem.link"
+                target="_blank"
+                class="footer_content_downloads_market_link"
+            >
+              <img
+                  :src="env.host + marketLinkItem.icon"
+                  alt=""
+                  class="footer_content_downloads_market_link_image"
+              />
+            </a>
+          </div>
+        </div>
+      </template>
       <template #block_left>
         <img
           :src="env.host + contentPages.data.footer.logo"
@@ -436,32 +463,7 @@
           </div>
         </div>
       </template>
-      <template #block_right>
-        <div class="footer_content_downloads_market_title_block">
-          <span class="footer_content_downloads_market_title">
-            {{ contentPages.data.footer.store_link_title }}
-          </span>
-        </div>
-        <div class="footer_content_downloads_market_link_group_block d-flex">
-          <div
-            v-for="(marketLinkItem, marketLinkIndex) in contentPages.data.footer
-              .store_links"
-            :key="marketLinkIndex"
-            class="footer_content_downloads_market_link_group_item"
-          >
-            <a
-              :href="marketLinkItem.link"
-              class="footer_content_downloads_market_link"
-            >
-              <img
-                :src="env.host + marketLinkItem.icon"
-                alt=""
-                class="footer_content_downloads_market_link_image"
-              />
-            </a>
-          </div>
-        </div>
-      </template>
+
     </default-footer>
 <!--    <default-accordion>-->
 <!--      <template #title>-->
