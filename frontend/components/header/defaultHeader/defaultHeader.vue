@@ -378,26 +378,8 @@ header {
   height: 1px;
 }
 
-.header_content_advantages_number_block {
-  position: relative;
-  font-size: 32px;
-  margin-right: 24px;
-  color: #e4003c;
-}
-
-.header_content_advantages_number_icons {
-  font-size: 30px;
-}
-
 .header_content_advantages_number {
   font-size: 32px;
-}
-
-.header_content_advantages_number_icons {
-  position: absolute;
-  top: 0;
-  right: 0;
-  vertical-align: text-top;
 }
 
 .header_content_advantages_text {
