@@ -585,57 +585,7 @@
         </div>
       </template>
     </default-footer>
-    <!--    <default-accordion>-->
-    <!--      <template #title>-->
-    <!--        <div class="advantages_card_block position-relative default_card w-100">-->
-    <!--          <div class="default_border_block advantages_card_border_block">-->
-    <!--            <div class="default_border default_border_top_left"></div>-->
-    <!--            <div class="default_border default_border_top_right"></div>-->
-    <!--            <div class="default_border default_border_bottom_left"></div>-->
-    <!--            <div class="default_border default_border_bottom_right"></div>-->
-    <!--          </div>-->
-    <!--          <div class="advantages_card default-card">-->
-    <!--            <div-->
-    <!--              class="advantages_card_content_title_block d-flex align-items-center"-->
-    <!--            >-->
-    <!--              <div class="advantages_card_title_icon_block">-->
-    <!--                <img-->
-    <!--                  src="http://pecom.inpro-digital.ru/admin/images/b0f98fe5bee6cd207d7dcb864e0ebee5.png"-->
-    <!--                  alt=""-->
-    <!--                  class="advantages_card_title_icon"-->
-    <!--                />-->
-    <!--              </div>-->
-    <!--              <div class="advantages_content_card_title_block fw-bold">-->
-    <!--                <span class="advantages_content_card_title">Пайда</span>-->
-    <!--              </div>-->
-    <!--            </div>-->
-    <!--            &lt;!&ndash; <div class="advantages_card_content">-->
-    <!--          <div class="advantages_card_content_list">-->
-    <!--            <div-->
-    <!--              class="advantages_card_content_list_item d-flex align-items-center h-100"-->
-    <!--            >-->
-    <!--              <div class="advantages_card_content_list_item_linear"></div>-->
-    <!--              <div class="advantages_card_content_list_item_content">-->
-    <!--                <div class="advantages_card_content_list_item_content_text">-->
-    <!--                  Гибкие тарифы;-->
-    <!--                </div>-->
-    <!--              </div>-->
-    <!--            </div>-->
-    <!--            <div-->
-    <!--              class="advantages_card_content_list_item d-flex align-items-center h-100"-->
-    <!--            >-->
-    <!--              <div class="advantages_card_content_list_item_linear"></div>-->
-    <!--              <div class="advantages_card_content_list_item_content">-->
-    <!--                <div class="advantages_card_content_list_item_content_text">-->
-    <!--                  Возможность отсрочки платежа.-->
-    <!--                </div>-->
-    <!--              </div>-->
-    <!--            </div>-->
-    <!--          </div>-->
-    <!--        </div> &ndash;&gt;-->
-    <!--          </div>-->
-    <!--        </div>-->
-    <!--      </template>-->
+    fafwwfaf {{ countryStores.getCountryKZ }}
   </div>
 </template>
 
@@ -653,12 +603,14 @@ import { useContentPages } from "@/stores/homeStores";
 import { getCountry } from "@/api/getCountry/getCountry";
 import defaultAccordion from "~~/components/accordion/defaultAccordion.vue";
 import { sendContact } from "~~/api/sendContactForm/sendContact";
+import { useCountry } from "~~/stores/country";
 import axios from "axios";
 import env from "@/api/env/env";
 
 const store = useContentPages();
 
 let contentPages = reactive({ data: {} });
+let countryStores = useCountry();
 let statusRegionSelect = ref(false);
 let countryList = ref([]);
 let searchFormCode = ref({ code: null });
@@ -722,6 +674,7 @@ const scrollToContactForm = () => {
 
 useAsyncData("page-data", async () => {
   await store.getContent("kk");
+  await countryStores.getCountryList('ru')
   contentPages.data = store.pageContent;
 });
 
