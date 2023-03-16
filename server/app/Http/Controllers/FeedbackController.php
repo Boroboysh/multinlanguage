@@ -14,18 +14,18 @@ class FeedbackController extends Controller
         $request->validate([
             'name' => 'required|max:100',
             'message' => 'required|max:500',
-            'tel_number' => 'required',
-            'city' => 'required'
+            'phone' => 'required|min:10',
+            'city' => 'required|min:3|max:50'
         ]);
 
         $data = new stdClass();
 
         $data->name = $request->input('name');
         $data->city = $request->input('city');
-        $data->tel_number = $request->input('tel_number');
+        $data->tel_number = $request->input('phone');
         $data->message = $request->input('message');
 
-        Mail::to('fafeh50394@wireps.com')->send(new FeedbackMailer($data));
+        Mail::to('asia-ved@pecom.ru')->send(new FeedbackMailer($data));
         return response('Ваше сообщение успешно отправлено');
     }
 }
