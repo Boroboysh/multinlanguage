@@ -102,9 +102,7 @@
               <div class="header_content_advantages_info_block">
                 <div class="header_content_advantages_number_block">
                   <div class="header_content_advantages_number">
-                    <div>
-                      {{ itemList.number }}
-                    </div>
+                    {{ itemList.number }}
                     <div class="header_content_advantages_number_icons">+</div>
                   </div>
                 </div>
@@ -134,11 +132,6 @@
             </span>
           </div>
         </div>
-        <!-- <div class="about_block_content_advertisement">
-          <span class="about_block_content_title d-block">
-            Привлекайте новых клиентов в ПЭК, получайте проценты от продаж!
-          </span>
-        </div> -->
         <div class="about_content_block_info container-xl">
           <div class="about_content_info">
             <div
@@ -475,10 +468,12 @@ import choosingRegion from "@/components/modalWindow/choosingRegion.vue";
 import defaultFooter from "@/components/footer/defaultFooter.vue";
 import getContentInfo from "@/api/contentInfo/getContentInfo";
 import { useContentPages } from "@/stores/homeStores";
+import defaultAccordion from '~~/components/accordion/defaultAccordion.vue'
 import { getCountry } from "@/api/getCountry/getCountry";
 import { sendContact } from "~~/api/sendContactForm/sendContact";
 import axios from "axios";
 import env from "@/api/env/env";
+
 
 const store = useContentPages();
 
@@ -532,7 +527,6 @@ const selectAction = async (action) => {
   console.log("selectAction", action);
   switch (action.actionName) {
     case "openModal":
-      // countryList.value = await getCountryData(store.currentLang);
       openModalRegionSelect();
       break;
     case "closeModal":
@@ -542,7 +536,6 @@ const selectAction = async (action) => {
 };
 
 useAsyncData("page-data", async () => {
-  // contentPages.data = await getContentInfo("ru");
   await store.getContent("kk");
   countryList.value = await getCountry("ru");
   contentPages.data = store.pageContent;
@@ -572,7 +565,15 @@ body {
 .default_header_block {
   border-bottom: 1px solid #e4e6e7;
 }
+.row_block {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
 
+.col_block {
+  flex-grow: 20;
+}
 .header_content_info_calculate_forms_block {
   display: flex;
 }
@@ -612,6 +613,12 @@ body {
   height: 1px;
 }
 
+.header_content_advantages_number_block {
+  font-size: 32px;
+  margin-right: 24px;
+  color: #e4003c;
+}
+
 .default_linear_title_block {
   position: relative;
   display: flex;
@@ -630,19 +637,17 @@ body {
 
 .header_content_advantages_number {
   font-size: 32px;
-  position: relative;
+  display: flex;
 }
 
 .header_content_advantages_number_icons {
-  position: absolute;
-  top: 0;
-  right: 0;
   vertical-align: text-top;
+  line-height: 20px;
+  margin-left: 20px;
 }
 
 .header_content_advantages_text {
   font-size: 18px;
-  max-width: 300px;
   height: 100%;
   margin: 0;
   display: flex;
