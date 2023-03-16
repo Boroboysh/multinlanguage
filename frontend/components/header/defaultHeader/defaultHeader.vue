@@ -556,5 +556,8 @@ header {
   .header_menu_block_link {
     margin: 20px 0px 10px 10px;
   }
+  .header_menu_icons_block {
+    margin: 0px 10px 0px 0px;
+  }
 }
 </style>
