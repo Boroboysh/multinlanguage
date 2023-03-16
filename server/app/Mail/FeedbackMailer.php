@@ -31,8 +31,8 @@ class FeedbackMailer extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('klim.muzhik@yandex.ru', $this->data->name),
-            subject: 'Feedback Nethammer PEC',
+            from: new Address('pecom.inpro-digital.ru'),
+            subject: 'Заявка ПЭК Казахстан',
         );
     }
 
