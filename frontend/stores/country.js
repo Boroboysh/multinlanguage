@@ -1,36 +1,28 @@
 import { defineStore } from 'pinia'
-import getContentInfo from "@/api/contentInfo/getContentInfo";
+import { getCountry } from "@/api/getCountry/getCountry";
 
 export const useCountry = defineStore({
   id: 'country',
   state: () => ({
-    pageContent: {},
-    currentLang: 'kk'
+    countryList: {},
+    currentSites: {}
   }),
   getters: {
-    getLang: (state) => {
-      return state.pageContent.header?.languages
+    getCountryKZ: (state) => {
+      return state.countryList?.find((item) => item.id === 2)
     },
-    getActiveLang: (state) => {
-      return state.getLang?.filter((lang) => lang.isDefault === 1)
+    getCurrentSite: (state) => {
+      return state?.getCountryKZ.territoryList?.find((item) => item.id === 6)
     }
   },
   actions: {
-    async getContent (lang) {
-     const response = await getContentInfo(lang);
-     this.pageContent = response
+    async getCountryList (lang) {
+     const response = await getCountry(lang);
+     this.updateCountryList(response.data)
     },
-    updateCurrentLang (lang) {
-      this.currentLang = lang;
+
+    updateCountryList (lang) {
+      this.countryList = lang;
     }
-    // getCurrentLang (list, lang) {
-    //   let result = {}
-    //   list.map((item, index) => {
-    //     if (item.isDefault > list[index + 1].isDefault) {
-    //       result = item
-    //     }
-    //   })
-    //   return result
-    // }
   }
 })

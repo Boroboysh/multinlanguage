@@ -1,6 +1,6 @@
 <template>
   <div class="home-view">
-    <div class="header_content_block w-100">
+    <div class="header_content_block w-100 position-relative">
       <default-header
         v-if="contentPages.data.header"
         @updateSelected="(lang) => updateContentPageLang(lang)"
@@ -248,55 +248,50 @@
       </div>
     </div>
     <div class="advantages_block_card container-xl">
-<!--      <div class="row w-100 d-flex align-items-center justify-content-center advantages_block_card">-->
-        <div
-          v-for="(advantagesItem, advantagesIndex) in contentPages.data.body
-            .listInfoBlock.element"
-          :key="advantagesIndex"
-          class="d-flex align-items-start justify-content-center advantages_block_card_item"
-        >
-          <div
-            class="advantages_card_block position-relative default_card w-100"
-          >
-            <div class="default_border_block advantages_card_border_block">
-              <div class="default_border default_border_top_left"></div>
-              <div class="default_border default_border_top_right"></div>
-              <div class="default_border default_border_bottom_left"></div>
-              <div class="default_border default_border_bottom_right"></div>
-            </div>
-            <div class="advantages_card default-card">
-              <div
-                class="advantages_card_content_title_block d-flex align-items-center"
-              >
-                <div class="advantages_card_title_icon_block">
-                  <img
-                    :src="env.host + advantagesItem.icon"
-                    alt=""
-                    class="advantages_card_title_icon"
-                  />
-                </div>
-                <div class="advantages_content_card_title_block fw-bold">
-                  <span class="advantages_content_card_title">
-                    {{ advantagesItem.title }}
-                  </span>
-                </div>
+      <!--      <div class="row w-100 d-flex align-items-center justify-content-center advantages_block_card">-->
+      <div
+        v-for="(advantagesItem, advantagesIndex) in contentPages.data.body
+          .listInfoBlock.element"
+        :key="advantagesIndex"
+        class="d-flex align-items-start justify-content-center advantages_block_card_item"
+      >
+        <div class="advantages_card_block position-relative default_card w-100">
+          <div class="default_border_block advantages_card_border_block">
+            <div class="default_border default_border_top_left"></div>
+            <div class="default_border default_border_top_right"></div>
+            <div class="default_border default_border_bottom_left"></div>
+            <div class="default_border default_border_bottom_right"></div>
+          </div>
+          <div class="advantages_card default-card">
+            <div
+              class="advantages_card_content_title_block d-flex align-items-center"
+            >
+              <div class="advantages_card_title_icon_block">
+                <img
+                  :src="env.host + advantagesItem.icon"
+                  alt=""
+                  class="advantages_card_title_icon"
+                />
               </div>
-              <div class="advantages_card_content">
-                <div class="advantages_card_content_list">
-                  <div
-                    v-for="(
-                      advantagesItemList, advantagesItemIndex
-                    ) in advantagesItem.list"
-                    :key="advantagesItemIndex"
-                    class="advantages_card_content_list_item d-flex align-items-center h-100"
-                  >
-                    <div class="advantages_card_content_list_item_linear"></div>
-                    <div class="advantages_card_content_list_item_content">
-                      <div
-                        class="advantages_card_content_list_item_content_text"
-                      >
-                        {{ advantagesItemList.content }}
-                      </div>
+              <div class="advantages_content_card_title_block fw-bold">
+                <span class="advantages_content_card_title">
+                  {{ advantagesItem.title }}
+                </span>
+              </div>
+            </div>
+            <div class="advantages_card_content">
+              <div class="advantages_card_content_list">
+                <div
+                  v-for="(
+                    advantagesItemList, advantagesItemIndex
+                  ) in advantagesItem.list"
+                  :key="advantagesItemIndex"
+                  class="advantages_card_content_list_item d-flex align-items-center h-100"
+                >
+                  <div class="advantages_card_content_list_item_linear"></div>
+                  <div class="advantages_card_content_list_item_content">
+                    <div class="advantages_card_content_list_item_content_text">
+                      {{ advantagesItemList.content }}
                     </div>
                   </div>
                 </div>
@@ -304,7 +299,7 @@
             </div>
           </div>
         </div>
-<!--      </div>-->
+      </div>
     </div>
     <div class="contact_form_block">
       <div
@@ -329,13 +324,13 @@
             <div
               class="col-12 col-md-4 d-flex align-items-center justify-content-center"
             >
-              <div class="contact_form_item_block w-100">
-                <default-input
-                  class="contact_form_item contact_form_item_city"
-                  v-model="contactForm.city"
+              <div class="contact_form_item_block">
+                <default-select
+                  class="contact_form_item"
                   :placeholder="contentPages.data.body.contactForm.fields.city"
-                  :title="true"
-                />
+                >
+                  <default-option> 1 </default-option>
+                </default-select>
               </div>
             </div>
             <div
@@ -369,6 +364,7 @@
             >
               <div class="contact_form_item_block w-100">
                 <default-text-area
+                  class="contact_form_text_area"
                   v-model="contactForm.message"
                   :placeholder="
                     contentPages.data.body.contactForm.fields
@@ -410,11 +406,6 @@
         </div>
       </div>
     </div>
-    <choosing-region
-      @closeButton="(action) => selectAction(action)"
-      :list="countryList.data"
-      v-if="statusRegionSelect"
-    />
     <default-footer>
       <template #block_left>
         <img
@@ -463,57 +454,63 @@
         </div>
       </template>
     </default-footer>
-<!--    <default-accordion>-->
-<!--      <template #title>-->
-<!--        <div class="advantages_card_block position-relative default_card w-100">-->
-<!--          <div class="default_border_block advantages_card_border_block">-->
-<!--            <div class="default_border default_border_top_left"></div>-->
-<!--            <div class="default_border default_border_top_right"></div>-->
-<!--            <div class="default_border default_border_bottom_left"></div>-->
-<!--            <div class="default_border default_border_bottom_right"></div>-->
-<!--          </div>-->
-<!--          <div class="advantages_card default-card">-->
-<!--            <div-->
-<!--              class="advantages_card_content_title_block d-flex align-items-center"-->
-<!--            >-->
-<!--              <div class="advantages_card_title_icon_block">-->
-<!--                <img-->
-<!--                  src="http://pecom.inpro-digital.ru/admin/images/b0f98fe5bee6cd207d7dcb864e0ebee5.png"-->
-<!--                  alt=""-->
-<!--                  class="advantages_card_title_icon"-->
-<!--                />-->
-<!--              </div>-->
-<!--              <div class="advantages_content_card_title_block fw-bold">-->
-<!--                <span class="advantages_content_card_title">Пайда</span>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            &lt;!&ndash; <div class="advantages_card_content">-->
-<!--          <div class="advantages_card_content_list">-->
-<!--            <div-->
-<!--              class="advantages_card_content_list_item d-flex align-items-center h-100"-->
-<!--            >-->
-<!--              <div class="advantages_card_content_list_item_linear"></div>-->
-<!--              <div class="advantages_card_content_list_item_content">-->
-<!--                <div class="advantages_card_content_list_item_content_text">-->
-<!--                  Гибкие тарифы;-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            <div-->
-<!--              class="advantages_card_content_list_item d-flex align-items-center h-100"-->
-<!--            >-->
-<!--              <div class="advantages_card_content_list_item_linear"></div>-->
-<!--              <div class="advantages_card_content_list_item_content">-->
-<!--                <div class="advantages_card_content_list_item_content_text">-->
-<!--                  Возможность отсрочки платежа.-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div> &ndash;&gt;-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </template>-->
+    <choosing-region
+      @closeButton="(action) => selectAction(action)"
+      :list="countryList.data"
+      v-if="statusRegionSelect"
+    />
+    <!--    <default-accordion>-->
+    <!--      <template #title>-->
+    <!--        <div class="advantages_card_block position-relative default_card w-100">-->
+    <!--          <div class="default_border_block advantages_card_border_block">-->
+    <!--            <div class="default_border default_border_top_left"></div>-->
+    <!--            <div class="default_border default_border_top_right"></div>-->
+    <!--            <div class="default_border default_border_bottom_left"></div>-->
+    <!--            <div class="default_border default_border_bottom_right"></div>-->
+    <!--          </div>-->
+    <!--          <div class="advantages_card default-card">-->
+    <!--            <div-->
+    <!--              class="advantages_card_content_title_block d-flex align-items-center"-->
+    <!--            >-->
+    <!--              <div class="advantages_card_title_icon_block">-->
+    <!--                <img-->
+    <!--                  src="http://pecom.inpro-digital.ru/admin/images/b0f98fe5bee6cd207d7dcb864e0ebee5.png"-->
+    <!--                  alt=""-->
+    <!--                  class="advantages_card_title_icon"-->
+    <!--                />-->
+    <!--              </div>-->
+    <!--              <div class="advantages_content_card_title_block fw-bold">-->
+    <!--                <span class="advantages_content_card_title">Пайда</span>-->
+    <!--              </div>-->
+    <!--            </div>-->
+    <!--            &lt;!&ndash; <div class="advantages_card_content">-->
+    <!--          <div class="advantages_card_content_list">-->
+    <!--            <div-->
+    <!--              class="advantages_card_content_list_item d-flex align-items-center h-100"-->
+    <!--            >-->
+    <!--              <div class="advantages_card_content_list_item_linear"></div>-->
+    <!--              <div class="advantages_card_content_list_item_content">-->
+    <!--                <div class="advantages_card_content_list_item_content_text">-->
+    <!--                  Гибкие тарифы;-->
+    <!--                </div>-->
+    <!--              </div>-->
+    <!--            </div>-->
+    <!--            <div-->
+    <!--              class="advantages_card_content_list_item d-flex align-items-center h-100"-->
+    <!--            >-->
+    <!--              <div class="advantages_card_content_list_item_linear"></div>-->
+    <!--              <div class="advantages_card_content_list_item_content">-->
+    <!--                <div class="advantages_card_content_list_item_content_text">-->
+    <!--                  Возможность отсрочки платежа.-->
+    <!--                </div>-->
+    <!--              </div>-->
+    <!--            </div>-->
+    <!--          </div>-->
+    <!--        </div> &ndash;&gt;-->
+    <!--          </div>-->
+    <!--        </div>-->
+    <!--      </template>-->
+    {{ countryList }}
   </div>
 </template>
 
@@ -529,13 +526,15 @@ import defaultFooter from "@/components/footer/defaultFooter.vue";
 import getContentInfo from "@/api/contentInfo/getContentInfo";
 import { useContentPages } from "@/stores/homeStores";
 import { getCountry } from "@/api/getCountry/getCountry";
-import defaultAccordion from "~~/components/accordion/defaultAccordion.vue";
+import { useCountry } from "~~/stores/country";
 import { sendContact } from "~~/api/sendContactForm/sendContact";
-import axios from "axios";
+import defaultSelect from "~~/components/select/defaultSelect.vue";
+import defaultOption from "~~/components/select/defaultOption.vue";
 import env from "@/api/env/env";
 
 const store = useContentPages();
-
+const countryStores = useCountry();
+console.log("countryStores", countryStores);
 let contentPages = reactive({ data: {} });
 let statusRegionSelect = ref(false);
 let countryList = ref([]);
@@ -550,7 +549,7 @@ let { data } = await useFetch(env.host + "api/page-data", {
 
 const updateStatusRegionSelect = (value) => {
   statusRegionSelect.value = value;
-};
+  };
 
 const openModalRegionSelect = () => {
   const body = document.querySelector("body");
@@ -600,7 +599,7 @@ const scrollToContactForm = () => {
 
 useAsyncData("page-data", async () => {
   await store.getContent("kk");
-  countryList.value = await getCountry("ru");
+  countryList.value = await countryStores.getCountryList("kk");
   contentPages.data = store.pageContent;
 });
 
@@ -724,6 +723,14 @@ body {
 
 .about_content_block {
   padding: 104px 0;
+}
+.choosing-region {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.contact_form_text_area {
+  height: 160px;
 }
 
 .about_block_content_title {
@@ -894,7 +901,7 @@ body {
   line-height: 34px;
   height: 100%;
   background: #fafafa;
-  color: #2B2B2B;
+  color: #2b2b2b;
 }
 
 .map_block_content_title_block_row {
@@ -1140,7 +1147,7 @@ body {
 }
 
 .contact_form_title {
-  font-size: 50px;
+  font-size: 48px;
   color: white;
   font-weight: bold;
 }
@@ -1190,7 +1197,7 @@ body {
 
 .contact_form_item_block {
   width: 100%;
-  margin-top: 20px;
+  margin-top: 28px;
 }
 
 .contact_form_item {
@@ -1202,7 +1209,7 @@ body {
 } */
 .contact_form_send_block,
 .contact_form_send_personal_info_button_block {
-  margin-top: 30px;
+  margin-top: 28px;
 }
 
 .contact_form_send_personal_info_text {
@@ -1406,12 +1413,25 @@ body {
     margin-top: 70px;
   }
 }
+
+@media (max-width: 640px) {
+  .contact_form_send_personal_info_item {
+    text-align: center;
+  }
+}
+
 @media (max-width: 575px) {
   .header_content_info_calculate_button_block {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  .contact_form_send_personal_info_button_block {
+    width: 100%;
+  }
+  .contact_form_send_personal_info_button_block > button {
+    width: 100%;
   }
   .header_content_info_calculate_button {
     width: 100%;
@@ -1425,7 +1445,6 @@ body {
   }
 }
 @media (max-width: 510px) {
-
   .advantages_block_card {
     padding: 0 30px;
     grid-template-columns: auto;
@@ -1466,6 +1485,9 @@ body {
   .map_contact_button_block {
     margin: 0;
   }
+  .contact_form_item_block {
+    margin-top: 24px;
+  }
   .map_block_contact_button {
     width: 100%;
   }
@@ -1477,6 +1499,10 @@ body {
   }
   .map_card_block {
     display: none;
+  }
+  .contact_form_info_item {
+    font-size: 16px;
+    line-height: 24px;
   }
   .about_block_title {
     border-left: 4px solid #2b2b2b;
@@ -1521,7 +1547,7 @@ body {
   .about_content_block {
     padding-bottom: 0;
   }
-  .map_block_content_title_block  {
+  .map_block_content_title_block {
     margin: 0;
   }
   .map_block_content_title_block_row {
@@ -1535,7 +1561,7 @@ body {
     padding: 0;
   }
   .map_block_content_title:after {
-    content: '';
+    content: "";
     position: absolute;
     left: -16px;
     top: 0;
@@ -1551,7 +1577,7 @@ body {
   .map_block {
     margin-top: 80px;
   }
-  .map_content_block_title  {
+  .map_content_block_title {
     margin-top: 0;
   }
   .advatages_block {
@@ -1562,7 +1588,7 @@ body {
   }
 
   .advantages_title_block:after {
-    content: '';
+    content: "";
     position: absolute;
     left: -12px;
     top: 0;
