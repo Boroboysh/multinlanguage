@@ -18,7 +18,7 @@
       :disabled="disabled"
       @input="$emit('update:modelValue', $event.target.value)"
       :value="modelValue"
-      class="default_input"
+      v-bind:class="`default_input ${title ? 'default_input_with_title' : ''}`"
       type="text"
     />
     <div class="container_right_slot">
@@ -90,7 +90,7 @@ const emit = defineEmits(["update:modelValue"]);
 }
 
 .default_input_block:focus-within .default_input_title {
-  top: -32%;
+  top: -22%;
   font-size: 10px;
 }
 
@@ -116,11 +116,13 @@ const emit = defineEmits(["update:modelValue"]);
   outline: none;
   height: 100%;
   background: none;
-  padding: 16px 8px;
+  padding: 16px 16px;
   z-index: 10;
   color: #aaaaaa;
 }
-
+.default_input_with_title {
+  padding: 20px 16px 8px;
+}
 .default_input_title {
   height: 100%;
   position: absolute;
@@ -129,7 +131,7 @@ const emit = defineEmits(["update:modelValue"]);
   transition: 0.2s;
   display: flex;
   align-items: center;
-  padding-left: 8px;
+  padding-left: 16px;
   color: #AAAAAA;
 }
 
@@ -153,7 +155,7 @@ const emit = defineEmits(["update:modelValue"]);
 }
 
 .default_input__active .default_input_title {
-  top: -32%;
+  top: -22%;
   font-size: 10px;
 }
 
