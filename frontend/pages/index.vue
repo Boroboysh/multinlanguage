@@ -73,7 +73,6 @@
                   class="header_content_info_calculate_button"
                   size="large"
                 >
-                  Рассчитать стоимость
                   {{ contentPages.data.body.subheader?.fields[3]?.content }}
                 </default-button>
               </div>
