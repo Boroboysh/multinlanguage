@@ -154,7 +154,7 @@
                 </p>
               </div>
               <div
-                v-if="aboutTextItem.type === 'item'"
+                v-if="aboutTextItem.type === 'text'"
                 class="about_content_item_block"
               >
                 <p class="about_content_item_content">
