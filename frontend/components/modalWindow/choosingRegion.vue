@@ -141,6 +141,7 @@ const test = ref(alphabet.reduce((acc, item, currentIndex)=>{
   acc = [...acc, {
     id: currentIndex,
     name: item,
+    selected: false,
   }]
   return acc;
 },[]));
@@ -159,6 +160,12 @@ let currentCountry = ref(coutryStores.countryList[0]);
 
 const updateCurrentCountry = (value) => {
   currentCountry.value = value;
+  test.value = test.map((acc, item) => {
+    item.value.selected = false;
+    if (item.value.name === value) {
+      item.value.selected = true;
+    };
+  });
 };
 
 
@@ -269,7 +276,7 @@ onMounted(() => {
   background: #e4e6e7;
   border-radius: 3px;
   cursor: pointer;
-  maragin-bottom: 12px;
+  margin-bottom: 12px;
 }
 .choosing_region_content_city_block_info {
   overflow-y: scroll;
