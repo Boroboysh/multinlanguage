@@ -215,7 +215,7 @@
       <default-map :item-list="contentPages.data.body.mapInfoBlock.points" />
       <div class="map_block_contact">
         <div class="map_contact_button_block">
-          <default-button size="large" class="map_contact_button">
+          <default-button size="large" class="map_contact_button" v-on:click="scrollToContactForm">
             {{ contentPages.data.body.mapInfoBlock.buttons_text.content }}
           </default-button>
         </div>
@@ -301,7 +301,7 @@
       </div>
     </div>
     <div class="contact_form_block">
-      <div class="contact_form_question_mark_block container-xl">
+      <div class="contact_form_question_mark_block container-xl" id="contact-form">
         <div class="contact_form_question_mark">?</div>
       </div>
       <div class="contact_form w-100 container-xl">
@@ -533,6 +533,9 @@ const selectAction = async (action) => {
       break;
   }
 };
+const scrollToContactForm = () => {
+  document.getElementById('contact-form').scrollIntoView();
+}
 
 useAsyncData("page-data", async () => {
   await store.getContent("kk");
