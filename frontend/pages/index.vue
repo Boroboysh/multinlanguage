@@ -522,10 +522,7 @@ const getCountryData = async (lang) => {
 };
 
 const sendContactForm = async (form) => {
-  console.log(form);
-  // if (!form.name && !form.phone && !form.message && !form.city) {
-  //   await sendContact(form);
-  // }
+   await sendContact(form);
 };
 
 const searchCodes = (code) => {
