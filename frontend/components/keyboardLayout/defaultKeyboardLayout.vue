@@ -21,7 +21,6 @@ const selectionsAction = (value) => {
   switch (props.checkAction) {
     case 'default':
       result = value
-      console.log(value)
   }
   // defineEmits('result', result)
   resultEmit('result', result)

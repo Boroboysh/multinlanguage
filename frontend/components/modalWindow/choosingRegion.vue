@@ -76,6 +76,7 @@
                     >
                       <a
                         href="#"
+                        @click="updateCurrentCity(country)"
                         class="choosing_region_content_city_block_popular_list_item"
                         >{{ country.name }}</a
                       >
@@ -86,17 +87,17 @@
                   class="choosing_region_content_city_block_popular_keyboard_block"
                 >
                   <!-- todo refactor !!! -->
-                  <default-keyboard-layout checkAction="default" class="d-flex">
+                  <default-keyboard-layout @result="changeLetter" checkAction="default" class="d-flex">
                     <div
                       class="choosing_region_content_city_block_popular_keyboard_button_block"
                     ></div>
                     <default-keyboard-option
-                      v-for="(item, index) in test"
+                      v-for="(item, index) in letters"
                       :key="index"
                       :value="item"
                     >
                       <div
-                        class="choosing_region_content_city_block_popular_keyboard_button"
+                        :class="`choosing_region_content_city_block_popular_keyboard_button ${item.selected ? 'choosing_region_content_city_block_popular_keyboard_button_selected' : ''}`"
                       >
                         {{ item.name }}
                       </div>
@@ -137,7 +138,8 @@ import { useCountry } from "~~/stores/country";
 import { getCountrySearch } from '@/api/getCountry/getCountry'
 
 const alphabet = ['А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Э', 'Ю', 'Я'];
-const test = ref(alphabet.reduce((acc, item, currentIndex)=>{
+
+const letters = ref(alphabet.reduce((acc, item, currentIndex)=>{
   acc = [...acc, {
     id: currentIndex,
     name: item,
@@ -145,6 +147,20 @@ const test = ref(alphabet.reduce((acc, item, currentIndex)=>{
   }]
   return acc;
 },[]));
+const selectedLetter = ref();
+
+const changeLetter = (value) => {
+  selectedLetter.value = value;
+
+  letters.value = letters.value.map((item) => {
+    item.selected = false;
+    if (item.name === value.name) {
+      console.log(item);
+      item.selected = true;
+    }
+    return item;
+  });
+}
 
 const props = defineProps({
   list: {
@@ -158,14 +174,11 @@ let coutryStores = useCountry();
 
 let currentCountry = ref(coutryStores.countryList[0]);
 
-const updateCurrentCountry = (value) => {
-  currentCountry.value = value;
-  test.value = test.map((acc, item) => {
-    item.value.selected = false;
-    if (item.value.name === value) {
-      item.value.selected = true;
-    };
-  });
+const updateCurrentCountry = (country) => {
+  currentCountry.value = country;
+};
+const updateCurrentCity = (city) => {
+  coutryStores.changeCity(city);
 };
 
 
@@ -277,6 +290,11 @@ onMounted(() => {
   border-radius: 3px;
   cursor: pointer;
   margin-bottom: 12px;
+}
+
+.choosing_region_content_city_block_popular_keyboard_button_selected {
+  background: #48538b;
+  color: white;
 }
 .choosing_region_content_city_block_info {
   overflow-y: scroll;

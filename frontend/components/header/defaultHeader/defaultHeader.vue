@@ -79,7 +79,7 @@
                     class="header_menu_icons"
                   />
                 </div>
-                Астана
+                {{ countryStores?.currentCity?.name ?? 'Выберите город' }}
                 <div class="header_menu_icons_block">
                   <img
                     src="@/assets/images/arrow_done.svg"
@@ -186,6 +186,7 @@ import transparentSelect from "~~/components/select/transparentSelect/transparen
 import transparentOption from "~~/components/select/transparentSelect/transparentOption.vue";
 import defaultInput from "~~/components/input/defaultInput.vue";
 import { useContentPages } from "~~/stores/homeStores";
+import {useCountry} from "../../../stores/country";
 
 const props = defineProps({
   menu: {
@@ -193,6 +194,7 @@ const props = defineProps({
   },
 });
 
+let countryStores = useCountry();
 const homePageContentStores = useContentPages();
 let menuStatus = ref(false);
 let isActive = ref(false);

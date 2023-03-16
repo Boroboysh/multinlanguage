@@ -5,13 +5,17 @@ export const useCountry = defineStore({
   id: 'country',
   state: () => ({
     countryList: {},
-    currentSites: {}
+    currentSites: {},
+    currentCity: {},
   }),
   getters: {
     getCountryKZ: (state) => {
       return state.countryList?.find((item) => item.id === 2)
     },
     getCurrentSite: (state) => {
+      return state?.getCountryKZ.territoryList?.find((item) => item.id === 6)
+    },
+    getCurrentCity: (state) => {
       return state?.getCountryKZ.territoryList?.find((item) => item.id === 6)
     }
   },
@@ -23,6 +27,10 @@ export const useCountry = defineStore({
 
     updateCountryList (lang) {
       this.countryList = lang;
+    },
+
+    changeCity(city) {
+      this.currentCity = city;
     }
   }
 })
