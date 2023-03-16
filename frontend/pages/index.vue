@@ -639,7 +639,7 @@
     <!--          </div>-->
     <!--        </div>-->
     <!--      </template>-->
-    {{ countryList }}
+
   </div>
 </template>
 
