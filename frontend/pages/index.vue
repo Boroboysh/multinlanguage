@@ -24,22 +24,35 @@
             <h2 class="header_content_info_forms_title">
               {{ contentPages.data.body?.subheader?.titles[0].content }}
             </h2>
-            <default-input
-              v-model="searchFormCode.code"
-              mask="### ### ###"
-              :placeholder="
-                contentPages.data.body?.subheader?.fields[0].content
-              "
-              class="header_content_info_forms"
-            >
-              <template #container-right>
-                <img
-                  @click="searchCodes(searchFormCode.code)"
-                  src="@/assets/images/search_icon.png"
-                  alt=""
-                />
-              </template>
-            </default-input>
+
+            <div class="search_by_code_form">
+              <default-input
+                v-bind:class="{
+                  'header_content_info_forms': true,
+                  'loading loading--small': searchFormCodeLoading,
+                }"
+                mask="#### #### ####"
+                v-model="searchFormCode"
+                v-bind:placeholder="contentPages.data.body?.subheader?.fields[0].content"
+              >
+                <template #container-right>
+                  <img
+                    src="@/assets/images/search_icon.png"
+                    alt=""
+                  />
+                </template>
+              </default-input>
+
+              <div v-bind:class="{
+                'search_by_code_form_result': true,
+                'search_by_code_form_result_success': searchFormCodeResult.success === true,
+                'search_by_code_form_result_error': searchFormCodeResult.success === false,
+                'search_by_code_form_result_idle': searchFormCodeResult.success === null,
+              }">
+                {{ searchFormCodeResult.text }}
+              </div>
+            </div>
+
             <div
               class="header_content_info_calculate_block w-100 d-block align-items-start flex-column"
             >
@@ -616,22 +629,23 @@
 </template>
 
 <script setup>
+import DefaultHeader from "@/components/header/defaultHeader/defaultHeader.vue";
 import defaultButton from "@/components/button/defaultButton.vue";
 import defaultInput from "~~/components/input/defaultInput.vue";
 import defaultSelect from "~~/components/select/defaultSelect.vue";
 import defaultOption from "~~/components/select/defaultOption.vue";
 import adventageBlock from "~~/components/adventageBlock/adventageBlock.vue";
 import defaultHeader from "@/components/header/defaultHeader/defaultHeader.vue";
-import DefaultHeader from "@/components/header/defaultHeader/defaultHeader.vue";
 import defaultMap from "@/components/map/defaultMap.vue";
 import defaultTextArea from "@/components/textarea/defaultTextArea.vue";
 import choosingRegion from "@/components/modalWindow/choosingRegion.vue";
 import defaultFooter from "@/components/footer/defaultFooter.vue";
-import getContentInfo from "@/api/contentInfo/getContentInfo";
-import { useContentPages } from "@/stores/homeStores";
-import { getCountry } from "@/api/getCountry/getCountry";
 import defaultAccordion from "~~/components/accordion/defaultAccordion.vue";
-import { sendContact } from "~~/api/sendContactForm/sendContact";
+import getContentInfo from "@/api/contentInfo/getContentInfo";
+import { ocrGetAsync } from "@/api/contentInfo/ocr";
+import { getCountry } from "@/api/getCountry/getCountry";
+import { sendContact } from "@/api/sendContactForm/sendContact";
+import { useContentPages } from "@/stores/homeStores";
 import { watchDebounced } from '@vueuse/core';
 import { vOnClickOutside } from '@vueuse/components';
 import { useCountry } from "~~/stores/country";
@@ -647,16 +661,21 @@ useHead({
 });
 
 const store = useContentPages();
-
-let contentPages = reactive({
+const contentPages = reactive({
   data: {
     body: {},
   },
 });
-let countryStores = useCountry();
-let statusRegionSelect = ref(false);
-let countryList = ref([]);
-let searchFormCode = ref({ code: null });
+const countryStores = useCountry();
+const statusRegionSelect = ref(false);
+const countryList = ref([]);
+const searchFormCode = ref('');
+const searchFormCodeLoading = ref(false);
+const searchFormCodeResult = reactive({
+  success: null,
+  text: 'Введите номер для поиска...',
+});
+
 let calculateSumForms = reactive({
   from: '',
   fromHidden: true,
@@ -703,14 +722,42 @@ watchDebounced(() => calculateSumForms.from, async (value) => {
   shipFromHints.value = await getSugggestAsync(value);
 }, {
   debounce: 200,
-  maxWait: 1000,
 });
 
 watchDebounced(() => calculateSumForms.to, async (value) => {
   shipToHints.value = await getSugggestAsync(value);
 }, {
   debounce: 200,
-  maxWait: 1000,
+});
+
+watchDebounced(searchFormCode, async (code) => {
+  console.log('searchFormCode', code);
+
+  const codeMasked = code;
+  const codeRaw = code.replaceAll(' ', '');
+
+  if (codeRaw === '') {
+    searchFormCodeResult.success = null;
+    searchFormCodeResult.text = 'Введите номер для поиска...';
+    return;
+  }
+
+  searchFormCodeLoading.value = true;
+  const result = await ocrGetAsync(codeRaw);
+  const failed = result.error?.code === -33000;
+  searchFormCodeLoading.value = false;
+
+  if (failed) {
+    searchFormCodeResult.success = false;
+    searchFormCodeResult.text = `Груз ${codeMasked} не найден`;
+  } else {
+    searchFormCodeResult.success = true;
+    searchFormCodeResult.text = 'Груз найден, загрузка...';
+
+    window.location.href = `https://pecom.ru/services-are/order-status/?code=${codeRaw}`;
+  }
+}, {
+  debounce: 500,
 });
 
 const updateStatusRegionSelect = (value) => {
@@ -729,7 +776,6 @@ const closeModalRegion = () => {
   body.style.overflowY = null;
   updateStatusRegionSelect(false);
 };
-console.log(store.getCountryKZ);
 
 const updateContentPageLang = async (lang) => {
   contentPages.data = await getContentInfo(lang);
@@ -743,11 +789,6 @@ const response = await getCountry('ru');
 
 const sendContactForm = async (form) => {
   await sendContact(form);
-};
-
-const searchCodes = (code) => {
-  console.log(code);
-  window.location.href = `https://pecom.ru/services-are/order-status/?code=${code}`;
 };
 
 const selectAction = async (action) => {
@@ -791,6 +832,22 @@ body {
   padding: 0;
   font-family: "Roboto";
   color: #2b2b2b;
+}
+
+.search_by_code_form_result {
+  font-size: 12px;
+}
+
+.search_by_code_form_result_success {
+  color: #60de49;
+}
+
+.search_by_code_form_result_error {
+  color: #ff465c;
+}
+
+.search_by_code_form_result_idle {
+  color: #cbcbcb;
 }
 
 .scroll-container-root {

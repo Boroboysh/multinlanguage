@@ -4,6 +4,7 @@ export default defineNuxtConfig({
     // autoImport: false,
   },
   css: [
+    '@/assets/styles/app.css',
     '@/assets/styles/bootstrap.min.css',
     '@/assets/fonts/Roboto/stylesheet.css'
   ],

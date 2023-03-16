@@ -14,10 +14,10 @@
         v-if='!mask'
       @focus="$emit('focus')"
       @blur="$emit('blur')"
+      @input="$emit('update:modelValue', $event.target.value)"
       :readonly="readonly"
       :placeholder="!title ? placeholder : null"
       :disabled="disabled"
-      @input="$emit('update:modelValue', $event.target.value)"
       :value="modelValue"
       v-bind:class="`default_input ${title ? 'default_input_with_title' : ''}`"
       type="text"
@@ -26,14 +26,14 @@
       v-if='mask'
       @focus="$emit('focus')"
       @blur="$emit('blur')"
-      @input="$emit('update:modelValue', $event.target.value)"
       v-bind:readonly="readonly"
       v-bind:placeholder="!title ? placeholder : null"
       v-bind:disabled="disabled"
       v-bind:value="modelValue"
       v-bind:class="`default_input ${title ? 'default_input_with_title' : ''}`"
       v-bind:data-maska="mask"
-      v-maska
+      v-maska="bindedObject"
+      data-maska-eager
       type="text"
     />
     <div class="container_right_slot">
@@ -65,7 +65,7 @@ export default {
     },
     modelValue: {
       type: String,
-      default: ''
+      default: '',
     },
     placeholder: {
       type: String,
@@ -82,27 +82,36 @@ export default {
     },
     mask: {
       type: String,
+      default: undefined,
     },
   },
   data() {
     return {
-      valueInput: ''
-    }
+      valueInput: '',
+      bindedObject: {
+        masked: '',
+        unmasked: '',
+        completed: false,
+      },
+    };
   },
   methods: {
     updateValueInput(value) {
       this.valueInput = value;
     },
-  }
-}
-
-// const updateValueInputEmit = defineEmits(["updateValue"]);
+  },
+  created() {
+    if (this.mask) {
+      this.$watch('bindedObject.masked', (masked) => {
+        console.log(masked);
+        this.$emit('update:modelValue', masked);
+      });
+    }
+  },
+};
 </script>
 
 <style scoped>
-
-
-
 .default_input_block {
   /* height: 100%; */
   width: 100%;
