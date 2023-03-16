@@ -236,7 +236,7 @@ onMounted(() => {
 }
 .choosing_region_content_city_list_item {
   /* min-width: 160px; */
-  padding: 16px 8px;
+  padding: 8px 16px ;
   margin-bottom: 20px;
 }
 .choosing_region_content_city_list_item_active {

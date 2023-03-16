@@ -1365,6 +1365,11 @@ body {
 }
 
 @media (max-width: 1000px) {
+  .choosing_region_block {
+    width: 100%;
+    height: 100%;
+    top: 0;
+  }
   .header_content_info_calculate_form_input_size {
     width: 100%;
   }
@@ -1502,6 +1507,7 @@ body {
 }
 
 @media (max-width: 575px) {
+
   .header_content_block, .header_menu_group_block {
     position: fixed;
   }
@@ -1579,6 +1585,12 @@ body {
 }
 
 @media (max-width: 480px) {
+  .choosing_region_content_city_list_block {
+    display: none;
+  }
+  .choosing_region_content_city_block_popular {
+    margin: 0;
+  }
   .about_block_content_advertisement {
     display: block;
   }
