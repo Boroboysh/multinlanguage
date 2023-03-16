@@ -1396,6 +1396,9 @@ body {
   .about_block_content_advertisement {
     display: block;
   }
+  .map_contact_info_title {
+    font-size: 16px;
+  }
   .map_card_block {
     display: none;
   }
