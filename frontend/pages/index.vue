@@ -26,7 +26,9 @@
             </h2>
             <default-input
               v-model="searchFormCode.code"
-              :placeholder="contentPages.data.body?.subheader?.fields[0].content"
+              :placeholder="
+                contentPages.data.body?.subheader?.fields[0].content
+              "
               class="header_content_info_forms"
             >
               <template #container-right>
@@ -55,14 +57,16 @@
                   :title="true"
                 />
                 <img
-                  class="header_content_info_calculate_form_icons "
+                  class="header_content_info_calculate_form_icons"
                   src="@/assets/images/arrow_double.svg"
                   alt=""
-                  v-on:click="() => {
-                    const posr = calculateSumForms.from;
-                    calculateSumForms.from = calculateSumForms.to;
-                    calculateSumForms.to = posr;
-                  }"
+                  v-on:click="
+                    () => {
+                      const posr = calculateSumForms.from;
+                      calculateSumForms.from = calculateSumForms.to;
+                      calculateSumForms.to = posr;
+                    }
+                  "
                 />
                 <default-input
                   v-model="calculateSumForms.from"
@@ -590,7 +594,6 @@
         </div>
       </template>
     </default-footer>
-    fafwwfaf {{ countryStores.getCountryKZ }}
   </div>
 </template>
 
@@ -679,7 +682,7 @@ const scrollToContactForm = () => {
 
 useAsyncData("page-data", async () => {
   await store.getContent("kk");
-  await countryStores.getCountryList('ru')
+  await countryStores.getCountryList("ru");
   contentPages.data = store.pageContent;
 });
 
@@ -1335,7 +1338,7 @@ body {
   width: 244px;
   font-weight: 700;
   font-size: 20px;
-  color: #2B2B2B;
+  color: #2b2b2b;
 }
 /* .footer_content_logo_block {
   display: flex;
@@ -1506,7 +1509,7 @@ body {
     display: flex;
     flex-direction: column-reverse;
   }
-  .contact_form_item_block  {
+  .contact_form_item_block {
     margin-top: 28px;
   }
 
@@ -1531,8 +1534,8 @@ body {
   }
 }
 
-@media(max-width:657px) {
-  .contact_form_send_personal_info_item  {
+@media (max-width: 657px) {
+  .contact_form_send_personal_info_item {
     text-align: center;
   }
 }
@@ -1619,7 +1622,7 @@ body {
     margin: 50px 0;
     grid-template-columns: auto;
   }
-  .contact_form_item_block  {
+  .contact_form_item_block {
     margin-top: 24px;
   }
   .header_content_advantages_number {
