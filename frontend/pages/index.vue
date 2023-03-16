@@ -463,12 +463,12 @@
       <div class="contact_form w-100 container-xl">
         <div class="contact_form_title_block">
           <span class="contact_form_title">
-            {{ contentPages.data.body.contactForm.title }}
+            {{ contentPages.data?.body?.contactForm?.title }}
           </span>
         </div>
         <div class="contact_form_title_info_block">
           <span class="contact_form_info_item contact_form_info_item_text">
-            {{ contentPages.data.body.contactForm.subtitle }}
+            {{ contentPages.data?.body?.contactForm?.subtitle }}
           </span>
         </div>
         <div class="contact_form_container">
