@@ -16,17 +16,17 @@
             class="col header_content_info_col d-flex justify-content-center header_content_info_preview p-0"
           >
             <img
-              :src="env.host + contentPages.data.body?.subheader.image"
+              :src="env.host + contentPages.data.body?.subheader?.image"
               alt=""
             />
           </div>
           <div class="col header_content_info_col header_content_info_forms">
             <h2 class="header_content_info_forms_title">
-              {{ contentPages.data.body?.subheader.titles[0].content }}
+              {{ contentPages.data.body?.subheader?.titles[0].content }}
             </h2>
             <default-input
               v-model="searchFormCode.code"
-              :placeholder="contentPages.data.body?.subheader.fields[0].content"
+              :placeholder="contentPages.data.body?.subheader?.fields[0].content"
               class="header_content_info_forms"
             >
               <template #container-right>
@@ -41,7 +41,7 @@
               class="header_content_info_calculate_block w-100 d-block align-items-start flex-column"
             >
               <h2 class="header_content_info_forms_title">
-                {{ contentPages.data.body.subheader.titles[1].content }}
+                {{ contentPages.data.body.subheader?.titles[1].content }}
               </h2>
               <div
                 class="header_content_info_calculate_forms_block w-100 justify-content-between"
@@ -50,7 +50,7 @@
                   class="header_content_info_calculate_form_input_size"
                   v-model="calculateSumForms.to"
                   :placeholder="
-                    contentPages.data.body.subheader.fields[1].content
+                    contentPages.data.body.subheader?.fields[1].content
                   "
                   :title="true"
                 />
@@ -63,7 +63,7 @@
                   v-model="calculateSumForms.from"
                   class="header_content_info_calculate_form_input_size"
                   :placeholder="
-                    contentPages.data.body.subheader.fields[2].content
+                    contentPages.data.body.subheader?.fields[2].content
                   "
                   :title="true"
                 />
@@ -85,7 +85,7 @@
                   alt=""
                 />
                 <span class="header_content_info_calculate_result_text">
-                  {{ contentPages.data.body.subheader.content.text }}
+                  {{ contentPages.data.body.subheader?.content.text }}
                 </span>
               </div>
             </div>
@@ -101,7 +101,7 @@
             <div class="header_content_advantages_info_block">
               <div class="header_content_advantages_number_block">
                 <div class="header_content_advantages_number">
-                  <span class="d-flex gap-1 h-100">
+                  <span class="d-flex gap-1 h-100 align-items-end">
                     {{ itemList.number.split(" ")[0] }}
                     <span class="header_content_advantages_number_postfix">
                       {{ itemList.number.split(" ")[1] }}
