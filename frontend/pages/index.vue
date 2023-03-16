@@ -224,7 +224,7 @@
             contentPages.data.body.mapInfoBlock.content[0].text
           }}</span>
           <div class="map_contact_telephone_block">
-            <span>{{ contentPages.data.header.tel_number }}</span>
+            <a href="tel:{{ contentPages.data.header.tel_number }}">{{ contentPages.data.header.tel_number }}</a>
           </div>
         </div>
       </div>
@@ -913,8 +913,9 @@ body {
   font-size: 24px;
 }
 
-.map_contact_telephone_block {
+.map_contact_telephone_block  a{
   color: #48538b;
+  text-decoration: none;
 }
 
 .advatages_block {
