@@ -92,17 +92,21 @@
           </div>
         </div>
         <div class="header_content_advantages_block">
-          <div class="row">
-            <div
+          <div
               v-for="(itemList, itemIndex) in contentPages.data.body.subheader
                 .list"
               :key="itemIndex"
-              class="col-12 col-xl-4 col-md-4 header_content_advantages d-flex align-items-start justify-content-start"
+              class="header_content_advantages d-flex align-items-start justify-content-start"
             >
               <div class="header_content_advantages_info_block">
                 <div class="header_content_advantages_number_block">
                   <div class="header_content_advantages_number">
-                    {{ itemList.number }}
+                    <span class="d-flex gap-1 h-100">
+                      {{ itemList.number.split(' ')[0] }}
+                      <span class="header_content_advantages_number_postfix">
+                        {{ itemList.number.split(' ')[1] }}
+                      </span>
+                    </span>
                     <div class="header_content_advantages_number_icons">+</div>
                   </div>
                 </div>
@@ -113,7 +117,6 @@
                 </div>
               </div>
             </div>
-          </div>
         </div>
       </div>
     </div>
@@ -701,8 +704,14 @@ body {
 }
 
 .header_content_advantages_number {
-  font-size: 32px;
+  font-size: 48px;
   display: flex;
+  line-height: 52px;
+}
+.header_content_advantages_number_postfix {
+  font-size: 32px;
+  height: auto;
+  line-height: 42px;
 }
 
 .header_content_advantages_number_icons {
@@ -1265,6 +1274,16 @@ body {
   }
 }
 
+@media (max-width: 1159px) {
+
+  .header_content_advantages_info_block {
+    display: block;
+
+  }
+  .header_content_advantages_number_block {
+    margin: 0 0 24px;
+  }
+}
 @media (max-width: 1000px) {
   .header_content_info_preview > img {
     /* width: 100%; */
@@ -1480,6 +1499,29 @@ body {
   .about_block_content_advertisement {
     display: block;
   }
+
+  .header_content_advantages_block {
+    margin: 50px 0;
+    grid-template-columns: auto;
+  }
+
+  .header_content_advantages_number {
+    font-size: 36px;
+
+  }
+  .header_content_advantages:nth-child(1) > div {
+    border-top: none;
+  }
+
+  .header_content_advantages_info_block {
+    margin-bottom: 40px;
+  }
+
+  .header_content_advantages_number_postfix {
+    font-size: 24px;
+    line-height: 45px;
+  }
+
   .map_card_block {
     display: none;
   }
