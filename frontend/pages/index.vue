@@ -215,7 +215,11 @@
       <default-map :item-list="contentPages.data.body.mapInfoBlock.points" />
       <div class="map_block_contact">
         <div class="map_contact_button_block">
-          <default-button size="large" class="map_contact_button" v-on:click="scrollToContactForm">
+          <default-button
+            size="large"
+            class="map_contact_button"
+            v-on:click="scrollToContactForm"
+          >
             {{ contentPages.data.body.mapInfoBlock.buttons_text.content }}
           </default-button>
         </div>
@@ -224,7 +228,9 @@
             contentPages.data.body.mapInfoBlock.content[0].text
           }}</span>
           <div class="map_contact_telephone_block">
-            <a href="tel:{{ contentPages.data.header.tel_number }}">{{ contentPages.data.header.tel_number }}</a>
+            <a href="tel:{{ contentPages.data.header.tel_number }}">{{
+              contentPages.data.header.tel_number
+            }}</a>
           </div>
         </div>
       </div>
@@ -301,7 +307,10 @@
       </div>
     </div>
     <div class="contact_form_block">
-      <div class="contact_form_question_mark_block container-xl" id="contact-form">
+      <div
+        class="contact_form_question_mark_block container-xl"
+        id="contact-form"
+      >
         <div class="contact_form_question_mark">?</div>
       </div>
       <div class="contact_form w-100 container-xl">
@@ -454,7 +463,106 @@
         </div>
       </template>
     </default-footer>
-    <default-accordion />
+    <default-accordion>
+      <template #title>
+        <div class="advantages_card_block position-relative default_card w-100">
+          <div class="default_border_block advantages_card_border_block">
+            <div class="default_border default_border_top_left"></div>
+            <div class="default_border default_border_top_right"></div>
+            <div class="default_border default_border_bottom_left"></div>
+            <div class="default_border default_border_bottom_right"></div>
+          </div>
+          <div class="advantages_card default-card">
+            <div
+              class="advantages_card_content_title_block d-flex align-items-center"
+            >
+              <div class="advantages_card_title_icon_block">
+                <img
+                  src="http://pecom.inpro-digital.ru/admin/images/b0f98fe5bee6cd207d7dcb864e0ebee5.png"
+                  alt=""
+                  class="advantages_card_title_icon"
+                />
+              </div>
+              <div class="advantages_content_card_title_block fw-bold">
+                <span class="advantages_content_card_title">Пайда</span>
+              </div>
+            </div>
+            <!-- <div class="advantages_card_content">
+          <div class="advantages_card_content_list">
+            <div
+              class="advantages_card_content_list_item d-flex align-items-center h-100"
+            >
+              <div class="advantages_card_content_list_item_linear"></div>
+              <div class="advantages_card_content_list_item_content">
+                <div class="advantages_card_content_list_item_content_text">
+                  Гибкие тарифы;
+                </div>
+              </div>
+            </div>
+            <div
+              class="advantages_card_content_list_item d-flex align-items-center h-100"
+            >
+              <div class="advantages_card_content_list_item_linear"></div>
+              <div class="advantages_card_content_list_item_content">
+                <div class="advantages_card_content_list_item_content_text">
+                  Возможность отсрочки платежа.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+          </div>
+        </div>
+      </template>
+    </default-accordion>
+    <div class="advantages_card_block position-relative default_card w-100">
+      <div class="default_border_block advantages_card_border_block">
+        <div class="default_border default_border_top_left"></div>
+        <div class="default_border default_border_top_right"></div>
+        <div class="default_border default_border_bottom_left"></div>
+        <div class="default_border default_border_bottom_right"></div>
+      </div>
+      <div class="advantages_card default-card">
+        <div
+          class="advantages_card_content_title_block d-flex align-items-center"
+        >
+          <div class="advantages_card_title_icon_block">
+            <img
+              src="http://pecom.inpro-digital.ru/admin/images/b0f98fe5bee6cd207d7dcb864e0ebee5.png"
+              alt=""
+              class="advantages_card_title_icon"
+            />
+          </div>
+          <div class="advantages_content_card_title_block fw-bold">
+            <span class="advantages_content_card_title">Пайда</span>
+          </div>
+        </div>
+        <!-- <div class="advantages_card_content">
+          <div class="advantages_card_content_list">
+            <div
+              class="advantages_card_content_list_item d-flex align-items-center h-100"
+            >
+              <div class="advantages_card_content_list_item_linear"></div>
+              <div class="advantages_card_content_list_item_content">
+                <div class="advantages_card_content_list_item_content_text">
+                  Гибкие тарифы;
+                </div>
+              </div>
+            </div>
+            <div
+              class="advantages_card_content_list_item d-flex align-items-center h-100"
+            >
+              <div class="advantages_card_content_list_item_linear"></div>
+              <div class="advantages_card_content_list_item_content">
+                <div class="advantages_card_content_list_item_content_text">
+                  Возможность отсрочки платежа.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
   </div>
 </template>
 
@@ -470,11 +578,10 @@ import defaultFooter from "@/components/footer/defaultFooter.vue";
 import getContentInfo from "@/api/contentInfo/getContentInfo";
 import { useContentPages } from "@/stores/homeStores";
 import { getCountry } from "@/api/getCountry/getCountry";
-import defautlAccordion from "~~/components/accordion/defaultAccordion.vue";
+import defaultAccordion from "~~/components/accordion/defaultAccordion.vue";
 import { sendContact } from "~~/api/sendContactForm/sendContact";
 import axios from "axios";
 import env from "@/api/env/env";
-
 
 const store = useContentPages();
 
@@ -528,6 +635,7 @@ const selectAction = async (action) => {
   console.log("selectAction", action);
   switch (action.actionName) {
     case "openModal":
+      countryList.value = await getCountry(store.currentLang);
       openModalRegionSelect();
       break;
     case "closeModal":
@@ -536,8 +644,8 @@ const selectAction = async (action) => {
   }
 };
 const scrollToContactForm = () => {
-  document.getElementById('contact-form').scrollIntoView();
-}
+  document.getElementById("contact-form").scrollIntoView();
+};
 
 useAsyncData("page-data", async () => {
   await store.getContent("kk");
@@ -646,8 +754,8 @@ body {
 
 .header_content_advantages_number_icons {
   vertical-align: text-top;
-  line-height: 20px;
-  margin-left: 20px;
+  line-height: 34px;
+  margin-left: 10px;
 }
 
 .header_content_advantages_text {
@@ -850,7 +958,13 @@ body {
 
 .map_block_linear {
 }
-
+.header_content_block {
+  /* height: 60px; */
+  top: 0;
+  background: white;
+  z-index: 10000;
+  /* position: sticky; */
+}
 .default_border_block {
   position: absolute;
   width: 100%;
@@ -918,7 +1032,7 @@ body {
   font-size: 24px;
 }
 
-.map_contact_telephone_block  a{
+.map_contact_telephone_block a {
   color: #48538b;
   text-decoration: none;
 }
