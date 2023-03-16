@@ -41,7 +41,7 @@
                   :key="countryIndex"
                   :class="{
                     choosing_region_content_city_list_item_active:
-                      country.id === currentCountry.value.id,
+                      country.id === currentCountry?.value?.id ?? currentCountry?.id ,
                   }"
                   class="choosing_region_content_city_list_item"
                 >
@@ -171,7 +171,7 @@ const emits = defineEmits(["closeButton"]);
 
 let countryStores = useCountry();
 
-let currentCountry = ref(Object.keys(countryStores.getSelectedCountry) ? countryStores.getSelectedCountry : countryStores.countryList[0]);
+let currentCountry = ref(Object.keys(countryStores.getSelectedCountry).length ? countryStores.getSelectedCountry : countryStores.countryList[0]);
 
 const popularCities = ref(currentCountry.territoryList?.sort(
     (currentItem, nextItem) => currentItem.rating + nextItem.rating
@@ -186,6 +186,7 @@ const updateCurrentCountry = (country) => {
 };
 const updateCurrentCity = (city) => {
   countryStores.changeCity(city);
+  emitActions({ actionName: 'closeModal', value: true })
 };
 
 
