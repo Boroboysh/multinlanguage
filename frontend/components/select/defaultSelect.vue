@@ -1,5 +1,9 @@
 <template>
-  <div class="default_select_block position-relative" ref="selectRef">
+  <div
+    class="default_select_block position-relative"
+    ref="selectRef"
+    v-on-click-outside="handleClickOutside"
+  >
     <default-input
       @focus="udpateStatus(true)"
       v-model="selectValue"
@@ -27,6 +31,7 @@
 <script setup>
 import defaultInput from "../input/defaultInput.vue";
 import { ref, provide, onMounted } from "vue";
+import { vOnClickOutside } from '@vueuse/components';
 
 defineProps({
   placeholder: {
@@ -34,6 +39,13 @@ defineProps({
   },
 });
 const emit = defineEmits(["returnSelect"]);
+const handleClickOutside = (e) => {
+  const isCurrent = e.target.matches('.default_select_block, .default_select_block *');
+  if (isCurrent === false) {
+    udpateStatus(false);
+  }
+};
+
 let selectValue = ref("");
 let defaultInputValue = ref(null);
 let isActive = ref(false);

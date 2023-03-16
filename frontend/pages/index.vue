@@ -558,10 +558,6 @@
       </div>
     </div>
 
-    <div>
-      {{ statusRegionSelect ? 'WWWW' : 'AAAAA' }}
-    </div>
-
     <choosing-region
       @closeButton="(action) => selectAction(action)"
       v-if="statusRegionSelect"

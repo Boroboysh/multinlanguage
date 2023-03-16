@@ -137,7 +137,7 @@ import defaultKeyboardLayout from "@/components/keyboardLayout/defaultKeyboardLa
 import defaultKeyboardOption from "@/components/keyboardLayout/defaultKeyboardOption.vue";
 import { ref, onMounted } from "vue";
 import { useCountry } from "~~/stores/country";
-import { getCountrySearch } from '@/api/getCountry/getCountry'
+import { getCountrySearch } from '@/api/getCountry/getCountry';
 import { vOnClickOutside } from '@vueuse/components';
 
 const alphabet = ['А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Э', 'Ю', 'Я'];
