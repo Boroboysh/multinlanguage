@@ -1,7 +1,10 @@
 <template>
   <div class="default_accordion_block">
     <div @click="updateStatus(!currentStatus)" class="default_accordion">
-        Открыть
+        <slot :name="title" />
+    </div>
+    <div v-if="currentStatus" class="default_accordion_content_block">
+      13234512543
     </div>
   </div>
 </template>
@@ -20,8 +23,8 @@ const updateStatus = (status) => {
 <style>
 .default_accordion {
     width: 100%;
-    min-height: 200px;
     background: #a0a0a0;
+    transition: .2s;
 }
 
 </style>
