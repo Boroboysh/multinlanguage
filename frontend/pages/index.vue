@@ -101,10 +101,10 @@
             >
               <div class="header_content_advantages_info_block">
                 <div class="header_content_advantages_number_block">
-                  <span class="header_content_advantages_number"
-                    >{{ itemList.number }}
+                  <div class="header_content_advantages_number">
+                      {{ itemList.number }}
                     <div class="header_content_advantages_number_icons">+</div>
-                  </span>
+                  </div>
                 </div>
                 <div class="header_content_advantages_text_block">
                   <p class="header_content_advantages_text">
@@ -518,7 +518,7 @@ const getCountryData = async (lang) => {
 };
 
 const sendContactForm = async (form) => {
-   await sendContact(form);
+  await sendContact(form);
 };
 
 const searchCodes = (code) => {
@@ -627,8 +627,7 @@ body {
 }
 
 .header_content_advantages_number {
-  font-size: 48px;
-  min-width: 50px;
+  font-size: 32px;
   position: relative;
 }
 
@@ -641,7 +640,6 @@ body {
 
 .header_content_advantages_text {
   font-size: 18px;
-  max-width: 300px;
   height: 100%;
   margin: 0;
   display: flex;
@@ -1383,7 +1381,7 @@ body {
   .about_block_content_advertisement {
     display: block;
   }
-  .about_block_title  {
+  .about_block_title {
     border-left: 4px solid #2b2b2b;
     padding: 0px 0px 0px 4px;
     width: 100%;
