@@ -130,6 +130,7 @@ const emit = defineEmits(["update:modelValue"]);
   display: flex;
   align-items: center;
   padding-left: 8px;
+  color: #AAAAAA;
 }
 
 .container_right_slot {
