@@ -4,7 +4,7 @@
         <slot :name="title" />
     </div>
     <div v-if="currentStatus" class="default_accordion_content_block">
-      13234512543
+      wfafawfaw
     </div>
   </div>
 </template>
