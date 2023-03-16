@@ -600,7 +600,7 @@ const scrollToContactForm = () => {
 
 useAsyncData("page-data", async () => {
   await store.getContent("kk");
-  countryList.value = await getCountry("ru");
+  countryList.value = await getCountry("kk");
   contentPages.data = store.pageContent;
 });
 
