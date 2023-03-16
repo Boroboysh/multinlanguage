@@ -228,9 +228,9 @@
             contentPages.data.body.mapInfoBlock.content[0].text
           }}</span>
           <div class="map_contact_telephone_block">
-            <a href="tel:{{ contentPages.data.header.tel_number }}">{{
-              contentPages.data.header.tel_number
-            }}</a>
+            <a v-bind:href="`tel:${contentPages.data.header.tel_number}`">
+              {{ contentPages.data.header.tel_number }}
+            </a>
           </div>
         </div>
       </div>
@@ -249,54 +249,53 @@
     </div>
     <div class="advantages_block_card container-xl">
 <!--      <div class="row w-100 d-flex align-items-center justify-content-center advantages_block_card">-->
-        <div
+      <div
           v-for="(advantagesItem, advantagesIndex) in contentPages.data.body
             .listInfoBlock.element"
           :key="advantagesIndex"
           class="d-flex align-items-start justify-content-center advantages_block_card_item"
-        >
-          <div
+      >
+        <div
             class="advantages_card_block position-relative default_card w-100"
-          >
-            <div class="default_border_block advantages_card_border_block">
-              <div class="default_border default_border_top_left"></div>
-              <div class="default_border default_border_top_right"></div>
-              <div class="default_border default_border_bottom_left"></div>
-              <div class="default_border default_border_bottom_right"></div>
-            </div>
-            <div class="advantages_card default-card">
-              <div
+        >
+          <div class="default_border_block advantages_card_border_block">
+            <div class="default_border default_border_top_left"></div>
+            <div class="default_border default_border_top_right"></div>
+            <div class="default_border default_border_bottom_left"></div>
+            <div class="default_border default_border_bottom_right"></div>
+          </div>
+          <div class="advantages_card default-card">
+            <div
                 class="advantages_card_content_title_block d-flex align-items-center"
-              >
-                <div class="advantages_card_title_icon_block">
-                  <img
+            >
+              <div class="advantages_card_title_icon_block">
+                <img
                     :src="env.host + advantagesItem.icon"
                     alt=""
                     class="advantages_card_title_icon"
-                  />
-                </div>
-                <div class="advantages_content_card_title_block fw-bold">
+                />
+              </div>
+              <div class="advantages_content_card_title_block fw-bold">
                   <span class="advantages_content_card_title">
                     {{ advantagesItem.title }}
                   </span>
-                </div>
               </div>
-              <div class="advantages_card_content">
-                <div class="advantages_card_content_list">
-                  <div
+            </div>
+            <div class="advantages_card_content">
+              <div class="advantages_card_content_list">
+                <div
                     v-for="(
                       advantagesItemList, advantagesItemIndex
                     ) in advantagesItem.list"
                     :key="advantagesItemIndex"
                     class="advantages_card_content_list_item d-flex align-items-center h-100"
-                  >
-                    <div class="advantages_card_content_list_item_linear"></div>
-                    <div class="advantages_card_content_list_item_content">
-                      <div
+                >
+                  <div class="advantages_card_content_list_item_linear"></div>
+                  <div class="advantages_card_content_list_item_content">
+                    <div
                         class="advantages_card_content_list_item_content_text"
-                      >
-                        {{ advantagesItemList.content }}
-                      </div>
+                    >
+                      {{ advantagesItemList.content }}
                     </div>
                   </div>
                 </div>
@@ -304,8 +303,9 @@
             </div>
           </div>
         </div>
-<!--      </div>-->
+      </div>
     </div>
+
     <div class="contact_form_block">
       <div
         class="contact_form_question_mark_block container-xl"
@@ -1015,6 +1015,7 @@ body {
 .advantages_title {
   max-width: 580px;
   font-size: 50px;
+  line-height: 60px;
   z-index: 100;
   color: #2b2b2b;
   background: white;
@@ -1041,11 +1042,12 @@ body {
 }
 
 .advantages_block_card {
-  margin-top: 56px;
+  margin-top: 40px;
   max-width: 1000px;
   display: grid;
   grid-template-columns: auto auto;
   column-gap: 50px;
+  row-gap: 50px;
 }
 
 .advantages_card {
@@ -1088,7 +1090,7 @@ body {
 .advantages_card_content_list_item_linear {
   width: 20px;
   height: 1px;
-  background: #2b2b2b;
+  background: #AAAAAA;
 }
 
 .advantages_card_content_list_item_content {
@@ -1106,7 +1108,7 @@ body {
 }
 
 .advantages_block_card_item {
-  margin-top: 35px;
+  /*margin-top: 35px;*/
 }
 
 .contact_form_block {
@@ -1325,6 +1327,7 @@ body {
   .advantages_title {
     font-size: 30px;
     max-width: 400px;
+    line-height: 38px;
   }
 
   .map_block_content_title_block {
@@ -1558,6 +1561,7 @@ body {
     margin-top: 56px;
   }
   .advantages_title {
+    line-height: 28px;
     margin: 0;
   }
 
