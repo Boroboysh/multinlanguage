@@ -111,7 +111,7 @@
         </div>
       </div>
     </div>
-    {{ list[0] }}
+    <!-- {{ list[0] }} -->
   </div>
 </template>
 
@@ -247,5 +247,34 @@ const emitActions = (action) => {
   background: #e4e6e7;
   border-radius: 3px;
   cursor: pointer;
+}
+.choosing_region_content_city_block_info {
+  overflow-y: scroll;
+}
+.choosing_region_content_city_block_info::-webkit-scrollbar-thumb {
+  background-color: #aaaaaa;
+  border-radius: 3px;
+  border: var(--scrollbarBorder);
+}
+.choosing_region_content_city_block_info::-webkit-scrollbar {
+  width: 12px;               /* ширина scrollbar */
+}
+.choosing_region_content_city_block_info::-webkit-scrollbar-track {
+  background: #E4E6E7;        /* цвет дорожки */
+}
+
+@media(max-width:768px) {
+  .default_keyboard_layout_block  {
+    display: none !important;
+  }
+  .choosing_region_content_city_block_popular_list_item_block {
+    margin-top: 16px;
+  }
+  .choosing_region_content_city_block_popular_title_block {
+    font-size: 20px;
+  }
+  .choosing_region_content_city_block_popular_list  {
+    display: block !important;
+  }
 }
 </style>

@@ -466,7 +466,7 @@ header {
     left: 100%;
     width: 100%;
     height: 100%;
-    z-index: 1000;
+    z-index: 10000;
   }
   .header_menu_block_link {
     height: auto;
