@@ -41,7 +41,7 @@
                   :key="countryIndex"
                   :class="{
                     choosing_region_content_city_list_item_active:
-                      country.id === currentCountry.id,
+                      country.id === currentCountry.value.id,
                   }"
                   class="choosing_region_content_city_list_item"
                 >
@@ -68,9 +68,7 @@
                     class="choosing_region_content_city_block_popular_list d-flex"
                   >
                     <div
-                      v-for="(country, countryIndex) in getSortPopularCites(
-                        currentCountry.territoryList
-                      )"
+                      v-for="(country, countryIndex) in popularCities"
                       :key="countryIndex"
                       class="choosing_region_content_city_block_popular_list_item_block"
                     >
@@ -78,8 +76,9 @@
                         href="#"
                         @click="updateCurrentCity(country)"
                         class="choosing_region_content_city_block_popular_list_item"
-                        >{{ country.name }}</a
-                      >
+                        >
+                        {{ country.name }}
+                      </a >
                     </div>
                   </div>
                 </div>
@@ -147,6 +146,7 @@ const letters = ref(alphabet.reduce((acc, item, currentIndex)=>{
   }]
   return acc;
 },[]));
+
 const selectedLetter = ref();
 
 const changeLetter = (value) => {
@@ -155,7 +155,6 @@ const changeLetter = (value) => {
   letters.value = letters.value.map((item) => {
     item.selected = false;
     if (item.name === value.name) {
-      console.log(item);
       item.selected = true;
     }
     return item;
@@ -170,23 +169,26 @@ const props = defineProps({
 });
 const emits = defineEmits(["closeButton"]);
 
-let coutryStores = useCountry();
+let countryStores = useCountry();
 
-let currentCountry = ref(coutryStores.countryList[0]);
+let currentCountry = ref(Object.keys(countryStores.getSelectedCountry) ? countryStores.getSelectedCountry : countryStores.countryList[0]);
+
+const popularCities = ref(currentCountry.territoryList?.sort(
+    (currentItem, nextItem) => currentItem.rating + nextItem.rating
+));
 
 const updateCurrentCountry = (country) => {
   currentCountry.value = country;
+  popularCities.value = country.territoryList?.sort(
+      (currentItem, nextItem) => currentItem.rating + nextItem.rating
+  )
+  countryStores.changeCountry(country)
 };
 const updateCurrentCity = (city) => {
-  coutryStores.changeCity(city);
+  countryStores.changeCity(city);
 };
 
 
-const getSortPopularCites = (list) => {
-  return list.sort(
-    (currentItem, nextItem) => currentItem.rating + nextItem.rating
-  );
-};
 
 getCountrySearch("аст")
 const emitActions = (action) => {
@@ -194,7 +196,7 @@ const emitActions = (action) => {
 };
 
 onMounted(() => {
-  currentCountry = list[0];
+  currentCountry = props.list[0];
 });
 </script>
 
@@ -256,6 +258,7 @@ onMounted(() => {
 }
 .choosing_region_content_city_list_item {
   /* min-width: 160px; */
+  cursor: pointer;
   padding: 8px 16px ;
   margin-bottom: 20px;
 }
