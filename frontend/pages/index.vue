@@ -1518,6 +1518,9 @@ body {
   .about_block_content_title_linear {
     display: none;
   }
+  .about_content_block {
+    padding-bottom: 0;
+  }
   .map_block_content_title_block  {
     margin: 0;
   }
@@ -1535,6 +1538,33 @@ body {
     content: '';
     position: absolute;
     left: -16px;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: #2b2b2b;
+  }
+
+  .advantages_title_block {
+    position: relative;
+    padding: 0;
+  }
+  .map_block {
+    margin-top: 80px;
+  }
+  .map_content_block_title  {
+    margin-top: 0;
+  }
+  .advatages_block {
+    margin-top: 56px;
+  }
+  .advantages_title {
+    margin: 0;
+  }
+
+  .advantages_title_block:after {
+    content: '';
+    position: absolute;
+    left: -12px;
     top: 0;
     width: 4px;
     height: 100%;
