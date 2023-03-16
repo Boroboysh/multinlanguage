@@ -242,7 +242,7 @@
       </div>
     </div>
     <div class="advantages_block_card container-xl">
-      <div class="row w-100">
+      <div class="row w-100 d-flex align-items-center justify-content-center">
         <div
           v-for="(advantagesItem, advantagesIndex) in contentPages.data.body
             .listInfoBlock.element"
@@ -454,6 +454,7 @@
         </div>
       </template>
     </default-footer>
+    <default-accordion />
   </div>
 </template>
 
@@ -469,6 +470,7 @@ import defaultFooter from "@/components/footer/defaultFooter.vue";
 import getContentInfo from "@/api/contentInfo/getContentInfo";
 import { useContentPages } from "@/stores/homeStores";
 import { getCountry } from "@/api/getCountry/getCountry";
+import defautlAccordion from "~~/components/accordion/defaultAccordion.vue";
 import { sendContact } from "~~/api/sendContactForm/sendContact";
 import axios from "axios";
 import env from "@/api/env/env";
