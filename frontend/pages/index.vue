@@ -900,10 +900,11 @@ body {
 }
 
 .map_contact_button_block {
-  font-weight: 600;
   margin-right: 24px;
 }
-
+.map_contact_button {
+  font-weight: 700;
+}
 .map_contact_info {
   font-size: 24px;
   font-weight: 700;
@@ -1426,6 +1427,7 @@ body {
   .map_contact_button {
     width: 100%;
     margin-bottom: 20px;
+    z-index: 10;
   }
 
   .footer_content_downloads_market_link_group_item {
