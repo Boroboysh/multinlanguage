@@ -2,9 +2,6 @@
   <div class="default_select_block position-relative">
     <default-input
       @focus="udpateStatus(true)"
-      @input="$emit('update', $event.target.value)"
-      @change="$emit('update', $event.target.value)"
-      @update="$emit('update', $event.target.value)"
       v-model="selectValue"
       :readonly="true"
       :placeholder="placeholder"
@@ -36,7 +33,7 @@ defineProps({
     type: String,
   },
 });
-
+const emit = defineEmits(["returnSelect"]);
 let selectValue = ref("");
 let defaultInputValue = ref(null);
 let isActive = ref(false);
@@ -51,6 +48,7 @@ onMounted(() => {
 
 const updateValue = (value) => {
   selectValue.value = value
+  emit('returnSelect', value)
 }
 
 const closeOptionBlock = () => {

@@ -26,6 +26,7 @@
             </h2>
             <default-input
               v-model="searchFormCode.code"
+              mask="### ### ###"
               :placeholder="
                 contentPages.data.body?.subheader?.fields[0].content
               "
@@ -381,7 +382,7 @@
           v-for="(advantagesItem, advantagesIndex) in contentPages.data.body
             .listInfoBlock.element"
           :key="advantagesIndex"
-          class="d-flex align-items-start justify-content-center advantages_block_card_item"
+          class="d-flex align-items-start justify-content-center advantages_block_card_item advantages_block_card_item-mobile"
       >
         <adventageBlock :advantagesItem="advantagesItem" />
       </div>
@@ -412,6 +413,7 @@
             >
               <div class="contact_form_item_block w-100">
                 <default-select
+                    @returnSelect="getContentInfo('ru')"
                   :placeholder="contentPages.data.body.contactForm.fields.city"
                   v-model="contactForm.city"
                 >

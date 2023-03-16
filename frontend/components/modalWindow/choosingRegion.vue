@@ -136,21 +136,14 @@ import { ref, onMounted } from "vue";
 import { useCountry } from "~~/stores/country";
 import { getCountrySearch } from '@/api/getCountry/getCountry'
 
-
-const test = ref([
-  {
-    id: 1,
-    name: "a",
-  },
-  {
-    id: 2,
-    name: "a",
-  },
-  {
-    id: 3,
-    name: "a",
-  },
-]);
+const alphabet = ['А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Э', 'Ю', 'Я'];
+const test = ref(alphabet.reduce((acc, item, currentIndex)=>{
+  acc = [...acc, {
+    id: currentIndex,
+    name: item,
+  }]
+  return acc;
+},[]));
 
 const props = defineProps({
   list: {
