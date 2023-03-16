@@ -787,7 +787,7 @@ body {
 }
 
 .map_block_border_block {
-  top: -25px;
+  top: -12px;
   left: -12px;
 }
 
@@ -804,8 +804,8 @@ body {
 }
 
 .map_block_content_card_block {
-  max-width: 500px;
-  min-height: 135px;
+  max-width: 504px;
+  min-height: 132px;
 }
 
 .map_block_content_title_block {
@@ -830,10 +830,12 @@ body {
 }
 
 .map_block_content_card {
-  padding: 20px 20px 40px;
-  font-size: 20px;
+  padding: 20px 20px 44px;
+  font-size: 22px;
+  line-height: 34px;
   height: 100%;
   background: #fafafa;
+  color: #2B2B2B;
 }
 
 .map_block_content_title_block_row {
