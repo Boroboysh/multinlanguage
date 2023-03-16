@@ -216,7 +216,7 @@ const updateLang = (lang) => {
   activeLang.value = lang;
   homePageContentStores.updateCurrentLang(lang.code);
   emit("updateSelected", lang.code);
-  updateStatusMenu(false)
+  closeMenu(false)
 };
 
 const emitActions = (actionName) => {
