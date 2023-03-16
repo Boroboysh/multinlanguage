@@ -15,7 +15,7 @@
           />
         </div>
         <div
-          class="header_menu_block d-flex align-content-center justify-content-end justify-content-sm-center bg-red-500"
+          class="header_menu_block d-flex align-content-center justify-content-end"
         >
           <div @click="openMenu()" class="header_menu_burger_block">
             <img src="@/assets/images/default_menu_icons.svg" alt="" />

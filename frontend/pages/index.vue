@@ -650,7 +650,6 @@ import choosingRegion from "@/components/modalWindow/choosingRegion.vue";
 import defaultFooter from "@/components/footer/defaultFooter.vue";
 import getContentInfo from "@/api/contentInfo/getContentInfo";
 import { useContentPages } from "@/stores/homeStores";
-import { useCountry } from "~~/stores/country";
 import { getCountry } from "@/api/getCountry/getCountry";
 import defaultAccordion from "~~/components/accordion/defaultAccordion.vue";
 import { sendContact } from "~~/api/sendContactForm/sendContact";
@@ -662,7 +661,6 @@ const store = useContentPages();
 let contentPages = reactive({ data: {} });
 let statusRegionSelect = ref(false);
 let countryList = ref([]);
-let countryStores = useCountry();
 let searchFormCode = ref({ code: null });
 let calculateSumForms = ref({});
 let contactForm = reactive({});
@@ -724,8 +722,6 @@ const scrollToContactForm = () => {
 
 useAsyncData("page-data", async () => {
   await store.getContent("kk");
-  await countryStores.getCountryList("kk");
-  countryList.value = countryList.countryList();
   contentPages.data = store.pageContent;
 });
 
