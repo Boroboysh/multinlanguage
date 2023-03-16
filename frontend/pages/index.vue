@@ -468,7 +468,6 @@ import choosingRegion from "@/components/modalWindow/choosingRegion.vue";
 import defaultFooter from "@/components/footer/defaultFooter.vue";
 import getContentInfo from "@/api/contentInfo/getContentInfo";
 import { useContentPages } from "@/stores/homeStores";
-import defaultAccordion from '~~/components/accordion/defaultAccordion.vue'
 import { getCountry } from "@/api/getCountry/getCountry";
 import { sendContact } from "~~/api/sendContactForm/sendContact";
 import axios from "axios";
@@ -1415,6 +1414,10 @@ body {
   }
 
   .map_contact_button_block {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 16px;
+
     display: flex;
     justify-content: center;
   }
