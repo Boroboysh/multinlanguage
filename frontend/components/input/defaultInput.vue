@@ -81,7 +81,6 @@ input::-webkit-input-placeholder,
 input::-moz-placeholder
 {
   color: #e4e6e7 !important;
-  opacity: 0.1;
 }
 
 .default_input_block {
