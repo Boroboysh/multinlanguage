@@ -186,13 +186,14 @@ import transparentSelect from "~~/components/select/transparentSelect/transparen
 import transparentOption from "~~/components/select/transparentSelect/transparentOption.vue";
 import defaultInput from "~~/components/input/defaultInput.vue";
 import { useContentPages } from "~~/stores/homeStores";
+
 const props = defineProps({
   menu: {
     type: Object,
   },
 });
+
 const homePageContentStores = useContentPages();
-// homePageContentStores.getCurrentLang
 let menuStatus = ref(false);
 let isActive = ref(false);
 let activeLang = ref(homePageContentStores.getActiveLang[0]);

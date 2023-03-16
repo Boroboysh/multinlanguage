@@ -373,57 +373,13 @@
           </div>
         </div>
       </div>
-
       <div
-        v-for="(advantagesItem, advantagesIndex) in contentPages.data.body
-          .listInfoBlock.element"
-        :key="advantagesIndex"
-        class="d-flex align-items-start justify-content-center advantages_block_card_item advantages_block_card_item-mobile"
+          v-for="(advantagesItem, advantagesIndex) in contentPages.data.body
+            .listInfoBlock.element"
+          :key="advantagesIndex"
+          class="d-flex align-items-start justify-content-center advantages_block_card_item"
       >
-        <div class="advantages_card_block position-relative default_card w-100">
-          <div class="default_border_block advantages_card_border_block">
-            <div class="default_border default_border_top_left"></div>
-            <div class="default_border default_border_top_right"></div>
-            <div class="default_border default_border_bottom_left"></div>
-            <div class="default_border default_border_bottom_right"></div>
-          </div>
-          <div class="advantages_card default-card">
-            <div
-              class="advantages_card_content_title_block d-flex align-items-center"
-            >
-              <div class="advantages_card_title_icon_block">
-                <img
-                  :src="env.host + advantagesItem.icon"
-                  alt=""
-                  class="advantages_card_title_icon"
-                />
-              </div>
-              <div class="advantages_content_card_title_block fw-bold">
-                <span class="advantages_content_card_title">
-                  {{ advantagesItem.title }}
-                </span>
-              </div>
-            </div>
-            <div class="advantages_card_content">
-              <div class="advantages_card_content_list">
-                <div
-                  v-for="(
-                    advantagesItemList, advantagesItemIndex
-                  ) in advantagesItem.list"
-                  :key="advantagesItemIndex"
-                  class="advantages_card_content_list_item d-flex align-items-center h-100"
-                >
-                  <div class="advantages_card_content_list_item_linear"></div>
-                  <div class="advantages_card_content_list_item_content">
-                    <div class="advantages_card_content_list_item_content_text">
-                      {{ advantagesItemList.content }}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <adventageBlock :advantagesItem="advantagesItem" />
       </div>
     </div>
 
@@ -451,16 +407,11 @@
               class="col-12 col-md-4 d-flex align-items-center justify-content-center"
             >
               <div class="contact_form_item_block w-100">
-                <default-input
-                  class="contact_form_item contact_form_item_city"
-                  v-model="contactForm.city"
-                  :placeholder="contentPages.data.body.contactForm.fields.city"
-                  :title="true"
-                />
                 <default-select
                   :placeholder="contentPages.data.body.contactForm.fields.city"
+                  v-model="contactForm.city"
                 >
-                  <default-option> </default-option>
+                  <default-option v-for='(item, index) in countryStores.getCountryKZ.territoryList' v-bind:key="index" :item="item.name"> {{ item.name }}</default-option>
                 </default-select>
               </div>
             </div>
@@ -590,13 +541,15 @@
         </div>
       </template>
     </default-footer>
-    fafwwfaf {{ countryStores.getCountryKZ }}
   </div>
 </template>
 
 <script setup>
 import defaultButton from "@/components/button/defaultButton.vue";
 import defaultInput from "~~/components/input/defaultInput.vue";
+import defaultSelect from "~~/components/select/defaultSelect.vue";
+import defaultOption from "~~/components/select/defaultOption.vue";
+import adventageBlock from "~~/components/adventageBlock/adventageBlock.vue";
 import defaultHeader from "@/components/header/defaultHeader/defaultHeader.vue";
 import DefaultHeader from "@/components/header/defaultHeader/defaultHeader.vue";
 import defaultMap from "@/components/map/defaultMap.vue";
@@ -621,6 +574,7 @@ let countryList = ref([]);
 let searchFormCode = ref({ code: null });
 let calculateSumForms = ref({});
 let contactForm = reactive({});
+
 let { data } = await useFetch(env.host + "api/page-data", {
   headers: {
     locale: "ru",
@@ -642,6 +596,7 @@ const closeModalRegion = () => {
   body.style.overflowY = null;
   updateStatusRegionSelect(false);
 };
+console.log(store.getCountryKZ);
 
 const updateContentPageLang = async (lang) => {
   contentPages.data = await getContentInfo(lang);
@@ -651,6 +606,7 @@ const getCountryData = async (lang) => {
   const response = await getCountry(lang);
   return response.data;
 };
+const response = await getCountry('ru');
 
 const sendContactForm = async (form) => {
   await sendContact(form);
@@ -1142,7 +1098,9 @@ body {
 }
 
 .advantages_card {
-  padding: 28px 28px 50px 28px;
+  transition: 200ms;
+  height: max-content;
+  padding: 28px 40px 50px 28px;
   width: 100%;
   background: #fafafa;
 }

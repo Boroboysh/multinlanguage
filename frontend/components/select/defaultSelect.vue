@@ -2,6 +2,9 @@
   <div class="default_select_block position-relative">
     <default-input
       @focus="udpateStatus(true)"
+      @input="$emit('update', $event.target.value)"
+      @change="$emit('update', $event.target.value)"
+      @update="$emit('update', $event.target.value)"
       v-model="selectValue"
       :readonly="true"
       :placeholder="placeholder"
@@ -51,6 +54,7 @@ const updateValue = (value) => {
 }
 
 const closeOptionBlock = () => {
+
 }
 
 provide('defaultSelect', {
@@ -62,6 +66,7 @@ provide('defaultSelect', {
 
 <style scoped>
 .default_select_block {
+  width: 100%;
 }
 .default_select_list_block {
   width: 100%;

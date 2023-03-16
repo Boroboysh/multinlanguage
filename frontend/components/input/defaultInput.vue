@@ -76,15 +76,11 @@ const emit = defineEmits(["update:modelValue"]);
 
 <style scoped>
 
-input::placeholder,
-input::-webkit-input-placeholder,
-input::-moz-placeholder
-{
-  color: #e4e6e7 !important;
-}
+
 
 .default_input_block {
   /* height: 100%; */
+  width: 100%;
   border: 1px solid #e4e6e7;
   border-radius: 3px;
   display: flex;
@@ -125,10 +121,6 @@ input::-moz-placeholder
   background: none;
   padding: 16px 16px;
   z-index: 10;
-  color: #AAAAAA;
-}
-.default_input[placeholder] {
-  color: #AAAAAA;
 }
 .default_input_with_title {
   padding: 20px 16px 8px;
