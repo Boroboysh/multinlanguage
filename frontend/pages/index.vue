@@ -242,12 +242,12 @@
       </div>
     </div>
     <div class="advantages_block_card container-xl">
-      <div class="row w-100 d-flex align-items-center justify-content-center">
+<!--      <div class="row w-100 d-flex align-items-center justify-content-center advantages_block_card">-->
         <div
           v-for="(advantagesItem, advantagesIndex) in contentPages.data.body
             .listInfoBlock.element"
           :key="advantagesIndex"
-          class="col-12 col-sm-6 col-md-6 col-xl-6 d-flex h-100 align-items-start justify-content-center advantages_block_card_item"
+          class="d-flex align-items-start justify-content-center advantages_block_card_item"
         >
           <div
             class="advantages_card_block position-relative default_card w-100"
@@ -298,7 +298,7 @@
             </div>
           </div>
         </div>
-      </div>
+<!--      </div>-->
     </div>
     <div class="contact_form_block">
       <div class="contact_form_question_mark_block container-xl" id="contact-form">
@@ -977,6 +977,10 @@ body {
 
 .advantages_block_card {
   margin-top: 56px;
+  max-width: 1000px;
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 50px;
 }
 
 .advantages_card {
@@ -1356,6 +1360,11 @@ body {
   }
 }
 @media (max-width: 510px) {
+
+  .advantages_block_card {
+    padding: 0 30px;
+    grid-template-columns: auto;
+  }
   .header_content_info_calculate_form_input_size {
     /* min-width: auto; */
   }
