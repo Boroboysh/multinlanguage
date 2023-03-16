@@ -468,7 +468,6 @@ import choosingRegion from "@/components/modalWindow/choosingRegion.vue";
 import defaultFooter from "@/components/footer/defaultFooter.vue";
 import getContentInfo from "@/api/contentInfo/getContentInfo";
 import { useContentPages } from "@/stores/homeStores";
-import defaultAccordion from '~~/components/accordion/defaultAccordion.vue'
 import { getCountry } from "@/api/getCountry/getCountry";
 import { sendContact } from "~~/api/sendContactForm/sendContact";
 import axios from "axios";
