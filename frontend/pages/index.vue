@@ -124,6 +124,9 @@
         >
           <div class="about_block_content_title_linear" />
           <div class="about_block_content_title_block">
+            <div class="about_content_title_linear_block">
+              <div class="about_content_title_linear"></div>
+            </div>
             <span class="about_block_content_title">
               {{ contentPages.data.body.textInfoBlock.title }}
             </span>
@@ -136,9 +139,6 @@
         </div> -->
         <div class="about_content_block_info container-xl">
           <div class="about_content_info">
-            <div class="about_content_title_linear_block">
-              <div class="about_content_title_linear"></div>
-            </div>
             <p class="about_content_title">
               ПЭК: GLOBAL предлагает услуги авто- и авиаперевозок из России в
               Казахстан и в обратном направлении.
@@ -590,8 +590,8 @@ body {
   margin-top: 35px;
   margin-bottom: 120px;
 }
-.header_content_block  {
-  border-bottom: 1px solid #E4E6E7;
+.header_content_block {
+  border-bottom: 1px solid #e4e6e7;
 }
 .contact_test_row {
   width: 100%;
@@ -1144,6 +1144,9 @@ body {
   flex-wrap: wrap;
   justify-content: center;
 }
+.about_block_title {
+  position: relative;
+}
 /* .footer_content_logo_block {
   display: flex;
 } */
@@ -1371,14 +1374,6 @@ body {
   .map_contact_button_block {
     margin: 24px;
   }
-
-  /* .about_content_block_title {
-    display: none !important;
-  } */
-
-  /* .about_block_content_title_block {
-    display: none !important;
-  } */
   .map_block_contact {
     display: flex;
     flex-direction: column;
@@ -1396,7 +1391,7 @@ body {
     display: block;
   }
   .about_content_title {
-    border-left: 4px solid #2B2B2B;
+    border-left: 4px solid #2b2b2b;
     padding: 0px 0px 0px 4px;
     width: 100%;
   }
@@ -1408,10 +1403,6 @@ body {
   }
   .about_block_content_title {
     border-left: 4px solid black;
-  }
-
-  .about_block_title {
-    display: none !important;
   }
 
   .map_contact_info {
