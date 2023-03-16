@@ -19,6 +19,7 @@ class HeaderLanguagesResource extends JsonResource
             'name' => $this->name,
             'icon' => $this->icon,
             'isDefault' => $this->isDefault,
+            'abbreviation' => $this->abbreviation,
             'code' => $this->language_code
         ];
     }
