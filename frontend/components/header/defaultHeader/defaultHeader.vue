@@ -213,10 +213,10 @@ const closeMenu = () => {
 };
 
 const updateLang = (lang) => {
-  console.log(lang);
   activeLang.value = lang;
   homePageContentStores.updateCurrentLang(lang.code);
   emit("updateSelected", lang.code);
+  updateStatusMenu(false)
 };
 
 const emitActions = (actionName) => {
