@@ -210,6 +210,7 @@ onMounted(() => {
     z-index: 10000;
     left: 50%;
     transform: translate(-50%, 0);
+    box-shadow: 0 0 0 50vmax rgba(0,0,0,.5);
 }
 .choosing_region {
   padding: 30px;
@@ -228,6 +229,7 @@ onMounted(() => {
   font-size: 24px;
   font-weight: 500;
   color: #2b2b2b;
+  white-space: nowrap;
 }
 .choosing_region_header_close_button {
   width: 18px;
