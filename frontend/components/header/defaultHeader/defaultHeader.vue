@@ -18,7 +18,7 @@
           class="header_menu_block d-flex align-content-center justify-content-end"
         >
           <div @click="openMenu()" class="header_menu_burger_block">
-            <img src="@/assets/images/default_menu_icons.svg" alt="" />
+            <img src="@/assets/images/default_menu_icons.svg" alt=""/>
           </div>
           <div
             class="header_menu_group_block"
@@ -72,15 +72,16 @@
                 class="header_menu_link"
                 href="#"
               >
-                <div class="header_menu_icons_block">
+                <div class="header_menu_icons_block header_city_select_icon">
                   <img
                     src="@/assets/images/default_arrow_icon.png"
                     alt=""
                     class="header_menu_icons"
                   />
                 </div>
-                {{ countryStores?.currentCity?.name ?? 'Выберите город' }}
-                <div class="header_menu_icons_block">
+                <span class="header_city_select_mobile_prefix">Ваш город: </span>
+                <span class="header_city_select_selected_city"> {{ countryStores?.currentCity?.name ?? 'Выберите город' }} </span>
+                <div class="header_menu_icons_block header_city_select_icon">
                   <img
                     src="@/assets/images/arrow_done.svg"
                     alt=""
@@ -436,6 +437,10 @@ header {
 .header_menu_block_link_mobile {
   display: none;
 }
+
+.header_city_select_mobile_prefix {
+  display: none;
+}
 @media (max-width: 1400px) {
   .header_content_info_preview > img {
     width: 100%;
@@ -464,7 +469,7 @@ header {
     width: 80px;
   }
   .header_content_block {
-    height: 50px;
+    height: 52px;
     background: #252069;
   }
   .header_menu_block_link {
@@ -552,5 +557,26 @@ header {
   .header_menu_icons_block {
     margin: 0px 10px 0px 0px;
   }
+  .header_menu_link {
+    margin-left: 14px;
+  }
+  .header_city_select_icon {
+    display: none;
+  }
+  .header_city_select_mobile_prefix {
+    display: block;
+    margin-right: 10px;
+  }
+  .header_city_select_selected_city {
+    color: #48538B;
+  }
 }
+
+@media (max-width: 580px) {
+  .header_menu_burger_block img {
+
+    margin: 0 20px;
+  }
+}
+
 </style>
