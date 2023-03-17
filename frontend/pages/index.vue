@@ -2044,6 +2044,10 @@ body {
   .footer_content_downloads_market_link_group_item {
     margin: 0;
   }
+  .footer_content_downloads_market_link_group_block {
+    display: grid;
+    grid-template-columns: auto auto auto;
+  }
 }
 </style>
 
