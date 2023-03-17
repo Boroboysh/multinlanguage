@@ -781,6 +781,8 @@ const closeModalRegion = () => {
 
 const updateContentPageLang = async (lang) => {
   contentPages.data = await getContentInfo(lang);
+  await countryStores.getCountryList(lang)
+
 };
 
 const getCountryData = async (lang) => {
