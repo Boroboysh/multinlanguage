@@ -518,10 +518,11 @@
                 <default-input
                   class="contact_form_item contact_form_item_telephone"
                   v-model="contactForm.phone"
+                  mask="+7 (###) ### ##-##"
+                  :title="true"
                   :placeholder="
                     contentPages.data.body?.contactForm?.fields?.tel_number
                   "
-                  :title="true"
                 />
               </div>
             </div>
@@ -531,6 +532,7 @@
               <div class="contact_form_item_block w-100 contact_form_text_area">
                 <default-text-area
                   v-model="contactForm.message"
+                  :title="true"
                   :placeholder="
                     contentPages.data.body?.contactForm?.fields?.message_placeholder
                   "
@@ -1241,6 +1243,7 @@ body {
 }
 
 .map_card_block {
+  margin-top: -50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1323,6 +1326,7 @@ body {
 
 .map_contact_info_title {
   font-size: 16px;
+  font-weight: normal;
 }
 
 .map_contact_telephone_block a {
@@ -1433,7 +1437,8 @@ body {
 }
 
 .advantages_card_content_list_item_linear {
-  width: 20px;
+  width: 20px !important;
+  flex: 0 0 20px;
   height: 1px;
   background: #aaaaaa;
 }
@@ -1794,7 +1799,6 @@ body {
 }
 
 @media (max-width: 575px) {
-
   .header_content_info_calculate_button_block {
     width: 100%;
     display: flex;
@@ -1869,6 +1873,21 @@ body {
 }
 
 @media (max-width: 480px) {
+
+  .contact_form_container {
+    margin-top: Calc(28px - 24px);
+  }
+
+  .contact_form_text_area {
+    height: auto;
+  }
+  .contact_form_block {
+    padding-top: 40px ;
+    padding-bottom: 32px ;
+  }
+  .default_text_area_block {
+    height: 116px;
+  }
   .choosing_region_content_city_list_block {
     display: none;
   }

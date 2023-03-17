@@ -1,7 +1,7 @@
 <template>
   <div
     :class="{
-      default_input__active: modelValue != '',
+      default_input__active: !!modelValue,
       default_input_disabled: disabled,
     }"
     class="default_input_block"
@@ -103,7 +103,6 @@ export default {
   created() {
     if (this.mask) {
       this.$watch('bindedObject.masked', (masked) => {
-        console.log(masked);
         this.$emit('update:modelValue', masked);
       });
     }
