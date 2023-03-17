@@ -1592,6 +1592,11 @@ body {
   font-size: 20px;
   color: #2b2b2b;
 }
+
+
+.default_text_area_block {
+  height: 116px;
+}
 /* .footer_content_logo_block {
   display: flex;
 } */
@@ -1884,9 +1889,6 @@ body {
   .contact_form_block {
     padding-top: 40px ;
     padding-bottom: 32px ;
-  }
-  .default_text_area_block {
-    height: 116px;
   }
   .choosing_region_content_city_list_block {
     display: none;
