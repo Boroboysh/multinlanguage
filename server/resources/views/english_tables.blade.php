@@ -236,6 +236,20 @@
                     </div>
                 @endforeach
             </div>
+            {{--Lang Helper--}}
+            <h3>Переводы</h3>
+            <div class="row">
+                <div class="card m-1">
+                    <div class="card-body" style="display: flex; align-items: center; justify-content: center">
+                        <div class="nav-item"><a class="nav-link" href="{{ backpack_url('lang-helper') }}">
+                                <h4 class="card-text" style="text-align: center">
+                                    Справочник
+                                </h4>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 @endsection
 

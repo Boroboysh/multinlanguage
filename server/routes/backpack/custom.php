@@ -56,4 +56,5 @@ Route::group([
     Route::crud('map-info-block-card-content', 'MapInfoBlockCardContentCrudController');
     Route::crud('header-logo-list', 'HeaderLogoListCrudController');
     Route::crud('cities-block', 'CitiesBlockCrudController');
+    Route::crud('lang-helper', 'LangHelperCrudController');
 }); // this should be the absolute last line of this file

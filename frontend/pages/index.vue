@@ -749,7 +749,8 @@ watchDebounced(searchFormCode, async (code) => {
 
   if (failed) {
     searchFormCodeResult.success = false;
-    searchFormCodeResult.text = `Груз ${codeMasked} не найден`;
+    searchFormCodeResult.text = contentPages.data?.langHelpers?.store_link_title;
+    // searchFormCodeResult.text = `Груз ${codeMasked} не найден`;
   } else {
     searchFormCodeResult.success = true;
     searchFormCodeResult.text = 'Груз найден, загрузка...';

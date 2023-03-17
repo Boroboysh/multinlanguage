@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\ContactForm\ContactFormResource;
 use App\Http\Resources\FooterResource;
+use App\Http\Resources\LangHelperResource;
 use App\Http\Resources\Header\HeaderResource;
 use App\Http\Resources\ListBlock\ListBlockResource;
 use App\Http\Resources\MapInfoBlock\MapInfoBlockResource;
@@ -15,6 +16,7 @@ use App\Models\Header;
 use App\Models\ListInfoBlock;
 use App\Models\MapInfoBlock;
 use App\Models\Subheader;
+use App\Models\LangHelper;
 use App\Models\TextInfoBlock;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -39,7 +41,8 @@ class JsonController extends Controller
                     "listInfoBlock" => new ListBlockResource(ListInfoBlock::where('id', $defaultId)->first()),
                     "contactForm" => new ContactFormResource(ContactForm::where('id', $defaultId)->first())
                 ],
-                "footer" => new FooterResource(Footer::first())
+                "footer" => new FooterResource(Footer::first()),
+                "langHelpers" => LangHelperResource::collection(LangHelper::all())
             ];
         } else {
             return response('Invalid language code', 404);
