@@ -18,7 +18,7 @@
           class="header_menu_block d-flex align-content-center justify-content-end"
         >
           <div @click="openMenu()" class="header_menu_burger_block">
-            <img src="@/assets/images/default_menu_icons.svg" alt="" />
+            <img src="@/assets/images/default_menu_icons.svg" alt=""/>
           </div>
           <div
             class="header_menu_group_block"
@@ -72,15 +72,16 @@
                 class="header_menu_link"
                 href="#"
               >
-                <div class="header_menu_icons_block">
+                <div class="header_menu_icons_block header_city_select_icon">
                   <img
                     src="@/assets/images/default_arrow_icon.png"
                     alt=""
                     class="header_menu_icons"
                   />
                 </div>
-                {{ countryStores?.currentCity?.name ?? 'Выберите город' }}
-                <div class="header_menu_icons_block">
+                <span class="header_city_select_mobile_prefix">Ваш город: </span>
+                <span class="header_city_select_selected_city"> {{ countryStores?.currentCity?.name ?? 'Выберите город' }} </span>
+                <div class="header_menu_icons_block header_city_select_icon">
                   <img
                     src="@/assets/images/arrow_done.svg"
                     alt=""
@@ -111,7 +112,7 @@
             <div class="header_menu_block_link header_menu_block_lang">
               <transparent-select @return-option="(lang) => updateLang(lang)">
                 <template #title>
-                  <div class="default_drowndown_title d-flex">
+                  <div class="default_drowndown_title d-flex align-items-center">
                     <div class="header_menu_icons_block">
                       <img
                         :src="env.host + activeLang.icon"
@@ -255,13 +256,15 @@ header {
 
 .header_menu_block {
   width: 60%;
-  height: 100%;
+  /*height: 100%;*/
+  height: 73px;
   /* background: #000; */
 }
 
 .header_content_block {
   width: 100%;
-  height: 100%;
+  height: 73px;
+  /*height: 100%;*/
 }
 
 .header_content_info_calculate_result_text {
@@ -429,11 +432,21 @@ header {
 }
 .default_drowndown_title {
   cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+.default_drowndown_content_item_title {
+  font-size: 14px;
 }
 .default_drowndown_item_block {
   cursor: pointer;
 }
 .header_menu_block_link_mobile {
+  display: none;
+}
+
+.header_city_select_mobile_prefix {
   display: none;
 }
 @media (max-width: 1400px) {
@@ -463,9 +476,8 @@ header {
   .header_logo_block > img {
     width: 80px;
   }
-  .header_content_block {
-    height: 50px;
-    background: #252069;
+  .header_menu_block {
+    height: 52px;
   }
   .header_menu_block_link {
     margin: 20px;
@@ -473,12 +485,12 @@ header {
   .header_menu_group_block {
     background: #ffffff;
     display: block;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 100%;
     width: 100%;
     height: 100%;
-    z-index: 10000;
+    z-index: 1000;
   }
   .header_menu_block_link {
     height: auto;
@@ -504,6 +516,7 @@ header {
 
   .header_menu_burger_block img {
     width: 24px;
+    margin: 0 20px;
   }
   .header_content_advantages_info_block {
     display: block;
@@ -552,5 +565,26 @@ header {
   .header_menu_icons_block {
     margin: 0px 10px 0px 0px;
   }
+  .header_menu_link {
+    margin-left: 14px;
+  }
+  .header_city_select_icon {
+    display: none;
+  }
+  .header_city_select_mobile_prefix {
+    display: block;
+    margin-right: 10px;
+  }
+  .header_city_select_selected_city {
+    color: #48538B;
+  }
 }
+
+@media (max-width: 580px) {
+  .header_menu_burger_block img {
+
+    margin: 0 20px;
+  }
+}
+
 </style>

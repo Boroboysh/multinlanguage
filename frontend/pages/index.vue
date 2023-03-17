@@ -518,10 +518,11 @@
                 <default-input
                   class="contact_form_item contact_form_item_telephone"
                   v-model="contactForm.phone"
+                  mask="+7 (###) ### ##-##"
+                  :title="true"
                   :placeholder="
                     contentPages.data.body?.contactForm?.fields?.tel_number
                   "
-                  :title="true"
                 />
               </div>
             </div>
@@ -531,6 +532,7 @@
               <div class="contact_form_item_block w-100 contact_form_text_area">
                 <default-text-area
                   v-model="contactForm.message"
+                  :title="true"
                   :placeholder="
                     contentPages.data.body?.contactForm?.fields?.message_placeholder
                   "
@@ -780,6 +782,8 @@ const closeModalRegion = () => {
 
 const updateContentPageLang = async (lang) => {
   contentPages.data = await getContentInfo(lang);
+  await countryStores.getCountryList(lang)
+
 };
 
 const getCountryData = async (lang) => {
@@ -965,7 +969,7 @@ body {
 }
 
 .header_content_info_content {
-  margin-top: 50px;
+  margin-top: Calc(50px + 73px);
 }
 
 .header_content_advantages_block {
@@ -974,6 +978,11 @@ body {
 }
 .header_content_block {
   border-bottom: 1px solid #e4e6e7;
+}
+
+.header_content_block {
+  top: 0;
+  position: fixed;
 }
 .contact_test_row {
   width: 100%;
@@ -1060,14 +1069,14 @@ body {
 }
 
 .about_block_content_title {
-  font-size: 50px;
+  font-size: 48px;
   width: 100%;
   font-weight: 600;
 }
 
 .about_content_title {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 18px;
   margin-top: 30px;
 }
 
@@ -1237,6 +1246,7 @@ body {
 }
 
 .map_card_block {
+  margin-top: -50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1319,6 +1329,7 @@ body {
 
 .map_contact_info_title {
   font-size: 16px;
+  font-weight: normal;
 }
 
 .map_contact_telephone_block a {
@@ -1429,7 +1440,8 @@ body {
 }
 
 .advantages_card_content_list_item_linear {
-  width: 20px;
+  width: 20px !important;
+  flex: 0 0 20px;
   height: 1px;
   background: #aaaaaa;
 }
@@ -1583,6 +1595,11 @@ body {
   font-size: 20px;
   color: #2b2b2b;
 }
+
+
+.default_text_area_block {
+  height: 116px;
+}
 /* .footer_content_logo_block {
   display: flex;
 } */
@@ -1713,6 +1730,7 @@ body {
 
   .about_block_content_title {
     font-size: 30px;
+    margin-right: 10px;
   }
 
   /* .header_content_info_calculate_block {
@@ -1789,10 +1807,6 @@ body {
 }
 
 @media (max-width: 575px) {
-
-  .header_content_block, .header_menu_group_block {
-    position: fixed;
-  }
   .header_content_info_calculate_button_block {
     width: 100%;
     display: flex;
@@ -1867,8 +1881,32 @@ body {
 }
 
 @media (max-width: 480px) {
+
+  .contact_form_container {
+    margin-top: Calc(28px - 24px);
+  }
+
+  .contact_form_text_area {
+    height: auto;
+  }
+  .contact_form_block {
+    padding-top: 40px ;
+    padding-bottom: 32px ;
+  }
   .choosing_region_content_city_list_block {
     display: none;
+  }
+  .about_content_text, .about_content_title {
+    margin-top: 0;
+  }
+  .about_content_block_info {
+
+    margin-top: 38px;
+  }
+  .map_block_contact {
+
+    margin: 20px 0;
+
   }
   .choosing_region_content_city_block_popular {
     margin: 0;
@@ -2008,6 +2046,10 @@ body {
   }
   .footer_content_downloads_market_link_group_item {
     margin: 0;
+  }
+  .footer_content_downloads_market_link_group_block {
+    display: grid;
+    grid-template-columns: auto auto auto;
   }
 }
 </style>

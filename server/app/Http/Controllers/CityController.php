@@ -11,13 +11,12 @@ class CityController extends Controller
 {
     public function searchCity (Request $request) {
         $searchName = $request->query('name');
+        $locale = $request->header('locale') ?? 'ru';
 
-        App::setLocale('ru');
+        App::setLocale($locale);
 
-        $searchCities = City::where('name->ru', 'like', $searchName . '%')->get();
+        $searchCities = City::where('name->' . $locale, 'like', $searchName . '%')->get();
 
-        $arrayCity = CityResource::collection($searchCities);
-
-        return $arrayCity;
+        return CityResource::collection($searchCities);
     }
 }
