@@ -112,7 +112,7 @@
             <div class="header_menu_block_link header_menu_block_lang">
               <transparent-select @return-option="(lang) => updateLang(lang)">
                 <template #title>
-                  <div class="default_drowndown_title d-flex">
+                  <div class="default_drowndown_title d-flex align-items-center">
                     <div class="header_menu_icons_block">
                       <img
                         :src="env.host + activeLang.icon"
@@ -256,13 +256,15 @@ header {
 
 .header_menu_block {
   width: 60%;
-  height: 100%;
+  /*height: 100%;*/
+  height: 73px;
   /* background: #000; */
 }
 
 .header_content_block {
   width: 100%;
-  height: 100%;
+  height: 73px;
+  /*height: 100%;*/
 }
 
 .header_content_info_calculate_result_text {
@@ -430,6 +432,12 @@ header {
 }
 .default_drowndown_title {
   cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+.default_drowndown_content_item_title {
+  font-size: 14px;
 }
 .default_drowndown_item_block {
   cursor: pointer;
@@ -468,9 +476,8 @@ header {
   .header_logo_block > img {
     width: 80px;
   }
-  .header_content_block {
+  .header_menu_block {
     height: 52px;
-    background: #252069;
   }
   .header_menu_block_link {
     margin: 20px;
@@ -478,12 +485,12 @@ header {
   .header_menu_group_block {
     background: #ffffff;
     display: block;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 100%;
     width: 100%;
     height: 100%;
-    z-index: 10000;
+    z-index: 1000;
   }
   .header_menu_block_link {
     height: auto;
@@ -509,6 +516,7 @@ header {
 
   .header_menu_burger_block img {
     width: 24px;
+    margin: 0 20px;
   }
   .header_content_advantages_info_block {
     display: block;

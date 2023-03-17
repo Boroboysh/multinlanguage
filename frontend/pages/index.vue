@@ -964,7 +964,7 @@ body {
 }
 
 .header_content_info_content {
-  margin-top: 50px;
+  margin-top: Calc(50px + 73px);
 }
 
 .header_content_advantages_block {
@@ -973,6 +973,11 @@ body {
 }
 .header_content_block {
   border-bottom: 1px solid #e4e6e7;
+}
+
+.header_content_block {
+  top: 0;
+  position: fixed;
 }
 .contact_test_row {
   width: 100%;
@@ -1059,14 +1064,14 @@ body {
 }
 
 .about_block_content_title {
-  font-size: 50px;
+  font-size: 48px;
   width: 100%;
   font-weight: 600;
 }
 
 .about_content_title {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 18px;
   margin-top: 30px;
 }
 
@@ -1712,6 +1717,7 @@ body {
 
   .about_block_content_title {
     font-size: 30px;
+    margin-right: 10px;
   }
 
   /* .header_content_info_calculate_block {
@@ -1789,9 +1795,6 @@ body {
 
 @media (max-width: 575px) {
 
-  .header_content_block, .header_menu_group_block {
-    position: fixed;
-  }
   .header_content_info_calculate_button_block {
     width: 100%;
     display: flex;
