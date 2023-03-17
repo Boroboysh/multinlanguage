@@ -1872,6 +1872,18 @@ body {
   .choosing_region_content_city_list_block {
     display: none;
   }
+  .about_content_text, .about_content_title {
+    margin-top: 0;
+  }
+  .about_content_block_info {
+
+    margin-top: 38px;
+  }
+  .map_block_contact {
+
+    margin: 20px 0;
+
+  }
   .choosing_region_content_city_block_popular {
     margin: 0;
   }
